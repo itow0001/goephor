@@ -11,11 +11,8 @@ Created on Jan 9, 2016
 import os
 import re
 import sys
-sys.path.append(
-    os.path.join(os.path.dirname(os.path.realpath(__file__)), "../modules"))
 
-import terminal
-from terminal import shell, rsync
+from modules.terminal import shell, rsync
 
 
 #####

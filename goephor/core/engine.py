@@ -3,6 +3,7 @@ Created on Jan 8, 2016
 
 @author: iitow
 '''
+import importlib
 import json
 import os
 import re
@@ -116,7 +117,7 @@ class Chain(object):
             action_obj.GLOBALS = self.envs
             action_objs.append(action_obj)
             id_cnt += 1
-        return action_objs
+        return action_objsimportlib.import_module(name, package)
 
     def init_actions(self, receipt_path="./receipt.json"):
         """ call all actions in action array

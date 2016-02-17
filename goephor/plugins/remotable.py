@@ -7,9 +7,7 @@ import os
 import re
 import sys
 
-sys.path.append(
-    os.path.join(os.path.dirname(os.path.realpath(__file__)), "../modules"))
-from remote import Run
+from modules.remote import Run
 
 
 def _has_keys(str):
