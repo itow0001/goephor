@@ -38,9 +38,9 @@ class Chain(object):
             with open(config_json) as file:
                 data = json.loads(file.read())
                 return data
-        except Exception as e:
-            print "\n[Error]\nmanifest path: %s\n\n%s" % (config_json, str(e))
-            sys.exit(1)
+        except Exception:
+            print "[Error] %s" % (config_json)
+            raise
 
     def set_envs(self, config):
         """ Setup the environment variables
@@ -81,10 +81,9 @@ class Chain(object):
         try:
             matches = re.findall(r'(?<={)[^}]*', value)
             return matches
-        except Exception as e:
+        except Exception:
             print "[Error] malformed global variable"
-            print str(e)
-            sys.exit(1)
+            raise
 
     def stat_actions(self):
         """ displays all info about objects in the queue
@@ -117,7 +116,7 @@ class Chain(object):
             action_obj.GLOBALS = self.envs
             action_objs.append(action_obj)
             id_cnt += 1
-        return action_objsimportlib.import_module(name, package)
+        return action_objs
 
     def init_actions(self, receipt_path="./receipt.json"):
         """ call all actions in action array
@@ -134,13 +133,9 @@ class Chain(object):
         @param obj: nest dictionary containing all calls
         @return: info about build output
         """
+        args = obj.OPTS.get("args",[])
+        kwargs = obj.OPTS.get("kwargs",{})
         try:
-            args = obj.OPTS.get("args")
-            kwargs = obj.OPTS.get("kwargs")
-            if not obj.OPTS.get("args"):
-                args = []
-            if not obj.OPTS.get("kwargs"):
-                kwargs = {}
             if obj.IMP == 'self':
                 RETURN = getattr(self, obj.DEF)(*args, **kwargs)
             else:
@@ -148,11 +143,9 @@ class Chain(object):
                 RETURN = getattr(mod, obj.DEF)(*args, **kwargs)
             obj.EXECUTED += 1
             return RETURN
-        except Exception as e:
-            print "\n[Error]"
+        except Exception:
             obj.pprint()
-            print str(e)
-            sys.exit(1)
+            raise
 
     def _load_plugin(self, name):
         """ Private loads module dynamically
