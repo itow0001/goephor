@@ -3,17 +3,22 @@ Created on Jan 29, 2016
 
 @author: iitow
 '''
-import sys,os,re
-sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)),"../modules"))
-from terminal import shell, rsync
+import os
+import re
+import sys
+
+sys.path.append(
+    os.path.join(os.path.dirname(os.path.realpath(__file__)), "../modules"))
 from remote import Run
+
 
 def _has_keys(str):
     """ Collect all environment variables
-    @param str: command string 
+    @param str: command string
     """
-    matches = re.findall(r'(?<={)[^}]*',str)
+    matches = re.findall(r'(?<={)[^}]*', str)
     return matches
+
 
 def _sanitize(str):
     """ Replace all environment variables into command
@@ -26,7 +31,15 @@ def _sanitize(str):
             str = str.replace(old, new)
     return str
 
-def cmd(server,cmd_str,rsa_private='/root/.ssh/id_rsa.default',user='root',password='a',strict=True,verbose=True, show_cmd=True):
+
+def cmd(server,
+        cmd_str,
+        rsa_private='/root/.ssh/id_rsa.default',
+        user='root',
+        password='a',
+        strict=True,
+        verbose=True,
+        show_cmd=True):
     """ Initializes a Remote ssh session
     @param server: server address
     @param cmd: string shell command
@@ -40,15 +53,15 @@ def cmd(server,cmd_str,rsa_private='/root/.ssh/id_rsa.default',user='root',passw
     @note: environment variables but be as follows ${var} to pass over to ssh
     """
     if '$' in server:
-        server = server.replace('$','')
+        server = server.replace('$', '')
         server = os.environ.get(server)
     santized_str = _sanitize(cmd_str)
-    remote = Run(server,rsa_private=rsa_private,user=user,password=password,strict=strict,verbose=verbose, show_cmd=show_cmd)
+    remote = Run(server,
+                 rsa_private=rsa_private,
+                 user=user,
+                 password=password,
+                 strict=strict,
+                 verbose=verbose,
+                 show_cmd=show_cmd)
     session = remote.cmd(santized_str)
     return session
-
-if __name__ == '__main__':
-    server = 'eng-sea-boottest02.west.isilon.com'
-    cmd_str = 'ls -al'
-    cmd(server,cmd_str)
-    
