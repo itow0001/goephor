@@ -6,7 +6,7 @@ Created on Jan 9, 2016
 import argparse
 
 from core.engine import Chain
-from tests.test_actionable import TestActionable
+
 
 
 def menu():
