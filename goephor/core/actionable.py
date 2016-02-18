@@ -9,6 +9,7 @@ Created on Jan 9, 2016
 * The goal is to always maintain backwards compatibility
 '''
 import os
+import platform
 import re
 import sys
 
@@ -27,7 +28,11 @@ def md5_file(path):
     "core.actionable":{"md5_file":{"args":["/path/example.txt","/path/example.txt.md5"]}}
     }
     """
-    session = shell("md5 %s > %s.md5" % (path, path), strict=True, shell=True)
+    system_type = platform.system().lower()
+    if system_type == 'freebsd':
+        session = shell("md5 %s > %s.md5" % (path, path), strict=True, shell=True)
+    else:
+        session = shell("md5sum %s > %s.md5" % (path, path), strict=True, shell=True)
     return session
 
 
@@ -278,7 +283,7 @@ def umount(opts, dest):
 def shell_cmd(cmd,
               verbose=True,
               strict=True,
-              shell=True,
+              shell_on=True,
               buffer_size=1048576,
               show_cmd=True):
     """ Run Shell commands  [Non Blocking, no Buffer, print live, log it]
@@ -290,7 +295,7 @@ def shell_cmd(cmd,
     session = shell(cmd,
                     verbose=verbose,
                     strict=strict,
-                    shell=shell,
+                    shell=shell_on,
                     buffer_size=1048576,
                     show_cmd=show_cmd)
     return session

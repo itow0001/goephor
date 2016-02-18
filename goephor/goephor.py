@@ -6,6 +6,7 @@ Created on Jan 9, 2016
 import argparse
 
 from core.engine import Chain
+from tests.test_actionable import TestActionable
 
 
 def menu():
@@ -35,6 +36,11 @@ def menu():
                         dest="verbose",
                         default=False,
                         help='Turn on verbosity')
+    parser.add_argument('-t',
+                        action="store_true",
+                        dest="test",
+                        default=False,
+                        help='Perform unit tests')
     parser.add_argument('--version',
                         action='version',
                         version='%(prog)s 1.0')
@@ -42,7 +48,6 @@ def menu():
 
 if __name__ == '__main__':
     options = menu()
-    print options
     chain = Chain(options.file)
     if options.execute:
         chain.init_actions(receipt_path=options.receipt)
