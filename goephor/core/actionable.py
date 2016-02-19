@@ -205,12 +205,10 @@ def jexec(jail_name, env, cmd):
     @param cmd: string of command to be used
     @return: session
     """
-    session = shell("/usr/sbin/jls", strict=True, shell=True)
-    output = session.get("stdout").split("\n")
-    JID = None
-    for line in output:
-        if jail_name in line:
-            JID = line.split('-', 1)[0].strip()
+    session = shell("/usr/sbin/jls | grep %s | awk '{print $1}' | tr -d '\n'" % jail_name, strict=True, shell=True)
+
+    JID = session.get("stdout")
+    
     jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (JID, env, cmd)
     session = shell(jexec_cmd, strict=True, shell=True)
     return session
