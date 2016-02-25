@@ -19,7 +19,7 @@ def menu():
     parser.add_argument('-r',
                         action="store",
                         dest="receipt",
-                        default='./receipt.json',
+                        default='./',
                         help='Location to dump a build receipt')
     parser.add_argument('-d',
                         action="store_true",

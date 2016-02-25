@@ -18,33 +18,67 @@ sys.path.append(
 
 
 class Chain(object):
-    ''' This the action object Queue
+    ''' This the action object Chain
     '''
-    def __init__(self, config_json):
+    def __init__(self, config_file):
         ''' Queue Constructor
-        @param config_json: defines all actions in a build
+        @param config_file: defines all actions in a build
         '''
-        self.config = self._read_json(config_json)
+        self.config_type = None
+        self.config = self.read_config(config_file)
         self.envs = self.set_envs(self.config)
         self.action_objs = self.load_actions(self.config)
+        
+    def read_config(self,config_file):
+        """ Allows for reading .yaml or .json files based on extention
+        @param config_file: defines all actions in a build
+        @return: dict
+        """
+        ext = config_file.rsplit('.',1)[1]
+        data = None
+        if 'yaml' in ext:
+            data = self._read_yaml(config_file)
+            self.config_type = ext
+        elif 'json' in ext:
+            data = self._read_json(config_file)
+            self.config_type = ext
+        if not data:
+            print "[Error] file @ %s" % (config_file)
+            sys.exit(1)
+        return data
 
-    def _read_json(self, config_json):
-        """ Reads in the json config
-        @param config_json: defines all actions in a build
+    def _read_yaml(self, config_file):
+        """ Reads in the yaml config
+        @param config_file: defines all actions in a build
         @return: dict
         """
         data = None
         try:
-            with open(config_json) as file:
+            import yaml
+            with open(config_file) as file:
+                data = yaml.load(file)
+                return data
+        except Exception:
+            print "[Error] %s" % (config_file)
+            raise
+  
+    def _read_json(self, config_file):
+        """ Reads in the json config
+        @param config_file: defines all actions in a build
+        @return: dict
+        """
+        data = None
+        try:
+            with open(config_file) as file:
                 data = json.loads(file.read())
                 return data
         except Exception:
-            print "[Error] %s" % (config_json)
+            print "[Error] %s" % (config_file)
             raise
 
     def set_envs(self, config):
         """ Setup the environment variables
-        @param config_json: defines all actions in a build as dict
+        @param config: defines all actions in a build as dict
         @return: envs
         """
         envs = config.get("globals")
@@ -118,7 +152,7 @@ class Chain(object):
             id_cnt += 1
         return action_objs
 
-    def init_actions(self, receipt_path="./receipt.json"):
+    def init_actions(self, receipt_path="./"):
         """ call all actions in action array
         @param receipt_path: path spit out build receipt
         """
@@ -158,13 +192,18 @@ class Chain(object):
         """ Create a post build receipt
         @param receipt_path: path spit out build receipt
         """
+        receipt_path = "%s/receipt.%s" % (receipt_path,self.config_type)
         receipt = self.config
         receipt["results"] = []
         for obj in self.action_objs:
             result = obj.get_receipt()
             receipt.get("results").append(result)
-        with open(receipt_path, 'w') as file:
-            file.write(json.dumps(receipt, indent=4, sort_keys=True))
+        with open(receipt_path,'w') as file:
+            if self.config_type == 'yaml':
+                import yaml
+                file.write(yaml.dump(receipt, default_flow_style=False))
+            elif self.config_type == 'json':
+                file.write(json.dumps(receipt, indent=4, sort_keys=True))
 
 
 class Action(object):

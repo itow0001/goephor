@@ -202,7 +202,7 @@ def rsync(server,
 
 def shell(cmd,
           verbose=True,
-          strict=False,
+          strict=True,
           shell=False,
           buffer_size=1048576,
           show_cmd=True):
