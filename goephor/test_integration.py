@@ -39,8 +39,10 @@ if __name__ == '__main__':
     config = write_config(t1,type='yaml')
     shell("python goephor.py -f %s -e" % (config))
     shell("python goephor.py -f ./receipt.yaml -e")
-    shell('rm -f *.json')
-    shell('rm -f *.yaml')
+    shell('rm -f %s/receipt.json' % (this_dir))
+    shell('rm -f %s/receipt.yaml' % (this_dir))
+    shell('rm -f %s/integ_test.json' % (this_dir))
+    shell('rm -f %s/integ_test.yaml' % (this_dir))
     shell('rm -rf %s/repo' % (this_dir))
     
     
