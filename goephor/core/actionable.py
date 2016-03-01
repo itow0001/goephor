@@ -269,7 +269,7 @@ def umount(opts, dest, strict=True):
     @param dest: destination directory
     @return: session
     """
-    session = shell("/sbin/umount %s %s" % (opts, dest), shell=True)
+    session = shell("/sbin/umount %s %s" % (opts, dest), strict=strict, shell=True)
     if dest in session.get('stdout'):
         print "[umount] unmounting %s %s" % (dest)
         session = shell("/sbin/umount %s %s" %
