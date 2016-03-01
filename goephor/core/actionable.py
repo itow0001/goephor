@@ -19,7 +19,7 @@ from modules.terminal import shell, rsync
 #####
 # System Definitions
 ##
-def md5_file(path):
+def md5_file(path, strict=True):
     """ create an md5 file
     @param src: file path
     @param dest: new file path
@@ -30,29 +30,29 @@ def md5_file(path):
     """
     system_type = platform.system().lower()
     if system_type == 'freebsd':
-        session = shell("md5 %s > %s.md5" % (path, path), strict=True, shell=True)
+        session = shell("md5 %s > %s.md5" % (path, path), strict=strict, shell=True)
     else:
-        session = shell("md5sum %s > %s.md5" % (path, path), strict=True, shell=True)
+        session = shell("md5sum %s > %s.md5" % (path, path), strict=strict, shell=True)
     return session
 
 
-def gzip(src):
+def gzip(src, strict=True):
     """ gzip a file
     @param src: file path
     @param clean: make a previous gzip does not exist on src & dest
     @return: shell session dictionary
     @example: {"core.actionable":{"gzip":{"args":["/path/example.txt"]}}}
     """
-    session = shell("file %s" % (src), strict=True, shell=True)
+    session = shell("file %s" % (src), strict=strict, shell=True)
     if 'gzip' in session.get('stdout'):
         print "[Warning] file is already gzip format skipping gzip"
         return session
     else:
-        session = shell("gzip -k %s" % (src), strict=True, shell=True)
+        session = shell("gzip -k %s" % (src), strict=strict, shell=True)
     return session
 
 
-def symlink(src, dest):
+def symlink(src, dest, strict=True):
     """ Performs a symlink
     @param src: file path
     @param dest: new file path
@@ -61,11 +61,11 @@ def symlink(src, dest):
     "core.actionable":{"symlink":{"args":["/path/example","/path2/example"]}}
     }
     """
-    session = shell("ln -s %s %s" % (src, dest), strict=True, shell=True)
+    session = shell("ln -s %s %s" % (src, dest), strict=strict, shell=True)
     return session
 
 
-def mkdir(path, clean=True):
+def mkdir(path, clean=True, strict):
     """ make a directory
     @param path: string, system path
     @param clean: remove path if it exists
@@ -73,21 +73,21 @@ def mkdir(path, clean=True):
     """
     if clean:
         remove(path)
-    session = shell("mkdir -p %s" % (path), strict=True, shell=True)
+    session = shell("mkdir -p %s" % (path), strict=strict, shell=True)
     has_dir(path)
     return session
 
 
-def remove(path):
+def remove(path, strict=True):
     """ Removes a directory using rm -rf
     @param path: string, system path
     @return: shell session dictionary
     """
-    session = shell("rm -rf %s" % (path), strict=True, shell=True)
+    session = shell("rm -rf %s" % (path), strict=strict, shell=True)
     return session
 
 
-def copy(src, dest, is_dir=False):
+def copy(src, dest, is_dir=False, strict=True):
     """ copies a file or dir
     @param src: file path
     @param dest: new file path
@@ -95,47 +95,47 @@ def copy(src, dest, is_dir=False):
     @return: shell session dictionary
     """
     if is_dir:
-        session = shell("cp -R %s %s" % (src, dest), strict=True, shell=True)
+        session = shell("cp -R %s %s" % (src, dest), strict=strict, shell=True)
         has_dir(dest)
     else:
-        session = shell("cp %s %s" % (src, dest), strict=True, shell=True)
+        session = shell("cp %s %s" % (src, dest), strict=strict, shell=True)
         has_file(dest)
     return session
 
 
-def move(src, dest):
+def move(src, dest, strict=True):
     """ Perform a directory or file move
     @param path: string, system path
     @param clean: remove path if it exists
     @return: shell session dictionary
     """
-    session = shell("mv %s %s" % (src, dest), strict=True, shell=True)
+    session = shell("mv %s %s" % (src, dest), strict=strict, shell=True)
     return session
 
 
-def has_dir(path, negate=False):
+def has_dir(path, negate=False, strict=True):
     """ detect if a directory exists
     @param path: string, system path
     @param negate: boolean, fail on non existence
     @return: shell session dictionary
     """
     if negate:
-        session = shell("[ ! -d %s ]" % (path), strict=True, shell=True)
+        session = shell("[ ! -d %s ]" % (path), strict=strict, shell=True)
     else:
-        session = shell("[ -d %s ]" % (path), strict=True, shell=True)
+        session = shell("[ -d %s ]" % (path), strict=strict, shell=True)
     return session
 
 
-def has_file(path, negate=False):
+def has_file(path, negate=False, strict=True):
     """ detect if a file exists
     @param path: string, system path
     @param negate: boolean, fail on non existence
     @return: shell session dictionary
     """
     if negate:
-        session = shell("[ ! -f %s ]" % (path), strict=True, shell=True)
+        session = shell("[ ! -f %s ]" % (path), strict=strict, shell=True)
     else:
-        session = shell("[ -f %s ]" % (path), strict=True, shell=True)
+        session = shell("[ -f %s ]" % (path), strict=strict, shell=True)
     return session
 
 
@@ -144,7 +144,8 @@ def scm_checkout(src_path,
                  branch,
                  clean=True,
                  user="build",
-                 passwd="a"):
+                 passwd="a",
+                 strict=True):
     """ performs scm source code checkout support for git & svn
     @param src_path: local path where src will go
     @param repo_url: url associated to repo
@@ -159,7 +160,7 @@ def scm_checkout(src_path,
         mkdir(src_path)
     if "git" in repo_url:
         session = shell("cd %s; git clone %s -b %s" %
-                        (src_path, repo_url, branch), strict=True, shell=True)
+                        (src_path, repo_url, branch), strict=strict, shell=True)
     else:
         print "[Error] unable to perform scm checkout"
     return session
@@ -198,7 +199,7 @@ def rsyncable(server,
     return session
 
 
-def jexec(jail_name, env, cmd, strict=False):
+def jexec(jail_name, env, cmd, strict=True):
     """ Calls Jexec for running commands from within a jail
     @param jail_name: name of jail, or part of name
     @param env: shell environment example. sh, csh,
@@ -212,14 +213,14 @@ def jexec(jail_name, env, cmd, strict=False):
     return session
 
 
-def jls(key, search, return_type='path'):
+def jls(key, search, return_type='path', strict=True):
     """ Get jail info and place it into environment variable
     @param search: string to search for
     @param key: environment key to set
     @param return_type: can only be, jid, ip, hostname, path
     @return: value
     """
-    session = shell("/usr/sbin/jls", strict=True, shell=True)
+    session = shell("/usr/sbin/jls", strict=strict, shell=True)
     output = session.get("stdout").split("\n")
     for line in output:
         if search in line:
@@ -247,22 +248,22 @@ def jls(key, search, return_type='path'):
     return session
 
 
-def mount(opts, src, dest):
+def mount(opts, src, dest, strict=True):
     """ system mount call
     @param opts: optional variables to add
     @param src: src directory
     @param dest: destination directory
     @return: session
     """
-    session = shell("/sbin/mount %s %s %s" % (opts, src, dest), shell=True)
+    session = shell("/sbin/mount %s %s %s" % (opts, src, dest), strict=strict, shell=True)
     if not src and dest in session.get('stdout'):
         print "[mount] mounting %s %s" % (src, dest)
         session = shell("/sbin/mount %s %s %s" %
-                        (opts, src, dest), strict=True, shell=True)
+                        (opts, src, dest), strict=strict, shell=True)
     return session
 
 
-def umount(opts, dest):
+def umount(opts, dest, strict=True):
     """ system un-mount call
     @param opts: optional variables to add
     @param dest: destination directory
@@ -272,7 +273,7 @@ def umount(opts, dest):
     if dest in session.get('stdout'):
         print "[umount] unmounting %s %s" % (dest)
         session = shell("/sbin/umount %s %s" %
-                        (opts, dest), strict=True, shell=True)
+                        (opts, dest), strict=strict, shell=True)
     return session
 
 
