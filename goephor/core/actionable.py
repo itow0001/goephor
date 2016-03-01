@@ -65,7 +65,7 @@ def symlink(src, dest, strict=True):
     return session
 
 
-def mkdir(path, clean=True, strict):
+def mkdir(path, clean=True, strict=True):
     """ make a directory
     @param path: string, system path
     @param clean: remove path if it exists
