@@ -198,7 +198,7 @@ def rsyncable(server,
     return session
 
 
-def jexec(jail_name, env, cmd):
+def jexec(jail_name, env, cmd, strict=False):
     """ Calls Jexec for running commands from within a jail
     @param jail_name: name of jail, or part of name
     @param env: shell environment example. sh, csh,
@@ -208,7 +208,7 @@ def jexec(jail_name, env, cmd):
     session = shell("/usr/sbin/jls | grep %s | awk '{print $1}' | tr -d '\n'" % jail_name, strict=True, shell=True)
     JID = session.get("stdout")
     jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (JID, env, cmd)
-    session = shell(jexec_cmd, strict=True, shell=True)
+    session = shell(jexec_cmd, strict=strict, shell=True)
     return session
 
 
