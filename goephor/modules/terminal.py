@@ -185,16 +185,16 @@ def rsync(server,
                                 shell=True)
             except IOError as e:
                 print "Error in rsync: %s" % (e)
-    elif remote is False:
-        try:
-            session = shell("rsync -Pavz %s --delete %s %s" % (excludes_str,
-                                                               src,
-                                                               dest),
-                            strict=True,
-                            verbose=verbose,
-                            shell=True)
-        except IOError as e:
-            print "Error in rsync: %s" % (e)
+        elif option == 'local':
+            try:
+                session = shell("rsync -Pavz %s --delete %s %s" % (excludes_str,
+                                                                   src,
+                                                                   dest),
+                                strict=True,
+                                verbose=verbose,
+                                shell=True)
+            except IOError as e:
+                print "Error in rsync: %s" % (e)
     else:
         print "Invalid option: %s" (option)
     return session
