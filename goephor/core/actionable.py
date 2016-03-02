@@ -208,7 +208,7 @@ def jexec(jail_name, env, cmd, strict=True, shell_on=True):
     """
     session = shell("/usr/sbin/jls | grep %s | awk '{print $1}' | tr -d '\n'" % jail_name, strict=True, shell=True)
     JID = session.get("stdout")
-    jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (JID, env, cmd)
+    jexec_cmd = 'sudo -E /usr/sbin/jexec %s %s -c "%s"' % (JID, env, cmd)
     session = shell(jexec_cmd, strict=strict, shell=shell_on)
     return session
 
