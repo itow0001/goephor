@@ -20,14 +20,16 @@ sys.path.append(
 class Chain(object):
     ''' This the action object Chain
     '''
-    def __init__(self, config_file):
+    def __init__(self, config_file, actions_key):
         ''' Queue Constructor
         @param config_file: defines all actions in a build
         '''
+        self.actions_key = actions_key
         self.config_type = None
         self.config = self.read_config(config_file)
         self.envs = self.set_envs(self.config)
-        self.action_objs = self.load_actions(self.config)
+        if self.config.get(self.actions_key):
+            self.action_objs = self.load_actions(self.config,self.actions_key)
         
     def read_config(self,config_file):
         """ Allows for reading .yaml or .json files based on extention
@@ -136,12 +138,13 @@ class Chain(object):
         for action_obj in self.action_objs:
             action_obj.pprint()
 
-    def load_actions(self, config):
+    def load_actions(self, config, actions_key):
         """ load all actions in list
         @param config: json dict
+        @param actions_key: dictionary key name to load actions 
         @return: list of all actionable objects
         """
-        actions = config.get("actions")
+        actions = config.get(actions_key)
         action_objs = []
         id_cnt = 0
         for action in actions:
@@ -152,17 +155,21 @@ class Chain(object):
             id_cnt += 1
         return action_objs
 
-    def init_actions(self, receipt_path="./"):
+    def init_actions(self, receipt_path="./",strict=True):
         """ call all actions in action array
         @param receipt_path: path spit out build receipt
         """
-        for action_obj in self.action_objs:
-            print action_obj.pprint()
-            output = self._init_action(action_obj)
-            action_obj.RETURN = output
-        self.create_receipt(receipt_path)
+        if self.config.get(self.actions_key):
+            for action_obj in self.action_objs:
+                print action_obj.pprint()
+                output = self._init_action(action_obj,strict=strict)
+                action_obj.RETURN = output
+            self.create_receipt(receipt_path)
+        else:
+            print "[Error] actions key %s not found passing" % self.actions_key
+            sys.exit(1)
 
-    def _init_action(self, obj):
+    def _init_action(self, obj,strict=True):
         """ Single Action obj Translate dictionary actions to python calls in /core
         @param obj: nest dictionary containing all calls
         @return: info about build output
@@ -179,7 +186,8 @@ class Chain(object):
             return RETURN
         except Exception:
             obj.pprint()
-            raise
+            if strict:
+                raise
 
     def _load_plugin(self, name):
         """ Private loads module dynamically
@@ -192,7 +200,7 @@ class Chain(object):
         """ Create a post build receipt
         @param receipt_path: path spit out build receipt
         """
-        receipt_path = "%s/receipt.%s" % (receipt_path,self.config_type)
+        receipt_path = "%s/%s_receipt.%s" % (receipt_path,self.actions_key,self.config_type)
         receipt = self.config
         receipt["results"] = []
         for obj in self.action_objs:

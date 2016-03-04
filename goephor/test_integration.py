@@ -28,19 +28,20 @@ def write_config(data,type='yaml'):
     
 
 if __name__ == '__main__':
-    t1 = {"globals":[{"BRANCH_NAME":"master"},{"BASE_PATH":this_dir}],
+    t1 = {"globals":[{"BRANCH_NAME":"master"},{"BASE_PATH":this_dir}],  
           "actions":[
-                     {"actionable":{"scm_checkout":{"args":["$BASE_PATH/repo","git@github.west.isilon.com:eng-tools/goephor.git","$BRANCH_NAME"],"kwargs":{"clean":"True"}}}}
+                     {"actionable":{"scm_checkout":{"args":["$BASE_PATH/repo","git@github.west.isilon.com:eng-tools/goephor.git","$BRANCH_NAME"],"kwargs":{"clean":"True"}}}},
+                     {"actionable":{"shell_cmd":{"args":["$BASE_PATH/repo","ls -al"],"kwargs":{"noop":"True"}}}},
                     ]
          }
     config = write_config(t1,type='json')
     shell("python goephor.py -f %s -e" % (config))
-    shell("python goephor.py -f ./receipt.json -e")
+    shell("python goephor.py -f ./actions_receipt.json -e")
     config = write_config(t1,type='yaml')
     shell("python goephor.py -f %s -e" % (config))
-    shell("python goephor.py -f ./receipt.yaml -e")
-    shell('rm -f %s/receipt.json' % (this_dir))
-    shell('rm -f %s/receipt.yaml' % (this_dir))
+    shell("python goephor.py -f ./actions_receipt.yaml -e")
+    shell('rm -f %s/actions_receipt.json' % (this_dir))
+    shell('rm -f %s/actions_receipt.yaml' % (this_dir))
     shell('rm -f %s/integ_test.json' % (this_dir))
     shell('rm -f %s/integ_test.yaml' % (this_dir))
     shell('rm -rf %s/repo' % (this_dir))

@@ -16,18 +16,20 @@ import sys
 from modules.terminal import shell, rsync
 
 
-#####
-# System Definitions
-##
-def md5_file(path, strict=True):
+def md5_file(path, strict=True, noop=False):
     """ create an md5 file
     @param src: file path
     @param dest: new file path
+    @param noop: pass on running the command
+    
     @return: shell session dictionary
     @example:{
     "core.actionable":{"md5_file":{"args":["/path/example.txt","/path/example.txt.md5"]}}
     }
     """
+    if noop:
+        print "[noop] md5_file"
+        return
     system_type = platform.system().lower()
     if system_type == 'freebsd':
         session = shell("md5 %s > %s.md5" % (path, path), strict=strict, shell=True)
@@ -36,13 +38,16 @@ def md5_file(path, strict=True):
     return session
 
 
-def gzip(src, strict=True):
+def gzip(src, strict=True, noop=False):
     """ gzip a file
     @param src: file path
     @param clean: make a previous gzip does not exist on src & dest
     @return: shell session dictionary
     @example: {"core.actionable":{"gzip":{"args":["/path/example.txt"]}}}
     """
+    if noop:
+        print "[noop] gzip"
+        return
     session = shell("file %s" % (src), strict=strict, shell=True)
     if 'gzip' in session.get('stdout'):
         print "[Warning] file is already gzip format skipping gzip"
@@ -52,7 +57,7 @@ def gzip(src, strict=True):
     return session
 
 
-def symlink(src, dest, strict=True):
+def symlink(src, dest, strict=True, noop=False):
     """ Performs a symlink
     @param src: file path
     @param dest: new file path
@@ -61,16 +66,22 @@ def symlink(src, dest, strict=True):
     "core.actionable":{"symlink":{"args":["/path/example","/path2/example"]}}
     }
     """
+    if noop:
+        print "[noop] symlink"
+        return
     session = shell("ln -s %s %s" % (src, dest), strict=strict, shell=True)
     return session
 
 
-def mkdir(path, clean=True, strict=True):
+def mkdir(path, clean=True, strict=True, noop=False):
     """ make a directory
     @param path: string, system path
     @param clean: remove path if it exists
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] mkdir"
+        return
     if clean:
         remove(path)
     session = shell("mkdir -p %s" % (path), strict=strict, shell=True)
@@ -78,22 +89,28 @@ def mkdir(path, clean=True, strict=True):
     return session
 
 
-def remove(path, strict=True):
+def remove(path, strict=True, noop=False):
     """ Removes a directory using rm -rf
     @param path: string, system path
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] remove"
+        return
     session = shell("rm -rf %s" % (path), strict=strict, shell=True)
     return session
 
 
-def copy(src, dest, is_dir=False, strict=True):
+def copy(src, dest, is_dir=False, strict=True, noop=False):
     """ copies a file or dir
     @param src: file path
     @param dest: new file path
     @param is_dir: adds a -R option
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] copy"
+        return
     if is_dir:
         session = shell("cp -R %s %s" % (src, dest), strict=strict, shell=True)
         has_dir(dest)
@@ -103,22 +120,28 @@ def copy(src, dest, is_dir=False, strict=True):
     return session
 
 
-def move(src, dest, strict=True):
+def move(src, dest, strict=True, noop=False):
     """ Perform a directory or file move
     @param path: string, system path
     @param clean: remove path if it exists
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] move"
+        return
     session = shell("mv %s %s" % (src, dest), strict=strict, shell=True)
     return session
 
 
-def has_dir(path, negate=False, strict=True):
+def has_dir(path, negate=False, strict=True, noop=False):
     """ detect if a directory exists
     @param path: string, system path
     @param negate: boolean, fail on non existence
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] has_dir"
+        return
     if negate:
         session = shell("[ ! -d %s ]" % (path), strict=strict, shell=True)
     else:
@@ -126,12 +149,15 @@ def has_dir(path, negate=False, strict=True):
     return session
 
 
-def has_file(path, negate=False, strict=True):
+def has_file(path, negate=False, strict=True, noop=False):
     """ detect if a file exists
     @param path: string, system path
     @param negate: boolean, fail on non existence
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] has_file"
+        return
     if negate:
         session = shell("[ ! -f %s ]" % (path), strict=strict, shell=True)
     else:
@@ -145,7 +171,8 @@ def scm_checkout(src_path,
                  clean=True,
                  user="build",
                  passwd="a",
-                 strict=True):
+                 strict=True,
+                 noop=False):
     """ performs scm source code checkout support for git & svn
     @param src_path: local path where src will go
     @param repo_url: url associated to repo
@@ -155,6 +182,9 @@ def scm_checkout(src_path,
     @param passwd: password
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] scm_checkout"
+        return
     if clean:
         remove("%s/%s" % (src_path, branch))
         mkdir(src_path)
@@ -174,7 +204,8 @@ def rsyncable(server,
               excludes=[],
               rsa_private='/root/.ssh/id_rsa.default',
               user='root',
-              verbose=False):
+              verbose=False,
+              noop=False):
     """ perform a rsync
     @param server: server address or dns name
     @param src: source path
@@ -187,6 +218,9 @@ def rsyncable(server,
     @param verbose: prints all available info
     @return: shell session dictionary
     """
+    if noop:
+        print "[noop] rsyncable"
+        return
     session = rsync(server,
                     src,
                     dest,
@@ -199,13 +233,16 @@ def rsyncable(server,
     return session
 
 
-def jexec(jail_name, env, cmd, strict=True, shell_on=True):
+def jexec(jail_name, env, cmd, strict=True, shell_on=True, noop=False):
     """ Calls Jexec for running commands from within a jail
     @param jail_name: name of jail, or part of name
     @param env: shell environment example. sh, csh,
     @param cmd: string of command to be used
     @return: session
     """
+    if noop:
+        print "[noop] jexec"
+        return
     session = shell("/usr/sbin/jls | grep %s | awk '{print $1}' | tr -d '\n'" % jail_name, strict=True, shell=True)
     JID = session.get("stdout")
     jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (JID, env, cmd)
@@ -213,13 +250,16 @@ def jexec(jail_name, env, cmd, strict=True, shell_on=True):
     return session
 
 
-def jls(key, search, return_type='path', strict=True):
+def jls(key, search, return_type='path', strict=True, noop=False):
     """ Get jail info and place it into environment variable
     @param search: string to search for
     @param key: environment key to set
     @param return_type: can only be, jid, ip, hostname, path
     @return: value
     """
+    if noop:
+        print "[noop] jls"
+        return
     session = shell("/usr/sbin/jls", strict=strict, shell=True)
     output = session.get("stdout").split("\n")
     for line in output:
@@ -248,13 +288,16 @@ def jls(key, search, return_type='path', strict=True):
     return session
 
 
-def mount(opts, src, dest, strict=True):
+def mount(opts, src, dest, strict=True, noop=False):
     """ system mount call
     @param opts: optional variables to add
     @param src: src directory
     @param dest: destination directory
     @return: session
     """
+    if noop:
+        print "[noop] mount"
+        return
     session = shell("/sbin/mount %s %s %s" % (opts, src, dest), strict=strict, shell=True)
     if not src and dest in session.get('stdout'):
         print "[mount] mounting %s %s" % (src, dest)
@@ -263,12 +306,15 @@ def mount(opts, src, dest, strict=True):
     return session
 
 
-def umount(opts, dest, strict=True):
+def umount(opts, dest, strict=True, noop=False):
     """ system un-mount call
     @param opts: optional variables to add
     @param dest: destination directory
     @return: session
     """
+    if noop:
+        print "[noop] umount"
+        return
     session = shell("/sbin/umount %s %s" % (opts, dest), strict=strict, shell=True)
     if dest in session.get('stdout'):
         print "[umount] unmounting %s %s" % (dest)
@@ -282,13 +328,17 @@ def shell_cmd(cmd,
               strict=True,
               shell_on=True,
               buffer_size=1048576,
-              show_cmd=True):
+              show_cmd=True,
+              noop=False):
     """ Run Shell commands  [Non Blocking, no Buffer, print live, log it]
     @param cmd: String command
     @param verbose:bool
     @param strict:bool will exit based on code if enabled
     @return:  {command, stdout, code} as dict
     """
+    if noop:
+        print "[noop] shell_cmd"
+        return
     session = shell(cmd,
                     verbose=verbose,
                     strict=strict,

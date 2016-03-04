@@ -48,8 +48,15 @@ def menu():
 
 if __name__ == '__main__':
     options = menu()
-    chain = Chain(options.file)
     if options.execute:
-        chain.init_actions(receipt_path=options.receipt)
+        main_actions = Chain(options.file,'actions')
+        main_actions.init_actions(receipt_path=options.receipt)
     if options.dump:
+        chain = Chain(options.file,'actions')
         chain.stat_actions()
+        
+        
+        
+        
+        
+        
