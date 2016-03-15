@@ -8,6 +8,7 @@ Created on Jan 9, 2016
 * try to group definitions of similar functionality together
 * The goal is to always maintain backwards compatibility
 '''
+import json
 import os
 import platform
 import re
@@ -172,7 +173,8 @@ def scm_checkout(src_path,
                  user="build",
                  passwd="a",
                  strict=True,
-                 noop=False):
+                 noop=False,
+                 ssh_config='/root/.ssh/config'):
     """ performs scm source code checkout support for git & svn
     @param src_path: local path where src will go
     @param repo_url: url associated to repo
@@ -189,6 +191,9 @@ def scm_checkout(src_path,
         remove("%s/%s" % (src_path, branch))
         mkdir(src_path)
     if "git" in repo_url:
+        git_url = repo_url.rsplit('@',1)[1].rsplit(':',1)[0]
+        print "[Info] Creating ssh config @ %s" % (ssh_config)
+        shell("sudo printf 'Host %s\\n\\tStrictHostKeyChecking no\\n' > %s" % (git_url,ssh_config),shell=True)
         session = shell("cd %s; git clone %s -b %s" %
                         (src_path, repo_url, branch), strict=strict, shell=True)
     else:
@@ -346,3 +351,20 @@ def shell_cmd(cmd,
                     buffer_size=1048576,
                     show_cmd=show_cmd)
     return session
+
+
+def custom_receipt(path,type='json',**kwargs):
+    """ Creates a custom receipt in either json or yaml
+    @param path:full path and name to produce a receipt
+    @param type: json or yaml
+    @param kwargs: all dictionary values in the receipt
+    @return: receipt file   
+    """
+    with open(path,'w') as file:
+        if type == 'yaml':
+            import yaml
+            file.write(yaml.dump(kwargs, default_flow_style=False))
+        elif type == 'json':
+            file.write(json.dumps(kwargs, indent=4, sort_keys=True))
+        else:
+            print "[Error] Unable to write receipt @ %s" % path
