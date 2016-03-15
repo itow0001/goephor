@@ -360,6 +360,8 @@ def custom_receipt(path,type='json',**kwargs):
     @param kwargs: all dictionary values in the receipt
     @return: receipt file   
     """
+    for key,value in kwargs.iteritems():
+        kwargs[key] = _sanitize(value)
     with open(path,'w') as file:
         if type == 'yaml':
             import yaml
@@ -368,3 +370,25 @@ def custom_receipt(path,type='json',**kwargs):
             file.write(json.dumps(kwargs, indent=4, sort_keys=True))
         else:
             print "[Error] Unable to write receipt @ %s" % path
+            sys.exit(1)
+
+
+def _has_keys(str):
+    """ Collect all environment variables
+    @param str: command string
+    """
+    matches = re.findall(r'(?<={)[^}]*', str)
+    return matches
+
+
+def _sanitize(str):
+    """ Replace all environment variables into command
+    @param str: command string
+    """
+    for match in _has_keys(str):
+        old = '${%s}' % match
+        new = os.environ.get(match)
+        if new:
+            str = str.replace(old, new)
+    return str
+        
