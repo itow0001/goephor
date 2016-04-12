@@ -13,8 +13,53 @@ import os
 import platform
 import re
 import sys
+import tempfile
 
 from modules.terminal import shell, rsync
+
+
+def create_flash(key,mnt_dir,disk_file,disk_size,strict=True):
+    """ Create a flash disk for internal onefs reimaging installer
+    @param key: environment variable name  
+    @param disk_file: Path to disk file
+    @param disk_size: size you wish to apply to disk as bytes
+    """
+    ### if disk file does not exist create it  
+    if os.path.exists(disk_file):
+        # unlink it if it does exist
+        os.unlink(disk_file)
+    
+    # Zero things out in the file
+    shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,str(disk_size/512)))
+    # Create the new device
+    md = shell("mdconfig -a -t vnode -f %s -s %d" % (disk_file,str(disk_size/512)))
+    mainpart = "%sa" % md
+    # add our own label
+    disklabel="""
+    #        size   offset    fstype   [fsize bsize bps/cpg]
+      a:   %s        0    4.2BSD        0     0     0
+      c:   %s        0    unused        0     0         # "raw" part, don't edit
+    """ % (str(disk_size/512), str(disk_size/512))
+    labelfd,labelfilepath = tempfile.mkstemp()
+    print labelfd
+    os.write(labelfd,disklabel)
+    os.close(labelfd)
+    # Partition the device
+    shell("disklabel -B -w -r /dev/%s auto" % md)
+    # Apply our custom label for a disk with complete a partition
+    shell("cat %s | disklabel -B -R /dev/%s /dev/fd/0" % (labelfilepath, md))
+    # Format partition
+    shell("newfs -O1 /dev/%s" % mainpart)
+    os.unlink(labelfilepath)
+    if not os.path.exists(mnt):
+        os.mkdir(mnt)
+    mount('', '/dev/%s' % (mainpart),mnt)
+    os.environ[key] = mnt
+    env = os.environ.get(key)
+    if not env:
+        print "[Error] setting environment variable %s" % (key)
+    print "environment set %s=%s" % (key, env)
+
 
 
 def md5_file(path, strict=True, noop=False):
