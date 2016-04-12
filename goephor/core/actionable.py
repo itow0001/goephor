@@ -54,6 +54,7 @@ def create_flash(key, mnt, disk_size, disk_file='/tmp', strict=True, noop=False)
     labelfd,labelfilepath = tempfile.mkstemp()
     print labelfd
     print labelfilepath
+    print disklabel
     os.write(labelfd,disklabel)
     os.close(labelfd)
     # Partition the device
