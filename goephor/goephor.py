@@ -3,14 +3,11 @@ Created on Jan 9, 2016
 
 @author: iitow
 '''
-#import argparse
-import optparse
+import argparse
 
 from core.engine import Chain
 
 
-''' python 2.6 is not funtional using this.
-When we resolve package dependences we can revisit this.
 
 def menu():
     parser = argparse.ArgumentParser(
@@ -48,18 +45,6 @@ def menu():
                         action='version',
                         version='%(prog)s 1.0')
     return parser.parse_args()
-'''
-def menu():
-    """ represents the menu of configuration class
-    """
-    p = optparse.OptionParser(description='A json friendly build management tool',
-                                        prog='goephor',
-                                        version='1.0',
-                                        usage= "usage: %prog  ")
-    p.add_option('-e' ,'--force' ,action ='store_true', dest="execute", default=False ,help="execute all values in the chain")
-    p.add_option('-f' ,'--file' ,action ='store', type="string", dest="file", default="iitow" ,help="your ldap username")
-    (options,args) = p.parse_args()
-    return options
 
 if __name__ == '__main__':
     options = menu()
