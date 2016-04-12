@@ -29,6 +29,7 @@ def create_flash(key, mnt, disk_size, disk_file='/tmp', strict=True, noop=False)
         print "[noop] destroy_memdisks"
         return
     mnt = _sanitize(mnt)
+    disk_file = _sanitize(disk_file)
     print "mnt:%s" % (mnt)
     disk_size_small = int(disk_size)
     disk_size_small = str(disk_size_small)
