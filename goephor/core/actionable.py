@@ -32,15 +32,15 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
         os.unlink(disk_file)
     
     # Zero things out in the file
-    shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size/512))
+    shell("dd if=/dev/zero of=%s bs=512 count=%d" % (disk_file,disk_size/512))
     # Create the new device
     md = shell("mdconfig -a -t vnode -f %s -s %d" % (disk_file,disk_size/512))
     mainpart = "%sa" % md
     # add our own label
     disklabel="""
     #        size   offset    fstype   [fsize bsize bps/cpg]
-      a:   %s        0    4.2BSD        0     0     0
-      c:   %s        0    unused        0     0         # "raw" part, don't edit
+      a:   %d        0    4.2BSD        0     0     0
+      c:   %d        0    unused        0     0         # "raw" part, don't edit
     """ % (disk_size/512,disk_size/512)
     labelfd,labelfilepath = tempfile.mkstemp()
     print labelfd
