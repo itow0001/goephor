@@ -43,10 +43,10 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     print "      MD: %s" % (md)
     # add our own label
     disklabel="""
-    #        size   offset    fstype   [fsize bsize bps/cpg]
-      a:   %s        0    4.2BSD        0     0     0
-      c:   %s        0    unused        0     0         # "raw" part, don't edit
-    """ % (disk_size_small,disk_size_small)
+#        size   offset    fstype   [fsize bsize bps/cpg]
+a:   %s        0    4.2BSD        0     0     0
+c:   %s        0    unused        0     0         # "raw" part, don't edit
+""" % (disk_size_small,disk_size_small)
     labelfd,labelfilepath = tempfile.mkstemp()
     os.write(labelfd,disklabel)
     os.close(labelfd)
