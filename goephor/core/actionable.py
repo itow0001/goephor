@@ -29,14 +29,11 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     disk_size_small = str(disk_size_small)
     ### if disk file does not exist create it
     disk_file = "%s/%s.disk" % (disk_file,random.randint(1111,9999))
-    if os.path.exists(disk_file):
-        # unlink it if it does exist
-        os.unlink(disk_file)
-    else:
-        shell("touch %s" % (disk_file))
-    
+    #if os.path.exists(disk_file):
+    #    # unlink it if it does exist
+    #    os.unlink(disk_file)
     # Zero things out in the file
-    #shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size_small))
+    shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size_small))
     # Create the new device
     md = shell("mdconfig -a -t vnode -f %s -s %s" % (disk_file,disk_size_small)).get('stdout')
     md = md[:-1]
@@ -46,15 +43,14 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     # add our own label
     disklabel="""
 #        size   offset    fstype   [fsize bsize bps/cpg]
-a:   %s        0    4.2BSD        0     0     0
-c:   %s        0    unused        0     0         # "raw" part, don't edit
+  a:   %s        0    4.2BSD        0     0     0
+  c:   %s        0    unused        0     0         # "raw" part, don't edit
 """ % (disk_size_small,disk_size_small)
     labelfd,labelfilepath = tempfile.mkstemp()
     print labelfd
     print labelfilepath
     os.write(labelfd,disklabel)
     os.close(labelfd)
-    
     # Partition the device
     shell("disklabel -B -w -r /dev/%s auto" % md)
     # Apply our custom label for a disk with complete a partition
