@@ -37,6 +37,7 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size_small))
     # Create the new device
     md = shell("mdconfig -a -t vnode -f %s -s %s" % (disk_file,disk_size_small)).get('stdout')
+    md = md[:-1]
     mainpart = "%sa" % md
     # add our own label
     disklabel="""
