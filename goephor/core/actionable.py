@@ -39,6 +39,8 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     md = shell("mdconfig -a -t vnode -f %s -s %s" % (disk_file,disk_size_small)).get('stdout')
     md = md[:-1]
     mainpart = "%sa" % md
+    print "MAINPART: %s" % (mainpart)
+    print "      MD: %s" % (md)
     # add our own label
     disklabel="""
     #        size   offset    fstype   [fsize bsize bps/cpg]
@@ -46,7 +48,6 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
       c:   %s        0    unused        0     0         # "raw" part, don't edit
     """ % (disk_size_small,disk_size_small)
     labelfd,labelfilepath = tempfile.mkstemp()
-    print labelfd
     os.write(labelfd,disklabel)
     os.close(labelfd)
     # Partition the device
