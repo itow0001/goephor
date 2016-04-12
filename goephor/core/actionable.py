@@ -38,7 +38,7 @@ def create_flash(key, mnt, disk_size, disk_file='/tmp', strict=True, noop=False)
     #    # unlink it if it does exist
     #    os.unlink(disk_file)
     # Zero things out in the file
-    shell("dd if=/dev/zero of=%s bs=1M count=%s" % (disk_file,disk_size_small))
+    shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size_small))
     # Create the new device
     md = shell("mdconfig -a -t vnode -f %s -s %s" % (disk_file,disk_size_small)).get('stdout')
     md = md[:-1]
