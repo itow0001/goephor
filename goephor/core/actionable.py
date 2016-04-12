@@ -25,7 +25,7 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     @param disk_file: Path to disk file
     @param disk_size: size you wish to apply to disk as bytes
     """
-    disk_size_small = int(disk_size)/512
+    disk_size_small = int(disk_size)
     disk_size_small = str(disk_size_small)
     ### if disk file does not exist create it
     disk_file = "%s/%s.disk" % (disk_file,random.randint(1111,9999))
@@ -33,7 +33,7 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     #    # unlink it if it does exist
     #    os.unlink(disk_file)
     # Zero things out in the file
-    shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size_small))
+    shell("dd if=/dev/zero of=%s bs=1M count=%s" % (disk_file,disk_size_small))
     # Create the new device
     md = shell("mdconfig -a -t vnode -f %s -s %s" % (disk_file,disk_size_small)).get('stdout')
     md = md[:-1]
