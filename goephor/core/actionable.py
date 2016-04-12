@@ -25,6 +25,8 @@ def create_flash(key,mnt,disk_size,disk_file='/tmp',strict=True):
     @param disk_file: Path to disk file
     @param disk_size: size you wish to apply to disk as bytes
     """
+    if os.environ.get(mnt):
+        mnt = os.environ.get(mnt) 
     disk_size_small = int(disk_size)
     disk_size_small = str(disk_size_small)
     ### if disk file does not exist create it
