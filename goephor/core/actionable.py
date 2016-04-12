@@ -19,7 +19,7 @@ import tempfile
 from modules.terminal import shell, rsync
 
 
-def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
+def create_flash(key,mnt,disk_size,disk_file='/tmp',strict=True):
     """ Create a flash disk for internal onefs reimaging installer
     @param key: environment variable name  
     @param disk_file: Path to disk file
