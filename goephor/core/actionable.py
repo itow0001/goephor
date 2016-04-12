@@ -28,7 +28,7 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp/',strict=True):
     disk_size_small = int(disk_size)/512
     disk_size_small = str(disk_size_small)
     ### if disk file does not exist create it
-    disk_file = "%s/%s.disk" % (disk_file,random.random())
+    disk_file = "%s/%s.disk" % (disk_file,random.randint(1111,9999))
     if os.path.exists(disk_file):
         # unlink it if it does exist
         os.unlink(disk_file)
