@@ -19,12 +19,15 @@ import tempfile
 from modules.terminal import shell, rsync
 
 
-def create_flash(key,mnt,disk_size,disk_file='/tmp',strict=True):
+def create_flash(key, mnt, disk_size, disk_file='/tmp', strict=True, noop=False):
     """ Create a flash disk for internal onefs reimaging installer
     @param key: environment variable name  
     @param disk_file: Path to disk file
     @param disk_size: size you wish to apply to disk as bytes
     """
+    if noop:
+        print "[noop] destroy_memdisks"
+        return
     mnt = _sanitize(mnt)
     print "mnt:%s" % (mnt)
     disk_size_small = int(disk_size)
@@ -69,9 +72,12 @@ def create_flash(key,mnt,disk_size,disk_file='/tmp',strict=True):
         print "[Error] setting environment variable %s" % (key)
     print "environment set %s=%s" % (key, env)
 
-def destroy_memdisks(strict=False):
+def destroy_memdisks(strict=False, noop=False):
     """ Destroy all memory disks
     """
+    if noop:
+        print "[noop] destroy_memdisks"
+        return
     stdout = shell("mdconfig -l",strict=strict).get('stdout')
     mds = stdout.split(' ')
     for md in mds:
