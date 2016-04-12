@@ -52,11 +52,11 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     os.write(labelfd,disklabel)
     os.close(labelfd)
     # Partition the device
-    shell("disklabel -B -w -r /dev/%s auto" % md)
+    shell("disklabel -B -w -r /dev/%s auto" % md,shell=True)
     # Apply our custom label for a disk with complete a partition
-    shell("cat %s | disklabel -B -R /dev/%s /dev/fd/0" % (labelfilepath, md))
+    shell("cat %s | disklabel -B -R /dev/%s /dev/fd/0" % (labelfilepath, md),shell=True)
     # Format partition
-    shell("newfs -O1 /dev/%s" % mainpart)
+    shell("newfs -O1 /dev/%s" % mainpart,shell=True)
     os.unlink(labelfilepath)
     if not os.path.exists(mnt):
         os.mkdir(mnt)
