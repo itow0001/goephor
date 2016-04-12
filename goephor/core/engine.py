@@ -252,6 +252,6 @@ class Action(object):
                 print "   CODE: %s" % self.RETURN.get('code')
         print "[GLOBALS]"
         for env in self.GLOBALS:
-            print "%s : %s" % (env.keys()[0].rjust(20), env.values()[0])
+            print "%s : %s" % (env.keys()[0].rjust(25), env.values()[0])
         if verbose:
             print self.RETURN
