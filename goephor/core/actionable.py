@@ -48,6 +48,7 @@ a:   %s        0    4.2BSD        0     0     0
 c:   %s        0    unused        0     0         # "raw" part, don't edit
 """ % (disk_size_small,disk_size_small)
     labelfd,labelfilepath = tempfile.mkstemp()
+    print "LABELFD: %s" % (labelfd)
     os.write(labelfd,disklabel)
     os.close(labelfd)
     # Partition the device
