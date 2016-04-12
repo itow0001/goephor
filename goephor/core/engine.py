@@ -243,15 +243,15 @@ class Action(object):
     def pprint(self, verbose=False):
         """ format of a printing a single action
         """
-        print "\033[92m[ID: %s]\033[92m" % self.ID
-        print "\033[92m    IMP: %s\033[92m" % self.IMP
-        print "\033[92m    DEF: %s\033[92m" % self.DEF
-        print "\033[92m   OPTS: %s\033[92m" % self.OPTS
+        print "[ID: %s]" % self.ID
+        print "    IMP: %s" % self.IMP
+        print "    DEF: %s" % self.DEF
+        print "   OPTS: %s" % self.OPTS
         if self.RETURN:
             if self.RETURN.get('code'):
-                print "\033[92m   CODE: %s\033[92m" % self.RETURN.get('code')
+                print "   CODE: %s" % self.RETURN.get('code')
         print "[GLOBALS]"
         for env in self.GLOBALS:
-            print "\033[92m%s : %s\033[92m" % (env.keys()[0].rjust(25), env.values()[0])
+            print "%s : %s" % (env.keys()[0].rjust(25), env.values()[0])
         if verbose:
             print self.RETURN
