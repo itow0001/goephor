@@ -11,6 +11,7 @@ Created on Jan 9, 2016
 import json
 import os
 import platform
+import random
 import re
 import sys
 import tempfile
@@ -18,13 +19,14 @@ import tempfile
 from modules.terminal import shell, rsync
 
 
-def create_flash(key,mnt_dir,disk_file,disk_size,strict=True):
+def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     """ Create a flash disk for internal onefs reimaging installer
     @param key: environment variable name  
     @param disk_file: Path to disk file
     @param disk_size: size you wish to apply to disk as bytes
     """
-    ### if disk file does not exist create it  
+    ### if disk file does not exist create it
+    disk_file = "%s/%s.disk" % (disk_file,random.random())
     if os.path.exists(disk_file):
         # unlink it if it does exist
         os.unlink(disk_file)
