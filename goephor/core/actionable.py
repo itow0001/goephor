@@ -69,7 +69,15 @@ def create_flash(key,mnt,disk_size,disk_file='/tmp',strict=True):
         print "[Error] setting environment variable %s" % (key)
     print "environment set %s=%s" % (key, env)
 
-
+def destroy_memdisks():
+    """ Destroy all memory disks
+    """
+    stdout = shell("mdconfig -l").get('stdout')
+    mds = stdout.split(' ')
+    for md in mds:
+        if md:
+            shell('mdconfig -d -u %s' % (md))
+   
 
 def md5_file(path, strict=True, noop=False):
     """ create an md5 file
