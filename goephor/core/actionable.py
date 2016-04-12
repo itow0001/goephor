@@ -19,7 +19,7 @@ import tempfile
 from modules.terminal import shell, rsync
 
 
-def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
+def create_flash(key,mnt_dir,disk_size,disk_file='/tmp/',strict=True):
     """ Create a flash disk for internal onefs reimaging installer
     @param key: environment variable name  
     @param disk_file: Path to disk file
@@ -47,10 +47,10 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
 a:   %s        0    4.2BSD        0     0     0
 c:   %s        0    unused        0     0         # "raw" part, don't edit
 """ % (disk_size_small,disk_size_small)
-    labelfd,labelfilepath = tempfile.mkstemp()
-    print "LABELFD: %s" % (labelfd)
-    os.write(labelfd,disklabel)
-    os.close(labelfd)
+    
+    with open(disk_file,'w') as file:
+        file.write(disklabel)
+    
     # Partition the device
     shell("disklabel -B -w -r /dev/%s auto" % md)
     # Apply our custom label for a disk with complete a partition
