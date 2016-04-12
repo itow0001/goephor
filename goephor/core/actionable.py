@@ -32,6 +32,8 @@ def create_flash(key,mnt_dir,disk_size,disk_file='/tmp',strict=True):
     if os.path.exists(disk_file):
         # unlink it if it does exist
         os.unlink(disk_file)
+    else:
+        shell("touch %s" % (disk_file))
     
     # Zero things out in the file
     #shell("dd if=/dev/zero of=%s bs=512 count=%s" % (disk_file,disk_size_small))
