@@ -133,7 +133,7 @@ class Chain(object):
         for env in self.envs:
             key = env.keys()[0]
             value = env.values()[0]
-            print "  %s : %s" % (key.rjust(20), value)
+            print "  %s : %s" % (key.rjust(25), value)
         print "\n   [QUEUE]"
         for action_obj in self.action_objs:
             action_obj.pprint()
