@@ -30,6 +30,8 @@ def create_flash(key, mnt, disk_size, disk_file='/tmp', strict=True, noop=False)
         return
     mnt = _sanitize(mnt)
     disk_file = _sanitize(disk_file)
+    if os.path.exists(disk_file):
+        shell("rm -rf %s" % (disk_file))
     print "mnt:%s" % (mnt)
     disk_size_small = int(disk_size)
     disk_size_small = str(disk_size_small)
