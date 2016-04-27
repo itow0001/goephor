@@ -201,11 +201,11 @@ def rsync(server,
 
 
 def shell(cmd,
-          verbose=True,
+          verbose=False,
           strict=True,
-          shell=False,
+          shell=True,
           buffer_size=1048576,
-          show_cmd=True):
+          show_cmd=False):
     """Run Shell commands  [Non Blocking, no Buffer, print live, log it]
     @param cmd: String command
     @param verbose:bool
@@ -236,7 +236,7 @@ def shell(cmd,
             output = output+out
         if verbose:
             sys.stdout.write(out)
-    cmd_info = {'cmd': "".join(cmd),
+    cmd_info = {'cmd': " ".join(cmd),
                 'stdout': output,
                 'code': process.returncode}
     if os.path.isfile(temp_path):

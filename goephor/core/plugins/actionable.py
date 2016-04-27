@@ -35,6 +35,8 @@ def create_flash(key, mnt, disk_size, disk_file='/tmp', strict=True, noop=False)
     disk_size_small = str(disk_size_small)
     ### if disk file does not exist create it
     disk_file = "%s/flash.disk" % (disk_file)
+    if os.path.exists(disk_file):
+        shell("rm -f %s" % (disk_file))
     #if os.path.exists(disk_file):
     #    # unlink it if it does exist
     #    os.unlink(disk_file)

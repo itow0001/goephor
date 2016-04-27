@@ -8,13 +8,16 @@ import json
 import os
 import re
 import sys
+import plugins
 
+'''
 sys.path.append(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "../modules"))
 sys.path.append(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "../core"))
 sys.path.append(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "../plugins"))
+'''
 
 
 class Chain(object):
@@ -217,10 +220,11 @@ class Chain(object):
 class Action(object):
     """ Stores action-able object state
     """
-    def __init__(self, IMP, DEF):
+    def __init__(self, IMP, CLASS, DEF):
         """ Action object constructor
         """
         self.IMP = IMP
+        self.CLASS = CLASS
         self.DEF = DEF.keys()[0]
         self.OPTS = DEF.values()[0]
         self.ID = 0
@@ -233,6 +237,7 @@ class Action(object):
         @return: dict
         """
         return {"IMP": self.IMP,
+                "CLASS": self.CLASS,
                 "DEF": self.DEF,
                 "OPTS": self.OPTS,
                 "ID": self.ID,
