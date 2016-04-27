@@ -5,6 +5,7 @@ Created on Apr 25, 2016
 '''
 from pluginable import Plugin
 from modules.terminal import shell
+import sys
 
 class terminal(Plugin):
     ''' This class Represents all system calls/actions
@@ -15,6 +16,9 @@ class terminal(Plugin):
         
     def shell(self,cmd,**defaults):
         session = shell(cmd,**defaults)
+        if not session.get('code') == 0:
+            sys.exit(1)
+             
         return session
 
 if __name__ == '__main__':

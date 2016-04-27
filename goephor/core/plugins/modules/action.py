@@ -3,17 +3,29 @@ Created on Apr 26, 2016
 
 @author: iitow
 '''
+import datetime
 import importlib
 import os
 import sys
 import re
-from environment import Env
+from environment import EnvManager
+import time
+
 
 class Manager(object):
     ''' manages creation of action dict to a obj
     '''
-    def __init__(self):
+    def __init__(self,config,EnvManager):
         self.chain = []
+        self.config = config
+        self.EnvManager = EnvManager
+
+        
+    def pprint_chain(self):
+        print ""
+        for action in self.chain:
+            print action
+        print ""
     
     def to_obj(self,action,action_manager):
         ''' Converts action dictionary to action obj
@@ -71,17 +83,28 @@ class Action(object):
         self.IMP = IMP
         self.CLASS = CLASS
         self.DEF = DEF
-        self.Env = Env()
-        self.parameters = self.Env.sanitize(parameters)
-        self.defaults = self.Env.sanitize(defaults)
+        self.EnvManager = EnvManager()
+        self.parameters = self.EnvManager.sanitize(parameters)
+        self.defaults = self.EnvManager.sanitize(defaults)
         self.action_manager=action_manager
         self.instance = self._init_instance()
-    
+        self.duration = None
+        self.session = None
+
     def __repr__(self):
         ''' Override container name so we can match the array in the chain
         '''
         return object.__repr__(self.instance)
-
+    
+    def get_receipt(self):
+        return {"IMP": self.IMP,
+                "CLASS": self.CLASS,
+                "DEF": self.DEF,
+                "parameters": self.parameters,
+                "defaults": self.defaults,
+                "duration": self.duration,
+                "session": self.session}
+        
     def pprint(self):
         ''' print state about the object pretty
         '''
@@ -90,25 +113,22 @@ class Action(object):
         print self.DEF
         print self.parameters
         print self.defaults
-    
+
     def _init_instance(self):
-        IMP = 'plugins.%s' % (self.IMP)
+        ''' Initializes the class
+        '''
+        IMP = 'core.plugins.%s' % (self.IMP)
         _module = importlib.import_module(IMP)
         CLASS = getattr(_module, self.CLASS)
         CLASS = CLASS(self.action_manager)
         return CLASS
-        
 
     def execute(self):
-        ''' execute the instructions
+        ''' execute the instruction
         '''
-        '''
-        IMP = 'plugins.%s' % (self.IMP)
-        _module = importlib.import_module(IMP)
-        CLASS = getattr(_module, self.CLASS)
-        CLASS = CLASS(self.action_manager)
-        '''
-
         DEF = getattr(self.instance, self.DEF)
-        session = DEF(*self.parameters,**self.defaults)
-        return session
+        start = time.time()
+        self.session = DEF(*self.parameters,**self.defaults)
+        end = time.time()
+        self.duration = end - start
+        return self.session

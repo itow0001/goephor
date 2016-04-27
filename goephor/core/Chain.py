@@ -6,7 +6,7 @@ Created on Apr 25, 2016
 
 from plugins import *
 from plugins.modules.action import Manager
-from plugins.modules.environment import Env
+from plugins.modules.environment import EnvManager
 import os
 import plugins
 import importlib
@@ -23,8 +23,9 @@ class Run(object):
         '''
         self.config_file = config_file
         self.config = self.read_config(config_file)
+        self.EnvManager = EnvManager()
         self.set_envs()
-        self.action_manager = Manager()
+        self.action_manager = Manager(self.config,self.EnvManager)
         self.load_actions()
 
     def read_config(self,config_file):
@@ -59,7 +60,7 @@ class Run(object):
         except Exception:
             print "[Error] %s" % (config_file)
             raise
-  
+
     def _read_json(self, config_file):
         """ Reads in the json config
         @param config_file: defines all actions in a build
@@ -73,13 +74,16 @@ class Run(object):
         except Exception:
             print "[Error] %s" % (config_file)
             raise
-    
+
+    def add_envs(self,**envs):
+        for key,value in envs.iteritems():
+            self.EnvManager.set(key, value)
+
     def set_envs(self):
-        E = Env()
-        for env in self.config.get('globals'):
-            key = env.keys()[0]
-            value = E._sanitize(env.get(key))
-            E.set(key,value)
+        for e in self.config.get('globals'):
+            key = e.keys()[0]
+            value = self.EnvManager._sanitize(e.get(key))
+            self.EnvManager.set(key,value)
 
     def load_actions(self):
         ''' loads actions in to chain resolves yaml/json to a object
@@ -87,7 +91,7 @@ class Run(object):
         for action in self.config.get('actions'):
             action_obj = self.action_manager.to_obj(action,self.action_manager)
             self.action_manager.add(action_obj)
-    
+
     def execute_actions(self):
         ''' Executes all action objects
         '''
@@ -97,13 +101,3 @@ class Run(object):
             except Exception as e:
                 print '[Error] %s' % (str(e))
                 sys.exit(1)
-    
-if __name__ == '__main__':
-    config = '../test.yaml'
-    run = Run(config)
-    #run._imports()
-    run.execute_actions()
-            
-        
-    
-        

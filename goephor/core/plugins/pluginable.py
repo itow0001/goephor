@@ -3,7 +3,7 @@ Created on Apr 25, 2016
 
 @author: iitow
 '''
-from modules.environment import Env
+from modules.environment import EnvManager
 import types
 
 import types
@@ -33,7 +33,7 @@ class DecoMeta(type):
             result = func(*parameters, **dfs)
             ### after function pass it to environment
             if env_key:
-                Env().set(env_key, result)
+                EnvManager().set(env_key, result)
             return result
         return wrapper
 
@@ -43,33 +43,5 @@ class Plugin(object):
     __metaclass__ = DecoMeta
     def __init__(self,action_manager):
         self.action_manager
-        self.Env = Env()
- 
-    def set_env(self,key,value):
-        ''' Sets environment variable
-        '''
-        self.Env.set(key,value)
-    
-    def get_env(self,key):
-        ''' Gets an environment variable
-        '''
-        return self.Env.get(key)
-        
-    def _has_keys(self,str):
-        """ Collect all environment variables
-        @param str: command string
-        """
-        matches = re.findall(r'(?<={)[^}]*', str)
-        return matches
-
-    def _sanitize(self,str):
-        """ Replace all environment variables into command
-        @param str: command string
-        """
-        for match in _has_keys(str):
-            old = '${%s}' % match
-            new = os.environ.get(match)
-            if new:
-                str = str.replace(old, new)
-        return str
-        
+        self.EnvManager = self.action_manager.EnvManager
+        self.envs = self.EnvManager.envs

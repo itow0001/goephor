@@ -6,15 +6,17 @@ Created on Apr 26, 2016
 import os
 import re
 
-class Env(object):
+class EnvManager(object):
     ''' Management of environment variables
     '''
     def __init__(self,debug=True):
         self.debug = debug
+        self.envs = {}
     
     def set(self,key,value):
         if self.debug:
             print '[set] %s=%s' % (key,value)
+        self.envs[key]=value
         os.environ[key]=str(value)
     
     def get(self,key):

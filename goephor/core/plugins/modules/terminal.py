@@ -202,10 +202,11 @@ def rsync(server,
 
 def shell(cmd,
           verbose=False,
-          strict=True,
+          strict=False,
           shell=True,
           buffer_size=1048576,
-          show_cmd=False):
+          show_cmd=False,
+          show_output=True):
     """Run Shell commands  [Non Blocking, no Buffer, print live, log it]
     @param cmd: String command
     @param verbose:bool
@@ -229,14 +230,14 @@ def shell(cmd,
             while process.poll() is None:
                 out = reader.read()
                 output = output+out
-                if verbose:
+                if verbose or show_output:
                     sys.stdout.write(out)
-                time.sleep(0.5)
+                time.sleep(0.1)
             out = reader.read()
             output = output+out
-        if verbose:
+        if verbose or show_output:
             sys.stdout.write(out)
-    cmd_info = {'cmd': " ".join(cmd),
+    cmd_info = {'cmd': "".join(cmd),
                 'stdout': output,
                 'code': process.returncode}
     if os.path.isfile(temp_path):
@@ -245,7 +246,6 @@ def shell(cmd,
         print "\n [Fatal Error] %s \n" % (cmd_info.get("stdout"))
         os.sys.exit(int(cmd_info.get("code")))
     return cmd_info
-
 
 def _exit_clean():
     """ cleans .tmp_shell files before exit

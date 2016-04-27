@@ -1,0 +1,12 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - BASE_PATH: "/tmp"
+    - WORK: "${BASE_PATH}/ADDIN"
+    - var1: "1"
+    - var2: "1"
+  actions:                                
+       - plugin_example.example.runme:
+                            - "WALDO"
+                            - strict: "False"
+                            - windows: "True"
