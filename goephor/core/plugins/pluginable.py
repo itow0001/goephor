@@ -6,7 +6,6 @@ Created on Apr 25, 2016
 from modules.environment import EnvManager
 import types
 
-import types
 
 class DecoMeta(type):
     ''' Meta class for enforcing global definitions
@@ -24,24 +23,26 @@ class DecoMeta(type):
             '''
             dfs = {}
             env_key = None
-            for key,value in defaults.iteritems():
-                ### check for set_env in **defaults
-                if key=='set_env':
+            for key, value in defaults.iteritems():
+                # check for set_env in **defaults
+                if key == 'set_env':
                     env_key = value
                 else:
-                    dfs[key]=value
+                    dfs[key] = value
             result = func(*parameters, **dfs)
-            ### after function pass it to environment
+            # after function pass it to environment
             if env_key:
                 EnvManager().set(env_key, result)
             return result
         return wrapper
 
+
 class Plugin(object):
     ''' This is the base class for plugin which all plugins must inherit from.
     '''
     __metaclass__ = DecoMeta
-    def __init__(self,action_manager):
+
+    def __init__(self, action_manager):
         self.action_manager
         self.EnvManager = self.action_manager.EnvManager
         self.envs = self.EnvManager.envs

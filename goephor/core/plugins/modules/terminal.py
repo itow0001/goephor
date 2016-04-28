@@ -187,9 +187,8 @@ def rsync(server,
                 print "Error in rsync: %s" % (e)
         elif option == 'local':
             try:
-                session = shell("rsync -Pavz %s --delete %s %s" % (excludes_str,
-                                                                   src,
-                                                                   dest),
+                session = shell("rsync -Pavz %s --delete %s %s" %
+                                (excludes_str, src, dest),
                                 strict=True,
                                 verbose=verbose,
                                 shell=True)
@@ -246,6 +245,7 @@ def shell(cmd,
         print "\n [Fatal Error] %s \n" % (cmd_info.get("stdout"))
         os.sys.exit(int(cmd_info.get("code")))
     return cmd_info
+
 
 def _exit_clean():
     """ cleans .tmp_shell files before exit

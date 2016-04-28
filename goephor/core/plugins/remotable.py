@@ -5,7 +5,6 @@ Created on Jan 29, 2016
 '''
 import os
 import re
-import sys
 
 from modules.remote import Run
 

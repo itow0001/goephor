@@ -4,7 +4,7 @@
     - BASE_PATH: "/tmp"
     - WORK: "${BASE_PATH}/ADDIN"
     - var1: "1"
-    - var2: "1"
+    - var2: "2"
   actions:
        - system.terminal.shell:
                             - "echo '############>'"
@@ -24,8 +24,12 @@
                                 - "echo 'PRINT ELSE CMD 1'"
                               - system.terminal.shell:
                                 - "echo 'PRINT ELSE CMD 2'"
-                              - system.terminal.shell:
-                                - "ps -aux | grep eclipse"
-                                
+                              -  condition.statement.IF:
+                                                  - "${var1}"
+                                                  - "=="
+                                                  - "1"
+                                                  - THEN:
+                                                    - system.terminal.shell:
+                                                      - 'echo "Nested IF $BASE_PATH and $WORK"'
        - system.terminal.shell:
                             - "echo '<############'"

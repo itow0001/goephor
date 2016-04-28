@@ -7,13 +7,8 @@ Created on Apr 25, 2016
 from plugins import *
 from plugins.modules.action import Manager
 from plugins.modules.environment import EnvManager
-import os
-import plugins
-import importlib
-import inspect
-import re
 import sys
-import types
+
 
 class Run(object):
     ''' Runs the Chain
@@ -22,18 +17,17 @@ class Run(object):
         ''' Constructor
         '''
         self.config_file = config_file
-        self.config = self.read_config(config_file)
         self.EnvManager = EnvManager()
-        self.set_envs()
-        self.action_manager = Manager(self.config,self.EnvManager)
+        self.config = self.read_config(config_file)
+        self.action_manager = Manager(self.config, self.EnvManager)
         self.load_actions()
 
-    def read_config(self,config_file):
-        """ Allows for reading .yaml or .json files based on extention
+    def read_config(self, config_file):
+        """ Allows for reading .yaml or .json files based on extentionested IF
         @param config_file: defines all actions in a build
         @return: dict
         """
-        ext = config_file.rsplit('.',1)[1]
+        ext = config_file.rsplit('.', 1)[1]
         data = None
         if 'yaml' in ext:
             data = self._read_yaml(config_file)
@@ -75,21 +69,21 @@ class Run(object):
             print "[Error] %s" % (config_file)
             raise
 
-    def add_envs(self,**envs):
-        for key,value in envs.iteritems():
+    def add_envs(self, **envs):
+        for key, value in envs.iteritems():
             self.EnvManager.set(key, value)
 
     def set_envs(self):
         for e in self.config.get('globals'):
             key = e.keys()[0]
-            value = self.EnvManager._sanitize(e.get(key))
-            self.EnvManager.set(key,value)
+            self.EnvManager.set(key, e.get(key), reset=False)
 
     def load_actions(self):
         ''' loads actions in to chain resolves yaml/json to a object
         '''
         for action in self.config.get('actions'):
-            action_obj = self.action_manager.to_obj(action,self.action_manager)
+            action_obj = self.action_manager.to_obj(action,
+                                                    self.action_manager)
             self.action_manager.add(action_obj)
 
     def execute_actions(self):

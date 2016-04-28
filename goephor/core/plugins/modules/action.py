@@ -3,11 +3,8 @@ Created on Apr 26, 2016
 
 @author: iitow
 '''
-import datetime
 import importlib
-import os
 import sys
-import re
 from environment import EnvManager
 import time
 
@@ -15,19 +12,18 @@ import time
 class Manager(object):
     ''' manages creation of action dict to a obj
     '''
-    def __init__(self,config,EnvManager):
+    def __init__(self, config, EnvManager):
         self.chain = []
         self.config = config
         self.EnvManager = EnvManager
 
-        
     def pprint_chain(self):
         print ""
         for action in self.chain:
             print action
         print ""
-    
-    def to_obj(self,action,action_manager):
+
+    def to_obj(self, action, action_manager):
         ''' Converts action dictionary to action obj
         '''
         try:
@@ -39,10 +35,10 @@ class Manager(object):
             parameters = []
             defaults = {}
             for param in action.get(path):
-                if isinstance(param,dict):
+                if isinstance(param, dict):
                     name = param.keys()[0]
                     value = param.get(name)
-                    defaults[name]=value
+                    defaults[name] = value
                 else:
                     parameters.append(param)
         except Exception as e:
@@ -59,34 +55,35 @@ class Manager(object):
         except Exception as e:
                 print '[Error]# %s' % (str(e))
                 sys.exit(1)
-    def add(self,action_obj):
+
+    def add(self, action_obj):
         ''' adds an action obj to chain
         '''
         self.chain.append(action_obj)
-    
-    def insert(self,index,action_obj):
+
+    def insert(self, index, action_obj):
         self.chain.insert(index, action_obj)
-    
-    def get_index(self,memory_address):
+
+    def get_index(self, memory_address):
         cnt = 1
         for action in self.chain:
             if str(memory_address) == str(action):
                 return cnt
-            cnt+=1
+            cnt += 1
         return None
-            
+
 
 class Action(object):
     ''' Object containing instructions to create and execute actions
     '''
-    def __init__(self,IMP,CLASS,DEF,parameters,defaults,action_manager):
+    def __init__(self, IMP, CLASS, DEF, parameters, defaults, action_manager):
         self.IMP = IMP
         self.CLASS = CLASS
         self.DEF = DEF
         self.EnvManager = EnvManager()
         self.parameters = self.EnvManager.sanitize(parameters)
         self.defaults = self.EnvManager.sanitize(defaults)
-        self.action_manager=action_manager
+        self.action_manager = action_manager
         self.instance = self._init_instance()
         self.duration = None
         self.session = None
@@ -95,7 +92,7 @@ class Action(object):
         ''' Override container name so we can match the array in the chain
         '''
         return object.__repr__(self.instance)
-    
+
     def get_receipt(self):
         return {"IMP": self.IMP,
                 "CLASS": self.CLASS,
@@ -104,7 +101,7 @@ class Action(object):
                 "defaults": self.defaults,
                 "duration": self.duration,
                 "session": self.session}
-        
+
     def pprint(self):
         ''' print state about the object pretty
         '''
@@ -128,7 +125,7 @@ class Action(object):
         '''
         DEF = getattr(self.instance, self.DEF)
         start = time.time()
-        self.session = DEF(*self.parameters,**self.defaults)
+        self.session = DEF(*self.parameters, **self.defaults)
         end = time.time()
         self.duration = end - start
         return self.session
