@@ -29,5 +29,6 @@
                                 
        - system.terminal.shell:
                             - "echo '############'"
+       # Create a receipt
        - receipt.maker.on_actions:
                             - "./receipt.yaml"

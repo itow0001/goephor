@@ -19,7 +19,7 @@ class DecoMeta(type):
     @classmethod
     def deco(cls, func):
         def wrapper(*parameters, **defaults):
-            ''' This wrapper adds functionality to all child class definitions
+            ''' This wrapper adds functionality to all child class functions
             '''
             dfs = {}
             env_key = None
@@ -32,7 +32,7 @@ class DecoMeta(type):
             result = func(*parameters, **dfs)
             # after function pass it to environment
             if env_key:
-                EnvManager().set(env_key, result)
+                EnvManager().set(env_key, str(result))
             return result
         return wrapper
 

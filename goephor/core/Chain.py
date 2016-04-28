@@ -1,7 +1,7 @@
 '''
 Created on Apr 25, 2016
 
-@author: iitow
+:author: iitow
 '''
 
 from plugins import *
@@ -11,21 +11,31 @@ import sys
 
 
 class Run(object):
-    ''' Runs the Chain
+    ''' 
+    This is the entry point from the cli and runs drives components
     '''
-    def __init__(self, config_file):
-        ''' Constructor
+    def __init__(self, config_file,verbose=False,debug=False):
+        ''' 
+        Constructor
+        
+        :param config_file: path to yaml manifest
+        :param verbose: print general run info
+        :param debug: print debug info
         '''
+        self.verbose = verbose
+        self.debug = debug
         self.config_file = config_file
         self.EnvManager = EnvManager()
         self.config = self.read_config(config_file)
-        self.action_manager = Manager(self.config, self.EnvManager)
+        self.action_manager = Manager(self.config, self.EnvManager,verbose=self.verbose,debug=self.debug)
         self.load_actions()
 
     def read_config(self, config_file):
-        """ Allows for reading .yaml or .json files based on extentionested IF
-        @param config_file: defines all actions in a build
-        @return: dict
+        """
+        Allows for reading .yaml or .json files
+        
+        :param config_file: defines all actions in a build
+        :return: dict
         """
         ext = config_file.rsplit('.', 1)[1]
         data = None
@@ -41,9 +51,11 @@ class Run(object):
         return data
 
     def _read_yaml(self, config_file):
-        """ Reads in the yaml config
-        @param config_file: defines all actions in a build
-        @return: dict
+        """
+        Reads in the yaml config
+        
+        :param config_file: defines all actions in a build
+        :return: dict
         """
         data = None
         try:
@@ -56,9 +68,11 @@ class Run(object):
             raise
 
     def _read_json(self, config_file):
-        """ Reads in the json config
-        @param config_file: defines all actions in a build
-        @return: dict
+        """ 
+        Reads in the json config
+        
+        :param config_file: defines all actions in a build
+        :return: dict
         """
         data = None
         try:
@@ -70,16 +84,25 @@ class Run(object):
             raise
 
     def add_envs(self, **envs):
+        '''
+        Overrides environment variables from cli
+        
+        :param **envs: dictionary of environment variables
+        '''
         for key, value in envs.iteritems():
             self.EnvManager.set(key, value)
 
     def set_envs(self):
+        '''
+        sets environment variables inside of manifest
+        '''
         for e in self.config.get('globals'):
             key = e.keys()[0]
             self.EnvManager.set(key, e.get(key), reset=False)
 
     def load_actions(self):
-        ''' loads actions in to chain resolves yaml/json to a object
+        ''' 
+        loads actions in to chain resolves yaml/json to a object
         '''
         for action in self.config.get('actions'):
             action_obj = self.action_manager.to_obj(action,
@@ -89,9 +112,21 @@ class Run(object):
     def execute_actions(self):
         ''' Executes all action objects
         '''
+        this_action = None
         for action in self.action_manager.chain:
             try:
-                action.execute()
+                if (self.action_manager.failure == False or action.ignore == True):
+                    if self.verbose:
+                        print "\n[%s]" % (action.name)
+                    action.execute()
+                else:
+                    pass 
             except Exception as e:
                 print '[Error] %s' % (str(e))
-                sys.exit(1)
+                self.action_manager.failure = True
+                this_action = action 
+        if self.action_manager.failure == True:
+            this_action.pprint(title='Failure',footer='Failure')
+            sys.exit(1)
+        else:
+            print "\n[Success]"

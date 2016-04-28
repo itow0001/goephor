@@ -8,13 +8,29 @@ import re
 
 
 class EnvManager(object):
-    ''' Management of environment variables
+    '''
+    Management of runtime environment
+    
+    :note: This is passed to each of the plugins when the action obj is initialized
+    Its contained within the action_manager.
     '''
     def __init__(self, debug=False):
+        '''
+        Constructor
+        
+        :param debug: Bool
+        '''
         self.debug = debug
         self.envs = {}
 
     def set(self, key, value, reset=True):
+        '''
+        set an environment variable
+        
+        :param key: String
+        :param value: String
+        :param reset: Bool, if false it will not override an existing env value
+        '''
         has_value = self.get(key)
         value = self._sanitize(value)
         if reset:
@@ -32,13 +48,21 @@ class EnvManager(object):
                 print '[reset] ignore set %s=%s' % (key, value)
 
     def get(self, key):
+        '''
+        get an environment variable
+        
+        :param key: String
+        '''
         env = os.environ.get(key, None)
         if self.debug:
             print '[get] %s=%s' % (key, env)
         return env
 
     def sanitize(self, values):
-        ''' sanitizes environment variables independent of array or dict
+        '''
+        sanitizes environment variables in a given values
+        
+        :param values: List
         '''
         if isinstance(values, dict):
             dfts = {}
@@ -56,8 +80,13 @@ class EnvManager(object):
 
     def _sanitize(self, str):
         """ Replace all environment variables into command
-        @param str: command string
+        
+        :param str: String,Bool,Int
+        :note: when nested environment variables are used in a string convert all
         """
+        if isinstance(str,bool) or isinstance(str,int):
+            return str
+        
         matches = re.findall(r'(?<={)[^}]*', str)
         for match in matches:
             old = '${%s}' % match

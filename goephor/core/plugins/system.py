@@ -14,9 +14,9 @@ class terminal(Plugin):
     def __init__(self, action_manager):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
-
-    def shell(self, cmd, **defaults):
-        session = shell(cmd, **defaults)
+    def shell(self, cmd,**defaults):
+        session = shell(cmd)
         if not session.get('code') == 0:
-            exit(1)
-        return session
+            raise Exception(session.get('stdout'))
+        
+        return session.get('stdout')
