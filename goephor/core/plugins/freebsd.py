@@ -44,10 +44,35 @@ class terminal(Plugin):
 
     def jexec(self, cmd, jid):
         jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (jid, '/bin/sh', cmd)
-        session = shell('/usr/sbin/jls')
+        session = shell(jexec_cmd)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
         return session.get('stdout')
+    
+    def fetch(self,url):
+        session = shell("fetch %s" % (url))
+        if not session.get('code') == 0:
+            raise Exception(session.get('stdout'))
+        return session.get('stdout')
+        
+
+class pkg(Plugin):
+    '''
+    Freebsd package commands go here
+    '''
+    def __init__(self, action_manager):
+        self.action_manager = action_manager
+        Plugin.__init__(self, self.action_manager)
+    
+    def install(name,**defaults):
+        session = shell("/usr/sbin/pkg install -y %s" % (name))
+        if not session.get('code') == 0:
+            raise Exception(session.get('stdout'))
+        return session.get('stdout')
+        
+        
+        
+    
         
     
     
