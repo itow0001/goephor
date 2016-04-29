@@ -5,7 +5,7 @@ Created on Apr 29, 2016
 '''
 from setuptools import setup, find_packages
 
-SRCDIR = 'goephor'
+SRCDIR = './goephor'
 
 
 def readme():
@@ -17,7 +17,7 @@ def readme():
 
 setup(
     name='goephor',
-    version='1.0.0',
+    version='1.0.6',
     description="Build automation tool",
     long_description=readme(),
     author='ian.itow',
@@ -36,7 +36,7 @@ setup(
         'PyYAML==3.10'
     ],
     entry_points={
-        'console_scripts': ['goephor = goephor.goephor:__main__']
+        'console_scripts': ['goephor = goephor.goephor:main']
     },
     include_package_data=True,
 )

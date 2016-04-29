@@ -9,7 +9,7 @@ from core.Chain import Run
 
 def menu():
     parser = argparse.ArgumentParser(
-        description='A json friendly build management tool')
+        description='A yaml friendly build management tool')
     parser.add_argument('-f',
                         action="store",
                         dest="file",
@@ -47,10 +47,15 @@ def parse_envs(options):
             envs_dict[env[0]] = env[1]
     return envs_dict
 
-if __name__ == '__main__':
+
+def main():
     options = menu()
     if options.execute:
         main_actions = Run(options.file,options.silent)
         main_actions.add_envs(**parse_envs(options))
         main_actions.set_envs()
         main_actions.execute_actions()
+    
+
+if __name__ == '__main__':
+    main()

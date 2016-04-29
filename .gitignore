@@ -2,3 +2,4 @@
 *.json
 dist/
 goephor.egg-info/
+goephor/goephor/
