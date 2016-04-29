@@ -45,49 +45,6 @@ class DecoMeta(type):
                 EnvManager().set(keywords.get('set_env'),result, reset=True)
             return result
         return wrapper
-    
-    
-
-class DecoMeta2(type):
-    ''' Meta class for enforcing global definitions
-    '''
-    def __new__(cls, name, bases, attrs):
-        
-        #print "\n### %s \n### %s \n### %s \n### %s " % (cls,name,bases,attrs)
-        
-        for attr_name, attr_value in attrs.iteritems():
-            if isinstance(attr_value, types.FunctionType):
-                attrs[attr_name] = cls.deco(attr_value)
-        return super(DecoMeta, cls).__new__(cls, name, bases, attrs)
-
-    @classmethod
-    def deco(cls, func):
-        print "### %s" % func
-        def wrapper(*parameters, **defaults):
-            ''' This wrapper adds functionality to all child class functions
-            '''
-            
-            '''
-            dfs = {}
-            env_key = None
-            for key, value in defaults.iteritems():
-                # check for set_env in **defaults
-                if key == 'set_env':
-                    value = EnvManager()._sanitize(value)
-                    env_key = value
-                else:
-                    value = EnvManager()._sanitize(value)
-                    dfs[key] = value
-            '''
-            
-                    
-            result = func(*parameters, **defaults)
-            # after function pass it to environment
-            #if env_key:
-            #    EnvManager().set(env_key, str(result))
-            return result
-        return wrapper
-
 
 
 class Plugin(object):
