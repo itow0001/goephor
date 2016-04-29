@@ -46,8 +46,8 @@ class terminal(Plugin):
             raise Exception(session.get('stdout'))
         return session.get('stdout')
     
-    def fetch(self,url):
-        session = shell("fetch %s" % (url))
+    def fetch(self,path,url):
+        session = shell("cd %s; fetch %s" % (path,url))
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
         return session.get('stdout')
