@@ -67,7 +67,7 @@ class Manager(object):
                                 definition,
                                 parameters,
                                 defaults,
-                                action_manager
+                                action_manager)
             return action_obj
         except Exception as e:
             print '[Error] [%s] %s' % (self.__name__,str(e))
