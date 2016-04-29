@@ -1,2 +1,4 @@
 *.pyc
 *.json
+dist/
+goephor.egg-info/
