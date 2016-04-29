@@ -105,8 +105,12 @@ class Run(object):
         loads actions in to chain resolves yaml/json to a object
         '''
         for action in self.config.get('actions'):
-            action_obj = self.action_manager.to_obj(action,
-                                                    self.action_manager)
+            try:
+                action_obj = self.action_manager.to_obj(action, self.action_manager)
+            except Exception as e:
+                print "\n[Error] %s\n" % (e)
+                print action
+                sys.exit(1)
             self.action_manager.add(action_obj)
 
     def execute_actions(self):
