@@ -66,6 +66,15 @@ class pkg(Plugin):
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
         return session.get('stdout')
+
+class jails(Plugin):
+    '''
+    Freebsd jail management commands go here
+    '''
+    def __init__(self, action_manager):
+        self.action_manager = action_manager
+        Plugin.__init__(self, self.action_manager)
+
         
         
         
