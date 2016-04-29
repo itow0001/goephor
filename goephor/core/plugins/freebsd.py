@@ -67,6 +67,7 @@ class pkg(Plugin):
             raise Exception(session.get('stdout'))
         return session.get('stdout')
 
+
 class jails(Plugin):
     '''
     Freebsd jail management commands go here
