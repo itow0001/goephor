@@ -58,7 +58,7 @@ class Manager(object):
                 else:
                     parameters.append(param)
         except Exception as e:
-            print '[Error] action.Manager\n %s' % (str(e))
+            print '[Error] [%s] %s' % (self.__name__,str(e))
             sys.exit(1)
         try:
             action_obj = Action(path,
@@ -67,10 +67,10 @@ class Manager(object):
                                 definition,
                                 parameters,
                                 defaults,
-                                action_manager)
+                                action_manager
             return action_obj
         except Exception as e:
-            print '[Error] action.Manager\n %s' % (str(e))
+            print '[Error] [%s] %s' % (self.__name__,str(e))
             sys.exit(1)
 
     def add(self, action_obj):
