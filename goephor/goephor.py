@@ -26,11 +26,11 @@ def menu():
                         help='Add env vars delimiter:"," '
                         'example.'
                         ' "BASE_PATH=/tmp,WORKPATH=/${BASE_PATH}/addon"')
-    parser.add_argument('-v',
-                        action="store_true",
-                        dest="verbose",
-                        default=False,
-                        help='print additional output')
+    parser.add_argument('-s',
+                        action="store_false",
+                        dest="silent",
+                        default=True,
+                        help='do not print any additional info')
 
     parser.add_argument('--version',
                         action='version',
@@ -50,7 +50,7 @@ def parse_envs(options):
 if __name__ == '__main__':
     options = menu()
     if options.execute:
-        main_actions = Run(options.file,options.verbose)
+        main_actions = Run(options.file,options.silent)
         main_actions.add_envs(**parse_envs(options))
         main_actions.set_envs()
         main_actions.execute_actions()

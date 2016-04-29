@@ -33,3 +33,14 @@ class maker(Plugin):
                 file.write(yaml.dump(receipt,
                                      default_flow_style=False,
                                      allow_unicode=True))
+    
+    def custom(self, path, **defaults):
+        with open(path, 'w') as file:
+            if defaults.get('type') == 'json':
+                file.write(json.dumps(defaults,
+                                      indent=4,
+                                      sort_keys=True))
+            else:
+                file.write(yaml.dump(defaults,
+                                     default_flow_style=False,
+                                     allow_unicode=True))

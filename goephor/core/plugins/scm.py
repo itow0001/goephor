@@ -12,9 +12,6 @@ class git(Plugin):
     '''
     def __init__(self, action_manager):
         self.action_manager = action_manager
-        self.verbose = self.action_manager.verbose
-        self.debug = self.action_manager.debug
-        self.EnvManager = self.action_manager.EnvManager
         Plugin.__init__(self, self.action_manager)
     
     def clone(self,new_local_path,remote,**defaults):

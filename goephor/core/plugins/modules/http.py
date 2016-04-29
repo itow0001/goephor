@@ -43,7 +43,7 @@ class Restful(object):
              rest_action,
              url_ext,
              data=None,
-             strict=True,
+             strict=False,
              Content_Type='application/json',
              verify=False):
         """Generic call to handle all types of restful requests

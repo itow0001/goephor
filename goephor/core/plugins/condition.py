@@ -9,9 +9,6 @@ from pluginable import Plugin
 class statement(Plugin):
     def __init__(self, action_manager):
         self.action_manager = action_manager
-        self.verbose = self.action_manager.verbose
-        self.debug = self.action_manager.debug
-        self.EnvManager = self.action_manager.EnvManager
         Plugin.__init__(self, self.action_manager)
         self.address = object.__repr__(self)
 
@@ -27,8 +24,6 @@ class statement(Plugin):
             cnt += 1
 
     def IF(self, arg1, operator, arg2, THEN=[], ELSE=[]):
-        arg1 = self.EnvManager._sanitize(arg1)
-        arg2 = self.EnvManager._sanitize(arg2)
         if arg1.isdigit() and arg2.isdigit():
             statem = "%d %s %d" % (int(arg1), operator, int(arg2))
         else:
@@ -43,4 +38,3 @@ class statement(Plugin):
             if self.verbose:
                 print "\n[ELSE]"
             self.add_obj(ELSE)
-

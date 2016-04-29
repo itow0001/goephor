@@ -175,7 +175,7 @@ def rsync(server,
                                                            server,
                                                            src,
                                                            dest),
-                                strict=True,
+                                strict=False,
                                 verbose=verbose,
                                 shell=True)
             except IOError as e:
@@ -192,7 +192,7 @@ def rsync(server,
                                                            user,
                                                            server,
                                                            dest),
-                                strict=True,
+                                strict=False,
                                 verbose=verbose,
                                 shell=True)
             except IOError as e:
@@ -201,7 +201,7 @@ def rsync(server,
             try:
                 session = shell("rsync -Pavz %s --delete %s %s" %
                                 (excludes_str, src, dest),
-                                strict=True,
+                                strict=False,
                                 verbose=verbose,
                                 shell=True)
             except IOError as e:

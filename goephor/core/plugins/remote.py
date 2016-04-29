@@ -13,9 +13,6 @@ class ssh(Plugin):
     def __init__(self, action_manager):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
-        self.verbose = self.action_manager.verbose
-        self.debug = self.action_manager.debug
-        self.EnvManager = self.action_manager.EnvManager
 
     def cmd(self, cmdstr, server, user, rsa_private_path, **defaults):
         session = Run(server,rsa_private_path,user)
