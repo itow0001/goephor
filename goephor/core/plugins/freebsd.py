@@ -16,9 +16,6 @@ class terminal(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
     
-    def mdconfig(self):
-        pass
-    
     def jls(self,hostname,return_type,**defaults):
         session = shell('/usr/sbin/jls')
         if not session.get('code') == 0:
