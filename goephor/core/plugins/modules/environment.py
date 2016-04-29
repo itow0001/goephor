@@ -78,19 +78,20 @@ class EnvManager(object):
                 params.append(self._sanitize(param))
             return params
 
-    def _sanitize(self, str):
+    def _sanitize(self, stri):
         """ Replace all environment variables into command
         
-        :param str: String,Bool,Int
-        :note: when nested environment variables are used in a string convert all
+        :param stri: String,Bool,Int
+        :note: when nested environment variables are used in a striing convert all
         """
-        if isinstance(str,bool) or isinstance(str,int):
-            return str
+        if isinstance(stri,bool) or isinstance(stri,int):
+            return stri
         
-        matches = re.findall(r'(?<={)[^}]*', str)
-        for match in matches:
-            old = '${%s}' % match
-            new = os.environ.get(match)
-            if new:
-                str = str.replace(old, new)
-        return str
+        if isinstance(stri,str):
+            matches = re.findall(r'(?<={)[^}]*', stri)
+            for match in matches:
+                old = '${%s}' % match
+                new = os.environ.get(match)
+                if new:
+                    stri = stri.replace(old, new)
+        return stri

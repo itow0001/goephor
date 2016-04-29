@@ -1,0 +1,13 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - WWWWWWWWWWWWWWWW: "/tmp/goephor"
+    - GITHUB_W: "git@github.west.isilon.com:eng-tools/goephor"
+  actions:
+       # This is how to clone a repo 
+       - system.terminal.shell:
+                              - 'echo " THIS IS IT ${GITHUB_W}"'                       
+       - scm.git.clone:
+                      - '${WWWWWWWWWWWWWWWW}'
+                      - "${GITHUB_W}"
+                      

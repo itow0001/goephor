@@ -1,0 +1,13 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - BASE_PATH: "/tmp"
+    - WORK: "${BASE_PATH}/ADDIN"
+    - GLB2: 2
+  actions:
+       # Example of how to use ssh cmd
+       - remote.ssh.cmd:
+                    - "uname -a"
+                    - "some.server.com"
+                    - "root"
+                    - "~/.ssh/id_rsa"

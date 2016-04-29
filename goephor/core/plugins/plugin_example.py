@@ -13,8 +13,10 @@ class example(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
 
-    def runme(self, var, **defaults):
-        print "This var [%s] was passed in " % var
+    def runme(self, var1,var2, **defaults):
+        print "This var [%s] was passed in " % var1
+        print "This var [%s] was passed in " % var2
         print "\nhere are the defaults:"
         for key, value in defaults.iteritems():
             print "%s : %s" % (key, value)
+        return "runme_output"
