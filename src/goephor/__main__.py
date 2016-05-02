@@ -1,10 +1,10 @@
+#!/usr/bin/env python
 '''
-Created on Jan 9, 2016
-
-@author: iitow
+    Main entry for goephor
 '''
+from __future__ import absolute_import
+from goephor.core.Chain import Run
 import argparse
-from core.Chain import Run
 
 
 def menu():

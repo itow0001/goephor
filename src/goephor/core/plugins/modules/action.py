@@ -205,7 +205,7 @@ class Action(object):
         ''' Initializes the class
         :note: we initialize the plugin class so we can pass info into action Obj before run.
         '''
-        IMP = 'core.plugins.%s' % (self.IMP)
+        IMP = 'goephor.core.plugins.%s' % (self.IMP)
         _module = importlib.import_module(IMP)
         CLASS = getattr(_module, self.CLASS)
         CLASS = CLASS(self.action_manager)
