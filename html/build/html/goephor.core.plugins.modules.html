@@ -1,0 +1,860 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>goephor.core.plugins.modules package &mdash; goephor 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="goephor 1.0.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">goephor 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="goephor-core-plugins-modules-package">
+<h1>goephor.core.plugins.modules package<a class="headerlink" href="#goephor-core-plugins-modules-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-goephor.core.plugins.modules.action">
+<span id="goephor-core-plugins-modules-action-module"></span><h2>goephor.core.plugins.modules.action module<a class="headerlink" href="#module-goephor.core.plugins.modules.action" title="Permalink to this headline">¶</a></h2>
+<p>Created on Apr 26, 2016</p>
+<p>&#64;author: iitow</p>
+<dl class="class">
+<dt id="goephor.core.plugins.modules.action.Action">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.action.</code><code class="descname">Action</code><span class="sig-paren">(</span><em>name</em>, <em>IMP</em>, <em>CLASS</em>, <em>DEF</em>, <em>parameters</em>, <em>defaults</em>, <em>action_manager</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Object containing instructions to create and execute actions</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Action.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Action.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>execute the instruction</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Action.get_receipt">
+<code class="descname">get_receipt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Action.get_receipt" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a dictionary of all Action info</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Action.pprint">
+<code class="descname">pprint</code><span class="sig-paren">(</span><em>title=''</em>, <em>footer=''</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Action.pprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>print state about the object pretty</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> &#8211; String</li>
+<li><strong>footer</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Action.set_ignore">
+<code class="descname">set_ignore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Action.set_ignore" title="Permalink to this definition">¶</a></dt>
+<dd><p>catch the ignore parameter and delete it in defaults</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="goephor.core.plugins.modules.action.Manager">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.action.</code><code class="descname">Manager</code><span class="sig-paren">(</span><em>config</em>, <em>EnvManager</em>, <em>verbose=False</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class manages state of action objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body">This is passed into each of the plugins and can be used to manage</td>
+</tr>
+</tbody>
+</table>
+<p>Serveral states.</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Manager.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>action_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Manager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append an action obj to chain</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action_obj</strong> &#8211; Obj</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Manager.get_index">
+<code class="descname">get_index</code><span class="sig-paren">(</span><em>memory_address</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Manager.get_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the index number of an action object in the chain</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>memory_address</strong> &#8211; String, of object.__repr__(self)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body">See plugins.condition for usage</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Manager.insert">
+<code class="descname">insert</code><span class="sig-paren">(</span><em>index</em>, <em>action_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Manager.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert action object at a given index in the chain</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> &#8211; Int of chain</li>
+<li><strong>action_obj</strong> &#8211; Obj</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.action.Manager.to_obj">
+<code class="descname">to_obj</code><span class="sig-paren">(</span><em>action</em>, <em>action_manager</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.action.Manager.to_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts action dictionary to action obj</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>action</strong> &#8211; base action dict</li>
+<li><strong>action_manager</strong> &#8211; from chain.Run pass in Action_manager</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">We initialize the action_manager in chain.Run and pass</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>the obj back to each Action Obj which gives the class full
+access to initialize nest actions and have access to environment.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-goephor.core.plugins.modules.environment">
+<span id="goephor-core-plugins-modules-environment-module"></span><h2>goephor.core.plugins.modules.environment module<a class="headerlink" href="#module-goephor.core.plugins.modules.environment" title="Permalink to this headline">¶</a></h2>
+<p>Created on Apr 26, 2016</p>
+<p>&#64;author: iitow</p>
+<dl class="class">
+<dt id="goephor.core.plugins.modules.environment.EnvManager">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.environment.</code><code class="descname">EnvManager</code><span class="sig-paren">(</span><em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.environment.EnvManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Management of runtime environment</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body">This is passed to each of the plugins when the action obj is initialized</td>
+</tr>
+</tbody>
+</table>
+<p>Its contained within the action_manager.</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.environment.EnvManager.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.environment.EnvManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>get an environment variable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.environment.EnvManager.sanitize">
+<code class="descname">sanitize</code><span class="sig-paren">(</span><em>values</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.environment.EnvManager.sanitize" title="Permalink to this definition">¶</a></dt>
+<dd><p>sanitizes environment variables in a given values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>values</strong> &#8211; List</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.environment.EnvManager.set">
+<code class="descname">set</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>reset=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.environment.EnvManager.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>set an environment variable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> &#8211; String</li>
+<li><strong>value</strong> &#8211; String</li>
+<li><strong>reset</strong> &#8211; Bool, if false it will not override an existing env value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-goephor.core.plugins.modules.git_kit">
+<span id="goephor-core-plugins-modules-git-kit-module"></span><h2>goephor.core.plugins.modules.git_kit module<a class="headerlink" href="#module-goephor.core.plugins.modules.git_kit" title="Permalink to this headline">¶</a></h2>
+<p>Created on Oct 8, 2015</p>
+<p>&#64;author: iitow</p>
+<dl class="class">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.git_kit.</code><code class="descname">Branch_actions</code><span class="sig-paren">(</span><em>repo</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class handles all branch related actions
+&#64;requires: Repo obj</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.branch">
+<code class="descname">branch</code><span class="sig-paren">(</span><em>branch_name</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.branch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new local branch
+&#64;param branch_name: string, name of the new branch to create it
+&#64;return: boolean, success/failure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.branch_from">
+<code class="descname">branch_from</code><span class="sig-paren">(</span><em>src_branch</em>, <em>new_branch</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.branch_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a branch from existing branch
+&#64;param src_branch: original branch name
+&#64;param dest_branch: new branch name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.branch_is">
+<code class="descname">branch_is</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.branch_is" title="Permalink to this definition">¶</a></dt>
+<dd><p>provides the current branch
+&#64;return: the current branch</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.branch_list">
+<code class="descname">branch_list</code><span class="sig-paren">(</span><em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.branch_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>provides a list of all branches
+&#64;param verbose: boolean, prints branches out
+&#64;return: list of git.branch objects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.checkout">
+<code class="descname">checkout</code><span class="sig-paren">(</span><em>branch_name</em>, <em>remote='origin'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.checkout" title="Permalink to this definition">¶</a></dt>
+<dd><p>checks out a specific branch
+&#64;param branch_name: string, branch you wish to checkout
+&#64;param remote: remote name default is origin
+&#64;return: boolean, success/failure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>branch_name</em>, <em>remote='origin'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete local branch
+&#64;param branch_name: string branch name
+&#64;param remote: remote reference  
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.has_head">
+<code class="descname">has_head</code><span class="sig-paren">(</span><em>branch_name</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.has_head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for branch head
+&#64;param branch_name: string of branch name
+&#64;return: head obj</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.has_reference">
+<code class="descname">has_reference</code><span class="sig-paren">(</span><em>branch_name</em>, <em>remote='origin'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.has_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for reference
+&#64;param branch_name: string of branch name
+&#64;return: reference obj</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.push">
+<code class="descname">push</code><span class="sig-paren">(</span><em>branch_name</em>, <em>remote='origin'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push branch to remote
+&#64;param branch_name: string branch name
+&#64;param remote: remote reference  
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Branch_actions.remote_delete">
+<code class="descname">remote_delete</code><span class="sig-paren">(</span><em>branch_name</em>, <em>remote='origin'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Branch_actions.remote_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes branch from github remote
+&#64;param branch_name: string branch name
+&#64;param remote: remote reference  
+&#64;return: boolean</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="goephor.core.plugins.modules.git_kit.Commit_actions">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.git_kit.</code><code class="descname">Commit_actions</code><span class="sig-paren">(</span><em>repo</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Commit_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class handles all commit type actions</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Commit_actions.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Commit_actions.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds files to git index
+&#64;param file_name: name of the file to commit
+&#64;return: boolean, success/failure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Commit_actions.cherry_pick">
+<code class="descname">cherry_pick</code><span class="sig-paren">(</span><em>sha1_str</em>, <em>merge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Commit_actions.cherry_pick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cherry picks a commit
+&#64;param sha1_str: sha1 string of commit
+&#64;return: boolean True/False</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Commit_actions.commit">
+<code class="descname">commit</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Commit_actions.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commits changes
+&#64;param msg: string, the commit message
+&#64;return: boolean, success/failure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Commit_actions.diff_tree">
+<code class="descname">diff_tree</code><span class="sig-paren">(</span><em>sha1_str</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Commit_actions.diff_tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Commit_actions.search_log">
+<code class="descname">search_log</code><span class="sig-paren">(</span><em>search</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Commit_actions.search_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="goephor.core.plugins.modules.git_kit.Remote_actions">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.git_kit.</code><code class="descname">Remote_actions</code><span class="sig-paren">(</span><em>repo</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Remote_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class handles all remote actions</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Remote_actions.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>remote</em>, <em>name='upstream'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Remote_actions.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a remote to repo
+&#64;param remote: remote url string example. <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;west&#46;isilon&#46;com">git<span>&#64;</span>github<span>&#46;</span>west<span>&#46;</span>isilon<span>&#46;</span>com</a>:iitow/onefs.git
+&#64;param name: reference to the remote example. upstream
+&#64;return: boolean True/False</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Remote_actions.fetch">
+<code class="descname">fetch</code><span class="sig-paren">(</span><em>remote</em>, <em>name='upstream'</em>, <em>branch='master'</em>, <em>add_remote=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Remote_actions.fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch remote branches
+&#64;param remote: repo url example. <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;west&#46;isilon&#46;com">git<span>&#64;</span>github<span>&#46;</span>west<span>&#46;</span>isilon<span>&#46;</span>com</a>:isilon/onefs.git
+&#64;param name: name of the remote
+&#64;param branch; branch to switch to when fetching
+&#64;param add_remote: boolean add a remote
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Remote_actions.fork_sync">
+<code class="descname">fork_sync</code><span class="sig-paren">(</span><em>remote</em>, <em>name='upstream'</em>, <em>branch='master'</em>, <em>add_remote=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Remote_actions.fork_sync" title="Permalink to this definition">¶</a></dt>
+<dd><p>Syncs a fork of repo with another repository
+&#64;param remote: remote url string example. <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;west&#46;isilon&#46;com">git<span>&#64;</span>github<span>&#46;</span>west<span>&#46;</span>isilon<span>&#46;</span>com</a>:iitow/onefs.git
+&#64;param name: reference to the remote example. upstream
+&#64;return: boolean True/False</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Remote_actions.has_remote">
+<code class="descname">has_remote</code><span class="sig-paren">(</span><em>search</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Remote_actions.has_remote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Remote_actions.list">
+<code class="descname">list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Remote_actions.list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="goephor.core.plugins.modules.git_kit.Repo_actions">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.git_kit.</code><code class="descname">Repo_actions</code><span class="sig-paren">(</span><em>repo_path</em>, <em>set_bare=False</em>, <em>ssh_config='~/.ssh/config'</em>, <em>git_host='github.west.isilon.com'</em>, <em>set_ssh_config=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Repo_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Repo_actions.attach">
+<code class="descname">attach</code><span class="sig-paren">(</span><em>repo_path</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Repo_actions.attach" title="Permalink to this definition">¶</a></dt>
+<dd><p>attach to a git repo on your local system
+&#64;param repo_path: system path to repo
+&#64;return: boolean, success/failure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Repo_actions.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><em>remote_ssh</em>, <em>branch='master'</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Repo_actions.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone a repository from a remote location
+&#64;param remote_ssh: provide the ssh full info example. <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;west&#46;isilon&#46;com">git<span>&#64;</span>github<span>&#46;</span>west<span>&#46;</span>isilon<span>&#46;</span>com</a>:iitow/scm-tools.git
+&#64;return: boolean, success/failure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Repo_actions.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>set_bare=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Repo_actions.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new repo on your local system
+&#64;param set_bare: boolean, default is False, creates a &#8216;bare repo&#8217;, to run like a src repo 
+&#64;return: boolean, success/failure
+&#64;note: Shared repositories should always be created with the set_bare flag and</p>
+<blockquote>
+<div>should be stored in a directory called &lt;projectname&gt;.git</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.git_kit.Repo_actions.untracked_files">
+<code class="descname">untracked_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.git_kit.Repo_actions.untracked_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>list all untracked files
+&#64;return: list of untracked files</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-goephor.core.plugins.modules.http">
+<span id="goephor-core-plugins-modules-http-module"></span><h2>goephor.core.plugins.modules.http module<a class="headerlink" href="#module-goephor.core.plugins.modules.http" title="Permalink to this headline">¶</a></h2>
+<p>Created on Jun 2, 2015</p>
+<p>&#64;author: iitow</p>
+<dl class="class">
+<dt id="goephor.core.plugins.modules.http.Restful">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.http.</code><code class="descname">Restful</code><span class="sig-paren">(</span><em>base_url</em>, <em>auth_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.http.Restful" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.http.Restful.post_multipart">
+<code class="descname">post_multipart</code><span class="sig-paren">(</span><em>url_ext</em>, <em>data=None</em>, <em>files=None</em>, <em>strict=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.http.Restful.post_multipart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.http.Restful.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>rest_action</em>, <em>url_ext</em>, <em>data=None</em>, <em>strict=False</em>, <em>Content_Type='application/json'</em>, <em>verify=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.http.Restful.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic call to handle all types of restful requests</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rest_action</strong> &#8211; </td>
+</tr>
+</tbody>
+</table>
+<p>Possible option, &#8216;GET&#8217;,&#8217;PUT&#8217;,&#8217;POST&#8217;,&#8217;PATCH&#8217;
+:param url_ext:
+added to base url example.https://github.west.isilon.com/&lt;url_ext&gt;
+:param strict:
+False, will permit errors as warning &amp; return code,
+True will exit with code
+:param Content_Type:
+How info is formed, example application/xml
+:param verify:
+Check for Certificates
+:return: String of content, or error exit code</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-goephor.core.plugins.modules.remote">
+<span id="goephor-core-plugins-modules-remote-module"></span><h2>goephor.core.plugins.modules.remote module<a class="headerlink" href="#module-goephor.core.plugins.modules.remote" title="Permalink to this headline">¶</a></h2>
+<p>Created on Nov 18, 2015</p>
+<p>&#64;author: iitow</p>
+<dl class="class">
+<dt id="goephor.core.plugins.modules.remote.Run">
+<em class="property">class </em><code class="descclassname">goephor.core.plugins.modules.remote.</code><code class="descname">Run</code><span class="sig-paren">(</span><em>server</em>, <em>rsa_private</em>, <em>user</em>, <em>password</em>, <em>strict=True</em>, <em>verbose=True</em>, <em>show_cmd=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class represents a remote machine
+using SSH to perform all needed actions</p>
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.cmd">
+<code class="descname">cmd</code><span class="sig-paren">(</span><em>cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a shell command on the remote
+&#64;return: session info</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em>, <em>dest</em>, <em>opts=''</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a copy operation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>path</em>, <em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a file on the remote system returns a list of values
+&#64;param path: path where file should exist
+&#64;param file: name of the file
+&#64;return: output from the session</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.get_MD5">
+<code class="descname">get_MD5</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.get_MD5" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets the md5sum of a file
+Supports Freebsd and Linux
+&#64;return: md5 string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.has_access">
+<code class="descname">has_access</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.has_access" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a key already exist on the remote?
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.has_dir">
+<code class="descname">has_dir</code><span class="sig-paren">(</span><em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.has_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a file exist on the remote?
+&#64;param path: path where file should exist
+&#64;param file: name of the file
+&#64;return boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.has_file">
+<code class="descname">has_file</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.has_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a file exist on the remote?
+&#64;param path: path where file should exist
+&#64;param file: name of the file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.is_alive">
+<code class="descname">is_alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pings the remote to make sure its a valid address
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.is_alive_poll">
+<code class="descname">is_alive_poll</code><span class="sig-paren">(</span><em>timeout=30</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.is_alive_poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polls for a ping
+&#64;param timeout: default 30 seconds
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.is_writable">
+<code class="descname">is_writable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.is_writable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check to make sure the file system is writable
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.is_writable_poll">
+<code class="descname">is_writable_poll</code><span class="sig-paren">(</span><em>timeout=30</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.is_writable_poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check to make sure file system is writable poll
+&#64;param timeout: default 30 seconds
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>src</em>, <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a move operation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.onefs_version">
+<code class="descname">onefs_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.onefs_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.os_type">
+<code class="descname">os_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.os_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the os type of the system
+&#64;return: returns os string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>path</em>, <em>recursive=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a file or directory on remote
+&#64;param path:path to file/dir to remove
+&#64;param recursive: adds a -r to the rm command
+&#64;return: boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="goephor.core.plugins.modules.remote.Run.set_rsa">
+<code class="descname">set_rsa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.remote.Run.set_rsa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Put a rsa key on the remote
+&#64;return: None</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-goephor.core.plugins.modules.terminal">
+<span id="goephor-core-plugins-modules-terminal-module"></span><h2>goephor.core.plugins.modules.terminal module<a class="headerlink" href="#module-goephor.core.plugins.modules.terminal" title="Permalink to this headline">¶</a></h2>
+<p>Created on Nov 18, 2015</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">iitow</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.create_rsa_public">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">create_rsa_public</code><span class="sig-paren">(</span><em>rsa_private</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.create_rsa_public" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate a public key from the private key</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsa_private</strong> &#8211; path to private key</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.event">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">event</code><span class="sig-paren">(</span><em>fd</em>, <em>searches</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>find all output and inspect it for searches dict key &amp; value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fd</strong> &#8211; forked process</li>
+<li><strong>searches</strong> &#8211; dictionary key value pair</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.rsync">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">rsync</code><span class="sig-paren">(</span><em>server</em>, <em>src</em>, <em>dest</em>, <em>option='pull'</em>, <em>remote=True</em>, <em>excludes=[]</em>, <em>rsa_private='/root/.ssh/id_rsa.default'</em>, <em>user='root'</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.rsync" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs an rsync of files; requires ssh keys setup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> &#8211; <a class="reference external" href="mailto:username&#37;&#52;&#48;server">username<span>&#64;</span>server</a></li>
+<li><strong>src</strong> &#8211; full path of src directory/file</li>
+<li><strong>dest</strong> &#8211; full path to dest directory</li>
+<li><strong>option</strong> &#8211; [pull] get file from a remote,</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>[push] put a file from your server into a remote
+:param   remote: [True] assumes we are working with
+a remote system, [False] assumes we are copying files locally
+:param excludes: exclude directory, or file from array
+:note: &#8211;delete will delete files on dest if it does not match src</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.set_rsa">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">set_rsa</code><span class="sig-paren">(</span><em>host</em>, <em>rsa_pub</em>, <em>user</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.set_rsa" title="Permalink to this definition">¶</a></dt>
+<dd><p>logs into system via ssh
+and appends to authorized_keys using username password</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>host</strong> &#8211; name over the server</li>
+<li><strong>rsa_pub</strong> &#8211; absolute path to your id_rsa.pub</li>
+<li><strong>user</strong> &#8211; host login creds</li>
+<li><strong>password</strong> &#8211; host login creds</li>
+<li><strong>home_dir</strong> &#8211; home directory for user</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.shell">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">shell</code><span class="sig-paren">(</span><em>cmd</em>, <em>verbose=False</em>, <em>strict=False</em>, <em>shell=True</em>, <em>buffer_size=1048576</em>, <em>show_cmd=False</em>, <em>show_output=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.shell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run Shell commands  [Non Blocking, no Buffer, print live, log it]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cmd</strong> &#8211; String command</td>
+</tr>
+</tbody>
+</table>
+<p>:param verbose:bool
+:param strict:bool will exit based on code if enabled
+:return:  {command, stdout, code} as dict</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.ssh">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">ssh</code><span class="sig-paren">(</span><em>server</em>, <em>cmd</em>, <em>rsa_private='/root/.ssh/id_rsa.default'</em>, <em>add_rsa=False</em>, <em>user='root'</em>, <em>password='a'</em>, <em>strict=True</em>, <em>verbose=True</em>, <em>show_cmd=True</em>, <em>shell_set=True</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.ssh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a single ssh command on a remote server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> &#8211; <a class="reference external" href="mailto:username&#37;&#52;&#48;servername">username<span>&#64;</span>servername</a></li>
+<li><strong>cmd</strong> &#8211; single command you wish to run</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="goephor.core.plugins.modules.terminal.waitfor">
+<code class="descclassname">goephor.core.plugins.modules.terminal.</code><code class="descname">waitfor</code><span class="sig-paren">(</span><em>fd</em><span class="sig-paren">)</span><a class="headerlink" href="#goephor.core.plugins.modules.terminal.waitfor" title="Permalink to this definition">¶</a></dt>
+<dd><p>poll the child for input</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fd</strong> &#8211; forked process</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-goephor.core.plugins.modules">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-goephor.core.plugins.modules" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">goephor.core.plugins.modules package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules.action">goephor.core.plugins.modules.action module</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules.environment">goephor.core.plugins.modules.environment module</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules.git_kit">goephor.core.plugins.modules.git_kit module</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules.http">goephor.core.plugins.modules.http module</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules.remote">goephor.core.plugins.modules.remote module</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules.terminal">goephor.core.plugins.modules.terminal module</a></li>
+<li><a class="reference internal" href="#module-goephor.core.plugins.modules">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/goephor.core.plugins.modules.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, iitow@isilon.com.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.2</a>
+      
+      |
+      <a href="_sources/goephor.core.plugins.modules.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

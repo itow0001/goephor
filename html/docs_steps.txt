@@ -1,0 +1,19 @@
+### Setup the gh-pages branch
+  git branch gh-pages
+  git symbolic-ref HEAD refs/heads/gh-pages  # auto-switches branches to gh-pages
+  rm .git/index
+  git clean -fdx
+  mkdir -p html
+  git checkout <urBranch>
+
+### Generate sphinx template 
+  sphinx-quickstart
+  cd html
+  sphinx-quickstart
+  * . for build & source dir location
+  * Y separate build & src
+  * Y autodoc
+  nano source/conf.py 
+  sys.path.insert(0, os.path.abspath('../..'))
+  sphinx-apidoc -f -o source/ ../src
+  make html
