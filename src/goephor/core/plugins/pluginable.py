@@ -26,6 +26,9 @@ class DecoMeta(type):
         We use this to append defaults actions here
         '''
         def wrapper(*args, **kwargs):
+            '''
+            This is a decorator for adding global key,value pairs
+            '''
             # filter updates
             filter_args = []
             filter_kwargs = {}

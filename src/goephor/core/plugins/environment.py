@@ -1,7 +1,7 @@
 '''
 Created on Apr 27, 2016
 
-@author: iitow
+:author: iitow
 '''
 
 from pluginable import Plugin
