@@ -127,10 +127,10 @@ file @ **/goephor/core/plugins/receipt.py**
 **param path:** String, system path to put receipt
 
 **param defaults:** additional params
-:example
-**
+
+**example:**
 ```
-- receipt.maker.on_actions:**
+- receipt.maker.on_actions:
     - "./receipt.yaml"
 ``` 
 
@@ -142,15 +142,16 @@ file @ **/goephor/core/plugins/receipt.py**
 **param path:** String, system path to put receipt
 
 **param defaults:** additional params
-:example
-**
+
+**example:**
 ```
-- receipt.maker.custom:**
+- receipt.maker.custom
+**
     - "./receipt.yaml"
-    - var1
-** "SOMEVALUE1"
-    - var2:** "SOMEVALUE2"
-    - var3: "SOMEVALUE3"
+    - var1:** "SOMEVALUE1"
+    - var2
+** "SOMEVALUE2"
+    - var3:** "SOMEVALUE3"
 ``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/__init__.py**
@@ -183,12 +184,13 @@ file @ **/goephor/core/plugins/scm.py**
 **param new_local_path:** String, full path and desired dir name
 
 **param remote:** String, git repo
-:example
-**
+
+**example:**
 ```
-       - scm.git.clone:**
+       - scm.git.clone
+**
               - "/tmp/goephor"
-              - "git@github.west.isilon.com:eng-tools/goephor"
+              - "git@github.west.isilon.com:**eng-tools/goephor"
 ``` 
 
  ***def delete*** 
@@ -196,10 +198,10 @@ file @ **/goephor/core/plugins/scm.py**
       Delete a local repo
 
 **param local_path:** String
-:example
-**
+
+**example:**
 ```
-    - scm.git.delete:**
+    - scm.git.delete:
         - "/tmp/goephor"
 ``` 
 ********************************************************************************************
@@ -256,7 +258,8 @@ file @ **/goephor/core/plugins/freebsd.py**
 **param jid:** String jail id
 
 **return:** command output
-:example:
+
+**example:**
 ```
 - freebsd.terminal.jexec
     - "echo 'running within jail'"
@@ -273,12 +276,12 @@ file @ **/goephor/core/plugins/freebsd.py**
 **param url:** String
 
 **return:** String output
-:example
-**
+
+**example:**
 ```
 - freebsd.terminal.fetch
     - "/tmp"
-    - "http:**//SomeUrl/to/file"
+    - "http://SomeUrl/to/file"
 ``` 
 
  ***def __init__*** 
@@ -295,7 +298,8 @@ file @ **/goephor/core/plugins/freebsd.py**
 **param name:** String
 
 **return:** output
-:example:
+
+**example:**
 ```
 - freebsd.pkg.install
     - "texinfo"
@@ -389,10 +393,10 @@ file @ **/goephor/core/plugins/system.py**
 
 
 **param cmd:** String
-:example
-**
+
+**example:**
 ```
-- system.terminal.shell:**
+- system.terminal.shell:
     - 'echo " THIS IS IT"' 
 ``` 
 
@@ -488,9 +492,10 @@ file @ **/goephor/core/plugins/example.py**
 ** String
 :**return
 ** runme_output
-:**example:
+:**example
+**
 ```
-- example.example.runme:
+- example.example.runme:**
     - "hello"
     - "world"
 ``` 
@@ -754,9 +759,9 @@ is an empty README.md
  ***def clone*** 
 
       Clone a repository from a remote location
-@param remote_ssh: provide the ssh full info example. git@github.west.isilon.com
-**iitow/scm-tools.git
-@return:** boolean, success/failure  
+@param remote_ssh
+** provide the ssh full info example. git@github.west.isilon.com:**iitow/scm-tools.git
+@return: boolean, success/failure  
 
  ***def untracked_files*** 
 
@@ -887,29 +892,31 @@ is an empty README.md
  ***def add*** 
 
       add a remote to repo
-@param remote: remote url string example. git@github.west.isilon.com
-**iitow/onefs.git
-@param name:** reference to the remote example. upstream
-@return: boolean True/False  
+@param remote
+** remote url string example. git@github.west.isilon.com:**iitow/onefs.git
+@param name
+** reference to the remote example. upstream
+@return:** boolean True/False  
 
  ***def fork_sync*** 
 
       Syncs a fork of repo with another repository
-@param remote: remote url string example. git@github.west.isilon.com
-**iitow/onefs.git
-@param name:** reference to the remote example. upstream
-@return: boolean True/False  
+@param remote
+** remote url string example. git@github.west.isilon.com:**iitow/onefs.git
+@param name
+** reference to the remote example. upstream
+@return:** boolean True/False  
 
  ***def fetch*** 
 
       Fetch remote branches
-@param remote: repo url example. git@github.west.isilon.com
-**isilon/onefs.git
-@param name:** name of the remote
+@param remote
+** repo url example. git@github.west.isilon.com:**isilon/onefs.git
+@param name
+** name of the remote
 @param branch; branch to switch to when fetching
-@param add_remote
-** boolean add a remote
-@return:** boolean   
+@param add_remote:** boolean add a remote
+@return: boolean   
 ********************************************************************************************
 file @ **/goephor/core/plugins/modules/__init__.py**
 
@@ -1228,13 +1235,13 @@ added to base url example.https
 **
 False, will permit errors as warning & return code,
 True will exit with code
-:**param Content_Type:
+:**param Content_Type
+**
 How info is formed, example application/xml
-
-**param verify:**
+:**param verify
+**
 Check for Certificates
-
-**return:** String of content, or error exit code 
+:**return: String of content, or error exit code 
 
  ***def post_multipart*** 
 
