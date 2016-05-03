@@ -8,8 +8,13 @@ import types
 import os
 
 class DecoMeta(type):
+    '''
+    This is a meta class for decorating all classes
+    '''
     def __new__(cls, name, bases, attrs):
-
+        '''
+        Allows for grabbing class info for parsing
+        '''
         for attr_name, attr_value in attrs.iteritems():
             if isinstance(attr_value, types.FunctionType):
                 attrs[attr_name] = cls.deco(attr_value)
@@ -17,6 +22,9 @@ class DecoMeta(type):
 
     @classmethod
     def deco(cls, func):
+        '''
+        We use this to append defaults actions here
+        '''
         def wrapper(*args, **kwargs):
             # filter updates
             filter_args = []
@@ -48,10 +56,13 @@ class DecoMeta(type):
 
 
 class Plugin(object):
-    ''' This is the base class for plugin which all plugins must inherit from.
+    ''' This is the base class for a plugin
     '''
     __metaclass__ = DecoMeta
     def __init__(self, action_manager):
+        '''
+        Plugin constructor
+        '''
         self.action_manager = action_manager
         self.verbose = self.action_manager.verbose
         self.debug = self.action_manager.debug

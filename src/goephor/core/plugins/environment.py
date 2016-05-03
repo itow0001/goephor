@@ -8,11 +8,22 @@ from pluginable import Plugin
 
 
 class env(Plugin):
-    ''' This class Represents an example
+    ''' Environment specific tasks go here
     '''
     def __init__(self, action_manager):
+        '''
+        env Constructor
+        
+        :param action_manager: Obj, from action_manager class
+        '''
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
 
     def set(self, key, value, **defaults):
+        '''
+        Set an environment variable
+        
+        :param key: String
+        :param value: String
+        '''
         self.EnvManager.set(key, value)

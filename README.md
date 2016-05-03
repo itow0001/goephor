@@ -110,7 +110,7 @@ file @ **/goephor/core/plugins/receipt.py**
 
 ####class maker####
 
-      This class represents a receipt maker class
+      Receipt creator tasks go here
      
 
  ***def __init__*** 
@@ -136,7 +136,23 @@ file @ **/goephor/core/plugins/receipt.py**
 
  ***def custom*** 
 
-      Create a custom receipt from key/value pairs in defaults 
+      Create a custom receipt from key/value pairs in defaults
+
+
+**param path:** String, system path to put receipt
+
+**param defaults:** additional params
+
+**example:**
+```
+- receipt.maker.custom
+**
+    - "./receipt.yaml"
+    - var1:** "SOMEVALUE1"
+    - var2
+** "SOMEVALUE2"
+    - var3:** "SOMEVALUE3"
+``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/__init__.py**
 
@@ -155,15 +171,39 @@ file @ **/goephor/core/plugins/scm.py**
 
  ***def __init__*** 
 
-      None 
+      git Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def clone*** 
 
-      None 
+      Clone a git repo
+
+
+**param new_local_path:** String, full path and desired dir name
+
+**param remote:** String, git repo
+
+**example:**
+```
+       - scm.git.clone
+**
+              - "/tmp/goephor"
+              - "git@github.west.isilon.com:**eng-tools/goephor"
+``` 
 
  ***def delete*** 
 
-      None 
+      Delete a local repo
+
+**param local_path:** String
+
+**example:**
+```
+    - scm.git.delete:
+        - "/tmp/goephor"
+``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/freebsd.py**
 
@@ -185,31 +225,92 @@ file @ **/goephor/core/plugins/freebsd.py**
 
  ***def __init__*** 
 
-      None 
+      terminal Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def jls*** 
 
-      None 
+      Runs the jls command
+
+
+**param hostname:** String
+
+**param return_type:** String options
+** path,ip,jid
+:**return
+** String of return_type
+:**example:
+```
+- freebsd.terminal.jls
+    - "eng-sea-build10"
+    - "jid"
+``` 
 
  ***def jexec*** 
 
-      None 
+      Runs a command within a jail
+
+
+**param cmd:** String
+
+**param jid:** String jail id
+
+**return:** command output
+
+**example:**
+```
+- freebsd.terminal.jexec
+    - "echo 'running within jail'"
+    - "2"
+``` 
 
  ***def fetch*** 
 
-      None 
+      Use fetch to get things from url path
+
+
+**param path:** String, current working dir
+
+**param url:** String
+
+**return:** String output
+
+**example:**
+```
+- freebsd.terminal.fetch
+    - "/tmp"
+    - "http://SomeUrl/to/file"
+``` 
 
  ***def __init__*** 
 
-      None 
+      pkg Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def install*** 
 
-      None 
+      Install a package
+
+**param name:** String
+
+**return:** output
+
+**example:**
+```
+- freebsd.pkg.install
+    - "texinfo"
+``` 
 
  ***def __init__*** 
 
-      None 
+      jails Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 ********************************************************************************************
 file @ **/goephor/core/plugins/pluginable.py**
 
@@ -219,24 +320,24 @@ file @ **/goephor/core/plugins/pluginable.py**
 
 ####class DecoMeta####
 
-      None 
+      This is a meta class for decorating all classes 
 
 ####class Plugin####
 
-      This is the base class for plugin which all plugins must inherit from.
+      This is the base class for a plugin
      
 
  ***def __new__*** 
 
-      None 
+      Allows for grabbing class info for parsing 
 
  ***def deco*** 
 
-      None 
+      We use this to append defaults actions here 
 
  ***def __init__*** 
 
-      None 
+      Plugin constructor 
 
  ***def wrapper*** 
 
@@ -250,16 +351,24 @@ file @ **/goephor/core/plugins/environment.py**
 
 ####class env####
 
-      This class Represents an example
+      Environment specific tasks go here
      
 
  ***def __init__*** 
 
-      None 
+      env Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def set*** 
 
-      None 
+      Set an environment variable
+
+
+**param key:** String
+
+**param value:** String 
 ********************************************************************************************
 file @ **/goephor/core/plugins/system.py**
 
@@ -273,15 +382,50 @@ file @ **/goephor/core/plugins/system.py**
 
  ***def __init__*** 
 
-      None 
+      terminal Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def shell*** 
 
-      None 
+      Run a shell command
+
+
+**param cmd:** String
+
+**example:**
+```
+- system.terminal.shell:
+    - 'echo " THIS IS IT"' 
+``` 
 
  ***def rsync*** 
 
-      None 
+      Perform an rsync
+
+**param user:** String
+:param rsa_private_path
+** String
+:**param server
+** String
+:**param src
+** String, source dir
+:**param dest
+** String, dest dir
+:**param options
+** String, push,pull
+:**example
+**
+```
+- system.terminal.rsync:**
+      - "root"
+      - "~/.ssh/id_rsa"
+      - "Some.Server.Name"
+      - "/tmp/remote"
+      - "/tmp/local"
+      - "pull"
+``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/remote.py**
 
@@ -295,11 +439,31 @@ file @ **/goephor/core/plugins/remote.py**
 
  ***def __init__*** 
 
-      None 
+      ssh Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def cmd*** 
 
-      None 
+      Run a command remotely via ssh
+
+**param cmdstr:** String
+:param server
+** String
+:**param user
+** String
+:**param rsa_private_path
+** String
+:**example
+**
+```
+       - remote.ssh.cmd:**
+            - "uname -a"
+            - "some.server.com"
+            - "root"
+            - "~/.ssh/id_rsa"
+``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/example.py**
 
@@ -314,11 +478,27 @@ file @ **/goephor/core/plugins/example.py**
 
  ***def __init__*** 
 
-      None 
+      example Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def runme*** 
 
-      None 
+      This is an example of setting up an action
+
+**param var1:** String
+:param var2
+** String
+:**return
+** runme_output
+:**example
+**
+```
+- example.example.runme:**
+    - "hello"
+    - "world"
+``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/http.py**
 
@@ -346,54 +526,50 @@ file @ **/goephor/core/plugins/condition.py**
 
 ####class statement####
 
-      None 
+      Conditional statements go here 
 
  ***def __init__*** 
 
-      None 
+      maker Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def add_obj*** 
 
-      None 
+      Private def to add action out of band
+
+**param clause:** dict, if statement  
 
  ***def IF*** 
 
-      None 
-********************************************************************************************
-file @ **/goephor/core/plugins/remotable.py**
+      Represents an if statement
 
-      Created on Jan 29, 2016
+**param arg1:** int,str
 
-@author: iitow
+**param operator:** String, follows python rules
 
- ***def _has_keys*** 
-
-      Collect all environment variables
-@param str: command string 
-
- ***def _sanitize*** 
-
-      Replace all environment variables into command
-@param str: command string 
-
- ***def cmd*** 
-
-      Initializes a Remote ssh session
-@param server
-** server address
-@param cmd:** string shell command
-@param rsa_private
-** path to the private key file
-@param user:** Username used to log into system
-@param password
-** Password used to log into system
-@param strict:** boolean fail on error
-@param verbose
-** print out all debug messaging
-@param show_cmd:** show the command given to remote server
-@return
-** session info
-@note:** environment variables but be as follows ${var} to pass over to ssh 
+**param arg12 int,str
+:**param THEN
+** List, several other actions
+:**param ELSE
+** List, several other actions
+:**example
+**
+```
+   -  condition.statement.IF:**
+                        - "${var1}"
+                        - "=="
+                        - "${var2}"
+                        - THEN
+**
+                          - system.terminal.shell:**
+                            - "echo 'THEN IS HAPPENING'"
+                        - ELSE
+**
+                          - system.terminal.shell:**
+                            - "echo 'ELSE IS HAPPENING'"
+``` 
 ********************************************************************************************
 file @ **/goephor/core/plugins/modules/action.py**
 

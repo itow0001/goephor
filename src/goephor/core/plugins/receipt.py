@@ -9,7 +9,7 @@ import json
 
 
 class maker(Plugin):
-    ''' This class represents a receipt maker class
+    ''' Receipt creator tasks go here
     '''
     def __init__(self, action_manager):
         '''
@@ -52,6 +52,17 @@ class maker(Plugin):
     def custom(self, path, **defaults):
         '''
         Create a custom receipt from key/value pairs in defaults
+        
+        :param path: String, system path to put receipt
+        :param defaults: additional params
+        :example:
+        ```
+        - receipt.maker.custom:
+            - "./receipt.yaml"
+            - var1: "SOMEVALUE1"
+            - var2: "SOMEVALUE2"
+            - var3: "SOMEVALUE3"
+        ```
         '''
         with open(path, 'w') as file:
             if defaults.get('type') == 'json':
