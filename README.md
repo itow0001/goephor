@@ -5,8 +5,10 @@ file @ **/goephor.py**
 
       Created on Jan 9, 2016
 
-:author: iitow
-:note: Look to __main__.py for menu logic
+
+**author** iitow
+
+**note** Look to __main__.py for menu logic
 **********************************************
 file @ **/goephor/__init__.py**
 
@@ -34,7 +36,8 @@ file @ **/goephor/core/Chain.py**
 
       Created on Apr 25, 2016
 
-:author: iitow
+
+**author** iitow
 
 ####class Run####
 
@@ -912,7 +915,8 @@ file @ **/goephor/core/plugins/modules/terminal.py**
 
       Created on Nov 18, 2015
 
-:author: iitow
+
+**author** iitow
 
  ***def waitfor*** 
 
