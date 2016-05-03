@@ -8546,3 +8546,1935 @@ __ return: String of content, or error exit code
    def post_multipart
 
       None
+
+file @ **/goephor.py**
+
+      Created on Jan 9, 2016
+
+:author: iitow
+:note: Look to __main__.py for menu logic
+
+file @ **/goephor/__init__.py**
+
+      
+
+file @ **/goephor/__main__.py**
+
+      Main entry for goephor
+
+   def menu
+
+      None
+
+   def parse_envs
+
+      None
+
+   def main
+
+      None
+
+file @ **/goephor/core/__init__.py**
+
+      None
+
+file @ **/goephor/core/Chain.py**
+
+      Created on Apr 25, 2016
+
+:author: iitow
+
+####class Run####
+
+This is the entry point from the cli and runs drives components
+
+   def __init__
+
+      Constructor
+
+__param config_file__  path to yaml manifest
+__param verbose__  print general run info
+__param debug__  print debug info
+
+   def read_config
+
+      Allows for reading .yaml or .json files
+
+__param config_file__  defines all actions in a build
+__return__  dict
+
+   def _read_yaml
+
+      Reads in the yaml config
+
+__param config_file__  defines all actions in a build
+__return__  dict
+
+   def _read_json
+
+      Reads in the json config
+
+__param config_file__  defines all actions in a build
+__return__  dict
+
+   def add_envs
+
+      Overrides environment variables from cli
+
+__param **envs__  dictionary of environment variables
+
+   def set_envs
+
+      sets environment variables inside of manifest
+
+   def load_actions
+
+      loads actions in to chain resolves yaml/json to a object
+
+   def execute_actions
+
+      Executes all action objects
+        
+
+file @ **/goephor/core/plugins/receipt.py**
+
+      Created on Apr 27, 2016
+
+@author: iitow
+
+####class maker####
+
+This class represents a receipt maker class
+    
+
+   def __init__
+
+      None
+
+   def on_actions
+
+      None
+
+   def custom
+
+      None
+
+file @ **/goephor/core/plugins/__init__.py**
+
+      None
+
+file @ **/goephor/core/plugins/scm.py**
+
+      Created on Apr 28, 2016
+
+@author: iitow
+
+####class git####
+
+This class Represents a call to git
+    
+
+   def __init__
+
+      None
+
+   def clone
+
+      None
+
+   def delete
+
+      None
+
+file @ **/goephor/core/plugins/freebsd.py**
+
+      Created on Apr 29, 2016
+
+@author: iitow
+
+####class terminal####
+
+Freebsd specific commands go here
+
+####class pkg####
+
+Freebsd package commands go here
+
+####class jails####
+
+Freebsd jail management commands go here
+
+   def __init__
+
+      None
+
+   def jls
+
+      None
+
+   def jexec
+
+      None
+
+   def fetch
+
+      None
+
+   def __init__
+
+      None
+
+   def install
+
+      None
+
+   def __init__
+
+      None
+
+file @ **/goephor/core/plugins/pluginable.py**
+
+      Created on Apr 25, 2016
+
+@author: iitow
+
+####class DecoMeta####
+
+None
+
+####class Plugin####
+
+This is the base class for plugin which all plugins must inherit from.
+    
+
+   def __new__
+
+      None
+
+   def deco
+
+      None
+
+   def __init__
+
+      None
+
+   def wrapper
+
+      None
+
+file @ **/goephor/core/plugins/environment.py**
+
+      Created on Apr 27, 2016
+
+@author: iitow
+
+####class env####
+
+This class Represents an example
+    
+
+   def __init__
+
+      None
+
+   def set
+
+      None
+
+file @ **/goephor/core/plugins/system.py**
+
+      Created on Apr 25, 2016
+
+@author: iitow
+
+####class terminal####
+
+General nix system commands go here
+
+   def __init__
+
+      None
+
+   def shell
+
+      None
+
+   def rsync
+
+      None
+
+file @ **/goephor/core/plugins/remote.py**
+
+      Created on Apr 28, 2016
+
+@author: iitow
+
+####class ssh####
+
+This class can perform ssh commands
+
+   def __init__
+
+      None
+
+   def cmd
+
+      None
+
+file @ **/goephor/core/plugins/example.py**
+
+      Created on Apr 27, 2016
+
+@author: iitow
+
+####class example####
+
+This class Represents an example
+    
+
+   def __init__
+
+      None
+
+   def runme
+
+      None
+
+file @ **/goephor/core/plugins/jumbler.py**
+
+      Created on Feb 29, 2016
+
+@author: sdouglas2
+
+   def jexec
+
+      Run Shell commands  [Non Blocking, no Buffer, print live, log it]
+@param cmd__ String command
+@param verbose__ bool
+@param strict__bool will exit based on code if enabled
+@return__   {command, stdout, code} as dict
+
+   def jdestroy
+
+      Run Shell commands  [Non Blocking, no Buffer, print live, log it]
+@param cmd__ String command
+@param verbose__ bool
+@param strict__bool will exit based on code if enabled
+@return__   {command, stdout, code} as dict
+
+file @ **/goephor/core/plugins/http.py**
+
+      Created on Apr 29, 2016
+
+@author: iitow
+
+####class rest####
+
+This class handles all rest actions
+
+   def __init__
+
+      None
+
+   def send
+
+      None
+
+file @ **/goephor/core/plugins/condition.py**
+
+      Created on Apr 26, 2016
+
+@author: iitow
+
+####class statement####
+
+None
+
+   def __init__
+
+      None
+
+   def add_obj
+
+      None
+
+   def IF
+
+      None
+
+file @ **/goephor/core/plugins/remotable.py**
+
+      Created on Jan 29, 2016
+
+@author: iitow
+
+   def _has_keys
+
+      Collect all environment variables
+@param str: command string
+
+   def _sanitize
+
+      Replace all environment variables into command
+@param str: command string
+
+   def cmd
+
+      Initializes a Remote ssh session
+@param server__ server address
+@param cmd__  string shell command
+@param rsa_private__ path to the private key file
+@param user__  Username used to log into system
+@param password__ Password used to log into system
+@param strict__  boolean fail on error
+@param verbose__ print out all debug messaging
+@param show_cmd__  show the command given to remote server
+@return__ session info
+@note__  environment variables but be as follows ${var} to pass over to ssh
+
+file @ **/goephor/core/plugins/modules/action.py**
+
+      Created on Apr 26, 2016
+
+@author: iitow
+
+####class Manager####
+
+This class manages state of action objects
+
+__note__  This is passed into each of the plugins and can be used to manage
+Serveral states.
+
+####class Action####
+
+Object containing instructions to create and execute actions
+
+   def __init__
+
+      Constructor
+
+__param config__  nest dict from manifest
+__param EnvManager__  Holds the state of the Environment
+__param verbose__  set verbosity
+__param debug__  set debug
+
+   def to_obj
+
+      Converts action dictionary to action obj
+
+__param action__  base action dict
+__param action_manager__  from chain.Run pass in Action_manager
+__note__  We initialize the action_manager in chain.Run and pass
+the obj back to each Action Obj which gives the class full
+access to initialize nest actions and have access to environment.
+
+   def add
+
+      Append an action obj to chain
+
+__param action_obj__  Obj
+
+   def insert
+
+      Insert action object at a given index in the chain
+
+__param index__  Int of chain
+__param action_obj__  Obj
+
+   def get_index
+
+      Get the index number of an action object in the chain
+
+__param memory_address__  String, of object.__repr__(self)
+__note__  See plugins.condition for usage
+
+   def __init__
+
+      Constructor
+
+__param name__  String, full resolve path
+__param IMP__  String, import name
+__param CLASS__  String, class name
+__param DEF__  String, definition name
+__param parameters__  list
+__param defaults__  Dict
+__param action_manager__  Obj
+
+   def __repr__
+
+      Override container name so we can match the array in the chain
+
+__note__  This is how we match chain to current plugin using object.__repr__(self)
+
+   def set_ignore
+
+      catch the ignore parameter and delete it in defaults
+
+   def get_receipt
+
+      return a dictionary of all Action info
+
+   def pprint
+
+      print state about the object pretty
+
+__param title__  String
+__param footer__  String
+
+   def _init_instance
+
+      Initializes the class
+__note__  we initialize the plugin class so we can pass info into action Obj before run.
+
+   def execute
+
+      execute the instruction
+        
+
+file @ **/goephor/core/plugins/modules/git_kit.py**
+
+      Created on Oct 8, 2015
+
+@author: iitow
+
+####class Repo_actions####
+
+None
+
+####class Commit_actions####
+
+This class handles all commit type actions
+    
+
+####class Branch_actions####
+
+This class handles all branch related actions
+@requires: Repo obj
+
+####class Remote_actions####
+
+This class handles all remote actions
+    
+
+   def __init__
+
+      Initialize Repo actions
+        
+
+   def _set_ssh_config
+
+      This turns off host verification
+@param ssh_config__ path to <user>/.ssh/config
+@param git_host__  example. github.west.isilon.com 
+
+   def _set_dirs
+
+      None
+
+   def attach
+
+      attach to a git repo on your local system
+@param repo_path__ system path to repo
+@return__  boolean, success/failure 
+
+   def _initial_commit
+
+      To fully init an empty repo you need an initial commit, which in this case
+is an empty README.md
+
+   def init
+
+      Initialize a new repo on your local system
+@param set_bare__ boolean, default is False, creates a 'bare repo', to run like a src repo 
+@return__  boolean, success/failure
+@note: Shared repositories should always be created with the set_bare flag and
+       should be stored in a directory called <projectname>.git
+
+   def clone
+
+      Clone a repository from a remote location
+@param remote_ssh__ provide the ssh full info example. git@github.west.isilon.com__ iitow/scm-tools.git
+@return: boolean, success/failure 
+
+   def untracked_files
+
+      list all untracked files
+@return: list of untracked files
+
+   def __init__
+
+      None
+
+   def commit
+
+      Commits changes
+@param msg__ string, the commit message
+@return__  boolean, success/failure
+
+   def cherry_pick
+
+      Cherry picks a commit
+@param sha1_str__ sha1 string of commit
+@return__  boolean True/False 
+
+   def diff_tree
+
+      None
+
+   def search_log
+
+      None
+
+   def add
+
+      adds files to git index
+@param file_name__ name of the file to commit
+@return__  boolean, success/failure
+
+   def __init__
+
+      None
+
+   def branch
+
+      Creates a new local branch
+@param branch_name__ string, name of the new branch to create it
+@return__  boolean, success/failure  
+
+   def branch_from
+
+      Create a branch from existing branch
+@param src_branch__ original branch name
+@param dest_branch__  new branch name
+
+   def branch_is
+
+      provides the current branch
+@return: the current branch
+
+   def branch_list
+
+      provides a list of all branches
+@param verbose__ boolean, prints branches out
+@return__  list of git.branch objects 
+
+   def has_reference
+
+      Search for reference
+@param branch_name__ string of branch name
+@return__  reference obj
+
+   def has_head
+
+      Search for branch head
+@param branch_name__ string of branch name
+@return__  head obj
+
+   def checkout
+
+      checks out a specific branch
+@param branch_name__ string, branch you wish to checkout
+@param remote__  remote name default is origin
+@return: boolean, success/failure  
+
+   def push
+
+      Push branch to remote
+@param branch_name__ string branch name
+@param remote__  remote reference  
+@return: boolean
+
+   def remote_delete
+
+      Deletes branch from github remote
+@param branch_name__ string branch name
+@param remote__  remote reference  
+@return: boolean
+
+   def delete
+
+      Delete local branch
+@param branch_name__ string branch name
+@param remote__  remote reference  
+@return: boolean
+
+   def __init__
+
+      None
+
+   def list
+
+      None
+
+   def has_remote
+
+      None
+
+   def add
+
+      add a remote to repo
+@param remote__ remote url string example. git@github.west.isilon.com__ iitow/onefs.git
+@param name__ reference to the remote example. upstream
+@return__  boolean True/False 
+
+   def fork_sync
+
+      Syncs a fork of repo with another repository
+@param remote__ remote url string example. git@github.west.isilon.com__ iitow/onefs.git
+@param name__ reference to the remote example. upstream
+@return__  boolean True/False 
+
+   def fetch
+
+      Fetch remote branches
+@param remote__ repo url example. git@github.west.isilon.com__ isilon/onefs.git
+@param name__ name of the remote
+@param branch; branch to switch to when fetching
+@param add_remote__  boolean add a remote
+@return: boolean  
+
+file @ **/goephor/core/plugins/modules/__init__.py**
+
+      None
+
+file @ **/goephor/core/plugins/modules/environment.py**
+
+      Created on Apr 26, 2016
+
+@author: iitow
+
+####class EnvManager####
+
+Management of runtime environment
+
+__note__  This is passed to each of the plugins when the action obj is initialized
+Its contained within the action_manager.
+
+   def __init__
+
+      Constructor
+
+__param debug__  Bool
+
+   def set
+
+      set an environment variable
+
+__param key__  String
+:param value__ String
+__ param reset: Bool, if false it will not override an existing env value
+
+   def get
+
+      get an environment variable
+
+__param key__  String
+
+   def sanitize
+
+      sanitizes environment variables in a given values
+
+__param values__  List
+
+   def _sanitize
+
+      Replace all environment variables into command
+
+__param stri__  String,Bool,Int
+__note__  when nested environment variables are used in a striing convert all
+
+file @ **/goephor/core/plugins/modules/remote.py**
+
+      Created on Nov 18, 2015
+
+@author: iitow
+
+####class Run####
+
+This class represents a remote machine
+using SSH to perform all needed actions
+
+   def __init__
+
+      Initializes a Remote session
+@param server__ server address
+@param rsa_private__  path to the private key file
+@param user__ Username used to log into system
+@param password__  Password used to log into system
+@param strict__ boolean fail on error
+@param verbose__  print out all debug messaging
+@param show_cmd: show the command given to remote server
+
+   def is_alive
+
+      Pings the remote to make sure its a valid address
+@return: boolean
+
+   def is_alive_poll
+
+      Polls for a ping
+@param timeout__ default 30 seconds
+@return__  boolean
+
+   def is_writable
+
+      Check to make sure the file system is writable
+@return: boolean
+
+   def is_writable_poll
+
+      Check to make sure file system is writable poll
+@param timeout__ default 30 seconds
+@return__  boolean
+
+   def has_access
+
+      Does a key already exist on the remote?
+@return: boolean
+
+   def has_file
+
+      Does a file exist on the remote?
+@param path__ path where file should exist
+@param file__  name of the file
+
+   def has_dir
+
+      Does a file exist on the remote?
+@param path__ path where file should exist
+@param file__  name of the file
+@return boolean
+
+   def remove
+
+      Remove a file or directory on remote
+@param path__path to file/dir to remove
+@param recursive__  adds a -r to the rm command
+@return: boolean
+
+   def move
+
+      Perform a move operation
+        
+
+   def copy
+
+      Perform a copy operation
+        
+
+   def set_rsa
+
+      Put a rsa key on the remote
+@return: None
+
+   def cmd
+
+      Runs a shell command on the remote
+@return: session info
+
+   def find
+
+      Finds a file on the remote system returns a list of values
+@param path__ path where file should exist
+@param file__  name of the file
+@return: output from the session
+
+   def os_type
+
+      Gets the os type of the system
+@return: returns os string
+
+   def onefs_version
+
+      None
+
+   def get_MD5
+
+      gets the md5sum of a file
+Supports Freebsd and Linux
+@return: md5 string
+
+   def _clean_MD5
+
+      private Cleans the md5 string produced
+@param os_type__ type of operating system
+@param output__  string from get_MD5
+
+file @ **/goephor/core/plugins/modules/terminal.py**
+
+      Created on Nov 18, 2015
+
+:author: iitow
+
+   def waitfor
+
+      poll the child for input
+
+__param fd__  forked process
+
+   def event
+
+      find all output and inspect it for searches dict key & value
+
+__param fd__  forked process
+__param searches__  dictionary key value pair
+
+   def set_rsa
+
+      logs into system via ssh
+and appends to authorized_keys using username password
+
+__param     host__  name over the server
+__param  rsa_pub__  absolute path to your id_rsa.pub
+__param     user__  host login creds
+:param password__ host login creds
+__ param home_dir: home directory for user
+
+   def create_rsa_public
+
+      generate a public key from the private key
+
+__param rsa_private__  path to private key
+
+   def ssh
+
+      Run a single ssh command on a remote server
+
+__param server__  username@servername
+__param cmd__  single command you wish to run
+
+   def rsync
+
+      Performs an rsync of files; requires ssh keys setup.
+
+__param   server__  username@server
+__param      src__  full path of src directory/file
+__param     dest__  full path to dest directory
+__param   option__  [pull] get file from a remote,
+[push] put a file from your server into a remote
+__param   remote__  [True] assumes we are working with
+a remote system, [False] assumes we are copying files locally
+__param excludes__  exclude directory, or file from array
+__note__  --delete will delete files on dest if it does not match src
+
+   def shell
+
+      Run Shell commands  [Non Blocking, no Buffer, print live, log it]
+
+__param cmd__  String command
+__param verbose__ bool
+__param strict__ bool will exit based on code if enabled
+__return__   {command, stdout, code} as dict
+
+   def _exit_clean
+
+      cleans .tmp_shell files before exit
+
+file @ **/goephor/core/plugins/modules/http.py**
+
+      Created on Jun 2, 2015
+
+@author: iitow
+
+####class Restful####
+
+None
+
+   def __init__
+
+      Generic class to handle All types of
+Restful requests and basic authentication
+
+__param base_url__ 
+fully qualified path to api path
+example__https__ //github.west.isilon.com/api/v3
+__param auth_file__ 
+a yaml file containing user__ <username> password__  <password>
+
+   def send
+
+      Generic call to handle all types of restful requests
+
+__param rest_action__ 
+Possible option, 'GET','PUT','POST','PATCH'
+__param url_ext__ 
+added to base url example.https__//github.west.isilon.com/<url_ext>
+__ param strict__
+False, will permit errors as warning & return code,
+True will exit with code
+__ param Content_Type__
+How info is formed, example application/xml
+__ param verify__
+Check for Certificates
+__ return: String of content, or error exit code
+
+   def post_multipart
+
+      None
+
+file @ **/goephor.py**
+
+      Created on Jan 9, 2016
+
+:author: iitow
+:note: Look to __main__.py for menu logic
+
+file @ **/goephor/__init__.py**
+
+      
+
+file @ **/goephor/__main__.py**
+
+      Main entry for goephor
+
+   def menu
+
+      None
+
+   def parse_envs
+
+      None
+
+   def main
+
+      None
+
+file @ **/goephor/core/__init__.py**
+
+      None
+
+file @ **/goephor/core/Chain.py**
+
+      Created on Apr 25, 2016
+
+:author: iitow
+
+####class Run####
+
+This is the entry point from the cli and runs drives components
+
+   def __init__
+
+      Constructor
+
+__param config_file__  path to yaml manifest
+__param verbose__  print general run info
+__param debug__  print debug info
+
+   def read_config
+
+      Allows for reading .yaml or .json files
+
+__param config_file__  defines all actions in a build
+__return__  dict
+
+   def _read_yaml
+
+      Reads in the yaml config
+
+__param config_file__  defines all actions in a build
+__return__  dict
+
+   def _read_json
+
+      Reads in the json config
+
+__param config_file__  defines all actions in a build
+__return__  dict
+
+   def add_envs
+
+      Overrides environment variables from cli
+
+__param **envs__  dictionary of environment variables
+
+   def set_envs
+
+      sets environment variables inside of manifest
+
+   def load_actions
+
+      loads actions in to chain resolves yaml/json to a object
+
+   def execute_actions
+
+      Executes all action objects
+        
+
+file @ **/goephor/core/plugins/receipt.py**
+
+      Created on Apr 27, 2016
+
+@author: iitow
+
+####class maker####
+
+This class represents a receipt maker class
+    
+
+   def __init__
+
+      None
+
+   def on_actions
+
+      None
+
+   def custom
+
+      None
+
+file @ **/goephor/core/plugins/__init__.py**
+
+      None
+
+file @ **/goephor/core/plugins/scm.py**
+
+      Created on Apr 28, 2016
+
+@author: iitow
+
+####class git####
+
+This class Represents a call to git
+    
+
+   def __init__
+
+      None
+
+   def clone
+
+      None
+
+   def delete
+
+      None
+
+file @ **/goephor/core/plugins/freebsd.py**
+
+      Created on Apr 29, 2016
+
+@author: iitow
+
+####class terminal####
+
+Freebsd specific commands go here
+
+####class pkg####
+
+Freebsd package commands go here
+
+####class jails####
+
+Freebsd jail management commands go here
+
+   def __init__
+
+      None
+
+   def jls
+
+      None
+
+   def jexec
+
+      None
+
+   def fetch
+
+      None
+
+   def __init__
+
+      None
+
+   def install
+
+      None
+
+   def __init__
+
+      None
+
+file @ **/goephor/core/plugins/pluginable.py**
+
+      Created on Apr 25, 2016
+
+@author: iitow
+
+####class DecoMeta####
+
+None
+
+####class Plugin####
+
+This is the base class for plugin which all plugins must inherit from.
+    
+
+   def __new__
+
+      None
+
+   def deco
+
+      None
+
+   def __init__
+
+      None
+
+   def wrapper
+
+      None
+
+file @ **/goephor/core/plugins/environment.py**
+
+      Created on Apr 27, 2016
+
+@author: iitow
+
+####class env####
+
+This class Represents an example
+    
+
+   def __init__
+
+      None
+
+   def set
+
+      None
+
+file @ **/goephor/core/plugins/system.py**
+
+      Created on Apr 25, 2016
+
+@author: iitow
+
+####class terminal####
+
+General nix system commands go here
+
+   def __init__
+
+      None
+
+   def shell
+
+      None
+
+   def rsync
+
+      None
+
+file @ **/goephor/core/plugins/remote.py**
+
+      Created on Apr 28, 2016
+
+@author: iitow
+
+####class ssh####
+
+This class can perform ssh commands
+
+   def __init__
+
+      None
+
+   def cmd
+
+      None
+
+file @ **/goephor/core/plugins/example.py**
+
+      Created on Apr 27, 2016
+
+@author: iitow
+
+####class example####
+
+This class Represents an example
+    
+
+   def __init__
+
+      None
+
+   def runme
+
+      None
+
+file @ **/goephor/core/plugins/jumbler.py**
+
+      Created on Feb 29, 2016
+
+@author: sdouglas2
+
+   def jexec
+
+      Run Shell commands  [Non Blocking, no Buffer, print live, log it]
+@param cmd__ String command
+@param verbose__ bool
+@param strict__bool will exit based on code if enabled
+@return__   {command, stdout, code} as dict
+
+   def jdestroy
+
+      Run Shell commands  [Non Blocking, no Buffer, print live, log it]
+@param cmd__ String command
+@param verbose__ bool
+@param strict__bool will exit based on code if enabled
+@return__   {command, stdout, code} as dict
+
+file @ **/goephor/core/plugins/http.py**
+
+      Created on Apr 29, 2016
+
+@author: iitow
+
+####class rest####
+
+This class handles all rest actions
+
+   def __init__
+
+      None
+
+   def send
+
+      None
+
+file @ **/goephor/core/plugins/condition.py**
+
+      Created on Apr 26, 2016
+
+@author: iitow
+
+####class statement####
+
+None
+
+   def __init__
+
+      None
+
+   def add_obj
+
+      None
+
+   def IF
+
+      None
+
+file @ **/goephor/core/plugins/remotable.py**
+
+      Created on Jan 29, 2016
+
+@author: iitow
+
+   def _has_keys
+
+      Collect all environment variables
+@param str: command string
+
+   def _sanitize
+
+      Replace all environment variables into command
+@param str: command string
+
+   def cmd
+
+      Initializes a Remote ssh session
+@param server__ server address
+@param cmd__  string shell command
+@param rsa_private__ path to the private key file
+@param user__  Username used to log into system
+@param password__ Password used to log into system
+@param strict__  boolean fail on error
+@param verbose__ print out all debug messaging
+@param show_cmd__  show the command given to remote server
+@return__ session info
+@note__  environment variables but be as follows ${var} to pass over to ssh
+
+file @ **/goephor/core/plugins/modules/action.py**
+
+      Created on Apr 26, 2016
+
+@author: iitow
+
+####class Manager####
+
+This class manages state of action objects
+
+__note__  This is passed into each of the plugins and can be used to manage
+Serveral states.
+
+####class Action####
+
+Object containing instructions to create and execute actions
+
+   def __init__
+
+      Constructor
+
+__param config__  nest dict from manifest
+__param EnvManager__  Holds the state of the Environment
+__param verbose__  set verbosity
+__param debug__  set debug
+
+   def to_obj
+
+      Converts action dictionary to action obj
+
+__param action__  base action dict
+__param action_manager__  from chain.Run pass in Action_manager
+__note__  We initialize the action_manager in chain.Run and pass
+the obj back to each Action Obj which gives the class full
+access to initialize nest actions and have access to environment.
+
+   def add
+
+      Append an action obj to chain
+
+__param action_obj__  Obj
+
+   def insert
+
+      Insert action object at a given index in the chain
+
+__param index__  Int of chain
+__param action_obj__  Obj
+
+   def get_index
+
+      Get the index number of an action object in the chain
+
+__param memory_address__  String, of object.__repr__(self)
+__note__  See plugins.condition for usage
+
+   def __init__
+
+      Constructor
+
+__param name__  String, full resolve path
+__param IMP__  String, import name
+__param CLASS__  String, class name
+__param DEF__  String, definition name
+__param parameters__  list
+__param defaults__  Dict
+__param action_manager__  Obj
+
+   def __repr__
+
+      Override container name so we can match the array in the chain
+
+__note__  This is how we match chain to current plugin using object.__repr__(self)
+
+   def set_ignore
+
+      catch the ignore parameter and delete it in defaults
+
+   def get_receipt
+
+      return a dictionary of all Action info
+
+   def pprint
+
+      print state about the object pretty
+
+__param title__  String
+__param footer__  String
+
+   def _init_instance
+
+      Initializes the class
+__note__  we initialize the plugin class so we can pass info into action Obj before run.
+
+   def execute
+
+      execute the instruction
+        
+
+file @ **/goephor/core/plugins/modules/git_kit.py**
+
+      Created on Oct 8, 2015
+
+@author: iitow
+
+####class Repo_actions####
+
+None
+
+####class Commit_actions####
+
+This class handles all commit type actions
+    
+
+####class Branch_actions####
+
+This class handles all branch related actions
+@requires: Repo obj
+
+####class Remote_actions####
+
+This class handles all remote actions
+    
+
+   def __init__
+
+      Initialize Repo actions
+        
+
+   def _set_ssh_config
+
+      This turns off host verification
+@param ssh_config__ path to <user>/.ssh/config
+@param git_host__  example. github.west.isilon.com 
+
+   def _set_dirs
+
+      None
+
+   def attach
+
+      attach to a git repo on your local system
+@param repo_path__ system path to repo
+@return__  boolean, success/failure 
+
+   def _initial_commit
+
+      To fully init an empty repo you need an initial commit, which in this case
+is an empty README.md
+
+   def init
+
+      Initialize a new repo on your local system
+@param set_bare__ boolean, default is False, creates a 'bare repo', to run like a src repo 
+@return__  boolean, success/failure
+@note: Shared repositories should always be created with the set_bare flag and
+       should be stored in a directory called <projectname>.git
+
+   def clone
+
+      Clone a repository from a remote location
+@param remote_ssh__ provide the ssh full info example. git@github.west.isilon.com__ iitow/scm-tools.git
+@return: boolean, success/failure 
+
+   def untracked_files
+
+      list all untracked files
+@return: list of untracked files
+
+   def __init__
+
+      None
+
+   def commit
+
+      Commits changes
+@param msg__ string, the commit message
+@return__  boolean, success/failure
+
+   def cherry_pick
+
+      Cherry picks a commit
+@param sha1_str__ sha1 string of commit
+@return__  boolean True/False 
+
+   def diff_tree
+
+      None
+
+   def search_log
+
+      None
+
+   def add
+
+      adds files to git index
+@param file_name__ name of the file to commit
+@return__  boolean, success/failure
+
+   def __init__
+
+      None
+
+   def branch
+
+      Creates a new local branch
+@param branch_name__ string, name of the new branch to create it
+@return__  boolean, success/failure  
+
+   def branch_from
+
+      Create a branch from existing branch
+@param src_branch__ original branch name
+@param dest_branch__  new branch name
+
+   def branch_is
+
+      provides the current branch
+@return: the current branch
+
+   def branch_list
+
+      provides a list of all branches
+@param verbose__ boolean, prints branches out
+@return__  list of git.branch objects 
+
+   def has_reference
+
+      Search for reference
+@param branch_name__ string of branch name
+@return__  reference obj
+
+   def has_head
+
+      Search for branch head
+@param branch_name__ string of branch name
+@return__  head obj
+
+   def checkout
+
+      checks out a specific branch
+@param branch_name__ string, branch you wish to checkout
+@param remote__  remote name default is origin
+@return: boolean, success/failure  
+
+   def push
+
+      Push branch to remote
+@param branch_name__ string branch name
+@param remote__  remote reference  
+@return: boolean
+
+   def remote_delete
+
+      Deletes branch from github remote
+@param branch_name__ string branch name
+@param remote__  remote reference  
+@return: boolean
+
+   def delete
+
+      Delete local branch
+@param branch_name__ string branch name
+@param remote__  remote reference  
+@return: boolean
+
+   def __init__
+
+      None
+
+   def list
+
+      None
+
+   def has_remote
+
+      None
+
+   def add
+
+      add a remote to repo
+@param remote__ remote url string example. git@github.west.isilon.com__ iitow/onefs.git
+@param name__ reference to the remote example. upstream
+@return__  boolean True/False 
+
+   def fork_sync
+
+      Syncs a fork of repo with another repository
+@param remote__ remote url string example. git@github.west.isilon.com__ iitow/onefs.git
+@param name__ reference to the remote example. upstream
+@return__  boolean True/False 
+
+   def fetch
+
+      Fetch remote branches
+@param remote__ repo url example. git@github.west.isilon.com__ isilon/onefs.git
+@param name__ name of the remote
+@param branch; branch to switch to when fetching
+@param add_remote__  boolean add a remote
+@return: boolean  
+
+file @ **/goephor/core/plugins/modules/__init__.py**
+
+      None
+
+file @ **/goephor/core/plugins/modules/environment.py**
+
+      Created on Apr 26, 2016
+
+@author: iitow
+
+####class EnvManager####
+
+Management of runtime environment
+
+__note__  This is passed to each of the plugins when the action obj is initialized
+Its contained within the action_manager.
+
+   def __init__
+
+      Constructor
+
+__param debug__  Bool
+
+   def set
+
+      set an environment variable
+
+__param key__  String
+:param value__ String
+__ param reset: Bool, if false it will not override an existing env value
+
+   def get
+
+      get an environment variable
+
+__param key__  String
+
+   def sanitize
+
+      sanitizes environment variables in a given values
+
+__param values__  List
+
+   def _sanitize
+
+      Replace all environment variables into command
+
+__param stri__  String,Bool,Int
+__note__  when nested environment variables are used in a striing convert all
+
+file @ **/goephor/core/plugins/modules/remote.py**
+
+      Created on Nov 18, 2015
+
+@author: iitow
+
+####class Run####
+
+This class represents a remote machine
+using SSH to perform all needed actions
+
+   def __init__
+
+      Initializes a Remote session
+@param server__ server address
+@param rsa_private__  path to the private key file
+@param user__ Username used to log into system
+@param password__  Password used to log into system
+@param strict__ boolean fail on error
+@param verbose__  print out all debug messaging
+@param show_cmd: show the command given to remote server
+
+   def is_alive
+
+      Pings the remote to make sure its a valid address
+@return: boolean
+
+   def is_alive_poll
+
+      Polls for a ping
+@param timeout__ default 30 seconds
+@return__  boolean
+
+   def is_writable
+
+      Check to make sure the file system is writable
+@return: boolean
+
+   def is_writable_poll
+
+      Check to make sure file system is writable poll
+@param timeout__ default 30 seconds
+@return__  boolean
+
+   def has_access
+
+      Does a key already exist on the remote?
+@return: boolean
+
+   def has_file
+
+      Does a file exist on the remote?
+@param path__ path where file should exist
+@param file__  name of the file
+
+   def has_dir
+
+      Does a file exist on the remote?
+@param path__ path where file should exist
+@param file__  name of the file
+@return boolean
+
+   def remove
+
+      Remove a file or directory on remote
+@param path__path to file/dir to remove
+@param recursive__  adds a -r to the rm command
+@return: boolean
+
+   def move
+
+      Perform a move operation
+        
+
+   def copy
+
+      Perform a copy operation
+        
+
+   def set_rsa
+
+      Put a rsa key on the remote
+@return: None
+
+   def cmd
+
+      Runs a shell command on the remote
+@return: session info
+
+   def find
+
+      Finds a file on the remote system returns a list of values
+@param path__ path where file should exist
+@param file__  name of the file
+@return: output from the session
+
+   def os_type
+
+      Gets the os type of the system
+@return: returns os string
+
+   def onefs_version
+
+      None
+
+   def get_MD5
+
+      gets the md5sum of a file
+Supports Freebsd and Linux
+@return: md5 string
+
+   def _clean_MD5
+
+      private Cleans the md5 string produced
+@param os_type__ type of operating system
+@param output__  string from get_MD5
+
+file @ **/goephor/core/plugins/modules/terminal.py**
+
+      Created on Nov 18, 2015
+
+:author: iitow
+
+   def waitfor
+
+      poll the child for input
+
+__param fd__  forked process
+
+   def event
+
+      find all output and inspect it for searches dict key & value
+
+__param fd__  forked process
+__param searches__  dictionary key value pair
+
+   def set_rsa
+
+      logs into system via ssh
+and appends to authorized_keys using username password
+
+__param     host__  name over the server
+__param  rsa_pub__  absolute path to your id_rsa.pub
+__param     user__  host login creds
+:param password__ host login creds
+__ param home_dir: home directory for user
+
+   def create_rsa_public
+
+      generate a public key from the private key
+
+__param rsa_private__  path to private key
+
+   def ssh
+
+      Run a single ssh command on a remote server
+
+__param server__  username@servername
+__param cmd__  single command you wish to run
+
+   def rsync
+
+      Performs an rsync of files; requires ssh keys setup.
+
+__param   server__  username@server
+__param      src__  full path of src directory/file
+__param     dest__  full path to dest directory
+__param   option__  [pull] get file from a remote,
+[push] put a file from your server into a remote
+__param   remote__  [True] assumes we are working with
+a remote system, [False] assumes we are copying files locally
+__param excludes__  exclude directory, or file from array
+__note__  --delete will delete files on dest if it does not match src
+
+   def shell
+
+      Run Shell commands  [Non Blocking, no Buffer, print live, log it]
+
+__param cmd__  String command
+__param verbose__ bool
+__param strict__ bool will exit based on code if enabled
+__return__   {command, stdout, code} as dict
+
+   def _exit_clean
+
+      cleans .tmp_shell files before exit
+
+file @ **/goephor/core/plugins/modules/http.py**
+
+      Created on Jun 2, 2015
+
+@author: iitow
+
+####class Restful####
+
+None
+
+   def __init__
+
+      Generic class to handle All types of
+Restful requests and basic authentication
+
+__param base_url__ 
+fully qualified path to api path
+example__https__ //github.west.isilon.com/api/v3
+__param auth_file__ 
+a yaml file containing user__ <username> password__  <password>
+
+   def send
+
+      Generic call to handle all types of restful requests
+
+__param rest_action__ 
+Possible option, 'GET','PUT','POST','PATCH'
+__param url_ext__ 
+added to base url example.https__//github.west.isilon.com/<url_ext>
+__ param strict__
+False, will permit errors as warning & return code,
+True will exit with code
+__ param Content_Type__
+How info is formed, example application/xml
+__ param verify__
+Check for Certificates
+__ return: String of content, or error exit code
+
+   def post_multipart
+
+      None
