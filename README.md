@@ -129,8 +129,10 @@ file @ **/goephor/core/plugins/receipt.py**
 **param defaults** additional params
 
 **example**
-      - receipt.maker.on_actions:
-          - "./receipt.yaml" 
+```
+- receipt.maker.on_actions:
+    - "./receipt.yaml"
+``` 
 
  ***def custom*** 
 
