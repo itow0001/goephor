@@ -26,8 +26,8 @@ class maker(Plugin):
         :param path: String, system path to put receipt
         :param defaults: additional params
         :example:
-        - receipt.maker.on_actions:
-            - "./receipt.yaml"
+              - receipt.maker.on_actions:
+                  - "./receipt.yaml"
         '''
         receipt = {}
         receipt["results"] = []
