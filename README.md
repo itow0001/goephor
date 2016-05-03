@@ -3,7 +3,7 @@ TEXT
 
 file @ **/goephor.py**
 
-   Created on Jan 9, 2016
+      Created on Jan 9, 2016
 
 :author: iitow
 :note: Look to __main__.py for menu logic
@@ -13,7 +13,7 @@ file @ **/goephor/__init__.py**
 
 file @ **/goephor/__main__.py**
 
-   Main entry for goephor
+      Main entry for goephor
 
  ***def menu*** 
 
@@ -32,7 +32,7 @@ file @ **/goephor/core/__init__.py**
 
 file @ **/goephor/core/Chain.py**
 
-   Created on Apr 25, 2016
+      Created on Apr 25, 2016
 
 :author: iitow
 
@@ -90,7 +90,7 @@ file @ **/goephor/core/Chain.py**
 
 file @ **/goephor/core/plugins/receipt.py**
 
-   Created on Apr 27, 2016
+      Created on Apr 27, 2016
 
 @author: iitow
 
@@ -116,7 +116,7 @@ file @ **/goephor/core/plugins/__init__.py**
 
 file @ **/goephor/core/plugins/scm.py**
 
-   Created on Apr 28, 2016
+      Created on Apr 28, 2016
 
 @author: iitow
 
@@ -139,7 +139,7 @@ file @ **/goephor/core/plugins/scm.py**
 
 file @ **/goephor/core/plugins/freebsd.py**
 
-   Created on Apr 29, 2016
+      Created on Apr 29, 2016
 
 @author: iitow
 
@@ -185,7 +185,7 @@ file @ **/goephor/core/plugins/freebsd.py**
 
 file @ **/goephor/core/plugins/pluginable.py**
 
-   Created on Apr 25, 2016
+      Created on Apr 25, 2016
 
 @author: iitow
 
@@ -216,7 +216,7 @@ file @ **/goephor/core/plugins/pluginable.py**
 
 file @ **/goephor/core/plugins/environment.py**
 
-   Created on Apr 27, 2016
+      Created on Apr 27, 2016
 
 @author: iitow
 
@@ -235,7 +235,7 @@ file @ **/goephor/core/plugins/environment.py**
 
 file @ **/goephor/core/plugins/system.py**
 
-   Created on Apr 25, 2016
+      Created on Apr 25, 2016
 
 @author: iitow
 
@@ -257,7 +257,7 @@ file @ **/goephor/core/plugins/system.py**
 
 file @ **/goephor/core/plugins/remote.py**
 
-   Created on Apr 28, 2016
+      Created on Apr 28, 2016
 
 @author: iitow
 
@@ -275,7 +275,7 @@ file @ **/goephor/core/plugins/remote.py**
 
 file @ **/goephor/core/plugins/example.py**
 
-   Created on Apr 27, 2016
+      Created on Apr 27, 2016
 
 @author: iitow
 
@@ -294,7 +294,7 @@ file @ **/goephor/core/plugins/example.py**
 
 file @ **/goephor/core/plugins/http.py**
 
-   Created on Apr 29, 2016
+      Created on Apr 29, 2016
 
 @author: iitow
 
@@ -312,7 +312,7 @@ file @ **/goephor/core/plugins/http.py**
 
 file @ **/goephor/core/plugins/condition.py**
 
-   Created on Apr 26, 2016
+      Created on Apr 26, 2016
 
 @author: iitow
 
@@ -334,7 +334,7 @@ file @ **/goephor/core/plugins/condition.py**
 
 file @ **/goephor/core/plugins/remotable.py**
 
-   Created on Jan 29, 2016
+      Created on Jan 29, 2016
 
 @author: iitow
 
@@ -364,7 +364,7 @@ file @ **/goephor/core/plugins/remotable.py**
 
 file @ **/goephor/core/plugins/modules/action.py**
 
-   Created on Apr 26, 2016
+      Created on Apr 26, 2016
 
 @author: iitow
 
@@ -463,7 +463,7 @@ access to initialize nest actions and have access to environment.
 
 file @ **/goephor/core/plugins/modules/git_kit.py**
 
-   Created on Oct 8, 2015
+      Created on Oct 8, 2015
 
 @author: iitow
 
@@ -668,7 +668,7 @@ file @ **/goephor/core/plugins/modules/__init__.py**
 
 file @ **/goephor/core/plugins/modules/environment.py**
 
-   Created on Apr 26, 2016
+      Created on Apr 26, 2016
 
 @author: iitow
 
@@ -714,7 +714,7 @@ Its contained within the action_manager.
 
 file @ **/goephor/core/plugins/modules/remote.py**
 
-   Created on Nov 18, 2015
+      Created on Nov 18, 2015
 
 @author: iitow
 
@@ -831,7 +831,7 @@ Supports Freebsd and Linux
 
 file @ **/goephor/core/plugins/modules/terminal.py**
 
-   Created on Nov 18, 2015
+      Created on Nov 18, 2015
 
 :author: iitow
 
@@ -901,7 +901,7 @@ a remote system, [False] assumes we are copying files locally
 
 file @ **/goephor/core/plugins/modules/http.py**
 
-   Created on Jun 2, 2015
+      Created on Jun 2, 2015
 
 @author: iitow
 
