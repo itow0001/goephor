@@ -44,34 +44,44 @@ file @ **/goephor/core/Chain.py**
 
       Constructor
 
+
 **param config_file** path to yaml manifest
+
 **param verbose** print general run info
+
 **param debug** print debug info 
 
  ***def read_config*** 
 
       Allows for reading .yaml or .json files
 
+
 **param config_file** defines all actions in a build
+
 **return** dict 
 
  ***def _read_yaml*** 
 
       Reads in the yaml config
 
+
 **param config_file** defines all actions in a build
+
 **return** dict 
 
  ***def _read_json*** 
 
       Reads in the json config
 
+
 **param config_file** defines all actions in a build
+
 **return** dict 
 
  ***def add_envs*** 
 
       Overrides environment variables from cli
+
 
 **param **envs** dictionary of environment variables 
 
@@ -351,15 +361,20 @@ file @ **/goephor/core/plugins/remotable.py**
  ***def cmd*** 
 
       Initializes a Remote ssh session
-@param server** server address
+@param server
+** server address
 @param cmd** string shell command
-@param rsa_private** path to the private key file
+@param rsa_private
+** path to the private key file
 @param user** Username used to log into system
-@param password** Password used to log into system
+@param password
+** Password used to log into system
 @param strict** boolean fail on error
-@param verbose** print out all debug messaging
+@param verbose
+** print out all debug messaging
 @param show_cmd** show the command given to remote server
-@return** session info
+@return
+** session info
 @note** environment variables but be as follows ${var} to pass over to ssh 
 
 file @ **/goephor/core/plugins/modules/action.py**
@@ -372,6 +387,7 @@ file @ **/goephor/core/plugins/modules/action.py**
 
       This class manages state of action objects
 
+
 **note** This is passed into each of the plugins and can be used to manage
 Serveral states. 
 
@@ -383,17 +399,24 @@ Serveral states.
 
       Constructor
 
+
 **param config** nest dict from manifest
+
 **param EnvManager** Holds the state of the Environment
+
 **param verbose** set verbosity
+
 **param debug** set debug 
 
  ***def to_obj*** 
 
       Converts action dictionary to action obj
 
+
 **param action** base action dict
+
 **param action_manager** from chain.Run pass in Action_manager
+
 **note** We initialize the action_manager in chain.Run and pass
 the obj back to each Action Obj which gives the class full
 access to initialize nest actions and have access to environment. 
@@ -402,37 +425,50 @@ access to initialize nest actions and have access to environment.
 
       Append an action obj to chain
 
+
 **param action_obj** Obj 
 
  ***def insert*** 
 
       Insert action object at a given index in the chain
 
+
 **param index** Int of chain
+
 **param action_obj** Obj 
 
  ***def get_index*** 
 
       Get the index number of an action object in the chain
 
+
 **param memory_address** String, of object.__repr__(self)
+
 **note** See plugins.condition for usage 
 
  ***def __init__*** 
 
       Constructor
 
+
 **param name** String, full resolve path
+
 **param IMP** String, import name
+
 **param CLASS** String, class name
+
 **param DEF** String, definition name
+
 **param parameters** list
+
 **param defaults** Dict
+
 **param action_manager** Obj 
 
  ***def __repr__*** 
 
       Override container name so we can match the array in the chain
+
 
 **note** This is how we match chain to current plugin using object.__repr__(self) 
 
@@ -448,12 +484,15 @@ access to initialize nest actions and have access to environment.
 
       print state about the object pretty
 
+
 **param title** String
+
 **param footer** String 
 
  ***def _init_instance*** 
 
       Initializes the class
+
 **note** we initialize the plugin class so we can pass info into action Obj before run. 
 
  ***def execute*** 
@@ -494,7 +533,8 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
  ***def _set_ssh_config*** 
 
       This turns off host verification
-@param ssh_config** path to <user>/.ssh/config
+@param ssh_config
+** path to <user>/.ssh/config
 @param git_host** example. github.west.isilon.com  
 
  ***def _set_dirs*** 
@@ -504,7 +544,8 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
  ***def attach*** 
 
       attach to a git repo on your local system
-@param repo_path** system path to repo
+@param repo_path
+** system path to repo
 @return** boolean, success/failure  
 
  ***def _initial_commit*** 
@@ -515,7 +556,8 @@ is an empty README.md
  ***def init*** 
 
       Initialize a new repo on your local system
-@param set_bare** boolean, default is False, creates a 'bare repo', to run like a src repo 
+@param set_bare
+** boolean, default is False, creates a 'bare repo', to run like a src repo 
 @return** boolean, success/failure
 @note: Shared repositories should always be created with the set_bare flag and
        should be stored in a directory called <projectname>.git 
@@ -523,7 +565,8 @@ is an empty README.md
  ***def clone*** 
 
       Clone a repository from a remote location
-@param remote_ssh** provide the ssh full info example. git@github.west.isilon.com**iitow/scm-tools.git
+@param remote_ssh
+** provide the ssh full info example. git@github.west.isilon.com**iitow/scm-tools.git
 @return: boolean, success/failure  
 
  ***def untracked_files*** 
@@ -538,13 +581,15 @@ is an empty README.md
  ***def commit*** 
 
       Commits changes
-@param msg** string, the commit message
+@param msg
+** string, the commit message
 @return** boolean, success/failure 
 
  ***def cherry_pick*** 
 
       Cherry picks a commit
-@param sha1_str** sha1 string of commit
+@param sha1_str
+** sha1 string of commit
 @return** boolean True/False  
 
  ***def diff_tree*** 
@@ -558,7 +603,8 @@ is an empty README.md
  ***def add*** 
 
       adds files to git index
-@param file_name** name of the file to commit
+@param file_name
+** name of the file to commit
 @return** boolean, success/failure 
 
  ***def __init__*** 
@@ -568,13 +614,15 @@ is an empty README.md
  ***def branch*** 
 
       Creates a new local branch
-@param branch_name** string, name of the new branch to create it
+@param branch_name
+** string, name of the new branch to create it
 @return** boolean, success/failure   
 
  ***def branch_from*** 
 
       Create a branch from existing branch
-@param src_branch** original branch name
+@param src_branch
+** original branch name
 @param dest_branch** new branch name 
 
  ***def branch_is*** 
@@ -585,46 +633,53 @@ is an empty README.md
  ***def branch_list*** 
 
       provides a list of all branches
-@param verbose** boolean, prints branches out
+@param verbose
+** boolean, prints branches out
 @return** list of git.branch objects  
 
  ***def has_reference*** 
 
       Search for reference
-@param branch_name** string of branch name
+@param branch_name
+** string of branch name
 @return** reference obj 
 
  ***def has_head*** 
 
       Search for branch head
-@param branch_name** string of branch name
+@param branch_name
+** string of branch name
 @return** head obj 
 
  ***def checkout*** 
 
       checks out a specific branch
-@param branch_name** string, branch you wish to checkout
+@param branch_name
+** string, branch you wish to checkout
 @param remote** remote name default is origin
 @return: boolean, success/failure   
 
  ***def push*** 
 
       Push branch to remote
-@param branch_name** string branch name
+@param branch_name
+** string branch name
 @param remote** remote reference  
 @return: boolean 
 
  ***def remote_delete*** 
 
       Deletes branch from github remote
-@param branch_name** string branch name
+@param branch_name
+** string branch name
 @param remote** remote reference  
 @return: boolean 
 
  ***def delete*** 
 
       Delete local branch
-@param branch_name** string branch name
+@param branch_name
+** string branch name
 @param remote** remote reference  
 @return: boolean 
 
@@ -643,22 +698,28 @@ is an empty README.md
  ***def add*** 
 
       add a remote to repo
-@param remote** remote url string example. git@github.west.isilon.com**iitow/onefs.git
-@param name** reference to the remote example. upstream
+@param remote
+** remote url string example. git@github.west.isilon.com**iitow/onefs.git
+@param name
+** reference to the remote example. upstream
 @return** boolean True/False  
 
  ***def fork_sync*** 
 
       Syncs a fork of repo with another repository
-@param remote** remote url string example. git@github.west.isilon.com**iitow/onefs.git
-@param name** reference to the remote example. upstream
+@param remote
+** remote url string example. git@github.west.isilon.com**iitow/onefs.git
+@param name
+** reference to the remote example. upstream
 @return** boolean True/False  
 
  ***def fetch*** 
 
       Fetch remote branches
-@param remote** repo url example. git@github.west.isilon.com**isilon/onefs.git
-@param name** name of the remote
+@param remote
+** repo url example. git@github.west.isilon.com**isilon/onefs.git
+@param name
+** name of the remote
 @param branch; branch to switch to when fetching
 @param add_remote** boolean add a remote
 @return: boolean   
@@ -676,6 +737,7 @@ file @ **/goephor/core/plugins/modules/environment.py**
 
       Management of runtime environment
 
+
 **note** This is passed to each of the plugins when the action obj is initialized
 Its contained within the action_manager. 
 
@@ -683,19 +745,23 @@ Its contained within the action_manager.
 
       Constructor
 
+
 **param debug** Bool 
 
  ***def set*** 
 
       set an environment variable
 
+
 **param key** String
-:param value** String
+:param value
+** String
 **param reset: Bool, if false it will not override an existing env value 
 
  ***def get*** 
 
       get an environment variable
+
 
 **param key** String 
 
@@ -703,13 +769,16 @@ Its contained within the action_manager.
 
       sanitizes environment variables in a given values
 
+
 **param values** List 
 
  ***def _sanitize*** 
 
       Replace all environment variables into command
 
+
 **param stri** String,Bool,Int
+
 **note** when nested environment variables are used in a striing convert all 
 
 file @ **/goephor/core/plugins/modules/remote.py**
@@ -726,11 +795,14 @@ using SSH to perform all needed actions
  ***def __init__*** 
 
       Initializes a Remote session
-@param server** server address
+@param server
+** server address
 @param rsa_private** path to the private key file
-@param user** Username used to log into system
+@param user
+** Username used to log into system
 @param password** Password used to log into system
-@param strict** boolean fail on error
+@param strict
+** boolean fail on error
 @param verbose** print out all debug messaging
 @param show_cmd: show the command given to remote server 
 
@@ -742,7 +814,8 @@ using SSH to perform all needed actions
  ***def is_alive_poll*** 
 
       Polls for a ping
-@param timeout** default 30 seconds
+@param timeout
+** default 30 seconds
 @return** boolean 
 
  ***def is_writable*** 
@@ -753,7 +826,8 @@ using SSH to perform all needed actions
  ***def is_writable_poll*** 
 
       Check to make sure file system is writable poll
-@param timeout** default 30 seconds
+@param timeout
+** default 30 seconds
 @return** boolean 
 
  ***def has_access*** 
@@ -764,20 +838,23 @@ using SSH to perform all needed actions
  ***def has_file*** 
 
       Does a file exist on the remote?
-@param path** path where file should exist
+@param path
+** path where file should exist
 @param file** name of the file 
 
  ***def has_dir*** 
 
       Does a file exist on the remote?
-@param path** path where file should exist
+@param path
+** path where file should exist
 @param file** name of the file
 @return boolean 
 
  ***def remove*** 
 
       Remove a file or directory on remote
-@param path**path to file/dir to remove
+@param path
+**path to file/dir to remove
 @param recursive** adds a -r to the rm command
 @return: boolean 
 
@@ -804,7 +881,8 @@ using SSH to perform all needed actions
  ***def find*** 
 
       Finds a file on the remote system returns a list of values
-@param path** path where file should exist
+@param path
+** path where file should exist
 @param file** name of the file
 @return: output from the session 
 
@@ -826,7 +904,8 @@ Supports Freebsd and Linux
  ***def _clean_MD5*** 
 
       private Cleans the md5 string produced
-@param os_type** type of operating system
+@param os_type
+** type of operating system
 @param output** string from get_MD5 
 
 file @ **/goephor/core/plugins/modules/terminal.py**
@@ -839,13 +918,16 @@ file @ **/goephor/core/plugins/modules/terminal.py**
 
       poll the child for input
 
+
 **param fd** forked process 
 
  ***def event*** 
 
       find all output and inspect it for searches dict key & value
 
+
 **param fd** forked process
+
 **param searches** dictionary key value pair 
 
  ***def set_rsa*** 
@@ -853,15 +935,20 @@ file @ **/goephor/core/plugins/modules/terminal.py**
       logs into system via ssh
 and appends to authorized_keys using username password
 
+
 **param     host** name over the server
+
 **param  rsa_pub** absolute path to your id_rsa.pub
+
 **param     user** host login creds
-:param password** host login creds
+:param password
+** host login creds
 **param home_dir: home directory for user 
 
  ***def create_rsa_public*** 
 
       generate a public key from the private key
+
 
 **param rsa_private** path to private key 
 
@@ -869,30 +956,43 @@ and appends to authorized_keys using username password
 
       Run a single ssh command on a remote server
 
+
 **param server** username@servername
+
 **param cmd** single command you wish to run 
 
  ***def rsync*** 
 
       Performs an rsync of files; requires ssh keys setup.
 
+
 **param   server** username@server
+
 **param      src** full path of src directory/file
+
 **param     dest** full path to dest directory
+
 **param   option** [pull] get file from a remote,
 [push] put a file from your server into a remote
+
 **param   remote** [True] assumes we are working with
 a remote system, [False] assumes we are copying files locally
+
 **param excludes** exclude directory, or file from array
+
 **note** --delete will delete files on dest if it does not match src 
 
  ***def shell*** 
 
       Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 
+
 **param cmd** String command
+
 **param verbose**bool
+
 **param strict**bool will exit based on code if enabled
+
 **return**  {command, stdout, code} as dict 
 
  ***def _exit_clean*** 
@@ -914,26 +1014,36 @@ file @ **/goephor/core/plugins/modules/http.py**
       Generic class to handle All types of
 Restful requests and basic authentication
 
+
 **param base_url**
 fully qualified path to api path
-example**https**//github.west.isilon.com/api/v3
+example
+**https**//github.west.isilon.com/api/v3
+
 **param auth_file**
-a yaml file containing user** <username> password** <password> 
+a yaml file containing user
+** <username> password** <password> 
 
  ***def send*** 
 
       Generic call to handle all types of restful requests
 
+
 **param rest_action**
 Possible option, 'GET','PUT','POST','PATCH'
+
 **param url_ext**
-added to base url example.https**//github.west.isilon.com/<url_ext>
-**param strict**
+added to base url example.https
+**//github.west.isilon.com/<url_ext>
+**param strict
+**
 False, will permit errors as warning & return code,
 True will exit with code
-**param Content_Type**
+**param Content_Type
+**
 How info is formed, example application/xml
-**param verify**
+**param verify
+**
 Check for Certificates
 **return: String of content, or error exit code 
 
