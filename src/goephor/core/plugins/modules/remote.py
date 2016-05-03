@@ -22,13 +22,13 @@ class Run(object):
                  verbose=True,
                  show_cmd=True):
         """ Initializes a Remote session
-        @param server: server address
-        @param rsa_private: path to the private key file
-        @param user: Username used to log into system
-        @param password: Password used to log into system
-        @param strict: boolean fail on error
-        @param verbose: print out all debug messaging
-        @param show_cmd: show the command given to remote server
+        :param server: server address
+        :param rsa_private: path to the private key file
+        :param user: Username used to log into system
+        :param password: Password used to log into system
+        :param strict: boolean fail on error
+        :param verbose: print out all debug messaging
+        :param show_cmd: show the command given to remote server
         """
         self.hostname = socket.gethostname()
         self.server = server
@@ -54,7 +54,7 @@ class Run(object):
 
     def is_alive(self):
         """ Pings the remote to make sure its a valid address
-        @return: boolean
+        :return: boolean
         """
         session = shell('/usr/bin/env ping -c 1 %s' % (self.server),
                         strict=False,
@@ -66,8 +66,8 @@ class Run(object):
 
     def is_alive_poll(self, timeout=30):
         """ Polls for a ping
-        @param timeout: default 30 seconds
-        @return: boolean
+        :param timeout: default 30 seconds
+        :return: boolean
         """
         cnt = 0
         while True:
@@ -81,7 +81,7 @@ class Run(object):
 
     def is_writable(self):
         """ Check to make sure the file system is writable
-        @return: boolean
+        :return: boolean
         """
         file = "is_writable.test.%s" % (self.hostname)
         cmd = 'touch %s' % (file)
@@ -100,8 +100,8 @@ class Run(object):
 
     def is_writable_poll(self, timeout=30):
         """ Check to make sure file system is writable poll
-        @param timeout: default 30 seconds
-        @return: boolean
+        :param timeout: default 30 seconds
+        :return: boolean
         """
         cnt = 0
         while True:
@@ -115,7 +115,7 @@ class Run(object):
 
     def has_access(self):
         """ Does a key already exist on the remote?
-        @return: boolean
+        :return: boolean
         """
         cmd = 'hostname'
         session = ssh(self.server,
@@ -133,8 +133,8 @@ class Run(object):
 
     def has_file(self, file):
         """ Does a file exist on the remote?
-        @param path: path where file should exist
-        @param file: name of the file
+        :param path: path where file should exist
+        :param file: name of the file
         """
         cmd = "[ -f %s ] && echo 'true' || echo 'false'" % (file)
         session = self.cmd(cmd)
@@ -149,9 +149,9 @@ class Run(object):
 
     def has_dir(self, dir):
         """ Does a file exist on the remote?
-        @param path: path where file should exist
-        @param file: name of the file
-        @return boolean
+        :param path: path where file should exist
+        :param file: name of the file
+        :return boolean
         """
         cmd = "[ -d %s ] && echo 'true' || echo 'false'" % (dir)
         session = self.cmd(cmd)
@@ -166,9 +166,9 @@ class Run(object):
 
     def remove(self, path, recursive=True):
         """ Remove a file or directory on remote
-        @param path:path to file/dir to remove
-        @param recursive: adds a -r to the rm command
-        @return: boolean
+        :param path:path to file/dir to remove
+        :param recursive: adds a -r to the rm command
+        :return: boolean
         """
         if recursive:
             cmd = "rm -rf %s" % path
@@ -189,6 +189,8 @@ class Run(object):
 
     def move(self, src, dest):
         """ Perform a move operation
+        :param src: String
+        :param dest: String
         """
         cmd = "mv %s %s" % (src, dest)
         session = ssh(self.server,
@@ -206,6 +208,8 @@ class Run(object):
 
     def copy(self, src, dest, opts=''):
         """ Perform a copy operation
+        :param src: String
+        :param dest: String
         """
         cmd = "cp %s %s %s" % (opts, src, dest)
         session = ssh(self.server,
@@ -223,7 +227,7 @@ class Run(object):
 
     def set_rsa(self):
         """ Put a rsa key on the remote
-        @return: None
+        :return: None
         """
         cmd = 'hostname'
         session = ssh(self.server,
@@ -239,7 +243,7 @@ class Run(object):
 
     def cmd(self, cmd):
         """ Runs a shell command on the remote
-        @return: session info
+        :return: session info
         """
         session = ssh(self.server,
                       cmd,
@@ -253,9 +257,9 @@ class Run(object):
 
     def find(self, path, file):
         """ Finds a file on the remote system returns a list of values
-        @param path: path where file should exist
-        @param file: name of the file
-        @return: output from the session
+        :param path: path where file should exist
+        :param file: name of the file
+        :return: output from the session
         """
         cmd = "/usr/bin/find %s -name %s" % (path, file)
         session = self.cmd(cmd)
@@ -268,7 +272,7 @@ class Run(object):
 
     def os_type(self):
         """ Gets the os type of the system
-        @return: returns os string
+        :return: returns os string
         """
         cmd = "uname -mrs"
         session = self.cmd(cmd)
@@ -280,6 +284,9 @@ class Run(object):
         return output
 
     def onefs_version(self):
+        '''
+        Get onefs os version
+        '''
         os_type = self.os_type()
         if "OneFS" not in os_type:
             print "[Error] not onefs system"
@@ -291,7 +298,7 @@ class Run(object):
     def get_MD5(self, file):
         """ gets the md5sum of a file
         Supports Freebsd and Linux
-        @return: md5 string
+        :return: md5 string
         """
         os_type = self.os_type()
         md5_type = None
@@ -310,8 +317,8 @@ class Run(object):
 
     def _clean_MD5(self, os_type, output):
         """ private Cleans the md5 string produced
-        @param os_type: type of operating system
-        @param output: string from get_MD5
+        :param os_type: type of operating system
+        :param output: string from get_MD5
         """
         md5_str = None
         if "Linux" in os_type:

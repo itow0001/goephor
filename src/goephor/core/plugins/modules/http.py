@@ -88,6 +88,13 @@ class Restful(object):
             return status
 
     def post_multipart(self, url_ext, data=None, files=None, strict=True):
+        '''
+        Performs a multipart post
+        :param url_ext: String
+        :param data: String, json,xml
+        :param files: List, file paths
+        :param strict: boolean
+        '''
         full_url = "%s/%s" % (self.base_url, url_ext)
         response = requests.post(full_url, data=data, files=files)
         print ("\n [%s] %s \n %s") % ('post_multipart', full_url, response)

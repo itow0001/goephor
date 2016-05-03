@@ -12,7 +12,7 @@ class statement(Plugin):
     '''
     def __init__(self, action_manager):
         '''
-        maker Constructor
+        statement Constructor
         
         :param action_manager: Obj, from action_manager class
         '''

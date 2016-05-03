@@ -1,7 +1,7 @@
 '''
 Created on Oct 8, 2015
 
-@author: iitow
+:author: iitow
 '''
 import sys,os
 import git
@@ -24,9 +24,11 @@ class Repo_actions(object):
             self._set_ssh_config(ssh_config, git_host)
     
     def _set_ssh_config(self,ssh_config,git_host):
-        """ This turns off host verification
-        @param ssh_config: path to <user>/.ssh/config
-        @param git_host: example. github.west.isilon.com 
+        """
+        This turns off host verification
+        
+        :param ssh_config: path to <user>/.ssh/config
+        :param git_host: example. github.west.isilon.com 
         """
         if os.path.exists(ssh_config):
             with open(ssh_config,'r') as file:
@@ -50,9 +52,11 @@ class Repo_actions(object):
         return False
     
     def attach(self,repo_path):
-        """ attach to a git repo on your local system
-        @param repo_path: system path to repo
-        @return: boolean, success/failure 
+        """ 
+        attach to a git repo on your local system
+        
+        :param repo_path: system path to repo
+        :return: boolean, success/failure 
         """
         try:
             repo = Repo(repo_path)
@@ -87,10 +91,12 @@ class Repo_actions(object):
 
     #### Repo Management definitions ####          
     def init(self,set_bare=False):
-        """ Initialize a new repo on your local system
-        @param set_bare: boolean, default is False, creates a 'bare repo', to run like a src repo 
-        @return: boolean, success/failure
-        @note: Shared repositories should always be created with the set_bare flag and
+        """
+        Initialize a new repo on your local system
+        
+        :param set_bare: boolean, default is False, creates a 'bare repo', to run like a src repo 
+        :return: boolean, success/failure
+        :note: Shared repositories should always be created with the set_bare flag and
                should be stored in a directory called <projectname>.git
         """
         self._set_dirs()
@@ -108,9 +114,11 @@ class Repo_actions(object):
         return False
  
     def clone(self,remote_ssh,branch='master'):
-        """ Clone a repository from a remote location
-        @param remote_ssh: provide the ssh full info example. git@github.west.isilon.com:iitow/scm-tools.git
-        @return: boolean, success/failure 
+        """ 
+        Clone a repository from a remote location
+        
+        :param remote_ssh: provide the ssh full info example. git@github.west.isilon.com:iitow/scm-tools.git
+        :return: boolean, success/failure 
         """
         try:
             print "[Clone] @ %s" % self.repo_path
@@ -125,8 +133,10 @@ class Repo_actions(object):
         return False
 
     def untracked_files(self):
-        """ list all untracked files
-        @return: list of untracked files
+        """ 
+        list all untracked files
+        
+        :return: list of untracked files
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -139,9 +149,11 @@ class Commit_actions(object):
     def __init__(self,repo):
         self.repo = repo.repo
     def commit(self,msg):
-        """ Commits changes
-        @param msg: string, the commit message
-        @return: boolean, success/failure
+        """
+        Commits changes
+        
+        :param msg: string, the commit message
+        :return: boolean, success/failure
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -154,9 +166,11 @@ class Commit_actions(object):
         return False
     
     def cherry_pick(self,sha1_str,merge=False):
-        """ Cherry picks a commit
-        @param sha1_str: sha1 string of commit
-        @return: boolean True/False 
+        """ 
+        Cherry picks a commit
+        
+        :param sha1_str: sha1 string of commit
+        :return: boolean True/False 
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -172,6 +186,11 @@ class Commit_actions(object):
         return False
     
     def diff_tree(self,sha1_str):
+        '''
+        Performs a diff tree against current and sha1
+        
+        :param sha1_str: String
+        '''
         if not self.repo:
             print "[Warning] not attached to a repo"
             return False
@@ -183,6 +202,11 @@ class Commit_actions(object):
         return None
     
     def search_log(self,search):
+        '''
+        Search logs for a given token
+        
+        :param search: String token
+        '''
         if not self.repo:
             print "[Warning] not attached to a repo"
             return False
@@ -195,9 +219,11 @@ class Commit_actions(object):
         return None
         
     def add(self,file_name):
-        """ adds files to git index
-        @param file_name: name of the file to commit
-        @return: boolean, success/failure
+        """ 
+        adds files to git index
+        
+        :param file_name: name of the file to commit
+        :return: boolean, success/failure
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -218,16 +244,20 @@ class Commit_actions(object):
     
     
 class Branch_actions(object):
-    """ This class handles all branch related actions
-    @requires: Repo obj
+    """ 
+    This class handles all branch related actions
+    
+    :requires: Repo obj
     """
     def __init__(self,repo):
         self.repo = repo.repo
     
     def branch(self,branch_name):
-        """ Creates a new local branch
-        @param branch_name: string, name of the new branch to create it
-        @return: boolean, success/failure  
+        """ 
+        Creates a new local branch
+        
+        :param branch_name: string, name of the new branch to create it
+        :return: boolean, success/failure  
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -240,9 +270,11 @@ class Branch_actions(object):
         return False
     
     def branch_from(self,src_branch,new_branch):
-        """ Create a branch from existing branch
-        @param src_branch: original branch name
-        @param dest_branch: new branch name
+        """ 
+        Create a branch from existing branch
+        
+        :param src_branch: original branch name
+        :param dest_branch: new branch name
         """
         if self.checkout(src_branch):
             try:
@@ -255,8 +287,10 @@ class Branch_actions(object):
         return False
             
     def branch_is(self):
-        """ provides the current branch
-        @return: the current branch
+        """ 
+        provides the current branch
+        
+        :return: the current branch
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -264,9 +298,11 @@ class Branch_actions(object):
         return self.repo.active_branch
         
     def branch_list(self,verbose=True):
-        """ provides a list of all branches
-        @param verbose: boolean, prints branches out
-        @return: list of git.branch objects 
+        """
+        provides a list of all branches
+        
+        :param verbose: boolean, prints branches out
+        :return: list of git.branch objects 
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -279,9 +315,11 @@ class Branch_actions(object):
         return branches
     
     def has_reference(self,branch_name,remote='origin'):
-        """ Search for reference
-        @param branch_name: string of branch name
-        @return: reference obj
+        """
+        Search for reference
+        
+        :param branch_name: string of branch name
+        :return: reference obj
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -293,9 +331,11 @@ class Branch_actions(object):
         return None
     
     def has_head(self,branch_name):
-        """ Search for branch head
-        @param branch_name: string of branch name
-        @return: head obj
+        """
+        Search for branch head
+        
+        :param branch_name: string of branch name
+        :return: head obj
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -306,10 +346,12 @@ class Branch_actions(object):
         return None 
         
     def checkout(self,branch_name,remote='origin'):
-        """ checks out a specific branch
-        @param branch_name: string, branch you wish to checkout
-        @param remote: remote name default is origin
-        @return: boolean, success/failure  
+        """
+        checks out a specific branch
+        
+        :param branch_name: string, branch you wish to checkout
+        :param remote: remote name default is origin
+        :return: boolean, success/failure  
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -329,10 +371,12 @@ class Branch_actions(object):
             return False
     
     def push(self,branch_name,remote='origin'):
-        """ Push branch to remote
-        @param branch_name: string branch name
-        @param remote: remote reference  
-        @return: boolean
+        """
+        Push branch to remote
+        
+        :param branch_name: string branch name
+        :param remote: remote reference  
+        :return: boolean
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -345,10 +389,12 @@ class Branch_actions(object):
         return False
     
     def remote_delete(self,branch_name,remote='origin'):
-        """ Deletes branch from github remote
-        @param branch_name: string branch name
-        @param remote: remote reference  
-        @return: boolean
+        """
+        Deletes branch from github remote
+        
+        :param branch_name: string branch name
+        :param remote: remote reference  
+        :return: boolean
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -361,10 +407,12 @@ class Branch_actions(object):
         return False
     
     def delete(self,branch_name,remote='origin'):
-        """ Delete local branch
-        @param branch_name: string branch name
-        @param remote: remote reference  
-        @return: boolean
+        """
+        Delete local branch
+        
+        :param branch_name: string branch name
+        :param remote: remote reference  
+        :return: boolean
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -381,6 +429,9 @@ class Remote_actions(object):
     """ This class handles all remote actions
     """
     def __init__(self,repo):
+        '''
+        Remote_actions Constructor
+        '''
         self.repo = repo.repo
         
     def list(self):
@@ -402,10 +453,12 @@ class Remote_actions(object):
         return False
    
     def add(self,remote,name='upstream'):
-        """ add a remote to repo
-        @param remote: remote url string example. git@github.west.isilon.com:iitow/onefs.git
-        @param name: reference to the remote example. upstream
-        @return: boolean True/False 
+        """ 
+        add a remote to repo
+        
+        :param remote: remote url string
+        :param name: reference to the remote example. upstream
+        :return: boolean True/False 
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -418,10 +471,12 @@ class Remote_actions(object):
         return False
     
     def fork_sync(self,remote,name='upstream',branch='master',add_remote=False):
-        """ Syncs a fork of repo with another repository
-        @param remote: remote url string example. git@github.west.isilon.com:iitow/onefs.git
-        @param name: reference to the remote example. upstream
-        @return: boolean True/False 
+        """
+        Syncs a fork of repo with another repository
+        
+        :param remote: remote url string example. git@github.west.isilon.com:iitow/onefs.git
+        :param name: reference to the remote example. upstream
+        :return: boolean True/False 
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
@@ -439,12 +494,14 @@ class Remote_actions(object):
         return False
     
     def fetch(self,remote,name='upstream',branch='master',add_remote=False):
-        """ Fetch remote branches
-        @param remote: repo url example. git@github.west.isilon.com:isilon/onefs.git
-        @param name: name of the remote
-        @param branch; branch to switch to when fetching
-        @param add_remote: boolean add a remote
-        @return: boolean  
+        """
+        Fetch remote branches
+        
+        :param remote: repo url example. git@github.west.isilon.com:isilon/onefs.git
+        :param name: name of the remote
+        :param branch; branch to switch to when fetching
+        :param add_remote: boolean add a remote
+        :return: boolean  
         """
         if not self.repo:
             print "[Warning] not attached to a repo"

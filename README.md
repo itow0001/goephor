@@ -509,11 +509,21 @@ file @ **/goephor/core/plugins/http.py**
 
  ***def __init__*** 
 
-      None 
+      rest Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def send*** 
 
-      None 
+      Performs a http restful call
+
+
+**param type:** String, PUT,GET
+
+**param base_url:** String
+
+**param url_ext:** String 
 ********************************************************************************************
 file @ **/goephor/core/plugins/condition.py**
 
@@ -527,7 +537,7 @@ file @ **/goephor/core/plugins/condition.py**
 
  ***def __init__*** 
 
-      maker Constructor
+      statement Constructor
 
 
 **param action_manager:** Obj, from action_manager class 
@@ -692,7 +702,8 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
 
       Created on Oct 8, 2015
 
-@author: iitow
+
+**author:** iitow
 
 ####class Repo_actions####
 
@@ -706,7 +717,9 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
 ####class Branch_actions####
 
       This class handles all branch related actions
-@requires: Repo obj 
+
+
+**requires:** Repo obj 
 
 ####class Remote_actions####
 
@@ -721,8 +734,11 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
  ***def _set_ssh_config*** 
 
       This turns off host verification
-@param ssh_config: path to <user>/.ssh/config
-@param git_host: example. github.west.isilon.com  
+
+
+**param ssh_config:** path to <user>/.ssh/config
+
+**param git_host:** example. github.west.isilon.com  
 
  ***def _set_dirs*** 
 
@@ -731,8 +747,11 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
  ***def attach*** 
 
       attach to a git repo on your local system
-@param repo_path: system path to repo
-@return: boolean, success/failure  
+
+
+**param repo_path:** system path to repo
+
+**return:** boolean, success/failure  
 
  ***def _initial_commit*** 
 
@@ -742,22 +761,30 @@ is an empty README.md
  ***def init*** 
 
       Initialize a new repo on your local system
-@param set_bare: boolean, default is False, creates a 'bare repo', to run like a src repo 
-@return: boolean, success/failure
-@note: Shared repositories should always be created with the set_bare flag and
+
+
+**param set_bare:** boolean, default is False, creates a 'bare repo', to run like a src repo 
+
+**return:** boolean, success/failure
+
+**note:** Shared repositories should always be created with the set_bare flag and
        should be stored in a directory called <projectname>.git 
 
  ***def clone*** 
 
       Clone a repository from a remote location
-@param remote_ssh
-** provide the ssh full info example. git@github.west.isilon.com:**iitow/scm-tools.git
-@return: boolean, success/failure  
+
+
+**param remote_ssh:** provide the ssh full info example. git@github.west.isilon.com:iitow/scm-tools.git
+
+**return:** boolean, success/failure  
 
  ***def untracked_files*** 
 
       list all untracked files
-@return: list of untracked files 
+
+
+**return:** list of untracked files 
 
  ***def __init__*** 
 
@@ -766,28 +793,43 @@ is an empty README.md
  ***def commit*** 
 
       Commits changes
-@param msg: string, the commit message
-@return: boolean, success/failure 
+
+
+**param msg:** string, the commit message
+
+**return:** boolean, success/failure 
 
  ***def cherry_pick*** 
 
       Cherry picks a commit
-@param sha1_str: sha1 string of commit
-@return: boolean True/False  
+
+
+**param sha1_str:** sha1 string of commit
+
+**return:** boolean True/False  
 
  ***def diff_tree*** 
 
-      None 
+      Performs a diff tree against current and sha1
+
+
+**param sha1_str:** String 
 
  ***def search_log*** 
 
-      None 
+      Search logs for a given token
+
+
+**param search:** String token 
 
  ***def add*** 
 
       adds files to git index
-@param file_name: name of the file to commit
-@return: boolean, success/failure 
+
+
+**param file_name:** name of the file to commit
+
+**return:** boolean, success/failure 
 
  ***def __init__*** 
 
@@ -796,69 +838,102 @@ is an empty README.md
  ***def branch*** 
 
       Creates a new local branch
-@param branch_name: string, name of the new branch to create it
-@return: boolean, success/failure   
+
+
+**param branch_name:** string, name of the new branch to create it
+
+**return:** boolean, success/failure   
 
  ***def branch_from*** 
 
       Create a branch from existing branch
-@param src_branch: original branch name
-@param dest_branch: new branch name 
+
+
+**param src_branch:** original branch name
+
+**param dest_branch:** new branch name 
 
  ***def branch_is*** 
 
       provides the current branch
-@return: the current branch 
+
+
+**return:** the current branch 
 
  ***def branch_list*** 
 
       provides a list of all branches
-@param verbose: boolean, prints branches out
-@return: list of git.branch objects  
+
+
+**param verbose:** boolean, prints branches out
+
+**return:** list of git.branch objects  
 
  ***def has_reference*** 
 
       Search for reference
-@param branch_name: string of branch name
-@return: reference obj 
+
+
+**param branch_name:** string of branch name
+
+**return:** reference obj 
 
  ***def has_head*** 
 
       Search for branch head
-@param branch_name: string of branch name
-@return: head obj 
+
+
+**param branch_name:** string of branch name
+
+**return:** head obj 
 
  ***def checkout*** 
 
       checks out a specific branch
-@param branch_name: string, branch you wish to checkout
-@param remote: remote name default is origin
-@return: boolean, success/failure   
+
+
+**param branch_name:** string, branch you wish to checkout
+
+**param remote:** remote name default is origin
+
+**return:** boolean, success/failure   
 
  ***def push*** 
 
       Push branch to remote
-@param branch_name: string branch name
-@param remote: remote reference  
-@return: boolean 
+
+
+**param branch_name:** string branch name
+
+**param remote:** remote reference  
+
+**return:** boolean 
 
  ***def remote_delete*** 
 
       Deletes branch from github remote
-@param branch_name: string branch name
-@param remote: remote reference  
-@return: boolean 
+
+
+**param branch_name:** string branch name
+
+**param remote:** remote reference  
+
+**return:** boolean 
 
  ***def delete*** 
 
       Delete local branch
-@param branch_name: string branch name
-@param remote: remote reference  
-@return: boolean 
+
+
+**param branch_name:** string branch name
+
+**param remote:** remote reference  
+
+**return:** boolean 
 
  ***def __init__*** 
 
-      None 
+      Remote_actions Constructor 
 
  ***def list*** 
 
@@ -871,28 +946,38 @@ is an empty README.md
  ***def add*** 
 
       add a remote to repo
-@param remote
-** remote url string example. git@github.west.isilon.com:**iitow/onefs.git
-@param name: reference to the remote example. upstream
-@return: boolean True/False  
+
+
+**param remote:** remote url string
+
+**param name:** reference to the remote example. upstream
+
+**return:** boolean True/False  
 
  ***def fork_sync*** 
 
       Syncs a fork of repo with another repository
-@param remote
-** remote url string example. git@github.west.isilon.com:**iitow/onefs.git
-@param name: reference to the remote example. upstream
-@return: boolean True/False  
+
+
+**param remote:** remote url string example. git@github.west.isilon.com:iitow/onefs.git
+
+**param name:** reference to the remote example. upstream
+
+**return:** boolean True/False  
 
  ***def fetch*** 
 
       Fetch remote branches
-@param remote
-** repo url example. git@github.west.isilon.com:**isilon/onefs.git
-@param name: name of the remote
-@param branch; branch to switch to when fetching
-@param add_remote: boolean add a remote
-@return: boolean   
+
+
+**param remote:** repo url example. git@github.west.isilon.com:isilon/onefs.git
+
+**param name:** name of the remote
+:param branch; branch to switch to when fetching
+
+**param add_remote:** boolean add a remote
+
+**return:** boolean   
 ********************************************************************************************
 file @ **/goephor/core/plugins/modules/__init__.py**
 
@@ -967,108 +1052,144 @@ using SSH to perform all needed actions
  ***def __init__*** 
 
       Initializes a Remote session
-@param server: server address
-@param rsa_private: path to the private key file
-@param user: Username used to log into system
-@param password: Password used to log into system
-@param strict: boolean fail on error
-@param verbose: print out all debug messaging
-@param show_cmd: show the command given to remote server 
+
+**param server:** server address
+
+**param rsa_private:** path to the private key file
+
+**param user:** Username used to log into system
+
+**param password:** Password used to log into system
+
+**param strict:** boolean fail on error
+
+**param verbose:** print out all debug messaging
+
+**param show_cmd:** show the command given to remote server 
 
  ***def is_alive*** 
 
       Pings the remote to make sure its a valid address
-@return: boolean 
+
+**return:** boolean 
 
  ***def is_alive_poll*** 
 
       Polls for a ping
-@param timeout: default 30 seconds
-@return: boolean 
+
+**param timeout:** default 30 seconds
+
+**return:** boolean 
 
  ***def is_writable*** 
 
       Check to make sure the file system is writable
-@return: boolean 
+
+**return:** boolean 
 
  ***def is_writable_poll*** 
 
       Check to make sure file system is writable poll
-@param timeout: default 30 seconds
-@return: boolean 
+
+**param timeout:** default 30 seconds
+
+**return:** boolean 
 
  ***def has_access*** 
 
       Does a key already exist on the remote?
-@return: boolean 
+
+**return:** boolean 
 
  ***def has_file*** 
 
       Does a file exist on the remote?
-@param path: path where file should exist
-@param file: name of the file 
+
+**param path:** path where file should exist
+
+**param file:** name of the file 
 
  ***def has_dir*** 
 
       Does a file exist on the remote?
-@param path: path where file should exist
-@param file: name of the file
-@return boolean 
+
+**param path:** path where file should exist
+
+**param file:** name of the file
+:return boolean 
 
  ***def remove*** 
 
       Remove a file or directory on remote
-@param path:path to file/dir to remove
-@param recursive: adds a -r to the rm command
-@return: boolean 
+
+**param path:**path to file/dir to remove
+
+**param recursive:** adds a -r to the rm command
+
+**return:** boolean 
 
  ***def move*** 
 
       Perform a move operation
-         
+
+**param src:** String
+
+**param dest:** String 
 
  ***def copy*** 
 
       Perform a copy operation
-         
+
+**param src:** String
+
+**param dest:** String 
 
  ***def set_rsa*** 
 
       Put a rsa key on the remote
-@return: None 
+
+**return:** None 
 
  ***def cmd*** 
 
       Runs a shell command on the remote
-@return: session info 
+
+**return:** session info 
 
  ***def find*** 
 
       Finds a file on the remote system returns a list of values
-@param path: path where file should exist
-@param file: name of the file
-@return: output from the session 
+
+**param path:** path where file should exist
+
+**param file:** name of the file
+
+**return:** output from the session 
 
  ***def os_type*** 
 
       Gets the os type of the system
-@return: returns os string 
+
+**return:** returns os string 
 
  ***def onefs_version*** 
 
-      None 
+      Get onefs os version 
 
  ***def get_MD5*** 
 
       gets the md5sum of a file
 Supports Freebsd and Linux
-@return: md5 string 
+
+**return:** md5 string 
 
  ***def _clean_MD5*** 
 
       private Cleans the md5 string produced
-@param os_type: type of operating system
-@param output: string from get_MD5 
+
+**param os_type:** type of operating system
+
+**param output:** string from get_MD5 
 ********************************************************************************************
 file @ **/goephor/core/plugins/modules/terminal.py**
 
@@ -1213,4 +1334,12 @@ Check for Certificates
 
  ***def post_multipart*** 
 
-      None 
+      Performs a multipart post
+
+**param url_ext:** String
+
+**param data:** String, json,xml
+
+**param files:** List, file paths
+
+**param strict:** boolean 
