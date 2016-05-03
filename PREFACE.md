@@ -23,6 +23,9 @@ example:
    goephor -f <path>/manifest.yaml -e
 ```
 
+### Example Manifests ###
+https://github.west.isilon.com/eng-tools/goephor/tree/refactor/src/examples
+
 
 
 
