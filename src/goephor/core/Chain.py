@@ -1,6 +1,5 @@
 '''
-Created on Apr 25, 2016
-
+Contained in this file is the main loops
 :author: iitow
 '''
 
@@ -12,11 +11,11 @@ import sys
 
 class Run(object):
     ''' 
-    This is the entry point from the cli and runs drives components
+    This is the entry point from the cli and drives components
     '''
     def __init__(self, config_file,verbose=False,debug=False):
-        ''' 
-        Constructor
+        '''
+        Run Constructor 
         
         :param config_file: path to yaml manifest
         :param verbose: print general run info

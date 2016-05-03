@@ -12,10 +12,23 @@ class maker(Plugin):
     ''' This class represents a receipt maker class
     '''
     def __init__(self, action_manager):
+        '''
+        maker Constructor
+        :param action_manager: Obj, from action_manager class
+        '''
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
 
     def on_actions(self, path, **defaults):
+        '''
+        This creates a receipt of all actions in the chain
+        
+        :param path: String, system path to put receipt
+        :param defaults: additional params
+        :example:
+        - receipt.maker.on_actions:
+            - "./receipt.yaml"
+        '''
         receipt = {}
         receipt["results"] = []
         receipt['globals'] = []
@@ -35,6 +48,9 @@ class maker(Plugin):
                                      allow_unicode=True))
     
     def custom(self, path, **defaults):
+        '''
+        Create a custom receipt from key/value pairs in defaults
+        '''
         with open(path, 'w') as file:
             if defaults.get('type') == 'json':
                 file.write(json.dumps(defaults,

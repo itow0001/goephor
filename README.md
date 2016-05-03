@@ -1,6 +1,6 @@
 SOME RANDOME
 TEXT
-**********************************************
+********************************************************************************************
 file @ **/goephor.py**
 
       Created on Jan 9, 2016
@@ -9,45 +9,44 @@ file @ **/goephor.py**
 **author** iitow
 
 **note** Look to __main__.py for menu logic
-**********************************************
+********************************************************************************************
 file @ **/goephor/__init__.py**
 
-      
-**********************************************
+      goephor __init__.py 
+********************************************************************************************
 file @ **/goephor/__main__.py**
 
-      Main entry for goephor
+      Main entry for goephor to menu here
 
  ***def menu*** 
 
-      None 
+      argparse menu here 
 
  ***def parse_envs*** 
 
-      None 
+      Parse environment variables from menu comma delimiter 
 
  ***def main*** 
 
-      None 
-**********************************************
+      This is the entry point for the package cli 
+********************************************************************************************
 file @ **/goephor/core/__init__.py**
 
-      None
-**********************************************
+      Core __init__.py
+********************************************************************************************
 file @ **/goephor/core/Chain.py**
 
-      Created on Apr 25, 2016
-
+      Contained in this file is the main loops
 
 **author** iitow
 
 ####class Run####
 
-      This is the entry point from the cli and runs drives components 
+      This is the entry point from the cli and drives components 
 
  ***def __init__*** 
 
-      Constructor
+      Run Constructor 
 
 
 **param config_file** path to yaml manifest
@@ -102,7 +101,7 @@ file @ **/goephor/core/Chain.py**
 
       Executes all action objects
          
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/receipt.py**
 
       Created on Apr 27, 2016
@@ -116,20 +115,31 @@ file @ **/goephor/core/plugins/receipt.py**
 
  ***def __init__*** 
 
-      None 
+      maker Constructor
+
+**param action_manager** Obj, from action_manager class 
 
  ***def on_actions*** 
 
-      None 
+      This creates a receipt of all actions in the chain
+
+
+**param path** String, system path to put receipt
+
+**param defaults** additional params
+
+**example**
+- receipt.maker.on_actions:
+    - "./receipt.yaml" 
 
  ***def custom*** 
 
-      None 
-**********************************************
+      Create a custom receipt from key/value pairs in defaults 
+********************************************************************************************
 file @ **/goephor/core/plugins/__init__.py**
 
       None
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/scm.py**
 
       Created on Apr 28, 2016
@@ -152,7 +162,7 @@ file @ **/goephor/core/plugins/scm.py**
  ***def delete*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/freebsd.py**
 
       Created on Apr 29, 2016
@@ -198,7 +208,7 @@ file @ **/goephor/core/plugins/freebsd.py**
  ***def __init__*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/pluginable.py**
 
       Created on Apr 25, 2016
@@ -229,7 +239,7 @@ file @ **/goephor/core/plugins/pluginable.py**
  ***def wrapper*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/environment.py**
 
       Created on Apr 27, 2016
@@ -248,7 +258,7 @@ file @ **/goephor/core/plugins/environment.py**
  ***def set*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/system.py**
 
       Created on Apr 25, 2016
@@ -270,7 +280,7 @@ file @ **/goephor/core/plugins/system.py**
  ***def rsync*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/remote.py**
 
       Created on Apr 28, 2016
@@ -288,7 +298,7 @@ file @ **/goephor/core/plugins/remote.py**
  ***def cmd*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/example.py**
 
       Created on Apr 27, 2016
@@ -307,7 +317,7 @@ file @ **/goephor/core/plugins/example.py**
  ***def runme*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/http.py**
 
       Created on Apr 29, 2016
@@ -325,7 +335,7 @@ file @ **/goephor/core/plugins/http.py**
  ***def send*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/condition.py**
 
       Created on Apr 26, 2016
@@ -347,7 +357,7 @@ file @ **/goephor/core/plugins/condition.py**
  ***def IF*** 
 
       None 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/remotable.py**
 
       Created on Jan 29, 2016
@@ -382,7 +392,7 @@ file @ **/goephor/core/plugins/remotable.py**
 @return
 ** session info
 @note** environment variables but be as follows ${var} to pass over to ssh 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/action.py**
 
       Created on Apr 26, 2016
@@ -505,7 +515,7 @@ access to initialize nest actions and have access to environment.
 
       execute the instruction
          
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/git_kit.py**
 
       Created on Oct 8, 2015
@@ -729,11 +739,11 @@ is an empty README.md
 @param branch; branch to switch to when fetching
 @param add_remote** boolean add a remote
 @return: boolean   
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/__init__.py**
 
       None
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/environment.py**
 
       Created on Apr 26, 2016
@@ -787,7 +797,7 @@ Its contained within the action_manager.
 **param stri** String,Bool,Int
 
 **note** when nested environment variables are used in a striing convert all 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/remote.py**
 
       Created on Nov 18, 2015
@@ -914,7 +924,7 @@ Supports Freebsd and Linux
 @param os_type
 ** type of operating system
 @param output** string from get_MD5 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/terminal.py**
 
       Created on Nov 18, 2015
@@ -1006,7 +1016,7 @@ a remote system, [False] assumes we are copying files locally
  ***def _exit_clean*** 
 
       cleans .tmp_shell files before exit 
-**********************************************
+********************************************************************************************
 file @ **/goephor/core/plugins/modules/http.py**
 
       Created on Jun 2, 2015

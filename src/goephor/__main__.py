@@ -1,6 +1,5 @@
-#!/usr/bin/env python
 '''
-    Main entry for goephor
+Main entry for goephor to menu here
 '''
 from __future__ import absolute_import
 from goephor.core.Chain import Run
@@ -8,6 +7,9 @@ import argparse
 
 
 def menu():
+    '''
+    argparse menu here
+    '''
     parser = argparse.ArgumentParser(
         description='A yaml friendly build management tool')
     parser.add_argument('-f',
@@ -39,6 +41,9 @@ def menu():
 
 
 def parse_envs(options):
+    '''
+    Parse environment variables from menu comma delimiter
+    '''
     envs = options.envs.split(',')
     envs_dict = {}
     for env in envs:
@@ -49,6 +54,9 @@ def parse_envs(options):
 
 
 def main():
+    '''
+    This is the entry point for the package cli
+    '''
     options = menu()
     if options.execute:
         main_actions = Run(options.file,options.silent)
