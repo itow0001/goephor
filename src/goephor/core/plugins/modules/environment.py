@@ -1,7 +1,7 @@
 '''
 Created on Apr 26, 2016
 
-@author: iitow
+:author: iitow
 '''
 import os
 import re

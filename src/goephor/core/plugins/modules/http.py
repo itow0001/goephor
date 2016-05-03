@@ -1,7 +1,7 @@
 '''
 Created on Jun 2, 2015
 
-@author: iitow
+:author: iitow
 '''
 import os
 import requests

@@ -1,7 +1,7 @@
 '''
 Created on Apr 25, 2016
 
-@author: iitow
+:author: iitow
 '''
 from modules.environment import EnvManager
 import types

@@ -118,7 +118,8 @@ file @ **/goephor/core/plugins/receipt.py**
 
       Created on Apr 27, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class maker####
 
@@ -224,7 +225,8 @@ file @ **/goephor/core/plugins/freebsd.py**
 
       Created on Apr 29, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class terminal####
 
@@ -333,7 +335,8 @@ file @ **/goephor/core/plugins/pluginable.py**
 
       Created on Apr 25, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class DecoMeta####
 
@@ -396,7 +399,8 @@ file @ **/goephor/core/plugins/system.py**
 
       Created on Apr 25, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class terminal####
 
@@ -455,7 +459,8 @@ file @ **/goephor/core/plugins/remote.py**
 
       Created on Apr 28, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class ssh####
 
@@ -495,7 +500,8 @@ file @ **/goephor/core/plugins/example.py**
 
       Created on Apr 27, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class example####
 
@@ -532,7 +538,8 @@ file @ **/goephor/core/plugins/http.py**
 
       Created on Apr 29, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class rest####
 
@@ -562,7 +569,8 @@ file @ **/goephor/core/plugins/condition.py**
 
       Created on Apr 26, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class statement####
 
@@ -614,7 +622,8 @@ file @ **/goephor/core/plugins/modules/action.py**
 
       Created on Apr 26, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class Manager####
 
@@ -1028,7 +1037,8 @@ file @ **/goephor/core/plugins/modules/environment.py**
 
       Created on Apr 26, 2016
 
-@author: iitow
+
+**author:** iitow
 
 ####class EnvManager####
 
@@ -1085,7 +1095,8 @@ file @ **/goephor/core/plugins/modules/remote.py**
 
       Created on Nov 18, 2015
 
-@author: iitow
+
+**author:** iitow
 
 ####class Run####
 
@@ -1335,7 +1346,8 @@ file @ **/goephor/core/plugins/modules/http.py**
 
       Created on Jun 2, 2015
 
-@author: iitow
+
+**author:** iitow
 
 ####class Restful####
 

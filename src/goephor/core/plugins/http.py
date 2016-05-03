@@ -1,7 +1,7 @@
 '''
 Created on Apr 29, 2016
 
-@author: iitow
+:author: iitow
 '''
 from modules.http import Restful
 from pluginable import Plugin

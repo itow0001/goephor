@@ -1,7 +1,7 @@
 '''
 Created on Apr 25, 2016
 
-@author: iitow
+:author: iitow
 '''
 from pluginable import Plugin
 from modules.terminal import shell, rsync

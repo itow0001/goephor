@@ -1,7 +1,7 @@
 '''
 Created on Nov 18, 2015
 
-@author: iitow
+:author: iitow
 '''
 import socket
 import sys

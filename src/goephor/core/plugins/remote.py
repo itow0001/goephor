@@ -1,7 +1,7 @@
 '''
 Created on Apr 28, 2016
 
-@author: iitow
+:author: iitow
 '''
 from modules.remote import Run
 from pluginable import Plugin
