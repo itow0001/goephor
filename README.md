@@ -12,6 +12,7 @@ file @ **/goephor.py**
 **********************************************
 file @ **/goephor/__init__.py**
 
+      
 **********************************************
 file @ **/goephor/__main__.py**
 
@@ -31,6 +32,7 @@ file @ **/goephor/__main__.py**
 **********************************************
 file @ **/goephor/core/__init__.py**
 
+      None
 **********************************************
 file @ **/goephor/core/Chain.py**
 
@@ -126,6 +128,7 @@ file @ **/goephor/core/plugins/receipt.py**
 **********************************************
 file @ **/goephor/core/plugins/__init__.py**
 
+      None
 **********************************************
 file @ **/goephor/core/plugins/scm.py**
 
@@ -729,6 +732,7 @@ is an empty README.md
 **********************************************
 file @ **/goephor/core/plugins/modules/__init__.py**
 
+      None
 **********************************************
 file @ **/goephor/core/plugins/modules/environment.py**
 
