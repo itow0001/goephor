@@ -5,8 +5,10 @@ file @ **/goephor.py**
 
       Created on Jan 9, 2016
 
-:author: iitow
-:note: Look to __main__.py for menu logic
+
+**author:** iitow
+
+**note:** Look to __main__.py for menu logic
 ********************************************************************************************
 file @ **/goephor/__init__.py**
 
@@ -35,7 +37,8 @@ file @ **/goephor/core/__init__.py**
 file @ **/goephor/core/Chain.py**
 
       Contained in this file is the main loops
-:author: iitow
+
+**author:** iitow
 
 ####class Run####
 
@@ -45,36 +48,46 @@ file @ **/goephor/core/Chain.py**
 
       Run Constructor 
 
-:param config_file: path to yaml manifest
-:param verbose: print general run info
-:param debug: print debug info 
+
+**param config_file:** path to yaml manifest
+
+**param verbose:** print general run info
+
+**param debug:** print debug info 
 
  ***def read_config*** 
 
       Allows for reading .yaml or .json files
 
-:param config_file: defines all actions in a build
-:return: dict 
+
+**param config_file:** defines all actions in a build
+
+**return:** dict 
 
  ***def _read_yaml*** 
 
       Reads in the yaml config
 
-:param config_file: defines all actions in a build
-:return: dict 
+
+**param config_file:** defines all actions in a build
+
+**return:** dict 
 
  ***def _read_json*** 
 
       Reads in the json config
 
-:param config_file: defines all actions in a build
-:return: dict 
+
+**param config_file:** defines all actions in a build
+
+**return:** dict 
 
  ***def add_envs*** 
 
       Overrides environment variables from cli
 
-:param **envs: dictionary of environment variables 
+
+**param **envs:** dictionary of environment variables 
 
  ***def set_envs*** 
 
@@ -103,15 +116,19 @@ file @ **/goephor/core/plugins/receipt.py**
  ***def __init__*** 
 
       maker Constructor
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def on_actions*** 
 
       This creates a receipt of all actions in the chain
 
-:param path: String, system path to put receipt
-:param defaults: additional params
-:example:
+
+**param path:** String, system path to put receipt
+
+**param defaults:** additional params
+
+**example:**
 ```
 - receipt.maker.on_actions:
     - "./receipt.yaml"
@@ -121,9 +138,12 @@ file @ **/goephor/core/plugins/receipt.py**
 
       Create a custom receipt from key/value pairs in defaults
 
-:param path: String, system path to put receipt
-:param defaults: additional params
-:example:
+
+**param path:** String, system path to put receipt
+
+**param defaults:** additional params
+
+**example:**
 ```
 - receipt.maker.custom:
     - "./receipt.yaml"
@@ -151,15 +171,19 @@ file @ **/goephor/core/plugins/scm.py**
 
       git Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def clone*** 
 
       Clone a git repo
 
-:param new_local_path: String, full path and desired dir name
-:param remote: String, git repo
-:example:
+
+**param new_local_path:** String, full path and desired dir name
+
+**param remote:** String, git repo
+
+**example:**
 ```
        - scm.git.clone:
               - "/tmp/goephor"
@@ -169,8 +193,10 @@ file @ **/goephor/core/plugins/scm.py**
  ***def delete*** 
 
       Delete a local repo
-:param local_path: String
-:example:
+
+**param local_path:** String
+
+**example:**
 ```
     - scm.git.delete:
         - "/tmp/goephor"
@@ -198,16 +224,21 @@ file @ **/goephor/core/plugins/freebsd.py**
 
       terminal Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def jls*** 
 
       Runs the jls command
 
-:param hostname: String
-:param return_type: String options: path,ip,jid
-:return: String of return_type
-:example:
+
+**param hostname:** String
+
+**param return_type:** String options: path,ip,jid
+
+**return:** String of return_type
+
+**example:**
 ```
 - freebsd.terminal.jls
     - "eng-sea-build10"
@@ -218,10 +249,14 @@ file @ **/goephor/core/plugins/freebsd.py**
 
       Runs a command within a jail
 
-:param cmd: String
-:param jid: String jail id
-:return: command output
-:example:
+
+**param cmd:** String
+
+**param jid:** String jail id
+
+**return:** command output
+
+**example:**
 ```
 - freebsd.terminal.jexec
     - "echo 'running within jail'"
@@ -232,10 +267,14 @@ file @ **/goephor/core/plugins/freebsd.py**
 
       Use fetch to get things from url path
 
-:param path: String, current working dir
-:param url: String
-:return: String output
-:example:
+
+**param path:** String, current working dir
+
+**param url:** String
+
+**return:** String output
+
+**example:**
 ```
 - freebsd.terminal.fetch
     - "/tmp"
@@ -246,14 +285,18 @@ file @ **/goephor/core/plugins/freebsd.py**
 
       pkg Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def install*** 
 
       Install a package
-:param name: String
-:return: output
-:example:
+
+**param name:** String
+
+**return:** output
+
+**example:**
 ```
 - freebsd.pkg.install
     - "texinfo"
@@ -263,7 +306,8 @@ file @ **/goephor/core/plugins/freebsd.py**
 
       jails Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 ********************************************************************************************
 file @ **/goephor/core/plugins/pluginable.py**
 
@@ -311,14 +355,17 @@ file @ **/goephor/core/plugins/environment.py**
 
       env Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def set*** 
 
       Set an environment variable
 
-:param key: String
-:param value: String 
+
+**param key:** String
+
+**param value:** String 
 ********************************************************************************************
 file @ **/goephor/core/plugins/system.py**
 
@@ -334,14 +381,17 @@ file @ **/goephor/core/plugins/system.py**
 
       terminal Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def shell*** 
 
       Run a shell command
 
-:param cmd: String
-:example:
+
+**param cmd:** String
+
+**example:**
 ```
 - system.terminal.shell:
     - 'echo " THIS IS IT"' 
@@ -350,13 +400,20 @@ file @ **/goephor/core/plugins/system.py**
  ***def rsync*** 
 
       Perform an rsync
-:param user: String
-:param rsa_private_path: String
-:param server: String
-:param src: String, source dir
-:param dest: String, dest dir
-:param options: String, push,pull
-:example:
+
+**param user:** String
+
+**param rsa_private_path:** String
+
+**param server:** String
+
+**param src:** String, source dir
+
+**param dest:** String, dest dir
+
+**param options:** String, push,pull
+
+**example:**
 ```
 - system.terminal.rsync:
       - "root"
@@ -381,16 +438,22 @@ file @ **/goephor/core/plugins/remote.py**
 
       ssh Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def cmd*** 
 
       Run a command remotely via ssh
-:param cmdstr: String
-:param server: String
-:param user: String
-:param rsa_private_path: String
-:example:
+
+**param cmdstr:** String
+
+**param server:** String
+
+**param user:** String
+
+**param rsa_private_path:** String
+
+**example:**
 ```
        - remote.ssh.cmd:
             - "uname -a"
@@ -414,15 +477,20 @@ file @ **/goephor/core/plugins/example.py**
 
       example Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def runme*** 
 
       This is an example of setting up an action
-:param var1: String
-:param var2: String
-:return: runme_output
-:example:
+
+**param var1:** String
+
+**param var2:** String
+
+**return:** runme_output
+
+**example:**
 ```
 - example.example.runme:
     - "hello"
@@ -461,22 +529,29 @@ file @ **/goephor/core/plugins/condition.py**
 
       maker Constructor
 
-:param action_manager: Obj, from action_manager class 
+
+**param action_manager:** Obj, from action_manager class 
 
  ***def add_obj*** 
 
       Private def to add action out of band
-:param clause: dict, if statement  
+
+**param clause:** dict, if statement  
 
  ***def IF*** 
 
       Represents an if statement
-:param arg1: int,str
-:param operator: String, follows python rules
+
+**param arg1:** int,str
+
+**param operator:** String, follows python rules
 :param arg12 int,str
-:param THEN: List, several other actions
-:param ELSE: List, several other actions
-:example:
+
+**param THEN:** List, several other actions
+
+**param ELSE:** List, several other actions
+
+**example:**
 ```
    -  condition.statement.IF:
                         - "${var1}"
@@ -500,7 +575,8 @@ file @ **/goephor/core/plugins/modules/action.py**
 
       This class manages state of action objects
 
-:note: This is passed into each of the plugins and can be used to manage
+
+**note:** This is passed into each of the plugins and can be used to manage
 Serveral states. 
 
 ####class Action####
@@ -511,18 +587,25 @@ Serveral states.
 
       Constructor
 
-:param config: nest dict from manifest
-:param EnvManager: Holds the state of the Environment
-:param verbose: set verbosity
-:param debug: set debug 
+
+**param config:** nest dict from manifest
+
+**param EnvManager:** Holds the state of the Environment
+
+**param verbose:** set verbosity
+
+**param debug:** set debug 
 
  ***def to_obj*** 
 
       Converts action dictionary to action obj
 
-:param action: base action dict
-:param action_manager: from chain.Run pass in Action_manager
-:note: We initialize the action_manager in chain.Run and pass
+
+**param action:** base action dict
+
+**param action_manager:** from chain.Run pass in Action_manager
+
+**note:** We initialize the action_manager in chain.Run and pass
 the obj back to each Action Obj which gives the class full
 access to initialize nest actions and have access to environment. 
 
@@ -530,39 +613,52 @@ access to initialize nest actions and have access to environment.
 
       Append an action obj to chain
 
-:param action_obj: Obj 
+
+**param action_obj:** Obj 
 
  ***def insert*** 
 
       Insert action object at a given index in the chain
 
-:param index: Int of chain
-:param action_obj: Obj 
+
+**param index:** Int of chain
+
+**param action_obj:** Obj 
 
  ***def get_index*** 
 
       Get the index number of an action object in the chain
 
-:param memory_address: String, of object.__repr__(self)
-:note: See plugins.condition for usage 
+
+**param memory_address:** String, of object.__repr__(self)
+
+**note:** See plugins.condition for usage 
 
  ***def __init__*** 
 
       Constructor
 
-:param name: String, full resolve path
-:param IMP: String, import name
-:param CLASS: String, class name
-:param DEF: String, definition name
-:param parameters: list
-:param defaults: Dict
-:param action_manager: Obj 
+
+**param name:** String, full resolve path
+
+**param IMP:** String, import name
+
+**param CLASS:** String, class name
+
+**param DEF:** String, definition name
+
+**param parameters:** list
+
+**param defaults:** Dict
+
+**param action_manager:** Obj 
 
  ***def __repr__*** 
 
       Override container name so we can match the array in the chain
 
-:note: This is how we match chain to current plugin using object.__repr__(self) 
+
+**note:** This is how we match chain to current plugin using object.__repr__(self) 
 
  ***def set_ignore*** 
 
@@ -576,13 +672,16 @@ access to initialize nest actions and have access to environment.
 
       print state about the object pretty
 
-:param title: String
-:param footer: String 
+
+**param title:** String
+
+**param footer:** String 
 
  ***def _init_instance*** 
 
       Initializes the class
-:note: we initialize the plugin class so we can pass info into action Obj before run. 
+
+**note:** we initialize the plugin class so we can pass info into action Obj before run. 
 
  ***def execute*** 
 
@@ -651,7 +750,8 @@ is an empty README.md
  ***def clone*** 
 
       Clone a repository from a remote location
-@param remote_ssh: provide the ssh full info example. git@github.west.isilon.com:iitow/scm-tools.git
+@param remote_ssh
+** provide the ssh full info example. git@github.west.isilon.com:**iitow/scm-tools.git
 @return: boolean, success/failure  
 
  ***def untracked_files*** 
@@ -771,21 +871,24 @@ is an empty README.md
  ***def add*** 
 
       add a remote to repo
-@param remote: remote url string example. git@github.west.isilon.com:iitow/onefs.git
+@param remote
+** remote url string example. git@github.west.isilon.com:**iitow/onefs.git
 @param name: reference to the remote example. upstream
 @return: boolean True/False  
 
  ***def fork_sync*** 
 
       Syncs a fork of repo with another repository
-@param remote: remote url string example. git@github.west.isilon.com:iitow/onefs.git
+@param remote
+** remote url string example. git@github.west.isilon.com:**iitow/onefs.git
 @param name: reference to the remote example. upstream
 @return: boolean True/False  
 
  ***def fetch*** 
 
       Fetch remote branches
-@param remote: repo url example. git@github.west.isilon.com:isilon/onefs.git
+@param remote
+** repo url example. git@github.west.isilon.com:**isilon/onefs.git
 @param name: name of the remote
 @param branch; branch to switch to when fetching
 @param add_remote: boolean add a remote
@@ -805,41 +908,50 @@ file @ **/goephor/core/plugins/modules/environment.py**
 
       Management of runtime environment
 
-:note: This is passed to each of the plugins when the action obj is initialized
+
+**note:** This is passed to each of the plugins when the action obj is initialized
 Its contained within the action_manager. 
 
  ***def __init__*** 
 
       Constructor
 
-:param debug: Bool 
+
+**param debug:** Bool 
 
  ***def set*** 
 
       set an environment variable
 
-:param key: String
-:param value: String
-:param reset: Bool, if false it will not override an existing env value 
+
+**param key:** String
+
+**param value:** String
+
+**param reset:** Bool, if false it will not override an existing env value 
 
  ***def get*** 
 
       get an environment variable
 
-:param key: String 
+
+**param key:** String 
 
  ***def sanitize*** 
 
       sanitizes environment variables in a given values
 
-:param values: List 
+
+**param values:** List 
 
  ***def _sanitize*** 
 
       Replace all environment variables into command
 
-:param stri: String,Bool,Int
-:note: when nested environment variables are used in a striing convert all 
+
+**param stri:** String,Bool,Int
+
+**note:** when nested environment variables are used in a striing convert all 
 ********************************************************************************************
 file @ **/goephor/core/plugins/modules/remote.py**
 
@@ -962,67 +1074,90 @@ file @ **/goephor/core/plugins/modules/terminal.py**
 
       Created on Nov 18, 2015
 
-:author: iitow
+
+**author:** iitow
 
  ***def waitfor*** 
 
       poll the child for input
 
-:param fd: forked process 
+
+**param fd:** forked process 
 
  ***def event*** 
 
       find all output and inspect it for searches dict key & value
 
-:param fd: forked process
-:param searches: dictionary key value pair 
+
+**param fd:** forked process
+
+**param searches:** dictionary key value pair 
 
  ***def set_rsa*** 
 
       logs into system via ssh
 and appends to authorized_keys using username password
 
-:param     host: name over the server
-:param  rsa_pub: absolute path to your id_rsa.pub
-:param     user: host login creds
-:param password: host login creds
-:param home_dir: home directory for user 
+
+**param     host:** name over the server
+
+**param  rsa_pub:** absolute path to your id_rsa.pub
+
+**param     user:** host login creds
+
+**param password:** host login creds
+
+**param home_dir:** home directory for user 
 
  ***def create_rsa_public*** 
 
       generate a public key from the private key
 
-:param rsa_private: path to private key 
+
+**param rsa_private:** path to private key 
 
  ***def ssh*** 
 
       Run a single ssh command on a remote server
 
-:param server: username@servername
-:param cmd: single command you wish to run 
+
+**param server:** username@servername
+
+**param cmd:** single command you wish to run 
 
  ***def rsync*** 
 
       Performs an rsync of files; requires ssh keys setup.
 
-:param   server: username@server
-:param      src: full path of src directory/file
-:param     dest: full path to dest directory
-:param   option: [pull] get file from a remote,
+
+**param   server:** username@server
+
+**param      src:** full path of src directory/file
+
+**param     dest:** full path to dest directory
+
+**param   option:** [pull] get file from a remote,
 [push] put a file from your server into a remote
-:param   remote: [True] assumes we are working with
+
+**param   remote:** [True] assumes we are working with
 a remote system, [False] assumes we are copying files locally
-:param excludes: exclude directory, or file from array
-:note: --delete will delete files on dest if it does not match src 
+
+**param excludes:** exclude directory, or file from array
+
+**note:** --delete will delete files on dest if it does not match src 
 
  ***def shell*** 
 
       Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 
-:param cmd: String command
-:param verbose:bool
-:param strict:bool will exit based on code if enabled
-:return:  {command, stdout, code} as dict 
+
+**param cmd:** String command
+
+**param verbose:**bool
+
+**param strict:**bool will exit based on code if enabled
+
+**return:**  {command, stdout, code} as dict 
 
  ***def _exit_clean*** 
 
@@ -1043,28 +1178,38 @@ file @ **/goephor/core/plugins/modules/http.py**
       Generic class to handle All types of
 Restful requests and basic authentication
 
-:param base_url:
+
+**param base_url:**
 fully qualified path to api path
-example:https://github.west.isilon.com/api/v3
-:param auth_file:
-a yaml file containing user: <username> password: <password> 
+example
+**https:**//github.west.isilon.com/api/v3
+
+**param auth_file:**
+a yaml file containing user
+** <username> password:** <password> 
 
  ***def send*** 
 
       Generic call to handle all types of restful requests
 
-:param rest_action:
+
+**param rest_action:**
 Possible option, 'GET','PUT','POST','PATCH'
-:param url_ext:
+
+**param url_ext:**
 added to base url example.https://github.west.isilon.com/<url_ext>
-:param strict:
+
+**param strict:**
 False, will permit errors as warning & return code,
 True will exit with code
-:param Content_Type:
+
+**param Content_Type:**
 How info is formed, example application/xml
-:param verify:
+
+**param verify:**
 Check for Certificates
-:return: String of content, or error exit code 
+
+**return:** String of content, or error exit code 
 
  ***def post_multipart*** 
 
