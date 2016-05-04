@@ -7,6 +7,8 @@
     - RUN_FETCH: "1"
     - JID: "0"
   actions:
+       - system.terminal.shell:
+                          - 'echo "START"' 
        - condition.statement.IF:
                           - "${RUN_JLS}"
                           - "=="
