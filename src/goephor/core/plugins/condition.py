@@ -45,7 +45,7 @@ class statement(Plugin):
         :param ELSE: List, several other actions
         :example:
         ```
-           -  condition.statement.IF:
+           - condition.statement.IF:
                                 - "${var1}"
                                 - "=="
                                 - "${var2}"
@@ -71,3 +71,23 @@ class statement(Plugin):
             if self.verbose:
                 print "\n[ELSE]"
             self.add_obj(ELSE)
+    
+    def HAS_TOKEN(self,token,output):
+        '''
+        Check if a string exists in some output
+        :param token: String
+        :param output: String
+        :return: Boolean
+        ```
+            - condition.statement.HAS_TOKEN:
+                                    - ${token}
+                                    - ${output}
+                                    -set_env: VAR1
+        ```
+        '''
+        output = output.split('\n')
+        for line in output:
+            if token in line:
+                return True
+        return False
+    

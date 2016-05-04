@@ -24,3 +24,14 @@
                                                   - THEN:
                                                     - system.terminal.shell:
                                                       - 'echo "(IF NEST 1)"'
+       # This is how to check for a token from output
+       - system.terminal.shell:
+                           - "echo '(PASS)'"
+                           - set_env: "var3"
+       -  condition.statement.HAS_TOKEN:
+                           - "(PASS)"
+                           - "${var3}"
+                           - set_env: "IS_TOKEN"
+       - system.terminal.shell:
+                           - ' echo "IS_TOKEN: ${IS_TOKEN}"'
+                           
