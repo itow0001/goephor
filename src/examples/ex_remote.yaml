@@ -5,9 +5,12 @@
     - WORK: "${BASE_PATH}/ADDIN"
     - GLB2: 2
   actions:
+        # root user needs the correct key
+       - system.terminal.shell:
+                              - "cp /jenkins/.ssh/id_rsa /root/.ssh" 
        # Example of how to use ssh cmd
        - remote.ssh.cmd:
                     - "uname -a"
-                    - "some.server.com"
+                    - "buildbiox.west.isilon.com"
                     - "root"
                     - "~/.ssh/id_rsa"

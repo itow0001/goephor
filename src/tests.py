@@ -67,6 +67,14 @@ def test_receipt():
         return {funct:False} 
     return {funct:True}
 
+def test_remote():
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_remote.yaml -e")
+    if not session.get('code') == 0:
+        return {funct:False} 
+    return {funct:True}
+
 def test_scm():
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
@@ -87,6 +95,7 @@ def tests():
     tests.append(test_freebsd())
     tests.append(test_http())
     tests.append(test_receipt())
+    tests.append(test_remote())
     tests.append(test_scm())
     #tests.append(test_system())
     
