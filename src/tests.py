@@ -10,6 +10,7 @@ import sys
 
 def test_condition():
     funct = inspect.stack()[0][3]
+    print "\n[%s]\n" % (funct)
     output = shell("python goephor.py -f ./examples/ex_condition.yaml -e").get('stdout')
     if not '(THEN 1)' in output:
         return {funct:False}
@@ -21,10 +22,11 @@ def test_condition():
 
 def test_defaults():
     funct = inspect.stack()[0][3]
+    print "\n[%s]\n" % (funct)
     output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
     if not '(PASS)' in output:
         return {funct:False}
-    output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
+    output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e -E 'SWITCH=1'").get('stdout')
     if not '(FAIL)' in output:
         return {funct:False}
     return {funct:True}

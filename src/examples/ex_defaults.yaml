@@ -2,13 +2,13 @@
   description: "Project Description"
   globals:
     - ENV1: "(FAIL)"
-    - SWITCH: 0
+    - SWITCH: "0"
   actions:
        # Create a environment variable from output, works with all commands
        -  condition.statement.IF:
                             - "${SWITCH}"
                             - "=="
-                            - 1
+                            - "1"
                             - THEN:
                               - system.terminal.shell:
                                 - 'echo this will fail"'
