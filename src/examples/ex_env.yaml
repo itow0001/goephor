@@ -3,14 +3,23 @@
   globals: 
     - BASE_PATH: "/tmp"
     - WORK: "${BASE_PATH}/ADDIN"
-    - var1: "1"
-    - var2: "1"
+    - var1: "one"
+    - var2: "two"
+    - var3: "three"
+    - var4: "four"
+    - VAR_ALL: "ALL"
   actions:
-       # set environment variable WALDO                            
+       - system.terminal.shell:
+                            - "echo 'START'"
+       # set environment var5                            
        - environment.env.set:
-                            - "WALDO"
-                            - "/addins/"
-       # set environment variable WALDO2
+                            - "var5"
+                            - "five"
+       # override environment variable VAR_ALL
        - environment.env.set:
-                            - "WALDO2"
-                            - "${BASE_PATH}/addins/${var1}"
+                            - "VAR_ALL"
+                            - "${var1}/${var2}/${var3}/${var4}/${var5}"
+       - system.terminal.shell:
+                            - 'echo "VAR_ALL: ${VAR_ALL}"'                    
+       - system.terminal.shell:
+                            - "echo 'FINISH'"

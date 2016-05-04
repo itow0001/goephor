@@ -3,7 +3,7 @@
   globals: 
     - BASE_PATH: "/tmp"
     - WORK: "${BASE_PATH}/ADDIN"
-    # change var1, var2 to see different paths
+    # change var1, var2 to see different paths use -E "var1=1"
     - var1: 2
     - var2: 2
   actions:
@@ -16,10 +16,10 @@
                             - "${var2}"
                             - THEN:
                               - system.terminal.shell:
-                                - 'echo "[THEN 1]"'
+                                - 'echo "(THEN 1)"'
                             - ELSE:
                               - system.terminal.shell:
-                                - "echo '[ELSE 1]'"
+                                - "echo '(ELSE 1)'"
                               # This is a nested if statement
                               -  condition.statement.IF:
                                                   - "${var1}"
@@ -27,6 +27,6 @@
                                                   - "2"
                                                   - THEN:
                                                     - system.terminal.shell:
-                                                      - 'echo "[IF NEST 1]"'
+                                                      - 'echo "(IF NEST 1)"'
        - system.terminal.shell:
                             - "echo 'FINISH'"
