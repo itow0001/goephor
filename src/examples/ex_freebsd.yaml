@@ -12,8 +12,10 @@
                           - "=="
                           - "1"
                           - THEN:
-                              - system.terminal.shell:
-                                - 'echo ""'
+                              - freebsd.terminal.jls:
+                                - 'sea-build7'
+                                - 'jid'
+                                - set_env: "JID"
        - condition.statement.IF:
                           - "${RUN_JEXEC}"
                           - "=="
