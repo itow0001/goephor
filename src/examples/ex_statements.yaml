@@ -16,16 +16,10 @@
                             - "${var2}"
                             - THEN:
                               - system.terminal.shell:
-                                - "echo 'PRINT THEN CMD 1'"
-                              - system.terminal.shell:
-                                - "echo 'PRINT THEN CMD 2'"
-                              - system.terminal.shell:
-                                - "echo 'PRINT ${WORK}'"
+                                - 'echo "THEN PATH FOUND"'
                             - ELSE:
                               - system.terminal.shell:
-                                - "echo 'PRINT ELSE CMD 1'"
-                              - system.terminal.shell:
-                                - "echo 'PRINT ELSE CMD 2'"
+                                - "echo 'ELSE PATH FOUND'"
                               # This is a nested if statement
                               -  condition.statement.IF:
                                                   - "${var1}"
@@ -33,6 +27,6 @@
                                                   - "2"
                                                   - THEN:
                                                     - system.terminal.shell:
-                                                      - 'echo "Nested info $BASE_PATH and $WORK"'
+                                                      - 'echo "Nested IF FOUND"'
        - system.terminal.shell:
                             - "echo 'FINISH'"

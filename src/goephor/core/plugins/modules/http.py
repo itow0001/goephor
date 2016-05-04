@@ -11,6 +11,8 @@ from requests import Request, Session
 
 
 class Restful(object):
+    ''' Perform restful calls with this class
+    '''
 
     def __init__(self, base_url, auth_file=None):
         """Generic class to handle All types of
@@ -49,7 +51,7 @@ class Restful(object):
         """Generic call to handle all types of restful requests
 
         :param rest_action:
-        Possible option, 'GET','PUT','POST','PATCH'
+        Possible options, 'GET','PUT','POST','PATCH'
         :param url_ext:
         added to base url example.https://github.west.isilon.com/<url_ext>
         :param strict:
