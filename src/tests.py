@@ -26,7 +26,10 @@ def test_defaults():
     output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
     if not '(PASS)' in output:
         return {funct:False}
-    output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e -E 'SWITCH=1'").get('stdout')
+    try:
+        output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e -E 'SWITCH=1'").get('stdout')
+    except:
+        pass
     if not '(FAIL)' in output:
         return {funct:False}
     return {funct:True}
@@ -69,7 +72,7 @@ def tests():
         key = test.keys()[0]
         value = test.get(test.keys()[0])
         print "%s : %s" % (key.rjust(20),value)
-    
+    print ""
     for test in tests:
         key = test.keys()[0]
         value = test.get(test.keys()[0])
