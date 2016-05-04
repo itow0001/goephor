@@ -4,20 +4,21 @@
     - BASE_PATH: "/tmp"
     - WORK: "${BASE_PATH}/ADDIN"
   actions:
+       # random commands to see on_action receipt
        - system.terminal.shell:
-                          - "echo 'cmd1'"
+                          - "echo 'cmd1 output'"
        - system.terminal.shell:
-                          - "echo 'cmd2'"
+                          - "echo 'cmd2 output'"
        - system.terminal.shell:
-                          - "echo 'cmd3'"
-       # Create a receipt on actions
-       - receipt.maker.on_actions:
-                            - "./receipt.yaml"
+                          - "echo 'cmd3 output'"
        # Create custom receipt
        - receipt.maker.custom:
                             - "./custom.yaml"
                             - BASE_PATH: "${BASE_PATH}"
                             - WORK: "${WORK}"
+       # Create a receipt on actions
+       - receipt.maker.on_actions:
+                            - "./receipt.yaml"
        - system.terminal.shell:
                             - "cat ./receipt.yaml"
        - system.terminal.shell:

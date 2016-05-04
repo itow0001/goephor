@@ -1,13 +1,13 @@
   name: "Project Name"
   description: "Project Description"
   globals: 
-    - WWWWWWWWWWWWWWWW: "/tmp/goephor"
-    - GITHUB_W: "git@github.west.isilon.com:eng-tools/goephor"
+    - REPO: "/tmp/goephor"
+    - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
   actions:
-       # This is how to clone a repo 
-       - system.terminal.shell:
-                              - 'echo " THIS IS IT ${GITHUB_W}"'                       
+       # This is how to clone a repo                       
        - scm.git.clone:
-                      - '${WWWWWWWWWWWWWWWW}'
-                      - "${GITHUB_W}"
+                      - "${REPO}"
+                      - "${GIT_REMOTE}"
+       - system.terminal.shell:
+                              - "ls ${REPO}" 
                       
