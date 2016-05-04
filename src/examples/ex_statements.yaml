@@ -19,7 +19,7 @@
                                 - 'echo "THEN 1"'
                             - ELSE:
                               - system.terminal.shell:
-                                - "echo 'ELSE PATH FOUND'"
+                                - "echo 'ELSE 1'"
                               # This is a nested if statement
                               -  condition.statement.IF:
                                                   - "${var1}"
@@ -27,6 +27,6 @@
                                                   - "2"
                                                   - THEN:
                                                     - system.terminal.shell:
-                                                      - 'echo "Nested IF FOUND"'
+                                                      - 'echo "IF NEST 1"'
        - system.terminal.shell:
                             - "echo 'FINISH'"
