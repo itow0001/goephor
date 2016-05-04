@@ -35,7 +35,7 @@ class ssh(Plugin):
                     - "~/.ssh/id_rsa"
         ```
         '''
-        session = Run(server,rsa_private_path,user,'a')
+        session = Run(server,rsa_private_path,user,'')
         output = session.cmd(cmdstr)
         if not output.get('code') == 0:
             raise Exception(output.get('stdout'))
