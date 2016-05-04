@@ -4,9 +4,16 @@
     - BASE_PATH: "/tmp"
     - WORK: "${BASE_PATH}/ADDIN"
   actions:
-       # Create a receipt
+       - system.terminal.shell:
+                          - "echo 'cmd1'"
+       - system.terminal.shell:
+                          - "echo 'cmd2'"
+       - system.terminal.shell:
+                          - "echo 'cmd3'"
+       # Create a receipt on actions
        - receipt.maker.on_actions:
                             - "./receipt.yaml"
+       # Create custom receipt
        - receipt.maker.custom:
                             - "./custom.yaml"
                             - BASE_PATH: "${BASE_PATH}"
