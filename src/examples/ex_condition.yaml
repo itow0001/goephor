@@ -20,7 +20,7 @@
                               -  condition.statement.IF:
                                                   - "${var1}"
                                                   - "=="
-                                                  - "2"
+                                                  - "1"
                                                   - THEN:
                                                     - system.terminal.shell:
                                                       - 'echo "(IF NEST 1)"'
