@@ -33,9 +33,7 @@ class git(Plugin):
         ```
         
         '''
-        new_local_path = self.EnvManager._sanitize(new_local_path)
-        remote = self.EnvManager._sanitize(remote)
-        repo = Repo_actions(self.EnvManager._sanitize(new_local_path))
+        repo = Repo_actions(new_local_path)
         has_cloned = repo.clone(remote, **defaults)
         if has_cloned:
             return True

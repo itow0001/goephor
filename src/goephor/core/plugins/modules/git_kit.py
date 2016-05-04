@@ -14,7 +14,7 @@ class Repo_actions(object):
                  set_bare=False,
                  ssh_config='~/.ssh/config',
                  git_host='github.west.isilon.com',
-                 set_ssh_config=False):
+                 set_ssh_config=True):
         """ Initialize Repo actions
         """
         self.repo_path   = repo_path
