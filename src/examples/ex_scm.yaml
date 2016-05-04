@@ -4,6 +4,9 @@
     - REPO: "/tmp/goephor"
     - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
   actions:
+       # make sure the user has a key
+       - system.terminal.shell:
+                            - "whoami"
        # root user needs the correct key
        - system.terminal.shell:
                               - "cp /jenkins/.ssh/id_rsa /root/.ssh" 
