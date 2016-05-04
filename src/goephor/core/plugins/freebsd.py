@@ -35,6 +35,7 @@ class terminal(Plugin):
             - "jid"
         ```
         '''
+        print "################DEBUG"
         session = shell('/usr/sbin/jls')
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))

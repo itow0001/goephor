@@ -81,7 +81,7 @@ def tests():
         key = test.keys()[0]
         value = test.get(test.keys()[0])
         if not value:
-            print "[Failure] %s : %s" % (key.rjust(20),value)
+            print "[Failure] %s : %s" % (key,value)
             sys.exit(1)
             
 
