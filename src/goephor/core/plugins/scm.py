@@ -34,8 +34,8 @@ class git(Plugin):
         ```
         
         '''
-        repo = Repo_actions(new_local_path)
-        has_cloned = repo.clone(remote, user=user)
+        repo = Repo_actions(new_local_path,user=user)
+        has_cloned = repo.clone(remote)
         if has_cloned:
             return True
         else:
