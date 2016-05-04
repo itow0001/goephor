@@ -81,9 +81,7 @@ class Restful(object):
         if 200 == status:
             return response.content  # returns content as string
         else:
-            print "[strict %s]" \
-                "Request was not successful " \
-                "[code] %s" % (strict, status)
+            print "%s" % (status)
             if strict:
                 print "[exit code] %s" % (status)
                 os.sys.exit(response.status_code)

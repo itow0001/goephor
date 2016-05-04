@@ -26,9 +26,16 @@ class rest(Plugin):
         :param type: String, PUT,GET
         :param base_url: String
         :param url_ext: String
-        
+        :example:
+        ```
+               - http.rest.send:
+                     - "GET"
+                     - "http://www.google.com"
+                     - ""
+        ```
         '''
         session = Restful(base_url)
-        session.send(type,url_ext)
+        output = session.send(type,url_ext)
+        return output
         
         

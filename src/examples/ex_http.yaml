@@ -5,5 +5,5 @@
   actions:
        - http.rest.send:
                      - "GET"
-                     - "https://www.google.com"
+                     - "http://www.google.com"
                      - ""
