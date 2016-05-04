@@ -7,8 +7,6 @@
     - var1: 2
     - var2: 2
   actions:
-       - system.terminal.shell:
-                            - "echo 'START'"
        # This is an if statement
        -  condition.statement.IF:
                             - "${var1}"
@@ -28,5 +26,3 @@
                                                   - THEN:
                                                     - system.terminal.shell:
                                                       - 'echo "(IF NEST 1)"'
-       - system.terminal.shell:
-                            - "echo 'FINISH'"
