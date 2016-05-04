@@ -1,0 +1,37 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - BASE_PATH: "/tmp"
+    - RUN_JLS: "1"
+    - RUN_JEXEC: "1"
+    - RUN_FETCH: "1"
+    - JID: "0"
+  actions:
+       - condition.statement.IF:
+                          - "${RUN_JLS}"
+                          - "=="
+                          - "1"
+                          - THEN:
+                            - freebsd.terminal.jls:
+                              - "sea-build7"
+                              - "jid"
+                              -set_env: "JID"
+       - condition.statement.IF:
+                          - "${RUN_JEXEC}"
+                          - "=="
+                          - "1"
+                          - THEN:
+                            - freebsd.terminal.jexec:
+                              - "hostname"
+                              - "${JID}"
+       - condition.statement.IF:
+                          - "${RUN_FETCH}"
+                          - "=="
+                          - "1"
+                          - THEN:
+                            - freebsd.terminal.fetch:
+                              - "${BASE_PATH}"
+                              - "http://buildbiox.west.isilon.com/snapshots/b.8.0.0.037/RELEASES/latest/OneFS_v8.0.0.1_Install.tar.gz"
+                             
+             
+       

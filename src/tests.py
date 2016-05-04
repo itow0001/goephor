@@ -38,10 +38,6 @@ def test_environment():
     if '(FAIL)' in output:
         return {funct:False}
     return {funct:True}
-    
-
-def test_example():
-    pass
 
 def test_freebsd():
     pass
