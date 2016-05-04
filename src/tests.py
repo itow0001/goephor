@@ -32,7 +32,13 @@ def test_defaults():
     return {funct:True}
 
 def test_environment():
-    pass
+    funct = inspect.stack()[0][3]
+    print "\n[%s]\n" % (funct)
+    output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
+    if '(FAIL)' in output:
+        return {funct:False}
+    return {funct:True}
+    
 
 def test_example():
     pass
@@ -56,7 +62,7 @@ def tests():
     tests = []
     tests.append(test_condition())
     tests.append(test_defaults())
-    #tests.append(test_environment())
+    tests.append(test_environment())
     #tests.append(test_example())
     #tests.append(test_freebsd()())
     #tests.append(test_http())
