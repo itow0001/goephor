@@ -6,6 +6,7 @@
   actions:
        # This is how to clone a repo                       
        - scm.git.clone:
+                      - "root"
                       - "${REPO}"
                       - "${GIT_REMOTE}"
        - system.terminal.shell:

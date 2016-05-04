@@ -19,7 +19,7 @@ class git(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
     
-    def clone(self,new_local_path,remote,**defaults):
+    def clone(self,user,new_local_path,remote,**defaults):
         '''
         Clone a git repo
         
@@ -28,13 +28,14 @@ class git(Plugin):
         :example:
         ```
                - scm.git.clone:
+                      - "root"
                       - "/tmp/goephor"
                       - "git@github.west.isilon.com:eng-tools/goephor"
         ```
         
         '''
         repo = Repo_actions(new_local_path)
-        has_cloned = repo.clone(remote, **defaults)
+        has_cloned = repo.clone(remote, user=user)
         if has_cloned:
             return True
         else:

@@ -12,16 +12,17 @@ class Repo_actions(object):
     def __init__(self,
                  repo_path,
                  set_bare=False,
-                 ssh_config='~/.ssh/config',
+                 user='root',
                  git_host='github.west.isilon.com',
                  set_ssh_config=True):
         """ Initialize Repo actions
         """
+        self.ssh_config = '/%s/.ssh/config' % (user)
         self.repo_path   = repo_path
         self.repo        = None
         self.is_attached = self.attach(self.repo_path)
         if set_ssh_config:
-            self._set_ssh_config(ssh_config, git_host)
+            self._set_ssh_config(self.ssh_config, git_host)
     
     def _set_ssh_config(self,ssh_config,git_host):
         """
