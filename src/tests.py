@@ -26,10 +26,7 @@ def test_defaults():
     output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
     if not '(PASS)' in output:
         return {funct:False}
-    try:
-        output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e -E 'SWITCH=1'").get('stdout')
-    except:
-        pass
+    output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e -E 'SWITCH=1'").get('stdout')
     if not '(PASS)' in output:
         return {funct:False}
     return {funct:True}

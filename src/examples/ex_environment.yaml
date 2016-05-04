@@ -7,7 +7,7 @@
     - var2: "two"
     - var3: "three"
     - var4: "four"
-    - VAR_ALL: "ALL"
+    - VAR_ALL: "(FAIL)"
   actions:
        - system.terminal.shell:
                             - "echo 'START'"
