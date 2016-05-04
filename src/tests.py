@@ -34,7 +34,7 @@ def test_defaults():
 def test_environment():
     funct = inspect.stack()[0][3]
     print "\n[%s]\n" % (funct)
-    output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
+    output = shell("python goephor.py -f ./examples/ex_environment.yaml -e").get('stdout')
     if '(FAIL)' in output:
         return {funct:False}
     return {funct:True}
