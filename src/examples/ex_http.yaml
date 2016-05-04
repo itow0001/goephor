@@ -1,0 +1,9 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - BASE_PATH: "/tmp"
+  actions:
+       - http.rest.send:
+                     - "GET"
+                     - "www.google.com"
+                     - ""

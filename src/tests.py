@@ -8,6 +8,7 @@ from goephor.core.plugins.modules.terminal import shell
 import inspect
 import sys
 
+
 def test_condition():
     funct = inspect.stack()[0][3]
     print "\n[%s]\n" % (funct)
@@ -31,6 +32,7 @@ def test_defaults():
         return {funct:False}
     return {funct:True}
 
+
 def test_environment():
     funct = inspect.stack()[0][3]
     print "\n[%s]\n" % (funct)
@@ -38,6 +40,7 @@ def test_environment():
     if '(FAIL)' in output:
         return {funct:False}
     return {funct:True}
+
 
 def test_freebsd():
     funct = inspect.stack()[0][3]
@@ -49,7 +52,12 @@ def test_freebsd():
     
 
 def test_http():
-    pass
+    funct = inspect.stack()[0][3]
+    print "\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_http.yaml -e")
+    if not session.get('code') == 0:
+        return {funct:False} 
+    return {funct:True}
 
 def test_receipt():
     pass
@@ -66,7 +74,7 @@ def tests():
     tests.append(test_defaults())
     tests.append(test_environment())
     tests.append(test_freebsd())
-    #tests.append(test_http())
+    tests.append(test_http())
     #tests.append(test_receipt()())
     #tests.append(test_scm())
     #tests.append(test_system())

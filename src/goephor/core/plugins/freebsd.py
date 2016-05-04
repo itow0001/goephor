@@ -35,7 +35,6 @@ class terminal(Plugin):
             - "jid"
         ```
         '''
-        print "################DEBUG"
         session = shell('/usr/sbin/jls')
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
@@ -43,7 +42,8 @@ class terminal(Plugin):
         for line in output:
             if hostname in line:
                 jail_line = re.split('\s+', line)
-                print jail_line
+                if self.debug:
+                    print jail_line
                 if return_type == 'path':
                     return jail_line[4]
                 elif return_type == 'hostname':
@@ -84,7 +84,7 @@ class terminal(Plugin):
         
         :param path: String, current working dir
         :param url: String
-        :return: String output
+        :return: String output        print "################DEBUG"
         :example:
         ```
         - freebsd.terminal.fetch
