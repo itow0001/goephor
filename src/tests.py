@@ -64,7 +64,7 @@ def tests():
     #tests.append(test_scm())
     #tests.append(test_system())
     
-    print "\n\nTest Results:"
+    print "\n\n[Test Results]:"
     for test in tests:
         key = test.keys()[0]
         value = test.get(test.keys()[0])
