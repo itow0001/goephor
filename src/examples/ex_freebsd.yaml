@@ -12,8 +12,8 @@
                           - "=="
                           - "1"
                           - THEN:
-                          
-                           
+                              - system.terminal.shell:
+                                - 'echo ""'
        - condition.statement.IF:
                           - "${RUN_JEXEC}"
                           - "=="
