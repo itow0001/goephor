@@ -5,7 +5,7 @@
     - WORK: "${BASE_PATH}/ADDIN"
     # change var1, var2 to see different paths
     - var1: 2
-    - var2: 1
+    - var2: 2
   actions:
        - system.terminal.shell:
                             - "echo 'START'"
@@ -16,7 +16,7 @@
                             - "${var2}"
                             - THEN:
                               - system.terminal.shell:
-                                - 'echo "THEN PATH FOUND"'
+                                - 'echo "THEN 1"'
                             - ELSE:
                               - system.terminal.shell:
                                 - "echo 'ELSE PATH FOUND'"
