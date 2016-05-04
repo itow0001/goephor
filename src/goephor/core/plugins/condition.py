@@ -88,6 +88,10 @@ class statement(Plugin):
         output = output.split('\n')
         for line in output:
             if token in line:
+                if self.verbose:
+                    print "[Found] %s" % (token)
                 return True
+        if self.verbose:
+            print "[Not Found] %s" % (token)
         return False
     
