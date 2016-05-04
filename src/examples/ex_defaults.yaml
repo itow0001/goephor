@@ -1,18 +1,25 @@
   name: "Project Name"
   description: "Project Description"
-  globals: 
-    - BASE_PATH: "/tmp"
-    - WORK: "${BASE_PATH}/ADDIN"
-    - GLB2: 2
+  globals:
+    - ENV1: "(FAIL)"
+    - SWITCH: 0
   actions:
-       # Create a environment variable from output
-       - system.terminal.shell:
-                            - "echo '[shell 1]'"
-                            - set_env: "ENV1"
-       # Pass output to global variable
-       - system.terminal.shell:
-                            - 'echo "[shell 2] ENV1: ${ENV1}"'
-                            - set_env: "GLB2"
-       # echo GLB2
-       - system.terminal.shell:
-                            - 'echo "[shell 3] GLB2:${GLB2}"'
+       # Create a environment variable from output, works with all commands
+       -  condition.statement.IF:
+                            - "${SWITCH}"
+                            - "=="
+                            - 1
+                            - THEN:
+                              - system.terminal.shell:
+                                - 'echo this will fail"'
+                              - system.terminal.shell:
+                                - "echo '(PASS)'"
+                                - ignore: True
+                            - ELSE:
+                              - system.terminal.shell:
+                                - "echo '(PASS)'"
+                                - set_env: "ENV1"
+                              - system.terminal.shell:
+                                - 'echo "${ENV1}"'
+                              
+              
