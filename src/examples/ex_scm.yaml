@@ -4,6 +4,8 @@
     - REPO: "/tmp/goephor"
     - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
   actions:
+       - system.terminal.shell:
+                              - "whoami" 
        # This is how to clone a repo                       
        - scm.git.clone:
                       - "root"
