@@ -7,19 +7,13 @@
     - RUN_FETCH: "1"
     - JID: "0"
   actions:
-       - system.terminal.shell:
-                          - 'echo "START"' 
        - condition.statement.IF:
                           - "${RUN_JLS}"
                           - "=="
                           - "1"
                           - THEN:
-                            - system.terminal.shell:
-                              - 'echo "###########"' 
-                            - freebsd.terminal.jls:
-                              - "sea-build7"
-                              - "jid"
-                              -set_env: "JID"
+                          
+                           
        - condition.statement.IF:
                           - "${RUN_JEXEC}"
                           - "=="
