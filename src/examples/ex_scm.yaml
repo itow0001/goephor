@@ -13,5 +13,7 @@
                       - "${REPO}"
                       - "${GIT_REMOTE}"
        - system.terminal.shell:
-                              - "ls ${REPO}" 
+                              - "ls ${REPO}"
+       - scm.git.delete:
+                      - "${REPO}"
                       
