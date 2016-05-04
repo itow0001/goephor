@@ -40,7 +40,13 @@ def test_environment():
     return {funct:True}
 
 def test_freebsd():
-    pass
+    funct = inspect.stack()[0][3]
+    print "\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_freebsd.yaml -e")
+    if not session.get('code') == 0:
+        return {funct:False} 
+    return {funct:True}
+    
 
 def test_http():
     pass
@@ -59,8 +65,7 @@ def tests():
     tests.append(test_condition())
     tests.append(test_defaults())
     tests.append(test_environment())
-    #tests.append(test_example())
-    #tests.append(test_freebsd()())
+    tests.append(test_freebsd()())
     #tests.append(test_http())
     #tests.append(test_receipt()())
     #tests.append(test_scm())
