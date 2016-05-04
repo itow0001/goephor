@@ -34,7 +34,7 @@ class maker(Plugin):
         receipt = {}
         receipt["results"] = []
         receipt['globals'] = []
-        for key, value in self.envs.iteritems():
+        for key, value in self.action_manager.config.iteritems():
             receipt.get('globals').append({key: value})
         for action in self.action_manager.chain:
             result = action.get_receipt()
