@@ -27,3 +27,5 @@ class env(Plugin):
         :param value: String
         '''
         self.EnvManager.set(key, value)
+        if self.verbose:
+            print "[set] %s=%s" % (key,value)
