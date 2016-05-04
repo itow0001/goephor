@@ -68,13 +68,13 @@ def tests():
     for test in tests:
         key = test.keys()[0]
         value = test.get(test.keys()[0])
-        print "%s : %s" % (key,value)
+        print "%s : %s" % (key.rjust(20),value)
     
     for test in tests:
         key = test.keys()[0]
         value = test.get(test.keys()[0])
         if not value:
-            print "[Failure] %s : %s" % (key,value)
+            print "[Failure] %s : %s" % (key.rjust(20),value)
             sys.exit(1)
             
 
