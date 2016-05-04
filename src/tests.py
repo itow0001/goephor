@@ -85,7 +85,12 @@ def test_scm():
     
 
 def test_system():
-    pass
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_system.yaml -e")
+    if not session.get('code') == 0:
+        return {funct:False} 
+    return {funct:True}
 
 def tests():
     tests = []

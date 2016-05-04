@@ -1,8 +1,7 @@
   name: "Project Name"
   description: "Project Description"
   globals: 
-    - REPO: "/tmp/goephor"
-    - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
+    - BASE: "/tmp"
   actions:
        # make sure the user has a key
        - system.terminal.shell:
@@ -11,11 +10,10 @@
        - system.terminal.shell:
                               - "cp /jenkins/.ssh/id_rsa /root/.ssh" 
        # This is how to clone a repo                       
-       - scm.git.clone:
+       - system.terminal.rsync:
                       - "root"
-                      - "${REPO}"
-                      - "${GIT_REMOTE}"
-       - system.terminal.shell:
-                              - "ls ${REPO}"
-       - scm.git.delete:
-                      - "${REPO}"
+                      - "~/.ssh/id_rsa"
+                      - "buildbiox.west.isilon.com"
+                      - "/ifs/isilon/releases/release-8.0.0.BETA.0/OneFS_v8.0.0.BETA.0_Install.tar.gz"
+                      - "/tmp"
+                      - "pull"
