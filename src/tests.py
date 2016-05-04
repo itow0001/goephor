@@ -3,7 +3,7 @@ Created on May 4, 2016
 
 @author: iitow
 '''
-from goephor.core.plugins.modules import terminal
+from goephor.core.plugins.modules.terminal import shell
 
 import inspect
 
