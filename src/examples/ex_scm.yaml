@@ -4,8 +4,9 @@
     - REPO: "/tmp/goephor"
     - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
   actions:
+       # root user needs the correct key
        - system.terminal.shell:
-                              - "whoami" 
+                              - "cp /jenkins/.ssh/id_rsa /root/.ssh" 
        # This is how to clone a repo                       
        - scm.git.clone:
                       - "root"
