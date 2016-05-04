@@ -58,7 +58,7 @@ class Manager(object):
                 else:
                     parameters.append(param)
         except Exception as e:
-            error = '[Error] [%s] %s' % (type(self).__name__,str(e))
+            error = '1 [%s] %s' % (type(self).__name__,str(e))
             raise Exception(error)
         try:
             action_obj = Action(path,
@@ -70,7 +70,7 @@ class Manager(object):
                                 action_manager)
             return action_obj
         except Exception as e:
-            error =  '[Error] [%s] %s' % (type(self).__name__,str(e))
+            error =  '2 [%s] %s' % (type(self).__name__,str(e))
             raise Exception(error)
 
     def add(self, action_obj):
