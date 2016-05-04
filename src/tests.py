@@ -80,7 +80,7 @@ def tests():
     tests.append(test_environment())
     tests.append(test_freebsd())
     tests.append(test_http())
-    tests.append(test_receipt()())
+    tests.append(test_receipt())
     #tests.append(test_scm())
     #tests.append(test_system())
     
