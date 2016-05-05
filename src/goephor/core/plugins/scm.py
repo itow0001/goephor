@@ -4,7 +4,7 @@ Created on Apr 28, 2016
 @author: iitow
 '''
 from pluginable import Plugin
-from modules.git_kit import Repo_actions
+from modules.git_kit import Branch_actions, Repo_actions
 from modules.terminal import shell
 
 class git(Plugin):
@@ -55,9 +55,7 @@ class git(Plugin):
                       - "refactor"
         
         ```
-        
         '''
-        
         repo = Repo_actions(local_path,user=user)
         branch_obj = Branch_actions(repo)
         branch_is = branch_obj.checkout(branch)
