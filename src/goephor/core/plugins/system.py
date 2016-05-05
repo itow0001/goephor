@@ -58,7 +58,7 @@ class terminal(Plugin):
               - "pull"
         ```
         '''
-        session = rsync(server,src,dest,user=user,rsa_private=rsa_private_path)
+        session = rsync(server,src,dest,user=user,rsa_private=rsa_private_path,option=option)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
         return session.get('stdout')
