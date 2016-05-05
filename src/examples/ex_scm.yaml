@@ -18,7 +18,7 @@
        - system.terminal.shell:
                               - "ls ${REPO}"
        # checkout a branch
-       - scm.git.branch:
+       - scm.git.checkout:
           - "root"
           - "${REPO}"
           - "refactor"
