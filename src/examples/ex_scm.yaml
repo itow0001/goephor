@@ -22,6 +22,6 @@
           - "root"
           - "${REPO}"
           - "refactor"
-       #- scm.git.delete:
-       #               - "${REPO}"
+       - scm.git.delete:
+                      - "${REPO}"
                       
