@@ -32,7 +32,7 @@ class terminal(Plugin):
         ```
         '''
         if self.verbose:
-            print "[cmd] %s" % (cmd)
+            print "[cmd] %s\n" % (cmd)
         session = shell(cmd)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
