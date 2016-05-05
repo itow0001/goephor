@@ -17,6 +17,11 @@
                       - "${GIT_REMOTE}"
        - system.terminal.shell:
                               - "ls ${REPO}"
-       - scm.git.delete:
-                      - "${REPO}"
+       # checkout a branch
+       - scm.git.branch:
+          - "root"
+          - "${REPO}"
+          - "refactor"
+       #- scm.git.delete:
+       #               - "${REPO}"
                       

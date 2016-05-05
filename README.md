@@ -44,6 +44,54 @@ file @ **/goephor.py**
 
 **********************************************
 **********************************************
+file @ **/tests.py**
+
+      Created on May 4, 2016
+
+@author: iitow
+
+ ***def test_condition*** 
+
+      None 
+
+ ***def test_defaults*** 
+
+      None 
+
+ ***def test_environment*** 
+
+      None 
+
+ ***def test_freebsd*** 
+
+      None 
+
+ ***def test_http*** 
+
+      None 
+
+ ***def test_receipt*** 
+
+      None 
+
+ ***def test_remote*** 
+
+      None 
+
+ ***def test_scm*** 
+
+      None 
+
+ ***def test_system*** 
+
+      None 
+
+ ***def tests*** 
+
+      None 
+
+**********************************************
+**********************************************
 file @ **/goephor/__init__.py**
 
       goephor __init__.py 
@@ -226,6 +274,8 @@ file @ **/goephor/core/plugins/scm.py**
       Clone a git repo
 
 
+**param user:** String, username
+
 **param new_local_path:** String, full path and desired dir name
 
 **param remote:** String, git repo
@@ -233,8 +283,26 @@ file @ **/goephor/core/plugins/scm.py**
 **example:**
 ```
        - scm.git.clone:
+              - "root"
               - "/tmp/goephor"
               - "git@github.west.isilon.com:eng-tools/goephor"
+``` 
+
+ ***def checkout*** 
+
+      checkout a local branch
+
+**param user:** String, username
+
+**param local_path:** String, full path and desired dir name
+
+**param branch:** String
+```
+        - scm.git.checkout:
+              - "root"
+              - "/tmp/goephor"
+              - "refactor"
+
 ``` 
 
  ***def delete*** 
@@ -322,7 +390,7 @@ file @ **/goephor/core/plugins/freebsd.py**
 
 **param url:** String
 
-**return:** String output
+**return:** String output        print "################DEBUG"
 
 **example:**
 ```
@@ -591,7 +659,15 @@ file @ **/goephor/core/plugins/http.py**
 
 **param base_url:** String
 
-**param url_ext:** String 
+**param url_ext:** String
+
+**example:**
+```
+       - http.rest.send:
+             - "GET"
+             - "http://www.google.com"
+             - ""
+``` 
 
 **********************************************
 **********************************************
@@ -634,7 +710,7 @@ file @ **/goephor/core/plugins/condition.py**
 
 **example:**
 ```
-   -  condition.statement.IF:
+   - condition.statement.IF:
                         - "${var1}"
                         - "=="
                         - "${var2}"
@@ -644,6 +720,22 @@ file @ **/goephor/core/plugins/condition.py**
                         - ELSE:
                           - system.terminal.shell:
                             - "echo 'ELSE IS HAPPENING'"
+``` 
+
+ ***def HAS_TOKEN*** 
+
+      Check if a string exists in some output
+
+**param token:** String
+
+**param output:** String
+
+**return:** Boolean
+```
+    - condition.statement.HAS_TOKEN:
+                            - ${token}
+                            - ${output}
+                            -set_env: VAR1
 ``` 
 
 **********************************************
@@ -1381,7 +1473,8 @@ file @ **/goephor/core/plugins/modules/http.py**
 
 ####class Restful####
 
-      None 
+      Perform restful calls with this class
+     
 
  ***def __init__*** 
 
@@ -1404,7 +1497,7 @@ a yaml file containing user
 
 
 **param rest_action:**
-Possible option, 'GET','PUT','POST','PATCH'
+Possible options, 'GET','PUT','POST','PATCH'
 
 **param url_ext:**
 added to base url example.https://github.west.isilon.com/<url_ext>

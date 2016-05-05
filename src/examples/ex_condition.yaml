@@ -28,7 +28,7 @@
        - system.terminal.shell:
                            - "echo '(PASS)'"
                            - set_env: "var3"
-       -  condition.statement.HAS_TOKEN:
+       - condition.statement.HAS_TOKEN:
                            - "(PASS)"
                            - "${var3}"
                            - set_env: "IS_TOKEN"

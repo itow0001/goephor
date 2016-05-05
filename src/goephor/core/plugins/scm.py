@@ -23,6 +23,7 @@ class git(Plugin):
         '''
         Clone a git repo
         
+        :param user: String, username
         :param new_local_path: String, full path and desired dir name
         :param remote: String, git repo
         :example:
@@ -41,6 +42,29 @@ class git(Plugin):
         else:
             raise Exception(output.get('Unable to Clone %s' % remote))
     
+    def checkout(self,user,local_path,branch):
+        '''
+        checkout a local branch
+        :param user: String, username
+        :param local_path: String, full path and desired dir name
+        :param branch: String
+        ```
+                - scm.git.checkout:
+                      - "root"
+                      - "/tmp/goephor"
+                      - "refactor"
+        
+        ```
+        
+        '''
+        
+        repo = Repo_actions(local_path,user=user)
+        branch_obj = Branch_actions(repo)
+        branch_is = branch_obj.checkout(branch)
+        if not branch_is:
+            raise Exception(output.get('Unable to checkout %s' % branch))
+        return branch_is
+
     def delete(self,local_path,**defaults):
         '''
         Delete a local repo
