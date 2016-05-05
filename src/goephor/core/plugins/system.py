@@ -31,6 +31,8 @@ class terminal(Plugin):
             - 'echo " THIS IS IT"' 
         ```
         '''
+        if self.verbose:
+            print "[cmd] %s" % (cmd)
         session = shell(cmd)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
