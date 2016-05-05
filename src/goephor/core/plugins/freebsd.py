@@ -73,6 +73,8 @@ class terminal(Plugin):
         ```
         '''
         jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (jid, '/bin/sh', cmd)
+        if self.verbose:
+            print "[cmd] %s" % jexec_cmd
         session = shell(jexec_cmd)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
