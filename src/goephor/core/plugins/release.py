@@ -5,6 +5,8 @@ Created on May 12, 2016
 '''
 from pluginable import Plugin
 import datetime
+import yaml
+import json
 
 class utils(Plugin):
     ''' Helper plugin for obtaining release info
