@@ -80,9 +80,9 @@ class utils(Plugin):
         for name, values in releases.iteritems():
             if self.compare(new_release,name):
                 print "NAME: %s" % (name)
-                name = name.split('.')
-                if minor < int(name[len(name)-1]):
-                    minor = int(name[len(name)-1])
+                old_minor = name.rsplit('.',1)[1]
+                if minor < int(old_minor):
+                    minor = old_minor
         if minor > 0:
             next = "%s.%s" % (new_release,str(minor+1))
             return next
