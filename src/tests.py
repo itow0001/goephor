@@ -92,6 +92,14 @@ def test_system():
         return {funct:False} 
     return {funct:True}
 
+def test_release():
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_release.yaml -e")
+    if not session.get('code') == 0:
+        return {funct:False} 
+    return {funct:True}
+
 def tests():
     tests = []
     tests.append(test_condition())
