@@ -81,8 +81,8 @@ class utils(Plugin):
             if self.compare(new_release,name):
                 print "NAME: %s" % (name)
                 name = name.split('.')
-                if minor < int(name[len(name)]):
-                    minor = int(name[len(name)])
+                if minor < int(name[len(name)-1]):
+                    minor = int(name[len(name)-1])
         if minor > 0:
             next = "%s.%s" % (new_release,str(minor+1))
             return next
