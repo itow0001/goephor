@@ -127,7 +127,7 @@ class maker(Plugin):
             error = "unable to read %s" % (path)
             raise Exception(error)
         try:
-            json_str = json.load(json_str)
+            json_str = json.loads(json_str)
         except Exception:
             error = "unable to read %s" % (json_str)
             raise Exception(error)
