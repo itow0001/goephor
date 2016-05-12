@@ -118,6 +118,7 @@ class maker(Plugin):
         '''
         file_type = path.rsplit(".",1)[1]
         data = None
+        # get info from current receipt
         try:
             with open(path) as file:
                 if 'json' in file_type:
@@ -127,6 +128,7 @@ class maker(Plugin):
         except Exception:
             error = "unable to read %s" % (path)
             raise Exception(error)
+        # get info from new info
         try:
             json_str = json.loads(json_str)
         except Exception:
@@ -135,15 +137,15 @@ class maker(Plugin):
         data.update(json_str)
         if self.verbose:
             print "[add]\n %s" % data
-        
+        # write over the old file
         file_type = path.rsplit(".",1)[1]
         with open(path, 'w') as file:
             if 'json' in file_type:
-                file.write(json.dumps(defaults,
+                file.write(json.dumps(data,
                                       indent=4,
                                       sort_keys=True))
             else:
-                file.write(yaml.dump(defaults,
+                file.write(yaml.dump(data,
                                      default_flow_style=False,
                                      allow_unicode=True))
         
