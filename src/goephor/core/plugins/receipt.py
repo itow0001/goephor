@@ -115,7 +115,6 @@ class maker(Plugin):
            - "receipt.yaml"
         ```
         '''
-        print "[add] %s" % path
         file_type = path.rsplit(".",1)[1]
         data = None
         try:
@@ -127,6 +126,8 @@ class maker(Plugin):
         except Exception:
             error = "unable to read %s" % (path)
             raise Exception(error)
+        
+        print "[add] %s [value] %s" % (path,json_str)
         try:
             json_str = json.loads(json_str)
         except Exception:
