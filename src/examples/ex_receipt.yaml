@@ -22,6 +22,7 @@
        - receipt.maker.read:
                             - "./custom.yaml"
        - receipt.maker.add:
+                            - "./custom.yaml"
                             - '{"HELLO:{WORLD:"100"}"}'
        - system.terminal.shell:
                             - "cat ./receipt.yaml"
