@@ -76,7 +76,7 @@ class utils(Plugin):
             raise Exception(error)
         minor = 0
         for name, values in releases.iteritems():
-            if compare(new_release,name):
+            if self.compare(new_release,name):
                 name = name.split('.')
                 if minor < int(name[len(name)]):
                     minor = int(name[len(name)])
