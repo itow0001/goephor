@@ -130,7 +130,7 @@ class maker(Plugin):
             raise Exception(error)
         # get info from new info
         try:
-            json_str = json.loads(json_str)
+            json_str = json.loads(json_str, "utf-8")
         except Exception:
             error = "unable to read %s" % (json_str)
             raise Exception(error)
