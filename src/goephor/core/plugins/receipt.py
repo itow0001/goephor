@@ -130,7 +130,7 @@ class maker(Plugin):
             raise Exception(error)
         # get info from new info
         try:
-            json_str = json.loads(json_str, "utf-8")
+            json_str = json.loads(json_str)
         except Exception:
             error = "unable to read %s" % (json_str)
             raise Exception(error)
@@ -146,7 +146,8 @@ class maker(Plugin):
                                       sort_keys=True))
             else:
                 file.write(yaml.dump(data,
-                                     default_flow_style=False))
+                                     default_flow_style=False,
+                                     allow_unicode=True))
         
         
         
