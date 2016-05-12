@@ -102,6 +102,7 @@ def test_release():
 
 def tests():
     tests = []
+    '''
     tests.append(test_condition())
     tests.append(test_defaults())
     tests.append(test_environment())
@@ -111,6 +112,7 @@ def tests():
     tests.append(test_remote())
     tests.append(test_scm())
     tests.append(test_system())
+    '''
     tests.append(test_release())
     
     print "\n\n[Test Results]:"
