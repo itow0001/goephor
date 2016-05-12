@@ -136,6 +136,17 @@ class maker(Plugin):
         if self.verbose:
             print "[add]\n %s" % data
         
+        file_type = path.rsplit(".",1)[1]
+        with open(path, 'w') as file:
+            if 'json' in file_type:
+                file.write(json.dumps(defaults,
+                                      indent=4,
+                                      sort_keys=True))
+            else:
+                file.write(yaml.dump(defaults,
+                                     default_flow_style=False,
+                                     allow_unicode=True))
+        
         
         
         
