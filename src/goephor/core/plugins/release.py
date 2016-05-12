@@ -3,6 +3,7 @@ Created on May 12, 2016
 
 @author: iitow
 '''
+from pluginable import Plugin
 import datetime
 
 class utils(Plugin):
