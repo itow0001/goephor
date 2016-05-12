@@ -98,7 +98,7 @@ class maker(Plugin):
         except Exception:
             error = "unable to read %s" % (path)
             raise Exception(error)
-        for key,value in data:
+        for key,value in data.iteritems():
             self.EnvManager.set(key, value)
             if self.verbose:
                 print "[set] %s=%s" % (key,value)
