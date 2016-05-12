@@ -10,7 +10,7 @@ class utils(object):
     '''
     def __init__(self, action_manager):
         '''
-        maker Constructor
+        utils Constructor
         :param action_manager: Obj, from action_manager class
         '''
         self.action_manager = action_manager
