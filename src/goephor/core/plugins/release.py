@@ -42,8 +42,10 @@ class utils(Plugin):
         new = new.split('.')
         old = old.split('.')
         if not len(old) == 3:
+            print "old:",len(old)
             return False
         if not len(new) == 2:
+            print "new:",len(new)
             return False
         if new[0] == old[0] and new[1] == old[1] and new[2] == old[2]:
             return True
@@ -81,7 +83,11 @@ class utils(Plugin):
                 name = name.split('.')
                 if minor < int(name[len(name)]):
                     minor = int(name[len(name)])
-        next = "%s.%s" % (new_release,str(minor+1))
+        if minor > 0:
+            next = "%s.%s" % (new_release,str(minor+1))
+            return next
+        else:
+            next = "%s.%s" % (new_release,str(minor))
         print "[next] %s" % (next)
         return next
                 
