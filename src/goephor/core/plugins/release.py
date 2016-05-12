@@ -77,6 +77,7 @@ class utils(Plugin):
         minor = 0
         for name, values in releases.iteritems():
             if self.compare(new_release,name):
+                print "NAME: %s" % (name)
                 name = name.split('.')
                 if minor < int(name[len(name)]):
                     minor = int(name[len(name)])
