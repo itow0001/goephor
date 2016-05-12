@@ -5,7 +5,7 @@ Created on May 12, 2016
 '''
 import datetime
 
-class utils(object):
+class utils(Plugin):
     ''' Helper plugin for obtaining release info
     '''
     def __init__(self, action_manager):
