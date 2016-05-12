@@ -19,9 +19,12 @@
        # Create a receipt on actions
        - receipt.maker.on_actions:
                             - "./receipt.yaml"
+       - receipt.maker.read:
+                            - "./custom.yaml"
+       - receipt.maker.add:
+                            - '{"HELLO:{WORLD:"100"}"}'
        - system.terminal.shell:
                             - "cat ./receipt.yaml"
        - system.terminal.shell:
                             - "cat ./custom.yaml"
-       - receipt.maker.read:
-                            - "./custom.yaml"
+                            

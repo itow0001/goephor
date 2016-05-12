@@ -77,7 +77,7 @@ class maker(Plugin):
 
     def read(self,path,**defaults):
         '''
-        Reads in a receipt and generates environment variables
+        Reads in a custom receipt and generates environment variables
         :param defaults: additional params
         :note: Consumes only files from a custom receipt
         :example:
@@ -102,30 +102,47 @@ class maker(Plugin):
             self.EnvManager.set(key, value)
             if self.verbose:
                 print "[set] %s=%s" % (key,value)
+    
+    def add(self,path,json_str,**defaults):
+        '''
+        Add to an existing receipt
+        :param path: String, path to existing file
+        :param json_str: String, using json syntax add to receipt
+        :note: json syntax, {hello:{world}}
+        :example:
+        ```
+        - receipt.maker.add:
+           - "receipt.yaml"
+        ```
+        '''
+        print "[add] %s" % path
+        file_type = path.rsplit(".",1)[1]
+        data = None
+        try:
+            with open(path) as file:
+                if 'json' in file_type:
+                    data = json.loads(file.read())
+                else:
+                    data = yaml.load(file)
+        except Exception:
+            error = "unable to read %s" % (path)
+            raise Exception(error)
+        try:
+            json_str = json.loads(json_str)
+        except Exception:
+            error = "unable to read %s" % (path)
+            raise Exception(error)
+        data.update(json_str)
+        
+        
+        
+        
+    
+    
             
             
             
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
