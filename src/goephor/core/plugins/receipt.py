@@ -64,8 +64,9 @@ class maker(Plugin):
             - var3: "SOMEVALUE3"
         ```
         '''
+        file_type = path.rsplit(".",1)[1]
         with open(path, 'w') as file:
-            if defaults.get('type') == 'json':
+            if 'json' in file_type:
                 file.write(json.dumps(defaults,
                                       indent=4,
                                       sort_keys=True))
@@ -73,3 +74,76 @@ class maker(Plugin):
                 file.write(yaml.dump(defaults,
                                      default_flow_style=False,
                                      allow_unicode=True))
+
+    def read(self,path,**defaults):
+        '''
+        Reads in a receipt and generates environment variables
+        :param defaults: additional params
+        :note: Consumes only files from a custom receipt
+        :example:
+        ```
+        - receipt.maker.read:
+           - "receipt.yaml"
+        ```
+        '''
+        print "[read] %s" % path
+        file_type = path.rsplit(".",1)[1]
+        data = None
+        try:
+            with open(path) as file:
+                if 'json' in file_type:
+                    data = json.loads(file.read())
+                else:
+                    data = yaml.load(file)
+        except Exception:
+            error = "unable to read %s" % (path)
+            raise Exception(error)
+        for key,value in data:
+            self.EnvManager.set(key, value)
+            if self.verbose:
+                print "[set] %s=%s" % (key,value)
+            
+            
+            
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,3 +23,5 @@
                             - "cat ./receipt.yaml"
        - system.terminal.shell:
                             - "cat ./custom.yaml"
+       - receipt.maker.read:
+                            - "./custom.yaml"
