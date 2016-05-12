@@ -146,8 +146,7 @@ class maker(Plugin):
                                       sort_keys=True))
             else:
                 file.write(yaml.dump(data,
-                                     default_flow_style=False,
-                                     allow_unicode=True))
+                                     default_flow_style=False))
         
         
         
