@@ -111,8 +111,9 @@ class maker(Plugin):
         :note: json syntax, {hello:{world}}
         :example:
         ```
-        - receipt.maker.add:
-           - "receipt.yaml"
+       - receipt.maker.add:
+                        - "./custom.yaml"
+                        - '{"HELLO":["WORLD","05/10/14"]}'
         ```
         '''
         file_type = path.rsplit(".",1)[1]
