@@ -129,9 +129,9 @@ class maker(Plugin):
         
         print "[add] %s [value] %s" % (path,json_str)
         try:
-            json_str = json.loads(json_str)
+            json_str = json.load(json_str)
         except Exception:
-            error = "unable to read %s" % (path)
+            error = "unable to read %s" % (json_str)
             raise Exception(error)
         data.update(json_str)
         
