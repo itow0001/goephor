@@ -9,7 +9,7 @@
         - "http://buildbiox.west.isilon.com/releases/Releases.json"
      - release.utils.next:
         - './Releases.json'
-        - '7.1.1.BETA.1'
+        - '7.1.1'
         - set_env: "NEXT_REL"
      - system.terminal.shell:
         - "echo ${NEXT_REL}"
