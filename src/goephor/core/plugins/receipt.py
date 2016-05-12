@@ -126,14 +126,14 @@ class maker(Plugin):
         except Exception:
             error = "unable to read %s" % (path)
             raise Exception(error)
-        
-        print "[add] %s [value] %s" % (path,json_str)
         try:
             json_str = json.load(json_str)
         except Exception:
             error = "unable to read %s" % (json_str)
             raise Exception(error)
         data.update(json_str)
+        if self.verbose:
+            print "[add]\n %s" % data
         
         
         
