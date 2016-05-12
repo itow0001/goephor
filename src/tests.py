@@ -111,6 +111,7 @@ def tests():
     tests.append(test_remote())
     tests.append(test_scm())
     tests.append(test_system())
+    tests.append(test_release())
     
     print "\n\n[Test Results]:"
     for test in tests:
