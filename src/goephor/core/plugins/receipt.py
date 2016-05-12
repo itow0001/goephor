@@ -130,7 +130,8 @@ class maker(Plugin):
             raise Exception(error)
         # get info from new info
         try:
-            json_str = json.loads(json_str,ensure_ascii=False)
+            json_str = json.loads(json_str)
+            json_str = yaml.safe_load(json_str)
         except Exception:
             error = "unable to read %s" % (json_str)
             raise Exception(error)
