@@ -108,6 +108,7 @@ class maker(Plugin):
         Add to an existing receipt
         :param path: String, path to existing file
         :param json_str: String, using json syntax add to receipt
+        :param to_json: Boolean, write file out as json
         :note: json syntax, {hello:{world}}
         :example:
         ```
@@ -142,7 +143,7 @@ class maker(Plugin):
         # write over the old file
         file_type = path.rsplit(".",1)[1]
         with open(path, 'w') as file:
-            if 'json' in file_type:
+            if defaults.get("to_json"):
                 file.write(json.dumps(data,
                                       indent=4,
                                       sort_keys=True))
@@ -150,34 +151,3 @@ class maker(Plugin):
                 file.write(yaml.dump(data,
                                      default_flow_style=False,
                                      allow_unicode=True))
-        
-        
-        
-        
-    
-    
-            
-            
-            
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
