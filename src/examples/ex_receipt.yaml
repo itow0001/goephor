@@ -1,8 +1,8 @@
-  name: "Project Name"
-  description: "Project Description"
-  globals: 
-    - BASE_PATH: "/tmp"
-    - WORK: "${BASE_PATH}/ADDIN"
+name: "Project Name"
+description: "Project Description"
+globals: 
+   - BASE_PATH: "/tmp"
+   - WORK: "${BASE_PATH}/ADDIN"
 actions:
 # random commands to see on_action receipt
    - system.terminal.shell:
