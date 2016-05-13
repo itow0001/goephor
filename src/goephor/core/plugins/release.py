@@ -55,6 +55,7 @@ class utils(Plugin):
         for a given build
         :param path: String, path to Releases.json
         :param new_release: String, release name 7.1.1
+        :note: will only use first three positions
         :example:
         ```
         release.utils.next:
@@ -63,6 +64,10 @@ class utils(Plugin):
            - set_env: "NEXT_REL"
         ```
         '''
+        if len(new_release.split('.')) > 3:
+            new_split = new_release.split('.')
+            new_release = "%s.%s.%s" % (new_split[0],new_split[1],new_split[2])
+            print "[info] using 3 positions %s" % new_release
         file_type = path.rsplit(".",1)[1]
         releases_dict = {}
         try:

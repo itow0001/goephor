@@ -17,7 +17,7 @@ def readme():
 
 setup(
     name='goephor',
-    version='1.0.2',
+    version='1.0.3',
     description="Build automation tool",
     long_description=readme(),
     author='ian.itow',
