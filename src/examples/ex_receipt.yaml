@@ -16,6 +16,11 @@
                             - "./custom.yaml"
                             - BASE_PATH: "${BASE_PATH}"
                             - WORK: "${WORK}"
+              # Create custom receipt
+       - receipt.maker.custom:
+                            - "./custom.txt"
+                            - BASE_PATH: "${BASE_PATH}"
+                            - WORK: "${WORK}"
        # Create a receipt on actions
        - receipt.maker.on_actions:
                             - "./receipt.yaml"

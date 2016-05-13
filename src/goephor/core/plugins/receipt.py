@@ -70,10 +70,15 @@ class maker(Plugin):
                 file.write(json.dumps(defaults,
                                       indent=4,
                                       sort_keys=True))
+            elif 'txt' in file_type:
+                for key,value in defaults.iteritems():
+                    pair = "%s=%s\n" % (key,value)
+                    file.write()
             else:
                 file.write(yaml.dump(defaults,
                                      default_flow_style=False,
                                      allow_unicode=True))
+                
 
     def read(self,path,**defaults):
         '''
