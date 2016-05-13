@@ -21,6 +21,11 @@ actions:
       - "./custom.txt"
       - BASE_PATH: "${BASE_PATH}"
       - WORK: "${WORK}"
+   # Create custom receipt json
+   - receipt.maker.custom:
+      - "./custom.json"
+      - BASE_PATH: "${BASE_PATH}"
+      - WORK: "${WORK}"
    # Create a receipt on actions
    - receipt.maker.on_actions:
       - "./receipt.yaml"
@@ -33,4 +38,8 @@ actions:
       - "cat ./receipt.yaml"
    - system.terminal.shell:
       - "cat ./custom.yaml"
+   - system.terminal.shell:
+      - "cat ./custom.txt"
+   - system.terminal.shell:
+      - "cat ./custom.json"
                             
