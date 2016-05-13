@@ -17,7 +17,7 @@ def readme():
 
 setup(
     name='goephor',
-    version='1.0.3',
+    version='1.0.0',
     description="Build automation tool",
     long_description=readme(),
     author='ian.itow',
@@ -33,7 +33,8 @@ setup(
     zip_safe=False,
     install_requires=[
         'requests==2.7.0',
-        'PyYAML==3.10'
+        'PyYAML==3.10',
+        'GitPython==2.0.2'
     ],
     entry_points={
         'console_scripts': ['goephor = goephor.__main__:main']

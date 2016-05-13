@@ -72,7 +72,7 @@ class maker(Plugin):
                                       sort_keys=True))
             elif 'txt' in file_type:
                 for key,value in defaults.iteritems():
-                    pair = "%s=%s\n" % (key,value)
+                    pair = "%s=%s" % (key,value)
                     file.write(pair)
             else:
                 file.write(yaml.dump(defaults,

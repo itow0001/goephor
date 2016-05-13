@@ -36,16 +36,13 @@ class utils(Plugin):
     def compare(self,new,old):
         '''
         Private, compare release numbers
-        :param new: String, new release 3 digits
-        :param old: String, old release 4 digits
+        :param new: String, new release 
+        :param old: String, old release
+        :note: Assume the last digit is build number
+        so we split it off
         '''
-        new = new.split('.')
-        old = old.split('.')
-        if not len(old) >= 4:
-            return False
-        if not len(new) >= 3:
-            return False
-        if new[0] == old[0] and new[1] == old[1] and new[2] == old[2]:
+        old = old.rsplit('.',1)[0]
+        if new == old:
             return True
         return False
 
@@ -65,9 +62,9 @@ class utils(Plugin):
         ```
         '''
         if len(new_release.split('.')) > 3:
-            new_split = new_release.split('.')
-            new_release = "%s.%s.%s" % (new_split[0],new_split[1],new_split[2])
-            print "[info] using 3 positions %s" % new_release
+            new_split = new_release.rsplit('.',1)
+            new_release = new_split[0]
+            print "[info] compare using %s" % new_release
         file_type = path.rsplit(".",1)[1]
         releases_dict = {}
         try:
@@ -82,13 +79,12 @@ class utils(Plugin):
         minor = 0
         for name, values in releases.iteritems():
             if self.compare(new_release,name):
-                print "NAME: %s" % (name)
+                print "[match] %s" % name
                 old_minor = int(name.rsplit('.',1)[1])
                 if minor < old_minor:
                     minor = old_minor
         if minor > 0:
             next = "%s.%s" % (new_release,str(minor+1))
-            return next
         else:
             next = "%s.%s" % (new_release,str(minor))
         print "[next] %s" % (next)
