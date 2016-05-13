@@ -78,7 +78,8 @@ class maker(Plugin):
                 file.write(yaml.dump(defaults,
                                      default_flow_style=False,
                                      allow_unicode=True))
-                
+        if self.verbose:
+            print "[custom] %s" % (path)
 
     def read(self,path,**defaults):
         '''

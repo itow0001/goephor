@@ -41,9 +41,9 @@ class utils(Plugin):
         '''
         new = new.split('.')
         old = old.split('.')
-        if not len(old) == 4:
+        if not len(old) >= 4:
             return False
-        if not len(new) == 3:
+        if not len(new) >= 3:
             return False
         if new[0] == old[0] and new[1] == old[1] and new[2] == old[2]:
             return True
