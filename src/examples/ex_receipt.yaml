@@ -31,8 +31,12 @@ actions:
       - "./receipt.yaml"
    - receipt.maker.read:
       - "./custom.yaml"
+   # add to receipt
+   - freebsd.terminal.fetch:
+      - "${BASE_PATH}"
+      - "http://buildbiox.west.isilon.com/releases/Releases.json"
    - receipt.maker.add:
-      - "./custom.yaml"
+      - "./Releases.json"
       - '{"HELLO":["WORLD","05/10/14"]}'
    - system.terminal.shell:
       - "cat ./receipt.yaml"
