@@ -113,11 +113,13 @@ class maker(Plugin):
         file_type = path.rsplit(".",1)[1]
         with open(path) as file:
             if 'json' in file_type:
-                print "[json] found"
+                if self.verbose:
+                    print "[_to_dict] json"
                 data = json.loads(file.read())
                 return data
             else:
-                print "[yaml] found"
+                if self.verbose:
+                    print "[_to_dict] yaml"
                 data = yaml.load(file)
                 return data
         print "[None]"
@@ -142,14 +144,20 @@ class maker(Plugin):
         file_type = path.rsplit(".",1)[1]
         with open(path, 'w') as file:
             if 'json' in file_type:
+                if self.verbose:
+                    print "[_to_file] json"
                 file.write(json.dumps(data,
                                       indent=4,
                                       sort_keys=True))
             elif 'txt' in file_type:
+                if self.verbose:
+                    print "[_to_file] txt"
                 for key,value in data.iteritems():
                     pair = "%s=%s" % (key,value)
                     file.write(pair)
             else:
+                if self.verbose:
+                    print "[_to_file] yaml"
                 file.write(yaml.dump(data,
                                      default_flow_style=False,
                                      allow_unicode=True))
