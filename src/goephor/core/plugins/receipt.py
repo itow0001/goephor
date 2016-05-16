@@ -99,7 +99,7 @@ class maker(Plugin):
         print "[add] %s" % path
         data = self._to_dict(path)
         json_dict = self._str_to_dict(json_str)
-        data.update(json_dict)
+        data = data.update(json_dict)
         self._to_file(data, path)
 
     def _to_dict(self,path):
@@ -131,6 +131,8 @@ class maker(Plugin):
         :param data: String
         :return: Dictionary
         '''
+        if self.verbose:
+            print "[_str_to_dict] %s" % (data)
         data = json.loads(data)
         return data
         
