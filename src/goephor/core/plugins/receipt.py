@@ -39,7 +39,11 @@ class maker(Plugin):
         for action in self.action_manager.chain:
             result = action.get_receipt()
             receipt.get("results").append(result)
+        
+        self._to_file(receipt,path)
+        '''
         with open(path, 'w') as file:
+            
             if defaults.get('type') == 'json':
                 file.write(json.dumps(receipt,
                                       indent=4,
@@ -48,6 +52,7 @@ class maker(Plugin):
                 file.write(yaml.dump(receipt,
                                      default_flow_style=False,
                                      allow_unicode=True))
+        '''
     
     def custom(self, path, **defaults):
         '''
@@ -63,6 +68,12 @@ class maker(Plugin):
             - var2: "SOMEVALUE2"
             - var3: "SOMEVALUE3"
         ```
+        '''
+        print "[custom] %s" % (path)
+        for key,value in defaults.iteritems():
+            print "%s: %s" % (key,value)
+        self._to_file(defaults, path)
+        
         '''
         file_type = path.rsplit(".",1)[1]
         with open(path, 'w') as file:
@@ -80,6 +91,7 @@ class maker(Plugin):
                                      allow_unicode=True))
         if self.verbose:
             print "[custom] %s" % (path)
+        '''
 
     def read(self,path,**defaults):
         '''
@@ -93,6 +105,8 @@ class maker(Plugin):
         ```
         '''
         print "[read] %s" % path
+        
+        '''
         file_type = path.rsplit(".",1)[1]
         data = None
         try:
@@ -104,6 +118,8 @@ class maker(Plugin):
         except Exception:
             error = "unable to read %s" % (path)
             raise Exception(error)
+        '''
+        data = self._to_dict(path)
         for key,value in data.iteritems():
             self.EnvManager.set(key, value)
             if self.verbose:
@@ -123,8 +139,16 @@ class maker(Plugin):
                         - '{"HELLO":["WORLD","05/10/14"]}'
         ```
         '''
-        file_type = path.rsplit(".",1)[1]
         data = None
+        print "[add] %s" % path
+        data = self._to_dict(path)
+        json_dict = self._to_dict(json_str)
+        data.append(json_dict)
+        self._to_file(data, path)
+        
+        
+        
+        '''
         # get info from current receipt
         try:
             with open(path) as file:
@@ -157,3 +181,74 @@ class maker(Plugin):
                 file.write(yaml.dump(data,
                                      default_flow_style=False,
                                      allow_unicode=True))
+        '''
+    
+    def _to_dict(self,path):
+        '''
+        Private, Load a file in and output a dict
+        
+        :param path: String
+        :return: Dictionary
+        '''
+        file_type = path.rsplit(".",1)[1]
+        with open(path) as file:
+            if 'json' in file_type:
+                data = json.loads(file.read())
+                return data
+            else:
+                data = yaml.load(file)
+                return data
+        return None
+    
+    def _to_file(self,data,path):
+        '''
+        Private, convert dict to file
+        
+        :param path: String
+        '''
+        file_type = path.rsplit(".",1)[1]
+        with open(path, 'w') as file:
+            if 'json' in file_type:
+                file.write(json.dumps(data,
+                                      indent=4,
+                                      sort_keys=True))
+            elif 'txt' in file_type:
+                for key,value in defaults.iteritems():
+                    pair = "%s=%s" % (key,value)
+                    file.write(pair)
+            else:
+                file.write(yaml.dump(data,
+                                     default_flow_style=False,
+                                     allow_unicode=True))
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
