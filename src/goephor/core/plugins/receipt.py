@@ -99,7 +99,7 @@ class maker(Plugin):
         print "[add] %s" % path
         data = self._to_dict(path)
         print "#######0"
-        json_dict = self._to_dict(json_str,is_string=True)
+        json_dict = self._str_to_dict(json_str)
         print "#######1"
         data.update(json_dict)
         print "#######2"
@@ -143,7 +143,7 @@ class maker(Plugin):
                                      allow_unicode=True))
         '''
     
-    def _to_dict(self,path,is_string=False):
+    def _to_dict(self,path):
         '''
         Private, Load a file in and output a dict
         
@@ -152,9 +152,6 @@ class maker(Plugin):
         :return: Dictionary
         '''
         file_type = path.rsplit(".",1)[1]
-        if is_string:
-            data = json.loads(path)
-            return data
         with open(path) as file:
             if 'json' in file_type:
                 print "[json] found"
@@ -166,6 +163,16 @@ class maker(Plugin):
                 return data
         print "[None]"
         return None
+    
+    def _str_to_dict(self,data):
+        '''
+        Convert json string to dict
+        :param data: String
+        :return: Dictionary
+        '''
+        data = json.loads(data)
+        return data
+        
     
     def _to_file(self,data,path):
         '''
