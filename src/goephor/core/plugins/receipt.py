@@ -41,18 +41,6 @@ class maker(Plugin):
             receipt.get("results").append(result)
         
         self._to_file(receipt,path)
-        '''
-        with open(path, 'w') as file:
-            
-            if defaults.get('type') == 'json':
-                file.write(json.dumps(receipt,
-                                      indent=4,
-                                      sort_keys=True))
-            else:
-                file.write(yaml.dump(receipt,
-                                     default_flow_style=False,
-                                     allow_unicode=True))
-        '''
     
     def custom(self, path, **defaults):
         '''
@@ -73,25 +61,6 @@ class maker(Plugin):
         for key,value in defaults.iteritems():
             print "%s: %s" % (key,value)
         self._to_file(defaults, path)
-        
-        '''
-        file_type = path.rsplit(".",1)[1]
-        with open(path, 'w') as file:
-            if 'json' in file_type:
-                file.write(json.dumps(defaults,
-                                      indent=4,
-                                      sort_keys=True))
-            elif 'txt' in file_type:
-                for key,value in defaults.iteritems():
-                    pair = "%s=%s" % (key,value)
-                    file.write(pair)
-            else:
-                file.write(yaml.dump(defaults,
-                                     default_flow_style=False,
-                                     allow_unicode=True))
-        if self.verbose:
-            print "[custom] %s" % (path)
-        '''
 
     def read(self,path,**defaults):
         '''
@@ -105,20 +74,7 @@ class maker(Plugin):
         ```
         '''
         print "[read] %s" % path
-        
-        '''
-        file_type = path.rsplit(".",1)[1]
-        data = None
-        try:
-            with open(path) as file:
-                if 'json' in file_type:
-                    data = json.loads(file.read())
-                else:
-                    data = yaml.load(file)
-        except Exception:
-            error = "unable to read %s" % (path)
-            raise Exception(error)
-        '''
+
         data = self._to_dict(path)
         for key,value in data.iteritems():
             self.EnvManager.set(key, value)
@@ -143,7 +99,7 @@ class maker(Plugin):
         print "[add] %s" % path
         data = self._to_dict(path)
         json_dict = self._to_dict(json_str)
-        data.append(json_dict)
+        data.update(json_dict)
         self._to_file(data, path)
         
         
