@@ -99,7 +99,7 @@ class maker(Plugin):
         print "[add] %s" % path
         data = self._to_dict(path)
         json_dict = self._str_to_dict(json_str)
-        data = data.update(json_dict)
+        data.update(json_dict)
         self._to_file(data, path)
 
     def _to_dict(self,path):
