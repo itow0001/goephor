@@ -213,7 +213,7 @@ class maker(Plugin):
                                       indent=4,
                                       sort_keys=True))
             elif 'txt' in file_type:
-                for key,value in defaults.iteritems():
+                for key,value in data.iteritems():
                     pair = "%s=%s" % (key,value)
                     file.write(pair)
             else:
