@@ -99,7 +99,7 @@ class maker(Plugin):
         print "[add] %s" % path
         data = self._to_dict(path)
         print "#######0"
-        json_dict = self._to_dict(json_str)
+        json_dict = self._to_dict(json_str,is_string=True)
         print "#######1"
         data.update(json_dict)
         print "#######2"
@@ -143,22 +143,26 @@ class maker(Plugin):
                                      allow_unicode=True))
         '''
     
-    def _to_dict(self,path):
+    def _to_dict(self,path,is_string=False):
         '''
         Private, Load a file in and output a dict
         
         :param path: String
+        :param is_string: String path is a string do not load file
         :return: Dictionary
         '''
         file_type = path.rsplit(".",1)[1]
+        if is_string:
+            data = json.loads(path)
+            return data
         with open(path) as file:
-            if 'yaml' in file_type:
-                print "[yaml] found"
-                data = yaml.load(file)
-                return data
-            else:
+            if 'json' in file_type:
                 print "[json] found"
                 data = json.loads(file.read())
+                return data
+            else:
+                print "[yaml] found"
+                data = yaml.load(file)
                 return data
         print "[None]"
         return None
