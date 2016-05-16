@@ -36,7 +36,7 @@ actions:
       - "${BASE_PATH}"
       - "http://buildbiox.west.isilon.com/releases/Releases.json"
    - receipt.maker.add:
-      - "./Releases.json"
+      - "${BASE_PATH}/Releases.json"
       - '{"HELLO":["WORLD","05/10/14"]}'
    - system.terminal.shell:
       - "cat ./receipt.yaml"
