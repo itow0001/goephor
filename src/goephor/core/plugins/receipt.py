@@ -153,11 +153,14 @@ class maker(Plugin):
         file_type = path.rsplit(".",1)[1]
         with open(path) as file:
             if 'json' in file_type:
+                print "[json] found"
                 data = json.loads(file.read())
                 return data
             else:
+                print "[yaml] found"
                 data = yaml.load(file)
                 return data
+        print "[None]"
         return None
     
     def _to_file(self,data,path):
