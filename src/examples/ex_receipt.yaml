@@ -13,24 +13,24 @@ actions:
       - "echo 'cmd3 output'"
    # Create custom receipt yaml
    - receipt.maker.custom:
-      - "./custom.yaml"
+      - "${BASE_PATH}/custom.yaml"
       - BASE_PATH: "${BASE_PATH}"
       - WORK: "${WORK}"
    # Create custom receipt txt
    - receipt.maker.custom:
-      - "./custom.txt"
+      - "${BASE_PATH}/custom.txt"
       - BASE_PATH: "${BASE_PATH}"
       - WORK: "${WORK}"
    # Create custom receipt json
    - receipt.maker.custom:
-      - "./custom.json"
+      - "${BASE_PATH}/custom.json"
       - BASE_PATH: "${BASE_PATH}"
       - WORK: "${WORK}"
    # Create a receipt on actions
    - receipt.maker.on_actions:
-      - "./receipt.yaml"
+      - "${BASE_PATH}/receipt.yaml"
    - receipt.maker.read:
-      - "./custom.yaml"
+      - "${BASE_PATH}/custom.yaml"
    # add to receipt
    - freebsd.terminal.fetch:
       - "${BASE_PATH}"
@@ -39,13 +39,13 @@ actions:
       - "${BASE_PATH}/Releases.json"
       - '{"HELLO":["WORLD","05/10/14"]}'
    - system.terminal.shell:
-      - "cat ./receipt.yaml"
+      - "cat ${BASE_PATH}/receipt.yaml"
    - system.terminal.shell:
-      - "cat ./custom.yaml"
+      - "cat ${BASE_PATH}/custom.yaml"
    - system.terminal.shell:
-      - "cat ./custom.txt"
+      - "cat ${BASE_PATH}/custom.txt"
    - system.terminal.shell:
-      - "cat ./custom.json"
+      - "cat ${BASE_PATH}/custom.json"
    - system.terminal.shell:
       - "cat ${BASE_PATH}/Releases.json"
                             
