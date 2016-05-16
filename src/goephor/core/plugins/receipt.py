@@ -98,6 +98,7 @@ class maker(Plugin):
         data = None
         print "[add] %s" % path
         data = self._to_dict(path)
+        print "#######0"
         json_dict = self._to_dict(json_str)
         print "#######1"
         data.update(json_dict)
