@@ -98,51 +98,10 @@ class maker(Plugin):
         data = None
         print "[add] %s" % path
         data = self._to_dict(path)
-        print "#######0"
         json_dict = self._str_to_dict(json_str)
-        print "#######1"
         data.update(json_dict)
-        print "#######2"
         self._to_file(data, path)
-        print "#######3"
-        
-        
-        
-        '''
-        # get info from current receipt
-        try:
-            with open(path) as file:
-                if 'json' in file_type:
-                    data = json.loads(file.read())
-                else:
-                    data = yaml.load(file)
-        except Exception:
-            error = "unable to read %s" % (path)
-            raise Exception(error)
-        # get info from new info
-        try:
-            json_str = json.loads(json_str)
-            json_str = json.dumps(json_str)
-            json_str = yaml.safe_load(json_str)
-        except Exception:
-            error = "unable to read %s" % (json_str)
-            raise Exception(error)
-        data.update(json_str)
-        if self.verbose:
-            print "[add]\n %s" % data
-        # write over the old file
-        file_type = path.rsplit(".",1)[1]
-        with open(path, 'w') as file:
-            if defaults.get("to_json"):
-                file.write(json.dumps(data,
-                                      indent=4,
-                                      sort_keys=True))
-            else:
-                file.write(yaml.dump(data,
-                                     default_flow_style=False,
-                                     allow_unicode=True))
-        '''
-    
+
     def _to_dict(self,path):
         '''
         Private, Load a file in and output a dict

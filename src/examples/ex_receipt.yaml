@@ -46,4 +46,6 @@ actions:
       - "cat ./custom.txt"
    - system.terminal.shell:
       - "cat ./custom.json"
+   - system.terminal.shell:
+      - "cat ${BASE_PATH}/Releases.json"
                             
