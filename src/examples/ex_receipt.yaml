@@ -40,7 +40,7 @@ actions:
       - "http://buildbiox.west.isilon.com/releases/Releases.json"
    - receipt.maker.add:
       - "${BASE_PATH}/Releases.json"
-      - data:
+      - set:
          - "${RELEASE}":
             - build: "${BUILD}"
             - date: "${DATE}"
