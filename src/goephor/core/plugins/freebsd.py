@@ -113,8 +113,8 @@ class pkg(Plugin):
         '''
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
-    
-    def install(name,**defaults):
+
+    def install(self,name,**defaults):
         '''
         Install a package
         :param name: String
