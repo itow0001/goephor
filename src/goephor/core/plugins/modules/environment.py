@@ -67,6 +67,8 @@ class EnvManager(object):
         if isinstance(values, dict):
             dfts = {}
             for key, value in values.iteritems():
+                if "$" in key:
+                    key = self._sanitize(key)
                 if isinstance(value, list):
                     dfts[key] = value
                 else:
