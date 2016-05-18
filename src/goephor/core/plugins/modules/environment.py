@@ -90,7 +90,7 @@ class EnvManager(object):
             return stri
         
         if isinstance(stri,str):
-            matches = re.findall(r'(?<={)[^}]*', stri)
+            matches = re.findall(r'(?<=\${)[^}]*', stri)
             for match in matches:
                 old = '${%s}' % match
                 new = os.environ.get(match)

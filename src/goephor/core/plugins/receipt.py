@@ -135,7 +135,7 @@ class maker(Plugin):
             print "[_str_to_dict] %s" % (data)
         data = json.loads(data)
         return data
-
+    
     def _to_file(self,data,path):
         '''
         Private, convert dict to file
