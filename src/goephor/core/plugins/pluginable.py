@@ -47,6 +47,8 @@ class DecoMeta(type):
                     if 'set_env' == key:
                         keywords[key] = EnvManager()._sanitize(value)
                     else:
+                        if '$' in key:
+                            key = EnvManager()._sanitize(key)
                         filter_kwargs[key] = EnvManager()._sanitize(value)
                 else:
                     filter_kwargs[key] = value                    
