@@ -31,6 +31,8 @@ class utils(Plugin):
         ```
         '''
         date = datetime.datetime.now().strftime(prefix)
+        if self.verbose:
+            print "[date] %s" % (str(date))
         return date
     
     def compare(self,new,old):

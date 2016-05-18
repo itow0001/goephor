@@ -131,6 +131,7 @@ class maker(Plugin):
         :param data: String
         :return: Dictionary
         '''
+        data = self.EnvManager._sanitize(data)
         if self.verbose:
             print "[_str_to_dict] %s" % (data)
         data = json.loads(data)
