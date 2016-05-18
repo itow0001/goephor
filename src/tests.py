@@ -10,6 +10,9 @@ import sys
 
 
 def test_condition():
+    '''
+    test of core/plugins/condition.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     output = shell("python goephor.py -f ./examples/ex_condition.yaml -e").get('stdout')
@@ -22,6 +25,9 @@ def test_condition():
         
 
 def test_defaults():
+    '''
+    test of core/plugins/pluginable.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     output = shell("python goephor.py -f ./examples/ex_defaults.yaml -e").get('stdout')
@@ -34,6 +40,9 @@ def test_defaults():
 
 
 def test_environment():
+    '''
+    test of core/plugins/environment.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     output = shell("python goephor.py -f ./examples/ex_environment.yaml -e").get('stdout')
@@ -43,6 +52,9 @@ def test_environment():
 
 
 def test_freebsd():
+    '''
+    test of core/plugins/freebsd.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_freebsd.yaml -e")
@@ -52,6 +64,9 @@ def test_freebsd():
     
 
 def test_http():
+    '''
+    test of core/plugins/http.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_http.yaml -e")
@@ -60,6 +75,9 @@ def test_http():
     return {funct:True}
 
 def test_receipt():
+    '''
+    test of core/plugins/receipt.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_receipt.yaml -e")
@@ -67,7 +85,11 @@ def test_receipt():
         return {funct:False} 
     return {funct:True}
 
+
 def test_remote():
+    '''
+    test of core/plugins/remote.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_remote.yaml -e")
@@ -75,7 +97,11 @@ def test_remote():
         return {funct:False} 
     return {funct:True}
 
+
 def test_scm():
+    '''
+    test of core/plugins/scm.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_scm.yaml -e")
@@ -85,6 +111,9 @@ def test_scm():
     
 
 def test_system():
+    '''
+    test of core/plugins/system.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_system.yaml -e")
@@ -92,7 +121,11 @@ def test_system():
         return {funct:False} 
     return {funct:True}
 
+
 def test_release():
+    '''
+    test of core/plugins/release.py
+    '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python goephor.py -f ./examples/ex_release.yaml -e")
@@ -100,7 +133,11 @@ def test_release():
         return {funct:False} 
     return {funct:True}
 
+
 def tests():
+    '''
+    calls all the tests here & collects results
+    '''
     tests = []
     tests.append(test_condition())
     tests.append(test_defaults())

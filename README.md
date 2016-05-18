@@ -52,47 +52,47 @@ file @ **/tests.py**
 
  ***def test_condition*** 
 
-      None 
+      test of core/plugins/condition.py 
 
  ***def test_defaults*** 
 
-      None 
+      test of core/plugins/pluginable.py 
 
  ***def test_environment*** 
 
-      None 
+      test of core/plugins/environment.py 
 
  ***def test_freebsd*** 
 
-      None 
+      test of core/plugins/freebsd.py 
 
  ***def test_http*** 
 
-      None 
+      test of core/plugins/http.py 
 
  ***def test_receipt*** 
 
-      None 
+      test of core/plugins/receipt.py 
 
  ***def test_remote*** 
 
-      None 
+      test of core/plugins/remote.py 
 
  ***def test_scm*** 
 
-      None 
+      test of core/plugins/scm.py 
 
  ***def test_system*** 
 
-      None 
+      test of core/plugins/system.py 
 
  ***def test_release*** 
 
-      None 
+      test of core/plugins/release.py 
 
  ***def tests*** 
 
-      None 
+      calls all the tests here & collects results 
 
 **********************************************
 **********************************************
