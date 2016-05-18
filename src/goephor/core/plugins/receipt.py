@@ -96,8 +96,11 @@ class maker(Plugin):
         if defaults.get('set'): 
             set = defaults.get('set')            
             data = None
-            print "[add] %s" % path
+            if self.verbose:
+                print "[add] %s" % path
             data = self._to_dict(path)
+            if self.verbose:
+                print "[set] %s" % (str(set))
             data.update(set)
             self._to_file(data, path)
         else:
