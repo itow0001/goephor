@@ -41,7 +41,7 @@ actions:
    - receipt.maker.add:
       - "${BASE_PATH}/Releases.json"
       - set: 
-         ${RELEASE}:
+         "${RELEASE}":
             build: "${BUILD}"
             date: "${DATE}"
                
