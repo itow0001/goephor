@@ -98,7 +98,7 @@ class maker(Plugin):
         if self.verbose:
             print "[add] %s" % path
         data = self._to_dict(path)
-        data.update(json.load(json_str))
+        data.update(json.loads(json_str))
         self._to_file(data, path)
 
 
