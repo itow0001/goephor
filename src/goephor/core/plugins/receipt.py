@@ -81,30 +81,26 @@ class maker(Plugin):
             if self.verbose:
                 print "[set] %s=%s" % (key,value)
     
-    def add(self,path,**defaults):
+    def add(self,path,json_str,**defaults):
         '''
         Add to an existing receipt
         :param path: String, path to existing file
-        :param set: values to add to file
+        :param json_Str: String of json
         :example:
         ```
        - receipt.maker.add:
                         - "./custom.yaml"
-                        - set:
+                        - "{${RELEASE}:build:${BUILD},date:${DATE}}"
         ```
         '''
-        if defaults.get('set'): 
-            set = defaults.get('set')            
-            data = None
-            if self.verbose:
-                print "[add] %s" % path
-            data = self._to_dict(path)
-            if self.verbose:
-                print "[set] %s" % (str(set))
-            data.update(set)
-            self._to_file(data, path)
-        else:
-            raise Exception('[set] default required')
+         
+        data = None
+        if self.verbose:
+            print "[add] %s" % path
+        data = self._to_dict(path)
+        data.update(json.load(json_str))
+        self._to_file(data, path)
+
 
     def _to_dict(self,path):
         '''
