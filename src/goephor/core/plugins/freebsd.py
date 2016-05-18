@@ -87,7 +87,7 @@ class terminal(Plugin):
         
         :param path: String, current working dir
         :param url: String
-        :return: String output        print "################DEBUG"
+        :return: String output
         :example:
         ```
         - freebsd.terminal.fetch
