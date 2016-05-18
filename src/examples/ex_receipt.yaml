@@ -3,6 +3,7 @@ description: "Project Description"
 globals: 
    - BASE_PATH: "/tmp"
    - WORK: "${BASE_PATH}/ADDIN"
+   - VAR1: "WALDO"
 actions:
 # random commands to see on_action receipt
    - system.terminal.shell:
@@ -37,7 +38,7 @@ actions:
       - "http://buildbiox.west.isilon.com/releases/Releases.json"
    - receipt.maker.add:
       - "${BASE_PATH}/Releases.json"
-      - '{"HELLO":{"date":"05/10/14","build":"BR_7.1.1"}}'
+      - '{"HELLO":{"date":"05/10/14","build":"${WALDO}"}}'
    - system.terminal.shell:
       - "cat ${BASE_PATH}/receipt.yaml"
    - system.terminal.shell:
