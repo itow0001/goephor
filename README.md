@@ -86,6 +86,10 @@ file @ **/tests.py**
 
       None 
 
+ ***def test_release*** 
+
+      None 
+
  ***def tests*** 
 
       None 
@@ -243,11 +247,160 @@ file @ **/goephor/core/plugins/receipt.py**
     - var3: "SOMEVALUE3"
 ``` 
 
+ ***def read*** 
+
+      Reads in a custom receipt and generates environment variables
+
+**param defaults:** additional params
+
+**note:** Consumes only files from a custom receipt
+
+**example:**
+```
+- receipt.maker.read:
+   - "receipt.yaml"
+``` 
+
+ ***def add*** 
+
+       Add to an existing receipt
+ 
+**param path:** String, path to existing file
+ 
+**param json_str:** String, using json syntax add to receipt
+ 
+**param to_json:** Boolean, write file out as json
+ 
+**note:** json syntax, {hello:{world}}
+ 
+**example:**
+ ```
+- receipt.maker.add:
+                 - "./custom.yaml"
+                 - '{"HELLO":["WORLD","05/10/14"]}'
+ ```
+  
+
+ ***def _to_dict*** 
+
+      Private, Load a file in and output a dict
+
+
+**param path:** String
+
+**param is_string:** String path is a string do not load file
+
+**return:** Dictionary 
+
+ ***def _str_to_dict*** 
+
+      Convert json string to dict
+
+**param data:** String
+
+**return:** Dictionary 
+
+ ***def _to_file*** 
+
+      Private, convert dict to file
+
+
+**param path:** String 
+
 **********************************************
 **********************************************
 file @ **/goephor/core/plugins/__init__.py**
 
       modules __init__.py
+
+**********************************************
+**********************************************
+file @ **/goephor/core/plugins/release.py**
+
+      Created on May 12, 2016
+
+@author: iitow
+
+####class utils####
+
+      Helper plugin for obtaining release info
+     
+
+ ***def __init__*** 
+
+      utils Constructor
+
+**param action_manager:** Obj, from action_manager class 
+
+ ***def date*** 
+
+      get the current date
+
+
+**param prefix:** %m/%d/%y"
+
+```
+release.utils.date:
+   - '%m/%d/%y'
+``` 
+
+ ***def compare*** 
+
+      Private, compare release numbers
+
+**param new:** String, new release 
+
+**param old:** String, old release
+
+**note:** Assume the last digit is build number
+so we split it off 
+
+ ***def next*** 
+
+      Get the next available release from Release.json
+for a given build
+
+**param path:** String, path to Releases.json
+
+**param new_release:** String, release name 7.1.1
+
+**note:** will only use first three positions
+
+**example:**
+```
+release.utils.next:
+   - './Release.json'
+   - '7.1.1'
+   - set_env: "NEXT_REL"
+``` 
+
+**********************************************
+**********************************************
+file @ **/goephor/core/plugins/string.py**
+
+      Created on May 13, 2016
+
+@author: iitow
+
+####class utils####
+
+      Utils class for parsing strings 
+
+ ***def __init__*** 
+
+      utils Constructor
+
+**param action_manager:** Obj, from action_manager class 
+
+ ***def replace*** 
+
+      String replace on environment variable
+```
+string.utils.replace:
+   - "env variable"
+   - "old substring"
+   - "new substring"
+``` 
 
 **********************************************
 **********************************************
