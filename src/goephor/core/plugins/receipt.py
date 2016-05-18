@@ -81,26 +81,27 @@ class maker(Plugin):
             if self.verbose:
                 print "[set] %s=%s" % (key,value)
     
-    def add(self,path,json_str,**defaults):
+    def add(self,path,**defaults):
         '''
         Add to an existing receipt
         :param path: String, path to existing file
-        :param json_str: String, using json syntax add to receipt
-        :param to_json: Boolean, write file out as json
-        :note: json syntax, {hello:{world}}
+        :param set: values to add to file
         :example:
         ```
        - receipt.maker.add:
                         - "./custom.yaml"
-                        - '{"HELLO":["WORLD","05/10/14"]}'
+                        - set:
         ```
         '''
-        data = None
-        print "[add] %s" % path
-        data = self._to_dict(path)
-        json_dict = self._str_to_dict(json_str)
-        data.update(json_dict)
-        self._to_file(data, path)
+        if defaults.get('set'): 
+            set = defaults.get('set')            
+            data = None
+            print "[add] %s" % path
+            data = self._to_dict(path)
+            data.update(set)
+            self._to_file(data, path)
+        else:
+            raise Exception('[set] default required')
 
     def _to_dict(self,path):
         '''
@@ -124,20 +125,7 @@ class maker(Plugin):
                 return data
         print "[None]"
         return None
-    
-    def _str_to_dict(self,data):
-        '''
-        Convert json string to dict
-        :param data: String
-        :return: Dictionary
-        '''
-        data = self.EnvManager._sanitize(data)
-        if self.verbose:
-            print "[_str_to_dict] %s" % (data)
-        data = json.loads(data)
-        return data
-        
-    
+
     def _to_file(self,data,path):
         '''
         Private, convert dict to file
