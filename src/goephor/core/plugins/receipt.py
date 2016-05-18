@@ -85,23 +85,22 @@ class maker(Plugin):
         '''
         Add to an existing receipt
         :param path: String, path to existing file
-        :param json_Str: String of json
+        :param json_str: String, using json syntax add to receipt
+        :param to_json: Boolean, write file out as json
+        :note: json syntax, {hello:{world}}
         :example:
         ```
        - receipt.maker.add:
                         - "./custom.yaml"
-                        - "{${RELEASE}:build:${BUILD},date:${DATE}}"
+                        - '{"HELLO":["WORLD","05/10/14"]}'
         ```
         '''
-         
         data = None
-        if self.verbose:
-            print "[add] %s" % path
+        print "[add] %s" % path
         data = self._to_dict(path)
-        json_str = json.loads(json_str)
-        data.update(json_str)
+        json_dict = self._str_to_dict(json_str)
+        data.update(json_dict)
         self._to_file(data, path)
-
 
     def _to_dict(self,path):
         '''
@@ -125,6 +124,17 @@ class maker(Plugin):
                 return data
         print "[None]"
         return None
+    
+    def _str_to_dict(self,data):
+        '''
+        Convert json string to dict
+        :param data: String
+        :return: Dictionary
+        '''
+        if self.verbose:
+            print "[_str_to_dict] %s" % (data)
+        data = json.loads(data)
+        return data
 
     def _to_file(self,data,path):
         '''
