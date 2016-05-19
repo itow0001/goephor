@@ -1,0 +1,25 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - BASE_PATH: "/tmp"
+    - WORK: "${BASE_PATH}/ADDIN"
+    - var1: "one"
+    - var2: "two"
+    - var3: "three"
+    - var4: "four"
+    - VAR_ALL: "(FAIL)"
+  actions:
+       - system.terminal.shell:
+                            - "echo 'START'"
+       # set environment var5                            
+       - environment.env.set:
+                            - "var5"
+                            - "five"
+       # override environment variable VAR_ALL
+       - environment.env.set:
+                            - "VAR_ALL"
+                            - "${var1}/${var2}/${var3}/${var4}/${var5}"
+       - system.terminal.shell:
+                            - 'echo "VAR_ALL: ${VAR_ALL}"'                    
+       - system.terminal.shell:
+                            - "echo 'FINISH'"

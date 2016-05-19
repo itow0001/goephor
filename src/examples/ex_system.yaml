@@ -1,0 +1,19 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - BASE: "/tmp"
+  actions:
+       # make sure the user has a key
+       - system.terminal.shell:
+                            - "whoami"
+       # root user needs the correct key
+       - system.terminal.shell:
+                              - "cp /jenkins/.ssh/id_rsa /root/.ssh" 
+       # This is how to clone a repo                       
+       - system.terminal.rsync:
+                      - "root"
+                      - "/root/.ssh/id_rsa"
+                      - "buildbiox.west.isilon.com"
+                      - "/ifs/isilon/releases/release-8.0.0.BETA.0/OneFS_v8.0.0.BETA.0_Install.tar.gz"
+                      - "/tmp"
+                      - "pull"

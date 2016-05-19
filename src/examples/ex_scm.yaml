@@ -1,0 +1,27 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals: 
+    - REPO: "/tmp/goephor"
+    - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
+  actions:
+       # make sure the user has a key
+       - system.terminal.shell:
+                            - "whoami"
+       # root user needs the correct key
+       - system.terminal.shell:
+                              - "cp /jenkins/.ssh/id_rsa /root/.ssh" 
+       # This is how to clone a repo                       
+       - scm.git.clone:
+                      - "root"
+                      - "${REPO}"
+                      - "${GIT_REMOTE}"
+       - system.terminal.shell:
+                              - "ls ${REPO}"
+       # checkout a branch
+       - scm.git.checkout:
+          - "root"
+          - "${REPO}"
+          - "refactor"
+       - scm.git.delete:
+                      - "${REPO}"
+                      

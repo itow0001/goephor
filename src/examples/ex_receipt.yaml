@@ -1,0 +1,55 @@
+name: "Project Name"
+description: "Project Description"
+globals: 
+   - BASE_PATH: "/tmp"
+   - WORK: "${BASE_PATH}/ADDIN"
+   - RELEASE: "7.1.1.15"
+   - BUILD: "b.7.1.1.test"
+   - DATE: "1/1/16"
+actions:
+# random commands to see on_action receipt
+   - system.terminal.shell:
+      - "echo 'cmd1 output'"
+   - system.terminal.shell:
+      - "echo 'cmd2 output'"
+   - system.terminal.shell:
+      - "echo 'cmd3 output'"
+   # Create custom receipt yaml
+   - receipt.maker.custom:
+      - "${BASE_PATH}/custom.yaml"
+      - BASE_PATH: "${BASE_PATH}"
+      - WORK: "${WORK}"
+   # Create custom receipt txt
+   - receipt.maker.custom:
+      - "${BASE_PATH}/custom.txt"
+      - BASE_PATH: "${BASE_PATH}"
+      - WORK: "${WORK}"
+   # Create custom receipt json
+   - receipt.maker.custom:
+      - "${BASE_PATH}/custom.json"
+      - BASE_PATH: "${BASE_PATH}"
+      - WORK: "${WORK}"
+   # Create a receipt on actions
+   - receipt.maker.on_actions:
+      - "${BASE_PATH}/receipt.yaml"
+   - receipt.maker.read:
+      - "${BASE_PATH}/custom.yaml"
+   # add to receipt
+   - freebsd.terminal.fetch:
+      - "${BASE_PATH}"
+      - "http://buildbiox.west.isilon.com/releases/Releases.json"
+   - receipt.maker.add:
+      - "${BASE_PATH}/Releases.json"
+      - '{"${RELEASE}":{"DATE":"${DATE}"}}'
+               
+   - system.terminal.shell:
+      - "cat ${BASE_PATH}/receipt.yaml"
+   - system.terminal.shell:
+      - "cat ${BASE_PATH}/custom.yaml"
+   - system.terminal.shell:
+      - "cat ${BASE_PATH}/custom.txt"
+   - system.terminal.shell:
+      - "cat ${BASE_PATH}/custom.json"
+   - system.terminal.shell:
+      - "cat ${BASE_PATH}/Releases.json"
+                            
