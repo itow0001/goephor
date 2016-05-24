@@ -21,7 +21,7 @@
        - scm.git.checkout:
           - "root"
           - "${REPO}"
-          - "stable/10"
+          - "origin/stable/10"
        - scm.git.delete:
                       - "${REPO}"
                       
