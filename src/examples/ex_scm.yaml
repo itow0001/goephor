@@ -15,7 +15,7 @@
                       - "root"
                       - "${REPO}"
                       - "${GIT_REMOTE}"
-                      - branch: "origin/stable/10"
+                      - branch: "stable/10"
        - system.terminal.shell:
                               - "ls ${REPO}"
        # checkout a branch
