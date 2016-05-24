@@ -362,6 +362,7 @@ class Branch_actions(object):
             return None
         for ref in self.repo.refs:
             name = ref.name.replace(remote, '').replace('/', '')
+            print name
             if branch_name == name:
                 return ref
         return None
