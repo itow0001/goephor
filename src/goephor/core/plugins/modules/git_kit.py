@@ -361,7 +361,7 @@ class Branch_actions(object):
             print "[Warning] not attached to a repo"
             return None
         for ref in self.repo.refs:
-            name = ref.name.replace(remote, '').replace('/', '')
+            name = ref.name #.replace(remote, '').replace('/', '')
             print name
             if branch_name == name:
                 return ref
