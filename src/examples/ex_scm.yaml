@@ -15,13 +15,14 @@
                       - "root"
                       - "${REPO}"
                       - "${GIT_REMOTE}"
+                      - branch: "origin/stable/10"
        - system.terminal.shell:
                               - "ls ${REPO}"
        # checkout a branch
-       - scm.git.checkout:
-          - "root"
-          - "${REPO}"
-          - "origin/stable/10"
-       - scm.git.delete:
-                      - "${REPO}"
+       #- scm.git.checkout:
+       #   - "root"
+       #   - "${REPO}"
+       #   - "origin/stable/10"
+       #- scm.git.delete:
+       #               - "${REPO}"
                       
