@@ -1,8 +1,9 @@
-  name: "Project Name"
+  name: "SCM Example"
   description: "Project Description"
   globals: 
-    - REPO: "/tmp/freebsd"
-    - GIT_REMOTE: "git@github.west.isilon.com:sdouglas2/freebsd.git"
+    - DIR_REPO: "/tmp/goephor"
+    - BRANCH: "refactor"
+    - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor.git"
   actions:
        # make sure the user has a key
        - system.terminal.shell:
@@ -13,16 +14,16 @@
        # This is how to clone a repo                       
        - scm.git.clone:
                       - "root"
-                      - "${REPO}"
+                      - "${DIR_REPO}"
                       - "${GIT_REMOTE}"
-                      - branch: "stable/10"
+                      - branch: "${BRANCH}"
        - system.terminal.shell:
-                              - "ls ${REPO}"
+                              - "ls ${DIR_REPO}"
        # checkout a branch
-       #- scm.git.checkout:
-       #   - "root"
-       #   - "${REPO}"
-       #   - "origin/stable/10"
-       #- scm.git.delete:
-       #               - "${REPO}"
+       - scm.git.checkout:
+          - "root"
+          - "${DIR_REPO}"
+          - "origin/master"
+       - scm.git.delete:
+          - "${DIR_REPO}"
                       
