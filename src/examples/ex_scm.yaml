@@ -1,8 +1,8 @@
   name: "Project Name"
   description: "Project Description"
   globals: 
-    - REPO: "/tmp/goephor"
-    - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor"
+    - REPO: "/tmp/freebsd"
+    - GIT_REMOTE: "git@github.west.isilon.com:sdouglas2/freebsd.git"
   actions:
        # make sure the user has a key
        - system.terminal.shell:
@@ -21,7 +21,7 @@
        - scm.git.checkout:
           - "root"
           - "${REPO}"
-          - "refactor"
+          - "stable/10"
        - scm.git.delete:
                       - "${REPO}"
                       
