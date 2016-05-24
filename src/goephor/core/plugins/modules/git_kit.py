@@ -360,6 +360,7 @@ class Branch_actions(object):
         if not self.repo:
             print "[Warning] not attached to a repo"
             return None
+        print "[references]"
         for ref in self.repo.refs:
             name = ref.name #.replace(remote, '').replace('/', '')
             print name
