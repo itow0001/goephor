@@ -31,12 +31,14 @@ class git(Plugin):
         :param user: String, username
         :param new_local_path: String, full path and desired dir name
         :param remote: String, git repo
+        :param branch: define the branch to checkout
         :example:
         ```
                - scm.git.clone:
                       - "root"
                       - "/tmp/goephor"
                       - "git@github.west.isilon.com:eng-tools/goephor"
+                      - branch: "refactor"
         ```
         '''
         repo = Repo_actions(new_local_path, user=user)
