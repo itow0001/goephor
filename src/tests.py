@@ -146,16 +146,16 @@ def tests():
     calls all the tests here & collects results
     '''
     tests = []
-    #tests.append(test_condition())
-    #tests.append(test_defaults())
-    #tests.append(test_environment())
-    #tests.append(test_freebsd())
-    #tests.append(test_http())
-    #tests.append(test_receipt())
-    #tests.append(test_remote())
+    tests.append(test_condition())
+    tests.append(test_defaults())
+    tests.append(test_environment())
+    tests.append(test_freebsd())
+    tests.append(test_http())
+    tests.append(test_receipt())
+    tests.append(test_remote())
     tests.append(test_scm())
-    #tests.append(test_system())
-    #tests.append(test_release())
+    tests.append(test_system())
+    tests.append(test_release())
 
     print "\n\n[Test Results]:"
     for test in tests:

@@ -1,7 +1,7 @@
   name: "SCM Example"
   description: "Project Description"
   globals: 
-    - DIR_REPO: "/tmp/goephor"
+    - DIR_REPO: "/tmp/onefs"
     - BRANCH: "master"
     - GIT_REMOTE: "git@github.west.isilon.com:isilon/onefs.git"
   actions:
@@ -21,10 +21,10 @@
        - system.terminal.shell:
                               - "ls ${DIR_REPO}"
        # checkout a branch
-       #- scm.git.checkout:
-       #   - "root"
-       #   - "${DIR_REPO}"
-       #   - "origin/master"
-       #- scm.git.delete:
-       #   - "${DIR_REPO}"
+       - scm.git.checkout:
+          - "root"
+          - "${DIR_REPO}"
+          - "origin/BR_8_0_0"
+       - scm.git.delete:
+          - "${DIR_REPO}"
                       
