@@ -41,12 +41,12 @@ class git(Plugin):
                       - "git@github.west.isilon.com:eng-tools/goephor"
         ```
         '''
+        print "[clone] @ %s -> %s" % (remote,new_local_path)
+        for key,value in defaults.iteritems():
+            print "%s=%s" % (key,value)
         repo = Repo_actions(new_local_path, user=user)
         if not defaults.get('branch'):
             defaults['branch']='master'
-        print "[clone]"
-        for key,value in defaults.iteritems():
-            print "%s=%s" % (key,value)
         has_cloned = repo.clone(remote,**defaults)
         if has_cloned:
             return True
