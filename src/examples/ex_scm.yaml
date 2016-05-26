@@ -2,8 +2,8 @@
   description: "Project Description"
   globals: 
     - DIR_REPO: "/tmp/goephor"
-    - BRANCH: "refactor"
-    - GIT_REMOTE: "git@github.west.isilon.com:eng-tools/goephor.git"
+    - BRANCH: "master"
+    - GIT_REMOTE: "git@github.west.isilon.com:isilon/onefs.git"
   actions:
        # make sure the user has a key
        - system.terminal.shell:

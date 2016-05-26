@@ -42,6 +42,8 @@ class git(Plugin):
         ```
         '''
         repo = Repo_actions(new_local_path, user=user)
+        if not defaults.get('branch'):
+            defaults['branch']='master'
         print "[clone]"
         for key,value in defaults.iteritems():
             print "%s=%s" % (key,value)
