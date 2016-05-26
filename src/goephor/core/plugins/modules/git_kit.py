@@ -110,7 +110,7 @@ class Repo_actions(object):
         :param set_bare: boolean, default is False, creates a 'bare repo',
         to run like a src repo
         :return: boolean, success/failure
-        :note: Shared repositories should always be createRepod with the set_bare
+        :note: Shared repositories should always be created with the set_bare
         flag and should be stored in a directory called <projectname>.git
         """
         self._set_dirs()
@@ -137,23 +137,11 @@ class Repo_actions(object):
         example. git@github.west.isilon.com:iitow/scm-tools.git
         :return: boolean, success/failure
         """
-
-        Repo.git.clone(remote_ssh,**defaults)
-        
-        '''
         try:
-            if depth:
-                print "[Clone depth %s] @ %s" % (depth,self.repo_path)
-                repo = Repo.clone_from(remote_ssh,
-                                       self.repo_path,
-                                       branch=branch)
-                
-            
-            else:
-                print "[Clone] @ %s" % self.repo_path
-                repo = Repo.clone_from(remote_ssh,
-                                       self.repo_path,
-                                       branch=branch)
+            print "[Clone] @ %s" % self.repo_path
+            repo = Repo.clone_from(remote_ssh,
+                                    self.repo_path,
+                                    **defaults)
             self.repo = repo
             return True
         except Exception as e:
@@ -161,7 +149,6 @@ class Repo_actions(object):
                 return True
             else:
                 print e
-        '''
         return False
 
     def untracked_files(self):
