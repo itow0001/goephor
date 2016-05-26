@@ -42,6 +42,9 @@ class git(Plugin):
         ```
         '''
         repo = Repo_actions(new_local_path, user=user)
+        print "[clone]"
+        for dflts in defaults:
+            print dflts 
         has_cloned = repo.clone(remote,**defaults)
         if has_cloned:
             return True
