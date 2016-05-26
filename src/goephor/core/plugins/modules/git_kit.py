@@ -129,6 +129,7 @@ class Repo_actions(object):
 
     def clone(self,
               remote_ssh,
+              depth=None,
               branch='master'):
         """
         Clone a repository from a remote location
@@ -138,10 +139,16 @@ class Repo_actions(object):
         :return: boolean, success/failure
         """
         try:
-            print "[Clone] @ %s" % self.repo_path
-            repo = Repo.clone_from(remote_ssh,
-                                   self.repo_path,
-                                   branch=branch)
+            if depth:
+                print "[Clone depth %s] @ %s" % (depth,self.repo_path)
+                Repo.git.clone('--depth',depth,self.repo_path)
+                repo = self.attach(self.repo_path)
+            
+            else:
+                print "[Clone] @ %s" % self.repo_path
+                repo = Repo.clone_from(remote_ssh,
+                                       self.repo_path,
+                                       branch=branch)
             self.repo = repo
             return True
         except Exception as e:

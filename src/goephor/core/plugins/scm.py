@@ -32,21 +32,17 @@ class git(Plugin):
         :param new_local_path: String, full path and desired dir name
         :param remote: String, git repo
         :param branch: define the branch to checkout
+        :param depth: to perform a shallow clone
         :example:
         ```
                - scm.git.clone:
                       - "root"
                       - "/tmp/goephor"
                       - "git@github.west.isilon.com:eng-tools/goephor"
-                      - branch: "refactor"
         ```
         '''
         repo = Repo_actions(new_local_path, user=user)
-        if defaults.get('branch'):
-            branch = defaults.get('branch')
-            has_cloned = repo.clone(remote,branch)
-        else: 
-            has_cloned = repo.clone(remote)
+        has_cloned = repo.clone(remote,**defaults)
         if has_cloned:
             return True
         else:
