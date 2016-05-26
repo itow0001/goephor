@@ -20,10 +20,10 @@
        - system.terminal.shell:
                               - "ls ${DIR_REPO}"
        # checkout a branch
-       - scm.git.checkout:
-          - "root"
-          - "${DIR_REPO}"
-          - "origin/master"
-       - scm.git.delete:
-          - "${DIR_REPO}"
+       #- scm.git.checkout:
+       #   - "root"
+       #   - "${DIR_REPO}"
+       #   - "origin/master"
+       #- scm.git.delete:
+       #   - "${DIR_REPO}"
                       
