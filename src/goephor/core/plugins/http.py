@@ -39,6 +39,8 @@ class rest(Plugin):
                      - ""
         ```
         '''
+        for key,value in defaults.iteritems():
+            print "%s: %s" % (key,value)
         session = Restful(base_url)
         output = session.send(type, url_ext)
         return output
