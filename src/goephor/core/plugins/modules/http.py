@@ -33,8 +33,8 @@ class Restful(object):
                 with open(auth_file, 'r') as file:
                     auth = yaml.load(file)
             except:
-                print "[Error] Using auth_file at path <%s>" % (auth_file)
-                os.sys.exit(1)
+                print "[Info] not using Auth file <%s>" % (auth_file)
+                #os.sys.exit(1)
             self.user = auth.get('user')
             self.password = auth.get('password')
             self.set_auth = True
@@ -47,7 +47,8 @@ class Restful(object):
              data=None,
              strict=False,
              Content_Type='application/json',
-             verify=False):
+             verify=False,
+             verbose=True):
         """Generic call to handle all types of restful requests
 
         :param rest_action:
@@ -77,7 +78,11 @@ class Restful(object):
                                  auth=auth).prepare()
         response = self.session.send(request_handle, verify=verify)
         print ("\n [%s] %s \n %s") % (rest_action, full_url, response)
-        status = response.status_code
+        code = response.status_code
+        
+        return {'code':code,'response':response.content}
+        
+        '''
         if 200 == status:
             return response.content  # returns content as string
         else:
@@ -86,6 +91,7 @@ class Restful(object):
                 print "[exit code] %s" % (status)
                 os.sys.exit(response.status_code)
             return status
+        '''
 
     def post_multipart(self, url_ext, data=None, files=None, strict=True):
         '''
