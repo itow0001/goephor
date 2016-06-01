@@ -40,6 +40,7 @@ class rest(Plugin):
                      - "https://build.west.isilon.com"
                      - "api/branch"
                      - params: '{"name":"${BRANCH_NAME}"}'
+                     - data: '{"name":"${BRANCH_NAME}"}'
         ```
         '''
         if self.verbose:
@@ -51,4 +52,8 @@ class rest(Plugin):
         if self.verbose:
             print
             print output
+        if not output.code == 200:
+            error = "[%s] http request failed @ %s/%s" % (str(output.code),base_url,url_ext)
+            raise Exception(error)
+            
         return output.get('response')
