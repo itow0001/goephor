@@ -33,6 +33,11 @@ def menu():
                         dest="silent",
                         default=True,
                         help='do not print any additional info')
+    parser.add_argument('-d',
+                        action="store_false",
+                        dest="debug",
+                        default=True,
+                        help='output all debug info')
 
     parser.add_argument('--version',
                         action='version',
@@ -59,7 +64,7 @@ def main():
     '''
     options = menu()
     if options.execute:
-        main_actions = Run(options.file, options.silent)
+        main_actions = Run(options.file, options.silent,debug=options.debug)
         main_actions.add_envs(**parse_envs(options))
         main_actions.set_envs()
         main_actions.execute_actions()

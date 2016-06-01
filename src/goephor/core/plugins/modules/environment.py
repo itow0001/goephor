@@ -15,7 +15,7 @@ class EnvManager(object):
     when the action obj is initialized
     Its contained within the action_manager.
     '''
-    def __init__(self, debug=True):
+    def __init__(self, debug=False):
         '''
         Constructor
 

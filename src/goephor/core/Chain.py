@@ -27,7 +27,7 @@ class Run(object):
         self.verbose = verbose
         self.debug = debug
         self.config_file = config_file
-        self.EnvManager = EnvManager()
+        self.EnvManager = EnvManager(debug=self.debug)
         self.config = self.read_config(config_file)
         self.action_manager = Manager(self.config,
                                       self.EnvManager,
