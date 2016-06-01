@@ -81,7 +81,7 @@ class utils(Plugin):
         '''
         if self.is_json(data):
             data = json.loads(data)
-            return self.traverse(data,path='id')
+            return self.traverse(data,path=['id'])
     
     def traverse(self,obj, path=None, callback=None):
         if path is None:
