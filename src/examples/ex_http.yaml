@@ -2,11 +2,10 @@
   description: "Project Description"
   globals: 
     - BASE_PATH: "/tmp"
-    - URL: "http://10.7.216.118:8080"
+    - URL: "http://google.com"
     - BRANCH_NAME: "BR_IITOW_GIT_SHALLOW"
   actions:
        - http.rest.send:
                      - "GET"
                      - "${URL}"
-                     - "api/branch"
-                     - params: '{"name":"${BRANCH_NAME}"}'
+                     - ""

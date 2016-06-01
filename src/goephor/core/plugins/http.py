@@ -37,8 +37,9 @@ class rest(Plugin):
         ```
                - http.rest.send:
                      - "GET"
-                     - "http://www.google.com"
-                     - ""
+                     - "https://build.west.isilon.com"
+                     - "api/branch"
+                     - params: '{"name":"${BRANCH_NAME}"}'
         ```
         '''
         if self.verbose:
