@@ -87,17 +87,16 @@ class utils(Plugin):
         '''
         Private recursive key search
         '''
-        value = None
+        fields = []
         if isinstance(data, list):
             for item in data:
                 if isinstance(item, dict):
                     self.find_key(data, key)
-        if isinstance(data, dict):
+        elif isinstance(data, dict):
             for k,v in data.iteritems():
                 if key == k:
-                    value = v
-                    return value
-        return value
+                    fields.append(v)
+        return fields
             
         
         
