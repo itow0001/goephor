@@ -102,7 +102,8 @@ class utils(Plugin):
 
         elif isinstance(data, dict):
             for k, v in data.iteritems():
-                print "%s: %s" % (k,v)
+                if self.verbose:
+                    print "%s: %s" % (k,v)
                 if k == key:
                     return str(v)
                 if isinstance(v, list) or isinstance(v, dict):
