@@ -31,6 +31,8 @@ class rest(Plugin):
         :param type: String, PUT,GET
         :param base_url: String
         :param url_ext: String
+        :param params: json string
+        :param data: json string
         :example:
         ```
                - http.rest.send:
@@ -40,10 +42,12 @@ class rest(Plugin):
         ```
         '''
         if self.verbose:
+            print "[send] @ %s/%s" % (base_url,url_ext)
             for key,value in defaults.iteritems():
                 print "%s: %s" % (key,value)
         session = Restful(base_url)
         output = session.send(req_type, url_ext,**defaults)
         if self.verbose:
+            print
             print output
-        return output.get('response')
+        return output
