@@ -52,7 +52,7 @@ class rest(Plugin):
         if self.verbose:
             print
             print output
-        if not output.get('code') == 200:
+        if not output.get('code') >= 300:
             error = "[%s] http request failed @ %s/%s" % (str(output.get('code')),base_url,url_ext)
             raise Exception(error)
             
