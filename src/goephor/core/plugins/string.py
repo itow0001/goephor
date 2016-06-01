@@ -81,18 +81,19 @@ class utils(Plugin):
         '''
         if self.is_json(data):
             data = json.loads(data)
-            for value in self.traverse(data,key):
-                return value
+            value = self.traverse(data,key)
+            print "######%s" % str(value)
+
     
     def traverse(self,data, key):
         if isinstance(data[key], dict):
             if key in data:
-                yield data[key]
-        for k in data:
-            if isinstance(data[k], list):
-                for i in data[k]:
-                    for value in self.traverse(i, key):
-                        yield value
+                return data[key]
+        elif isinstance(data[key],list):
+            for item in data[key]:
+                self.traverse(item, key)
+        else:
+            print data
 
 
         
