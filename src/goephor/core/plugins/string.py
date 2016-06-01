@@ -81,30 +81,31 @@ class utils(Plugin):
         '''
         if self.is_json(data):
             data = json.loads(data)
-            return self.traverse(data,path=['id'])
+            return self.traverse(data,key)
     
-    def traverse(self,obj, path=None, callback=None):
-        if path is None:
-            path = []
-    
-        if isinstance(obj, dict):
-            value = {k: self.traverse(v, path + [k], callback)
-                     for k, v in obj.items()}
-        elif isinstance(obj, list):
-            value = [self.traverse(elem, path + [[]], callback)
-                     for elem in obj]
-        else:
-            value = obj
-    
-        if callback is None:  # if a callback is provided, call it to get the new value
-            return value
-        else:
-            return callback(path, value)
-            
+    def traverse(self,data, key):
+        if key in data:
+            yield data[key]
+        for k in data:
+            if isinstance(data[k], list):
+                for i in data[k]:
+                    for value in self.traverse(i, key):
+                        yield value
+
+
         
         
         
         
         
-            
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         
