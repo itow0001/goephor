@@ -157,7 +157,6 @@ def tests():
     calls all the tests here & collects results
     '''
     tests = []
-    '''
     tests.append(test_condition())
     tests.append(test_defaults())
     tests.append(test_environment())
@@ -168,7 +167,6 @@ def tests():
     tests.append(test_scm())
     tests.append(test_system())
     tests.append(test_release())
-    '''
     tests.append(test_string())
 
     print "\n\n[Test Results]:"

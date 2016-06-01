@@ -67,10 +67,10 @@ class utils(Plugin):
     def get_key(self,data, key,**defaults):
         '''
         Get a key from json string
-        
         :param data: String
         :param key: String 
         :return: String, value
+        :note: Can add future support for different data formats
         :example:
         ```
         string.utils.get_key:
@@ -82,33 +82,33 @@ class utils(Plugin):
         if self.is_json(data):
             data = json.loads(data)
             value = self.traverse(data,key)
-            print "######%s" % str(value)
-
-    
-    def traverse(self,data, key):
-        if isinstance(data[key], dict):
-            if key in data:
-                return data[key]
-        elif isinstance(data[key],list):
-            for item in data[key]:
-                self.traverse(item, key)
+            return value
         else:
-            print data
+            raise Exception('Must be well formed json string')
 
+    def traverse(self,data, key):
+        '''
+        Private recursively traverse nested json data
+        :param data: Nested dict/list
+        :param key: String
+        :return: value
+        '''
+        values=[]
+        if isinstance(data, list):
+            for items in data:
+                value = self.traverse(items, key)
+                values.append(''.join(value))
+            return ''.join(values)
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         
+        elif isinstance(data, dict):
+            for k, v in data.iteritems():
+                print "%s: %s" % (k,v)
+                if k == key:
+                    return str(v)
+                if isinstance(v, list) or isinstance(v, dict):
+                    value = self.traverse(v, key)
+                    values.append(''.join(value))
+            return ''.join(values)  
+        else:
+            if values:
+                return values
