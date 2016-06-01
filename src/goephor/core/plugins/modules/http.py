@@ -39,10 +39,7 @@ class Restful(object):
                                       headers=self.headers,
                                       data=data)
         code = raw.status_code
-        if 'json' in self.headers['content-type']:
-            response = raw.json()
-        else:
-            response = raw.content
+        response = raw.content
         return {"code":code,'response':response}
     
      
