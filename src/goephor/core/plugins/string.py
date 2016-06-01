@@ -82,7 +82,8 @@ class utils(Plugin):
         if self.is_json(data):
             data = json.loads(data)
             value = self.traverse(data,key)
-            print "#%s#" % value 
+            if not value:
+                return None
             return value
         else:
             raise Exception('Must be well formed json string')
