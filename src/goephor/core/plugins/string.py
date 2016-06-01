@@ -3,6 +3,7 @@ Created on May 13, 2016
 
 @author: iitow
 '''
+import json
 from pluginable import Plugin
 
 
@@ -25,6 +26,9 @@ class utils(Plugin):
                 **defaults):
         '''
         String replace on environment variable
+        :param name: new env name
+        :param old: substring
+        :param new: replaced value
         ```
         string.utils.replace:
            - "env variable"
@@ -40,3 +44,65 @@ class utils(Plugin):
         self.EnvManager.set(name, new_env)
         if self.verbose:
             print "[replace] %s=%s" % (name, new_env)
+    
+    def is_json(self,data,**defaults):
+        '''
+        Is string json?
+        
+        :param data: String
+        :return: Boolean
+        :example:
+        ```
+        string.utils.is_json:
+           - data
+           - set_env: SOMEVAL
+        ```
+        '''
+        try:
+            json_object = json.loads(data)
+        except ValueError:
+            return False
+        return True  
+    
+    def get_key(self,data, key,**defaults):
+        '''
+        Get a key from json string
+        
+        :param data: String
+        :param key: String 
+        :return: String, value
+        :example:
+        ```
+        string.utils.get_key:
+           - Somejsonhere
+           - somekey
+           - set_env: SOMEVAL
+        ```
+        '''
+        if self.is_json(data):
+            data = json.loads(data)
+            return self.find_key(data, key)
+    
+    def find_key(self, data, key):
+        '''
+        Private recursive key search
+        '''
+        value = None
+        if isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict):
+                    self.find_key(data, key)
+        if isinstance(data, dict):
+            for k,v in data.iteritems():
+                if key == k:
+                    value = v
+                    return value
+        return value
+            
+        
+        
+        
+        
+        
+            
+        

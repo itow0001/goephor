@@ -140,6 +140,17 @@ def test_release():
         return {funct: False}
     return {funct: True}
 
+def test_string():
+    '''
+    test of core/plugins/release.py
+    '''
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_string.yaml -e")
+    if not session.get('code') == 0:
+        return {funct: False}
+    return {funct: True}
+
 
 def tests():
     '''
@@ -156,6 +167,7 @@ def tests():
     tests.append(test_scm())
     tests.append(test_system())
     tests.append(test_release())
+    tests.append(test_string())
 
     print "\n\n[Test Results]:"
     for test in tests:
