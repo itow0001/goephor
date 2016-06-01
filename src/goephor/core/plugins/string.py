@@ -85,8 +85,9 @@ class utils(Plugin):
                 return value
     
     def traverse(self,data, key):
-        if key in data:
-            yield data[key]
+        if isinstance(data[key], dict):
+            if key in data:
+                yield data[key]
         for k in data:
             if isinstance(data[k], list):
                 for i in data[k]:
