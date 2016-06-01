@@ -2,8 +2,9 @@
   description: "Project Description"
   globals: 
     - BASE_PATH: "/tmp"
+    - URL: "http://10.7.216.118:8080"
   actions:
        - http.rest.send:
                      - "GET"
-                     - "http://www.google.com"
+                     - "${URL}"
                      - ""

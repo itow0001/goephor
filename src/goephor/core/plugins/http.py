@@ -43,7 +43,7 @@ class rest(Plugin):
             for key,value in defaults.iteritems():
                 print "%s: %s" % (key,value)
         session = Restful(base_url)
-        output = session.send(req_type, url_ext,data=defaults)
+        output = session.send(req_type, url_ext,**defaults)
         if self.verbose:
             print output
         return output.get('response')

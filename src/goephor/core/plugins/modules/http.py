@@ -14,104 +14,43 @@ class Restful(object):
     ''' Perform restful calls with this class
     '''
 
-    def __init__(self, base_url, auth_file=None):
-        """Generic class to handle All types of
-        Restful requests and basic authentication
-
-        :param base_url:
-        fully qualified path to api path
-        example:https://github.west.isilon.com/api/v3
-        :param auth_file:
-        a yaml file containing user: <username> password: <password>
-        """
-        self.user = None
-        self.password = None
-        self.set_auth = False
-        if auth_file:
-            try:
-                import yaml
-                with open(auth_file, 'r') as file:
-                    auth = yaml.load(file)
-            except:
-                print "[Info] not using Auth file <%s>" % (auth_file)
-                #os.sys.exit(1)
-            self.user = auth.get('user')
-            self.password = auth.get('password')
-            self.set_auth = True
+    def __init__(self, base_url,headers={'content-type': 'application/json'}):
+        '''
+        Generic class to handle All types of
+        Restful requests
+        '''
         self.base_url = base_url
-        self.session = Session()
+        self.headers = headers
+        self.request_type = {'GET': requests.get,
+                             'PUT': requests.put,
+                             'POST': requests.post,
+                             'PATCH': requests.patch}
 
-    def send(self,
-             rest_action,
-             url_ext,
-             data=None,
-             strict=False,
-             Content_Type='application/json',
-             verify=False,
-             verbose=True):
-        """Generic call to handle all types of restful requests
-
-        :param rest_action:
-        Possible options, 'GET','PUT','POST','PATCH'
-        :param url_ext:
-        added to base url example.https://github.west.isilon.com/<url_ext>
-        :param strict:
-        False, will permit errors as warning & return code,
-        True will exit with code
-        :param Content_Type:
-        How info is formed, example application/xml
-        :param verify:
-        Check for Certificates
-        :return: String of content, or error exit code
-        """
-        auth = None
-        if self.set_auth:  # set auth parameters if defined
-            auth = HTTPBasicAuth(self.user, self.password)
-        if 'json' in Content_Type:
-            data = json.dumps(data)
-        full_url = "%s/%s" % (self.base_url, url_ext)
-        headers = {'Content-Type': Content_Type}  # set headers
-        request_handle = Request(rest_action,  # request handle
-                                 full_url,
-                                 headers=headers,
-                                 data=data,
-                                 auth=auth).prepare()
-        response = self.session.send(request_handle, verify=verify)
-        print ("\n [%s] %s \n %s") % (rest_action, full_url, response)
-        code = response.status_code
-        
-        return {'code':code,'response':response.content}
-        
-        '''
-        if 200 == status:
-            return response.content  # returns content as string
+    def send(self,type,ext,**defaults):
+        params = defaults.get('params',None)
+        data = defaults.get('data',None)
+        if params:
+            params = json.loads(params)
+        if data:
+            data = json.loads(data)
+        url = "%s/%s" % (self.base_url,ext)
+        raw = self.request_type[type](url,
+                                      params=params,
+                                      headers=self.headers,
+                                      data=data)
+        code = raw.status_code
+        if 'json' in self.headers['content-type']:
+            response = raw.json()
         else:
-            print "%s" % (status)
-            if strict:
-                print "[exit code] %s" % (status)
-                os.sys.exit(response.status_code)
-            return status
-        '''
+            response = raw.content
+        return {"code":code,'response':response}
+    
+     
+        
+        
+        
+        
+        
+    
+    
 
-    def post_multipart(self, url_ext, data=None, files=None, strict=True):
-        '''
-        Performs a multipart post
-        :param url_ext: String
-        :param data: String, json,xml
-        :param files: List, file paths
-        :param strict: boolean
-        '''
-        full_url = "%s/%s" % (self.base_url, url_ext)
-        response = requests.post(full_url, data=data, files=files)
-        print ("\n [%s] %s \n %s") % ('post_multipart', full_url, response)
-        status = response.status_code
-        if 200 == status:
-            return response.content  # returns content as string
-        else:
-            print "[strict %s] " \
-                "Request was not successful" \
-                "[code] %s" % (strict, status)
-            if strict:
-                print "[exit code] %s" % (status)
-                os.sys.exit(response.status_code)
-            return status
