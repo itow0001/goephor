@@ -51,4 +51,4 @@ class rest(Plugin):
         if self.verbose:
             print
             print output
-        return output
+        return output.get('response')
