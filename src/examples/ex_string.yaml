@@ -1,0 +1,20 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals:
+    # change var1, var2 to see different paths use -E "var1=1"
+    - VAR1: "HELLO WORLD"
+    
+  actions:
+     - string.utils.replace:
+        - "${VAR1}"
+        - "HELLO"
+        - "NEW"
+        - set_env: "VAR2"
+     - system.terminal.shell:
+        - "echo '${VAR2}'"
+     - string.utils.get_key:
+        - '[{"id":1,"name":"BR_IITOW_GIT_SHALLOW","active":true,"auto":false,"curr_build_number":1,"git_repo_url":"git@github.west.isilon.com:iitow/onefs.git","os":null,"type":8}]'
+        - 'id'
+        - set_env: "VAR3"
+     - system.terminal.shell:
+        - "echo '${VAR3}'"
