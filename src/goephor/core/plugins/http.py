@@ -46,4 +46,4 @@ class rest(Plugin):
         output = session.send(type, url_ext,data=defaults)
         if self.verbose:
             print output
-        return output
+        return output.get('response')
