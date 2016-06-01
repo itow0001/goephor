@@ -32,7 +32,7 @@ class Restful(object):
         if params:
             params = json.loads(params)
         if data:
-            data = json.dumps(data)
+            data = json.loads(data)
         url = "%s/%s" % (self.base_url,ext)
         raw = self.request_type[type](url,
                                       params=params,
