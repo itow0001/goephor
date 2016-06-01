@@ -81,7 +81,8 @@ class utils(Plugin):
         '''
         if self.is_json(data):
             data = json.loads(data)
-            return self.traverse(data,key)
+            for value in self.traverse(data,key):
+                return value
     
     def traverse(self,data, key):
         if key in data:
