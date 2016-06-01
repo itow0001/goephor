@@ -82,6 +82,8 @@ class utils(Plugin):
         if self.is_json(data):
             data = json.loads(data)
             value = self.traverse(data,key)
+            if self.verbose:
+                print "[value] is [%s]" % (str(value))
             if not value:
                 return None
             return value
