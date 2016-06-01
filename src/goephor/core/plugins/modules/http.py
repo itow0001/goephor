@@ -75,7 +75,8 @@ class Restful(object):
                                  full_url,
                                  headers=headers,
                                  data=data,
-                                 auth=auth).prepare()
+                                 auth=auth.prepare()
+                                 )
         response = self.session.send(request_handle, verify=verify)
         print ("\n [%s] %s \n %s") % (rest_action, full_url, response)
         code = response.status_code
