@@ -81,22 +81,25 @@ class utils(Plugin):
         '''
         if self.is_json(data):
             data = json.loads(data)
-            return self.find_key(data, key)
+            return self.traverse(data,path='id')
     
-    def find_key(self, data, key):
-        '''
-        Private recursive key search
-        '''
-        fields = []
-        if isinstance(data, list):
-            for item in data:
-                if isinstance(item, dict):
-                    self.find_key(data, key)
-        elif isinstance(data, dict):
-            for k,v in data.iteritems():
-                if key == k:
-                    fields.append(v)
-        return fields
+    def traverse(self,obj, path=None, callback=None):
+        if path is None:
+            path = []
+    
+        if isinstance(obj, dict):
+            value = {k: self.traverse(v, path + [k], callback)
+                     for k, v in obj.items()}
+        elif isinstance(obj, list):
+            value = [self.traverse(elem, path + [[]], callback)
+                     for elem in obj]
+        else:
+            value = obj
+    
+        if callback is None:  # if a callback is provided, call it to get the new value
+            return value
+        else:
+            return callback(path, value)
             
         
         
