@@ -6,7 +6,7 @@
     
   actions:
      - string.utils.replace:
-        - "${VAR1}"
+        - "VAR1"
         - "HELLO"
         - "NEW"
         - set_env: "VAR2"
