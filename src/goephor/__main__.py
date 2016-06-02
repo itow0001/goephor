@@ -34,9 +34,9 @@ def menu():
                         default=True,
                         help='do not print any additional info')
     parser.add_argument('-d',
-                        action="store_false",
+                        action="store_true",
                         dest="debug",
-                        default=True,
+                        default=False,
                         help='output all debug info')
 
     parser.add_argument('--version',
