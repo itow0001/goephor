@@ -54,10 +54,10 @@ class utils(Plugin):
         :return: String
         :example:
         ```
-        string.utils.substring:
-           - "SOME_STRING"
-           - "S(.+?)G"
-           - set_env: SOMEVAL
+        - string.utils.substring:
+            - "SOME_STRING"
+            - "S(.+?)G"
+            - set_env: SOMEVAL
         ```
         '''
         env = self.EnvManager.get(str)
@@ -80,9 +80,9 @@ class utils(Plugin):
         :return: Boolean
         :example:
         ```
-        string.utils.is_json:
-           - data
-           - set_env: SOMEVAL
+        - string.utils.is_json:
+            - data
+            - set_env: SOMEVAL
         ```
         '''
         try:
@@ -100,10 +100,10 @@ class utils(Plugin):
         :note: Can add future support for different data formats
         :example:
         ```
-        string.utils.get_key:
-           - Somejsonhere
-           - somekey
-           - set_env: SOMEVAL
+        - string.utils.get_key:
+            - Somejsonhere
+            - somekey
+            - set_env: SOMEVAL
         ```
         '''
         if self.is_json(data):

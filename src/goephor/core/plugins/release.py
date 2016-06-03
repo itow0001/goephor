@@ -37,6 +37,25 @@ class utils(Plugin):
         if self.verbose:
             print "[date] %s" % (str(date))
         return date
+    
+    def pad(self, text, fill, amount, **defaults):
+        '''
+        Provides generic padding to numbers and strings
+        
+        :param text: String
+        :param fill: Char
+        :param amount: Int
+        :return: String
+        :example:
+        ```
+        - release.utils.pad:
+           - '9'
+           - '0'
+           - 3
+           - set_env: "PAD"
+        ```
+        '''
+        return text.rjust(amount,text)
 
     def compare(self,
                 new,
