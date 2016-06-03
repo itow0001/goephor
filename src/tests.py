@@ -151,6 +151,17 @@ def test_string():
         return {funct: False}
     return {funct: True}
 
+def test_on_exit():
+    '''
+    test of core/plugins/release.py
+    '''
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    session = shell("python goephor.py -f ./examples/ex_on_exit.yaml -e")
+    if not session.get('code') == 0:
+        return {funct: False}
+    return {funct: True}
+
 
 def tests():
     '''
