@@ -157,6 +157,8 @@ class Run(object):
         ''' Executes all action objects
         '''
         this_action = None
+        if self.action_manager.chain:
+            print "[action] Start"
         for action in self.action_manager.chain:
             try:
                 if (self.action_manager.failure is False or
@@ -174,13 +176,13 @@ class Run(object):
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
         else:
-            print "\n[actions] [Success]"
+            print "\n[actions] Success"
 
     def execute_on_exit(self):
         ''' Executes all on exit action objects
         '''
         if self.on_exit_manager.chain:
-            print "[on_exit]"
+            print "[on_exit] Start"
         this_action = None
         for action in self.on_exit_manager.chain:
             try:
@@ -199,4 +201,4 @@ class Run(object):
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
         if self.on_exit_manager.chain:
-            print "[on_exit] [Success]"
+            print "[on_exit] Success"
