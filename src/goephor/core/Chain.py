@@ -41,6 +41,8 @@ class Run(object):
         self.load_on_exit()
     
     def __del__(self):
+        if self.verbose:
+            print "[on_exit]"
         self.execute_on_exit()
 
     def read_config(self, config_file):

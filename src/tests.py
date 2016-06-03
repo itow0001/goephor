@@ -179,6 +179,7 @@ def tests():
     tests.append(test_system())
     tests.append(test_release())
     tests.append(test_string())
+    tests.append(test_on_exit())
 
     print "\n\n[Test Results]:"
     for test in tests:
