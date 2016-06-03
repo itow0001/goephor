@@ -167,7 +167,7 @@ class Run(object):
                 else:
                     pass
             except Exception as e:
-                print '[Error] %s' % (str(e))
+                print '[action] [Error] %s' % (str(e))
                 self.action_manager.failure = True
                 this_action = action
         if self.action_manager.failure is True:
@@ -192,11 +192,9 @@ class Run(object):
                 else:
                     pass
             except Exception as e:
-                print '[Error] %s' % (str(e))
+                print '[on_exit] [Error] %s' % (str(e))
                 self.on_exit_manager.failure = True
                 this_action = action
         if self.on_exit_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
-        else:
-            print "\n[Success]"
