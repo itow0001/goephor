@@ -55,7 +55,10 @@ class utils(Plugin):
            - set_env: "PAD"
         ```
         '''
-        return text.rjust(amount,fill)
+        output = text.rjust(amount,fill)
+        if self.verbose:
+            print "[pad] is %s" % (str(output))
+        return output
 
     def compare(self,
                 new,
