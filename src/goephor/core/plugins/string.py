@@ -4,6 +4,7 @@ Created on May 13, 2016
 @author: iitow
 '''
 import json
+import re
 from pluginable import Plugin
 
 
@@ -44,7 +45,33 @@ class utils(Plugin):
         self.EnvManager.set(name, new_env)
         if self.verbose:
             print "[replace] %s=%s" % (name, new_env)
-    
+
+    def substring(self,text,regex,**defaults):
+        '''
+        Allows you to parse strings using regex
+        :param text: String
+        :param regex: String
+        :return: String
+        :example:
+        ```
+        string.utils.substring:
+           - "SOME_STRING"
+           - "S(.+?)G"
+           - set_env: SOMEVAL
+        ```
+        '''
+        env = self.EnvManager.get(str)
+        if not env:
+            error = "env not found %s" % (str)
+            raise Exception(error)
+        sub = re.search(regex, text)
+        substr=None
+        if sub:
+            substr = sub.group(1)
+            if self.verbose:
+                print "[substring] is %s" % (substr)
+        return substr
+
     def is_json(self,data,**defaults):
         '''
         Is string json?
