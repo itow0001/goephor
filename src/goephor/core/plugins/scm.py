@@ -44,7 +44,10 @@ class git(Plugin):
         if not branch_is:
             raise Exception('Unable to checkout %s' % branch)
         latest = commit_obj.latest()
-        return latest.get(info_type,None)
+        latest = latest.get(info_type,None)
+        if self.verbose:
+            print "[latest_commit] %s is %s" % (info_type,latest)
+        return latest
 
     def clone(self,
               user,
