@@ -51,11 +51,11 @@ class utils(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
     
-    def has_path(self,path,**defaults):
+    def has_path(self,path_str,**defaults):
         '''
         Checks if a pth exists
         
-        :param path: String
+        :param path_str: String
         :return: boolean
         :example:
         ```
@@ -64,9 +64,9 @@ class utils(Plugin):
            - set_env: "VAR1"
         ```
         '''
-        output = os.path.exists(path)
+        output = os.path.exists(path_str)
         if self.verbose:
-            print "[has_path] %s @ %s" % (output,path) 
+            print "[has_path] %s @ %s" % (output,path_str) 
         return output
         
 
