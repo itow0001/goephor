@@ -194,11 +194,11 @@ class Action(object):
         print ""
         print "%s" % ('[parameters]'.rjust(15))
         for param in self.parameters:
-            print "      %s" % (param.strip().ljust(20))
+            print "      %s" % (str(param.strip().ljust(20)))
         print ""
         print "%s" % ('[defaults]'.rjust(15))
         for key, value in self.defaults.iteritems():
-            print '%s: %s' % (key.rjust(10), value)
+            print '%s: %s' % (key.rjust(10), str(value))
         print ""
         print "%s" % ('[session]'.rjust(15))
         print self.session
