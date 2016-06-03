@@ -44,7 +44,7 @@ class rest(Plugin):
         ```
         '''
         if self.verbose:
-            print "[send] @ %s/%s" % (base_url,url_ext)
+            print "[send] %s @ %s/%s" % (req_type,base_url,url_ext)
             for key,value in defaults.iteritems():
                 print "%s: %s" % (key,value)
         session = Restful(base_url)
