@@ -22,9 +22,9 @@
        - system.terminal.shell:
                             - 'echo "VAR_ALL: ${VAR_ALL}"'
        - system.terminal.shell:
-                            - 'touch test.txt'
+                            - 'touch ${BAE_PATH}/test.txt'
        - environment.utils.has_path:
-                            - './text.txt'
+                            - '${BASE_PATH}/text.txt'
                             - set_env: "IS_TEXT"
        - system.terminal.shell:
                             - "echo 'IS_TEXT=${IS_TEXT}'"                       

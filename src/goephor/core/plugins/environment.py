@@ -64,6 +64,9 @@ class utils(Plugin):
            - set_env: "VAR1"
         ```
         '''
-        return os.path.exists(path)
+        output = os.path.exists(path)
+        if self.verbose:
+            print "[has_path] is %s" % output 
+        return output
         
 
