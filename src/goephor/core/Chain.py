@@ -47,8 +47,6 @@ class Run(object):
                  exception_type,
                  value,
                  trace):
-        if self.verbose:
-            print "[on_exit]"
         self.execute_on_exit()
 
     def read_config(self, config_file):
@@ -181,6 +179,8 @@ class Run(object):
     def execute_on_exit(self):
         ''' Executes all on exit action objects
         '''
+        if self.on_exit_manager.chain:
+            print "[on_exit]"
         this_action = None
         for action in self.on_exit_manager.chain:
             try:
