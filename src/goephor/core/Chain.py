@@ -81,6 +81,7 @@ class Run(object):
         """
         data = None
         try:
+            import json
             with open(config_file) as file:
                 data = json.loads(file.read())
                 return data
