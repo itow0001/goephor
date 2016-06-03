@@ -184,7 +184,7 @@ class Run(object):
         this_action = None
         for action in self.on_exit_manager.chain:
             try:
-                if (self.self.on_exit_manager.failure is False or
+                if (self.on_exit_manager.failure is False or
                         action.ignore is True):
                     if self.verbose:
                         print "\n[%s]" % (action.name)
@@ -193,9 +193,9 @@ class Run(object):
                     pass
             except Exception as e:
                 print '[Error] %s' % (str(e))
-                self.self.on_exit_manager.failure = True
+                self.on_exit_manager.failure = True
                 this_action = action
-        if self.self.on_exit_manager.failure is True:
+        if self.on_exit_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
         else:
