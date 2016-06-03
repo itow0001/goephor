@@ -38,6 +38,7 @@ class Run(object):
                               verbose=self.verbose,
                               debug=self.debug)
         self.load_actions()
+        self.load_on_exit()
 
     def read_config(self, config_file):
         """
@@ -136,7 +137,7 @@ class Run(object):
             for action in actions:
                 try:
                     action_obj = self.on_exit_manager.to_obj(action,
-                                                            self.action_manager)
+                                                            self.on_exit_manager)
                 except Exception as e:
                     print "\n[Error] %s\n" % (e)
                     print action
@@ -161,6 +162,29 @@ class Run(object):
                 self.action_manager.failure = True
                 this_action = action
         if self.action_manager.failure is True:
+            this_action.pprint(title='Failure', footer='Failure')
+            sys.exit(1)
+        else:
+            print "\n[Success]"
+
+    def execute_on_exit(self):
+        ''' Executes all action objects
+        '''
+        this_action = None
+        for action in self.self.on_exit_manager.chain:
+            try:
+                if (self.self.on_exit_manager.failure is False or
+                        action.ignore is True):
+                    if self.verbose:
+                        print "\n[%s]" % (action.name)
+                    action.execute()
+                else:
+                    pass
+            except Exception as e:
+                print '[Error] %s' % (str(e))
+                self.self.on_exit_manager.failure = True
+                this_action = action
+        if self.self.on_exit_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
         else:
