@@ -66,7 +66,7 @@ class utils(Plugin):
         '''
         output = os.path.exists(path)
         if self.verbose:
-            print "[has_path] is %s" % output 
+            print "[has_path] %s @ %s" % (output,path) 
         return output
         
 
