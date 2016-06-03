@@ -125,7 +125,7 @@ class Run(object):
         '''
         actions = self.config.get('actions',None)
         if not actions:
-            raise Exception('[Missing] - actions')
+            raise Exception('[Missing] actions in manifest')
         for action in actions:
             try:
                 action_obj = self.action_manager.to_obj(action,

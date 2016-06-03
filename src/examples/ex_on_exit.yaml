@@ -8,16 +8,12 @@
     - var3: "${var1}/${var2}"
     - WIN: "eagle"
   actions:                            
-       - example.example.runme:
-                            - "${var1}"
-                            - "${var2}"
-                            - strict: "False"
-                            - windows: "${WIN}"
-       - system.terminal.shell:
-                            - 'echo "WALDO is HERE"'
-                            - set_env: "${WIN}"
-       - system.terminal.shell:
-                            - 'echo "eagle: ${eagle}"'
-       - system.terminal.shell:
-                            - 'echo "var3: ${var3}"'
+     - system.terminal.shell:
+        - 'echo "ACTION RUN"'
+  on_exit:
+     - system.terminal.shell:
+        - 'echo "ON_EXIT RUN"'
+
+  
+
                           
