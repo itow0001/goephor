@@ -110,7 +110,10 @@ class Run(object):
         '''
         loads actions in to chain resolves yaml/json to a object
         '''
-        for action in self.config.get('actions'):
+        actions = self.config.get('actions',None)
+        if not actions:
+            raise Exception('[Missing] - actions')
+        for action in actions:
             try:
                 action_obj = self.action_manager.to_obj(action,
                                                         self.action_manager)
