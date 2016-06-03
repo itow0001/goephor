@@ -21,7 +21,7 @@ class utils(Plugin):
         Plugin.__init__(self, self.action_manager)
 
     def replace(self,
-                name,
+                text,
                 old,
                 new,
                 **defaults):
@@ -37,14 +37,10 @@ class utils(Plugin):
            - "new substring"
         ```
         '''
-        env = self.EnvManager.get(name)
-        if not env:
-            error = "env not found %s" % (name)
-            raise Exception(error)
-        new_env = env.replace(old, new)
-        self.EnvManager.set(name, new_env)
+        new_str = text.replace(old, new)
         if self.verbose:
-            print "[replace] %s=%s" % (name, new_env)
+            print "[replace] %s -> %s" % (text, new_str)
+        return new_str
 
     def substring(self,text,regex,**defaults):
         '''
