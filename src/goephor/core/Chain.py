@@ -39,6 +39,9 @@ class Run(object):
                               debug=self.debug)
         self.load_actions()
         self.load_on_exit()
+    
+    def __del__(self):
+        self.execute_on_exit()
 
     def read_config(self, config_file):
         """
@@ -168,7 +171,7 @@ class Run(object):
             print "\n[Success]"
 
     def execute_on_exit(self):
-        ''' Executes all action objects
+        ''' Executes all on exit action objects
         '''
         this_action = None
         for action in self.self.on_exit_manager.chain:
