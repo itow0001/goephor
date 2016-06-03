@@ -60,10 +60,6 @@ class utils(Plugin):
             - set_env: SOMEVAL
         ```
         '''
-        env = self.EnvManager.get(str)
-        if not env:
-            error = "env not found %s" % (str)
-            raise Exception(error)
         sub = re.search(regex, text)
         substr=None
         if sub:
