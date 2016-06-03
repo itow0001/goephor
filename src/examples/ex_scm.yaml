@@ -25,6 +25,11 @@
           - "root"
           - "${DIR_REPO}"
           - "${BRANCH}"
+       - scm.git.latest_commit:
+          - "root"
+          - "${DIR_REPO}"
+          - "${BRANCH}"
+          - "sha1"
        - scm.git.delete:
           - "${DIR_REPO}"
                       

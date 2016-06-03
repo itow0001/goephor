@@ -247,6 +247,22 @@ class Commit_actions(object):
             print e
         return None
 
+    def latest(self):
+        if not self.repo:
+            print "[Warning] not attached to a repo"
+            return False
+        try:
+            head = self.repo.head.reference
+            latest_info = {"sha1":head.commit.hexsha,
+                           "message":head.commit.message,
+                           "author":head.commit.author.email}
+            return latest_info
+        except Exception as e:
+            print e
+        return None
+        
+        
+
     def add(self,
             file_name):
         """

@@ -4,7 +4,7 @@ Created on Apr 28, 2016
 @author: iitow
 '''
 from pluginable import Plugin
-from modules.git_kit import Branch_actions, Repo_actions
+from modules.git_kit import Branch_actions, Repo_actions, Commit_actions
 from modules.terminal import shell
 
 
@@ -19,6 +19,32 @@ class git(Plugin):
         '''
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
+    
+    def latest_commit(self, user, local_path, branch, info_type, **defaults):
+        '''
+        get the latest commit info from a branch
+        :param user: String, username
+        :param local_path: String, full path and desired dir name
+        :param branch: String
+        :param info_type: String, sha1, message, author
+        :return: String
+        :example:
+        ```
+                - scm.git.latest_commit:
+                      - "root"
+                      - "/tmp/goephor"
+                      - "refactor"
+                      - "sha1"
+        ```
+        '''
+        repo = Repo_actions(local_path, user=user)
+        branch_obj = Branch_actions(repo)
+        commit_obj = Commit_actions(repo)
+        branch_is = branch_obj.checkout(branch)
+        if not branch_is:
+            raise Exception('Unable to checkout %s' % branch)
+        latest = commit_obj.latest()
+        return latest.get(info_type,None)
 
     def clone(self,
               user,

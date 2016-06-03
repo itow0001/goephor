@@ -27,12 +27,12 @@ class utils(Plugin):
                 **defaults):
         '''
         String replace on environment variable
-        :param name: String, environment variable to use
+        :param text: String
         :param old: substring
         :param new: replaced value
         ```
         string.utils.replace:
-           - "env variable"
+           - "variable"
            - "old substring"
            - "new substring"
         ```
