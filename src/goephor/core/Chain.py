@@ -33,6 +33,10 @@ class Run(object):
                                       self.EnvManager,
                                       verbose=self.verbose,
                                       debug=self.debug)
+        self.on_exit_manager = Manager(self.config,
+                              self.EnvManager,
+                              verbose=self.verbose,
+                              debug=self.debug)
         self.load_actions()
 
     def read_config(self, config_file):
@@ -122,6 +126,22 @@ class Run(object):
                 print action
                 sys.exit(1)
             self.action_manager.add(action_obj)
+
+    def load_on_exit(self):
+        '''
+        loads on_exit actions in to chain resolves yaml/json to a object
+        '''
+        actions = self.config.get('on_exit',None)
+        if actions:
+            for action in actions:
+                try:
+                    action_obj = self.on_exit_manager.to_obj(action,
+                                                            self.action_manager)
+                except Exception as e:
+                    print "\n[Error] %s\n" % (e)
+                    print action
+                    sys.exit(1)
+                self.on_exit_manager.add(action_obj)
 
     def execute_actions(self):
         ''' Executes all action objects
