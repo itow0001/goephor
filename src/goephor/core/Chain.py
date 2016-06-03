@@ -174,7 +174,7 @@ class Run(object):
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
         else:
-            print "\n[Success]"
+            print "\n[actions] [Success]"
 
     def execute_on_exit(self):
         ''' Executes all on exit action objects
@@ -198,3 +198,5 @@ class Run(object):
         if self.on_exit_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure')
             sys.exit(1)
+        if self.on_exit_manager.chain:
+            print "[on_exit] [Success]"
