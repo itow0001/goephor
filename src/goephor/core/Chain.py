@@ -41,12 +41,16 @@ class Run(object):
         self.load_on_exit()
 
     def __enter__(self):
+        ''' Entry point for Run obj
+        '''
         return self
 
     def __exit__(self,
                  exception_type,
                  value,
                  trace):
+        ''' performs actions on exit of obj
+        '''
         self.execute_on_exit()
 
     def read_config(self, config_file):
