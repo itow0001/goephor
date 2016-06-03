@@ -182,7 +182,7 @@ class Run(object):
         ''' Executes all on exit action objects
         '''
         this_action = None
-        for action in self.self.on_exit_manager.chain:
+        for action in self.on_exit_manager.chain:
             try:
                 if (self.self.on_exit_manager.failure is False or
                         action.ignore is True):
