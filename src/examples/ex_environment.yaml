@@ -24,7 +24,7 @@
        - system.terminal.shell:
                             - 'touch ${BASE_PATH}/test.txt'
        - environment.utils.has_path:
-                            - '${BASE_PATH}/text.txt'
+                            - '${BASE_PATH}/test.txt'
                             - set_env: "IS_TEXT"
        - system.terminal.shell:
                             - "echo 'IS_TEXT=${IS_TEXT}'"                       
