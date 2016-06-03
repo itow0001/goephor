@@ -64,11 +64,10 @@ def main():
     '''
     options = menu()
     if options.execute:
-        main_actions = Run(options.file, options.silent,debug=options.debug)
-        main_actions.add_envs(**parse_envs(options))
-        main_actions.set_envs()
-        main_actions.execute_actions()
-
+        with Run(options.file, options.silent,debug=options.debug) as main_actions:
+            main_actions.add_envs(**parse_envs(options))
+            main_actions.set_envs()
+            main_actions.execute_actions()
 
 if __name__ == '__main__':
     main()

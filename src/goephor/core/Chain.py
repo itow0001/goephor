@@ -39,7 +39,10 @@ class Run(object):
                               debug=self.debug)
         self.load_actions()
         self.load_on_exit()
-    
+
+    def __enter__(self):
+        return self
+
     def __exit__(self,
                  exception_type,
                  value,
