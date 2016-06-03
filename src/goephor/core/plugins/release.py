@@ -55,7 +55,7 @@ class utils(Plugin):
            - set_env: "PAD"
         ```
         '''
-        return text.rjust(amount,text)
+        return text.rjust(amount,fill)
 
     def compare(self,
                 new,
