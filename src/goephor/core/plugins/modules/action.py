@@ -5,6 +5,7 @@ Created on Apr 26, 2016
 '''
 import importlib
 from environment import EnvManager
+from log import message
 import time
 
 
@@ -179,30 +180,30 @@ class Action(object):
                 "duration": self.duration,
                 "session": self.session}
 
-    def pprint(self, title="", footer=""):
+    def pprint(self, title="", footer="",message_type='info'):
         '''
         print state about the object pretty
 
         :param title: String
         :param footer: String
         '''
-        print "\n\n[%s]\n" % title
-        print "%s %s" % ('[import]'.rjust(15), self.IMP)
-        print "%s %s" % (' [class]'.rjust(15), self.CLASS)
-        print "%s %s" % (' [funct]'.rjust(15), self.DEF)
-        print '%s %s' % ('[duration]'.rjust(15), self.duration)
+        print message('header',"\n\n[%s]\n" % title)
+        print message(message_type,"%s %s" % ('[import]'.rjust(15), self.IMP))
+        print message(message_type,"%s %s" % (' [class]'.rjust(15), self.CLASS))
+        print message(message_type,"%s %s" % (' [funct]'.rjust(15), self.DEF))
+        print message(message_type,'%s %s' % ('[duration]'.rjust(15), self.duration))
         print ""
-        print "%s" % ('[parameters]'.rjust(15))
+        print message(message_type,"%s" % ('[parameters]'.rjust(15)))
         for param in self.parameters:
-            print "      %s" % (str(param.strip().ljust(20)))
+            print message(message_type,"      %s" % (str(param.strip().ljust(20))))
         print ""
-        print "%s" % ('[defaults]'.rjust(15))
+        print message(message_type,"%s" % ('[defaults]'.rjust(15)))
         for key, value in self.defaults.iteritems():
-            print '%s: %s' % (key.rjust(10), str(value))
+            print message(message_type,'%s: %s' % (key.rjust(10), str(value)))
         print ""
-        print "%s" % ('[session]'.rjust(15))
-        print self.session
-        print "\n[%s]\n" % footer
+        print message(message_type,"%s" % ('[session]'.rjust(15)))
+        print message(message_type,self.session)
+        print message(message_type,"\n[%s]\n" % footer)
 
     def _init_instance(self):
         ''' Initializes the class

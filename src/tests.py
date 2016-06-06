@@ -14,11 +14,11 @@ def test_condition():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    output = shell("python goephor.py -f "
+    output = shell("python -u goephor.py -f "
                    "./examples/ex_condition.yaml -e").get('stdout')
     if '(THEN 1)' not in output:
         return {funct: False}
-    output = shell("python goephor.py -f "
+    output = shell("python -u goephor.py -f "
                    "./examples/ex_condition.yaml -e "
                    "-E 'var1=1'").get('stdout')
     if '(IF NEST 1)' not in output:
@@ -32,11 +32,11 @@ def test_defaults():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    output = shell("python goephor.py -f "
+    output = shell("python -u goephor.py -f "
                    "./examples/ex_defaults.yaml -e").get('stdout')
     if '(PASS)' not in output:
         return {funct: False}
-    output = shell("python goephor.py -f "
+    output = shell("python -u goephor.py -f "
                    "./examples/ex_defaults.yaml -e "
                    "-E 'SWITCH=1'").get('stdout')
     if '(PASS)' not in output:
@@ -50,7 +50,7 @@ def test_environment():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    output = shell("python goephor.py -f "
+    output = shell("python -u goephor.py -f "
                    "./examples/ex_environment.yaml -e").get('stdout')
     if '(FAIL)' in output:
         return {funct: False}
@@ -63,7 +63,7 @@ def test_freebsd():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_freebsd.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_freebsd.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -75,7 +75,7 @@ def test_http():
     '''
     funct = inspect.stack()[0][3]
     print "\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_http.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_http.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -87,7 +87,7 @@ def test_receipt():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_receipt.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_receipt.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -99,7 +99,7 @@ def test_remote():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_remote.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_remote.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -111,7 +111,7 @@ def test_scm():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_scm.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_scm.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -123,7 +123,7 @@ def test_system():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_system.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_system.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -135,7 +135,7 @@ def test_release():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_release.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_release.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -146,7 +146,7 @@ def test_string():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_string.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_string.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -157,7 +157,7 @@ def test_on_exit():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
-    session = shell("python goephor.py -f ./examples/ex_on_exit.yaml -e")
+    session = shell("python -u goephor.py -f ./examples/ex_on_exit.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}

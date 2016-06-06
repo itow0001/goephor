@@ -6,6 +6,7 @@ Contained in this file is the main loops
 from plugins import *
 from plugins.modules.action import Manager
 from plugins.modules.environment import EnvManager
+from plugins.modules.log import message
 import sys
 
 
@@ -160,9 +161,10 @@ class Run(object):
     def execute_actions(self):
         ''' Executes all action objects
         '''
+        
         this_action = None
         if self.action_manager.chain:
-            print "[action] Start"
+            print message('header','[actions] Start')
         for action in self.action_manager.chain:
             try:
                 if (self.action_manager.failure is False or
@@ -173,20 +175,21 @@ class Run(object):
                 else:
                     pass
             except Exception as e:
-                print '[action] [Error] %s' % (str(e))
+                error = '[action] [Error] %s' % (str(e))
+                print message('error',error)
                 self.action_manager.failure = True
                 this_action = action
         if self.action_manager.failure is True:
-            this_action.pprint(title='Failure', footer='Failure')
+            this_action.pprint(title='Failure', footer='Failure',message_type='error')
             sys.exit(1)
         else:
-            print "\n[actions] Success"
+            print message('header','[actions] Success')
 
     def execute_on_exit(self):
         ''' Executes all on exit action objects
         '''
         if self.on_exit_manager.chain:
-            print "[on_exit] Start"
+            print message('header','[on_exit] Start')
         this_action = None
         for action in self.on_exit_manager.chain:
             try:
@@ -198,11 +201,12 @@ class Run(object):
                 else:
                     pass
             except Exception as e:
-                print '[on_exit] [Error] %s' % (str(e))
+                error = '[on_exit] [Error] %s' % (str(e))
+                print message('error',error)
                 self.on_exit_manager.failure = True
                 this_action = action
         if self.on_exit_manager.failure is True:
-            this_action.pprint(title='Failure', footer='Failure')
+            this_action.pprint(title='Failure', footer='Failure',message_type='error')
             sys.exit(1)
         if self.on_exit_manager.chain:
-            print "[on_exit] Success"
+            print message('header',"[on_exit] Success")
