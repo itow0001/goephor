@@ -63,14 +63,14 @@ class statement(Plugin):
         else:
             statem = "'%s' %s '%s'" % (arg1, operator, arg2)
         if self.verbose:
-            print message('info',"\n[eval] %s" % statem)
+            print message('header',"\n[eval] %s" % statem)
         if eval(statem):
             if self.verbose:
-                print message('info',"\n[THEN]")
+                print message('header',"\n[THEN]")
             self.add_obj(THEN)
         else:
             if self.verbose:
-                print message('info',"\n[ELSE]")
+                print message('header',"\n[ELSE]")
             self.add_obj(ELSE)
 
     def HAS_TOKEN(self,
