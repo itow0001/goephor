@@ -4,6 +4,7 @@ Created on May 12, 2016
 @author: iitow
 '''
 from pluginable import Plugin
+from modules.log import message
 import datetime
 import yaml
 import json
@@ -35,7 +36,7 @@ class utils(Plugin):
         '''
         date = datetime.datetime.now().strftime(prefix)
         if self.verbose:
-            print "[date] %s" % (str(date))
+            print message('info',"[date] %s" % (str(date)))
         return date
     
     def pad(self, text, fill, amount, **defaults):
@@ -57,7 +58,7 @@ class utils(Plugin):
         '''
         output = text.rjust(amount,fill)
         if self.verbose:
-            print "[pad] is %s" % (str(output))
+            print message('info',"[pad] is %s" % (str(output)))
         return output
 
     def compare(self,
@@ -96,7 +97,7 @@ class utils(Plugin):
         if len(new_release.split('.')) > 3:
             new_split = new_release.rsplit('.', 1)
             new_release = new_split[0]
-            print "[info] compare using %s" % new_release
+            print message('info',"[info] compare using %s" % new_release)
         file_type = path.rsplit(".", 1)[1]
         try:
             with open(path) as file:
@@ -110,7 +111,7 @@ class utils(Plugin):
         minor = 0
         for name, values in releases.iteritems():
             if self.compare(new_release, name):
-                print "[match] %s" % name
+                print message('info',"[match] %s" % name)
                 old_minor = int(name.rsplit('.', 1)[1])
                 if minor < old_minor:
                     minor = old_minor
@@ -118,5 +119,5 @@ class utils(Plugin):
             next = "%s.%s" % (new_release, str(minor+1))
         else:
             next = "%s.%s" % (new_release, str(minor))
-        print "[next] %s" % (next)
+        print message('info',"[next] %s" % (next))
         return next

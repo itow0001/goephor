@@ -4,6 +4,7 @@ Created on Apr 27, 2016
 :author: iitow
 '''
 from pluginable import Plugin
+from modules.log import message
 
 
 class example(Plugin):
@@ -34,9 +35,9 @@ class example(Plugin):
             - "world"
         ```
         '''
-        print "This var [%s] was passed in " % var1
-        print "This var [%s] was passed in " % var2
+        print message('info',"This var [%s] was passed in " % var1)
+        print message('info',"This var [%s] was passed in " % var2)
         print "\nhere are the defaults:"
         for key, value in defaults.iteritems():
-            print "%s : %s" % (key, value)
+            print message('info' "%s : %s" % (key, value))
         return "runme_output"

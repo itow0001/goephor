@@ -4,6 +4,7 @@ Created on Apr 27, 2016
 :author: iitow
 '''
 from pluginable import Plugin
+from modules.log import message
 import yaml
 import json
 
@@ -57,9 +58,9 @@ class maker(Plugin):
             - var3: "SOMEVALUE3"
         ```
         '''
-        print "[custom] %s" % (path)
+        print message('info',"[custom] %s" % (path))
         for key, value in defaults.iteritems():
-            print "%s: %s" % (key, value)
+            print message('info',"%s: %s" % (key, value))
         self._to_file(defaults, path)
 
     def read(self, path, **defaults):
@@ -73,13 +74,13 @@ class maker(Plugin):
            - "receipt.yaml"
         ```
         '''
-        print "[read] %s" % path
+        print message('info',"[read] %s" % path)
 
         data = self._to_dict(path)
         for key, value in data.iteritems():
             self.EnvManager.set(key, value)
             if self.verbose:
-                print "[set] %s=%s" % (key, value)
+                print message('info',"[set] %s=%s" % (key, value))
 
     def add(self,
             path,
@@ -99,7 +100,7 @@ class maker(Plugin):
         ```
         '''
         data = None
-        print "[add] %s" % path
+        print message('info',"[add] %s" % path)
         data = self._to_dict(path)
         json_dict = self._str_to_dict(json_str)
         data.update(json_dict)
@@ -117,15 +118,15 @@ class maker(Plugin):
         with open(path) as file:
             if 'json' in file_type:
                 if self.verbose:
-                    print "[_to_dict] json"
+                    print message('info',"[_to_dict] json")
                 data = json.loads(file.read())
                 return data
             else:
                 if self.verbose:
-                    print "[_to_dict] yaml"
+                    print message('info',"[_to_dict] yaml")
                 data = yaml.load(file)
                 return data
-        print "[None]"
+        print message('info',"[None]")
         return None
 
     def _str_to_dict(self, data):
@@ -135,7 +136,7 @@ class maker(Plugin):
         :return: Dictionary
         '''
         if self.verbose:
-            print "[_str_to_dict] %s" % (data)
+            print message('info',"[_str_to_dict] %s" % (data))
         data = json.loads(data)
         return data
 
@@ -151,19 +152,19 @@ class maker(Plugin):
         with open(path, 'w') as file:
             if 'json' in file_type:
                 if self.verbose:
-                    print "[_to_file] json"
+                    print message('info',"[_to_file] json")
                 file.write(json.dumps(data,
                                       indent=4,
                                       sort_keys=True))
             elif 'txt' in file_type:
                 if self.verbose:
-                    print "[_to_file] txt"
+                    print message('info',"[_to_file] txt")
                 for key, value in data.iteritems():
                     pair = "%s=%s" % (key, value)
                     file.write(pair)
             else:
                 if self.verbose:
-                    print "[_to_file] yaml"
+                    print message('info',"[_to_file] yaml")
                 file.write(yaml.dump(data,
                                      default_flow_style=False,
                                      allow_unicode=True))

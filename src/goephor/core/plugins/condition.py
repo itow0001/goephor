@@ -4,6 +4,7 @@ Created on Apr 26, 2016
 :author: iitow
 '''
 from pluginable import Plugin
+from modules.log import message
 
 
 class statement(Plugin):
@@ -62,14 +63,14 @@ class statement(Plugin):
         else:
             statem = "'%s' %s '%s'" % (arg1, operator, arg2)
         if self.verbose:
-            print "\n[eval] %s" % statem
+            print message('info',"\n[eval] %s" % statem)
         if eval(statem):
             if self.verbose:
-                print "\n[THEN]"
+                print message('info',"\n[THEN]")
             self.add_obj(THEN)
         else:
             if self.verbose:
-                print "\n[ELSE]"
+                print message('info',"\n[ELSE]")
             self.add_obj(ELSE)
 
     def HAS_TOKEN(self,
@@ -91,8 +92,8 @@ class statement(Plugin):
         for line in output:
             if token in line:
                 if self.verbose:
-                    print "[Found] %s" % (token)
+                    print message('info',"[Found] %s" % (token))
                 return True
         if self.verbose:
-            print "[Not Found] %s" % (token)
+            print message('info',"[Not Found] %s" % (token))
         return False

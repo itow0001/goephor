@@ -5,7 +5,7 @@ Created on Apr 25, 2016
 '''
 from pluginable import Plugin
 from modules.terminal import shell, rsync
-
+from modules.log import message
 
 class terminal(Plugin):
     '''
@@ -34,7 +34,7 @@ class terminal(Plugin):
         ```
         '''
         if self.verbose:
-            print "[cmd] %s\n" % (cmd)
+            print message('info',"[cmd] %s\n" % (cmd))
         session = shell(cmd)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
@@ -68,9 +68,9 @@ class terminal(Plugin):
         ```
         '''
         if self.verbose:
-            print "[rsync] %s [%s] -> [%s]" % (option,
+            print message('info',"[rsync] %s [%s] -> [%s]" % (option,
                                                src,
-                                               dest)
+                                               dest))
         session = rsync(server,
                         src,
                         dest,

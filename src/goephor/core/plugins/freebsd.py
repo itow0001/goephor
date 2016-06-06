@@ -5,6 +5,7 @@ Created on Apr 29, 2016
 '''
 from pluginable import Plugin
 from modules.terminal import shell
+from modules.log import message
 import re
 
 
@@ -46,7 +47,7 @@ class terminal(Plugin):
             if hostname in line:
                 jail_line = re.split('\s+', line)
                 if self.debug:
-                    print jail_line
+                    print message('info',jail_line)
                 if return_type == 'path':
                     return jail_line[4]
                 elif return_type == 'hostname':
@@ -81,7 +82,7 @@ class terminal(Plugin):
                                                                '/bin/sh',
                                                                cmd)
         if self.verbose:
-            print "[cmd] %s" % jexec_cmd
+            print message('info',"[jexec] %s" % jexec_cmd)
             print ""
         session = shell(jexec_cmd)
         if not session.get('code') == 0:

@@ -5,6 +5,7 @@ Created on Apr 27, 2016
 '''
 import os
 from pluginable import Plugin
+from modules.log import message
 
 
 class env(Plugin):
@@ -37,7 +38,7 @@ class env(Plugin):
         '''
         self.EnvManager.set(key, value)
         if self.verbose:
-            print "[set] %s=%s" % (key, value)
+            print message('info',"[set] %s=%s" % (key, value))
 
 class utils(Plugin):
     ''' Environment utilities
@@ -66,7 +67,7 @@ class utils(Plugin):
         '''
         output = os.path.exists(path_str)
         if self.verbose:
-            print "[has_path] %s @ %s" % (output,path_str) 
+            print message('info',"[has_path] %s @ %s" % (output,path_str))
         return output
         
 

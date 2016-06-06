@@ -5,6 +5,7 @@ Created on Apr 29, 2016
 '''
 from modules.http import Restful
 from pluginable import Plugin
+from modules.log import message
 
 
 class rest(Plugin):
@@ -44,14 +45,14 @@ class rest(Plugin):
         ```
         '''
         if self.verbose:
-            print "[send] %s @ %s/%s" % (req_type,base_url,url_ext)
+            print message('info',"[send] %s @ %s/%s" % (req_type,base_url,url_ext))
             for key,value in defaults.iteritems():
-                print "%s: %s" % (key,value)
+                print message('info',"%s: %s" % (key,value))
         session = Restful(base_url)
         output = session.send(req_type, url_ext,**defaults)
         if self.verbose:
             print
-            print output
+            print message('info',output)
         if output.get('code') >= 300:
             error = "[%s] http request failed @ %s/%s" % (str(output.get('code')),base_url,url_ext)
             raise Exception(error)

@@ -4,6 +4,7 @@ Created on Apr 25, 2016
 :author: iitow
 '''
 from modules.environment import EnvManager
+from modules.log import message
 import types
 
 

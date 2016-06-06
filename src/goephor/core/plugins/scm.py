@@ -6,7 +6,7 @@ Created on Apr 28, 2016
 from pluginable import Plugin
 from modules.git_kit import Branch_actions, Repo_actions, Commit_actions
 from modules.terminal import shell
-
+from modules.log import message
 
 class git(Plugin):
     ''' This class Represents a call to git
@@ -46,7 +46,7 @@ class git(Plugin):
         latest = commit_obj.latest()
         latest = latest.get(info_type,None)
         if self.verbose:
-            print "[latest_commit] %s is %s" % (info_type,latest)
+            print message('info',"[latest_commit] %s is %s" % (info_type,latest))
         return latest
 
     def clone(self,
@@ -70,9 +70,9 @@ class git(Plugin):
                       - "git@github.west.isilon.com:eng-tools/goephor"
         ```
         '''
-        print "[clone] @ %s -> %s" % (remote, new_local_path)
+        print message('info',"[clone] @ %s -> %s" % (remote, new_local_path))
         for key, value in defaults.iteritems():
-            print "%s=%s" % (key, value)
+            print message('info',"%s=%s" % (key, value))
         print ""
         repo = Repo_actions(new_local_path, user=user)
         if not defaults.get('branch'):
@@ -120,4 +120,4 @@ class git(Plugin):
             if session.get('code') == 0:
                 return True
         else:
-            print "[Pass] not a repo @ %s " % (local_path)
+            print message('info',"[Pass] not a repo @ %s " % (local_path))

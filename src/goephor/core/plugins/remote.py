@@ -5,6 +5,7 @@ Created on Apr 28, 2016
 '''
 from modules.remote import Run
 from pluginable import Plugin
+from modules.log import message
 
 
 class ssh(Plugin):

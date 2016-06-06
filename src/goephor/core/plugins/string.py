@@ -6,7 +6,7 @@ Created on May 13, 2016
 import json
 import re
 from pluginable import Plugin
-
+from modules.log import message
 
 class utils(Plugin):
     '''
@@ -39,7 +39,7 @@ class utils(Plugin):
         '''
         new_str = text.replace(old, new)
         if self.verbose:
-            print "[replace] %s -> %s" % (text, new_str)
+            print message('info',"[replace] %s -> %s" % (text, new_str))
         return new_str
 
     def substring(self,text,regex,**defaults):
@@ -61,7 +61,7 @@ class utils(Plugin):
         if sub:
             substr = sub.group(1)
             if self.verbose:
-                print "[substring] is %s" % (substr)
+                print message('info',"[substring] is %s" % (substr))
         return substr
 
     def is_json(self,data,**defaults):
@@ -102,7 +102,7 @@ class utils(Plugin):
             data = json.loads(data)
             value = self.traverse(data,key)
             if self.verbose:
-                print "[value] is [%s]" % (str(value))
+                print message('info',"[value] is [%s]" % (str(value)))
             if not value:
                 return None
             return value
@@ -126,7 +126,7 @@ class utils(Plugin):
         elif isinstance(data, dict):
             for k, v in data.iteritems():
                 if self.verbose:
-                    print "%s: %s" % (k,v)
+                    print message('info',"%s: %s" % (k,v))
                 if k == key:
                     return str(v)
                 if isinstance(v, list) or isinstance(v, dict):
