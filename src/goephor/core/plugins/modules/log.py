@@ -6,11 +6,11 @@ Created on Jun 3, 2016
 import sys
 def colors(color_type,output):
     types = {'header': '\033[34m',
-              'info': '\033[94m',
-              'success': '\033[92m',
-              'warning': '\033[93m',
-              'fail': '\033[91m',
-              'error': '\033[91m',
+              'info': '\033[34m',
+              'success': '\033[32m',
+              'warning': '\033[33m',
+              'fail': '\033[31m',
+              'error': '\033[31m',
               'end': '\033[0m'}
     trans = types.get(color_type,None)
     #if not trans:
