@@ -34,7 +34,7 @@ class terminal(Plugin):
         ```
         '''
         if self.verbose:
-            print message('info',"[cmd] %s\n" % (cmd))
+            print "[cmd] %s\n" % (cmd)
         session = shell(cmd)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))

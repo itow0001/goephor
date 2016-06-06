@@ -170,7 +170,7 @@ class Run(object):
                 if (self.action_manager.failure is False or
                         action.ignore is True):
                     if self.verbose:
-                        print "\n[%s]" % (action.name)
+                        print message('header',"\n[%s]" % (action.name))
                     action.execute()
                 else:
                     pass
@@ -196,7 +196,7 @@ class Run(object):
                 if (self.on_exit_manager.failure is False or
                         action.ignore is True):
                     if self.verbose:
-                        print "\n[%s]" % (action.name)
+                        print message('header',"\n[%s]" % (action.name))
                     action.execute()
                 else:
                     pass
