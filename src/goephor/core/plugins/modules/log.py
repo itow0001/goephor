@@ -5,7 +5,7 @@ Created on Jun 3, 2016
 '''
 import sys
 def colors(color_type,output):
-    types = {'header': '\033[34m',
+    types = {'header': '\033[4m\033[34m',
               'info': '\033[34m',
               'success': '\033[32m',
               'warning': '\033[33m',
