@@ -85,9 +85,24 @@ class maker(Plugin):
     def custom_json(self, path, data,**defaults):
         '''
         produces output file from json data
+        :param path: String
+        :param data: String
+        :example:
+        ```
+        - receipt.maker.custom_json:
+            - path/put/file
+            - somejsonhere
+        ```
         '''
-        data = self._to_dict(data)
-        
+        if self.is_json(data):
+            data = json.loads(data)
+            if self.verbose:
+                print message('info',"[custom_json] @ %s" % (path))
+                print message('info'," %s" % (str(data)))
+                self._to_file(data, path)
+        else:
+            raise Exception('Must be well formed json string')
+            
 
     def read(self, path, **defaults):
         '''
