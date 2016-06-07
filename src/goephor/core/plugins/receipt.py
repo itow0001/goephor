@@ -102,7 +102,6 @@ class maker(Plugin):
                 self._to_file(data, path)
         else:
             raise Exception('Must be well formed json string')
-            
 
     def read(self, path, **defaults):
         '''
