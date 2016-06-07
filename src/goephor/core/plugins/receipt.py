@@ -20,6 +20,25 @@ class maker(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
 
+    def is_json(self,data,**defaults):
+        '''
+        Is string json?
+        
+        :param data: String
+        :return: Boolean
+        :example:
+        ```
+        - string.utils.is_json:
+            - data
+            - set_env: SOMEVAL
+        ```
+        '''
+        try:
+            json_object = json.loads(data)
+        except ValueError:
+            return False
+        return True
+
     def on_actions(self, path, **defaults):
         '''
         This creates a receipt of all actions in the chain
@@ -62,6 +81,13 @@ class maker(Plugin):
         for key, value in defaults.iteritems():
             print message('info',"%s: %s" % (key, value))
         self._to_file(defaults, path)
+
+    def custom_json(self, path, data,**defaults):
+        '''
+        produces output file from json data
+        '''
+        data = self._to_dict(data)
+        
 
     def read(self, path, **defaults):
         '''

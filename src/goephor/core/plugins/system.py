@@ -76,7 +76,8 @@ class terminal(Plugin):
                         dest,
                         user=user,
                         rsa_private=rsa_private_path,
-                        option=option)
+                        option=option,
+                        excludes=defaults)
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
         return session.get('stdout')
