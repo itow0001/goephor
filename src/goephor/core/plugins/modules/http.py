@@ -27,6 +27,12 @@ class Restful(object):
                              'PATCH': requests.patch}
 
     def send(self,type,ext,**defaults):
+        '''
+        send http restful requests
+        :param type: String, GET,PUT,POST,PATCH
+        :param ext: String, url extention
+        :return: Dictionary
+        '''
         params = defaults.get('params',None)
         data = defaults.get('data',None)
         if params:
@@ -42,13 +48,3 @@ class Restful(object):
         code = raw.status_code
         response = raw.content
         return {"code":code,'response':response}
-    
-     
-        
-        
-        
-        
-        
-    
-    
-

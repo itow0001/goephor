@@ -187,7 +187,7 @@ class Action(object):
         :param title: String
         :param footer: String
         '''
-        print message('header',"\n\n[%s]\n" % title)
+        print message(message_type,"\n\n[%s]\n" % title)
         print message(message_type,"%s %s" % ('[import]'.rjust(15), self.IMP))
         print message(message_type,"%s %s" % (' [class]'.rjust(15), self.CLASS))
         print message(message_type,"%s %s" % (' [funct]'.rjust(15), self.DEF))

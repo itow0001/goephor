@@ -1,7 +1,7 @@
 '''
 Created on May 4, 2016
-
-@author: iitow
+:author: iitow
+:note: All integration tests go here.
 '''
 from goephor.core.plugins.modules.terminal import shell
 import inspect

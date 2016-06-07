@@ -48,7 +48,9 @@ file @ **/tests.py**
 
       Created on May 4, 2016
 
-@author: iitow
+**author:** iitow
+
+**note:** All integration tests go here.
 
  ***def test_condition*** 
 
@@ -90,6 +92,14 @@ file @ **/tests.py**
 
       test of core/plugins/release.py 
 
+ ***def test_string*** 
+
+      test of core/plugins/release.py 
+
+ ***def test_on_exit*** 
+
+      test of core/plugins/release.py 
+
  ***def tests*** 
 
       calls all the tests here & collects results 
@@ -98,7 +108,7 @@ file @ **/tests.py**
 **********************************************
 file @ **/goephor/__init__.py**
 
-      goephor __init__.py 
+      goephor __init__.py
 
 **********************************************
 **********************************************
@@ -138,7 +148,7 @@ file @ **/goephor/core/Chain.py**
 
  ***def __init__*** 
 
-      Run Constructor 
+      Run Constructor
 
 
 **param config_file:** path to yaml manifest
@@ -146,6 +156,16 @@ file @ **/goephor/core/Chain.py**
 **param verbose:** print general run info
 
 **param debug:** print debug info 
+
+ ***def __enter__*** 
+
+      Entry point for Run obj
+         
+
+ ***def __exit__*** 
+
+      performs actions on exit of obj
+         
 
  ***def read_config*** 
 
@@ -189,9 +209,18 @@ file @ **/goephor/core/Chain.py**
 
       loads actions in to chain resolves yaml/json to a object 
 
+ ***def load_on_exit*** 
+
+      loads on_exit actions in to chain resolves yaml/json to a object 
+
  ***def execute_actions*** 
 
       Executes all action objects
+         
+
+ ***def execute_on_exit*** 
+
+      Executes all on exit action objects
          
 
 **********************************************
@@ -213,6 +242,22 @@ file @ **/goephor/core/plugins/receipt.py**
       maker Constructor
 
 **param action_manager:** Obj, from action_manager class 
+
+ ***def is_json*** 
+
+      Is string json?
+
+
+**param data:** String
+
+**return:** Boolean
+
+**example:**
+```
+- string.utils.is_json:
+    - data
+    - set_env: SOMEVAL
+``` 
 
  ***def on_actions*** 
 
@@ -245,6 +290,21 @@ file @ **/goephor/core/plugins/receipt.py**
     - var1: "SOMEVALUE1"
     - var2: "SOMEVALUE2"
     - var3: "SOMEVALUE3"
+``` 
+
+ ***def custom_json*** 
+
+      produces output file from json data
+
+**param path:** String
+
+**param data:** String
+
+**example:**
+```
+- receipt.maker.custom_json:
+    - path/put/file
+    - somejsonhere
 ``` 
 
  ***def read*** 
@@ -339,21 +399,46 @@ file @ **/goephor/core/plugins/release.py**
 
 **param prefix:** %m/%d/%y"
 
+**example:**
 ```
 release.utils.date:
    - '%m/%d/%y'
+``` 
+
+ ***def pad*** 
+
+      Provides generic padding to numbers and strings
+
+
+**param text:** String
+
+**param fill:** Char
+
+**param amount:** Int
+
+**return:** String
+
+**example:**
+```
+- release.utils.pad:
+   - '9'
+   - '0'
+   - 3
+   - set_env: "PAD"
 ``` 
 
  ***def compare*** 
 
       Private, compare release numbers
 
-**param new:** String, new release 
+**param new:** String, new release
 
 **param old:** String, old release
 
 **note:** Assume the last digit is build number
-so we split it off 
+so we split it off
+
+**example:** 
 
  ***def next*** 
 
@@ -395,12 +480,82 @@ file @ **/goephor/core/plugins/string.py**
  ***def replace*** 
 
       String replace on environment variable
+
+**param text:** String
+
+**param old:** substring
+
+**param new:** replaced value
 ```
 string.utils.replace:
-   - "env variable"
+   - "variable"
    - "old substring"
    - "new substring"
 ``` 
+
+ ***def substring*** 
+
+      Allows you to parse strings using regex
+
+**param text:** String
+
+**param regex:** String
+
+**return:** String
+
+**example:**
+```
+- string.utils.substring:
+    - "SOME_STRING"
+    - "S(.+?)G"
+    - set_env: SOMEVAL
+``` 
+
+ ***def is_json*** 
+
+      Is string json?
+
+
+**param data:** String
+
+**return:** Boolean
+
+**example:**
+```
+- string.utils.is_json:
+    - data
+    - set_env: SOMEVAL
+``` 
+
+ ***def get_key*** 
+
+      Get a key from json string
+
+**param data:** String
+
+**param key:** String 
+
+**return:** String, value
+
+**note:** Can add future support for different data formats
+
+**example:**
+```
+- string.utils.get_key:
+    - Somejsonhere
+    - somekey
+    - set_env: SOMEVAL
+``` 
+
+ ***def traverse*** 
+
+      Private recursively traverse nested json data
+
+**param data:** Nested dict/list
+
+**param key:** String
+
+**return:** value 
 
 **********************************************
 **********************************************
@@ -422,6 +577,29 @@ file @ **/goephor/core/plugins/scm.py**
 
 **param action_manager:** Obj, from action_manager class 
 
+ ***def latest_commit*** 
+
+      get the latest commit info from a branch
+
+**param user:** String, username
+
+**param local_path:** String, full path and desired dir name
+
+**param branch:** String
+
+**param info_type:** String, sha1, message, author
+
+**return:** String
+
+**example:**
+```
+        - scm.git.latest_commit:
+              - "root"
+              - "/tmp/goephor"
+              - "refactor"
+              - "sha1"
+``` 
+
  ***def clone*** 
 
       Clone a git repo
@@ -432,6 +610,10 @@ file @ **/goephor/core/plugins/scm.py**
 **param new_local_path:** String, full path and desired dir name
 
 **param remote:** String, git repo
+
+**param branch:** define the branch to checkout
+
+**param depth:** to perform a shallow clone
 
 **example:**
 ```
@@ -455,7 +637,6 @@ file @ **/goephor/core/plugins/scm.py**
               - "root"
               - "/tmp/goephor"
               - "refactor"
-
 ``` 
 
  ***def delete*** 
@@ -543,7 +724,7 @@ file @ **/goephor/core/plugins/freebsd.py**
 
 **param url:** String
 
-**return:** String output        print "################DEBUG"
+**return:** String output
 
 **example:**
 ```
@@ -628,6 +809,11 @@ file @ **/goephor/core/plugins/environment.py**
       Environment specific tasks go here
      
 
+####class utils####
+
+      Environment utilities
+     
+
  ***def __init__*** 
 
       env Constructor
@@ -642,7 +828,37 @@ file @ **/goephor/core/plugins/environment.py**
 
 **param key:** String
 
-**param value:** String 
+**param value:** String
+
+**example:**
+```
+- environment.env.set:
+   - "VAR1"
+   - "some value"
+``` 
+
+ ***def __init__*** 
+
+      env Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
+
+ ***def has_path*** 
+
+      Checks if a pth exists
+
+
+**param path_str:** String
+
+**return:** boolean
+
+**example:**
+```
+- environment.utils.has_path:
+   - "/some/path"
+   - set_env: "VAR1"
+``` 
 
 **********************************************
 **********************************************
@@ -674,7 +890,7 @@ file @ **/goephor/core/plugins/system.py**
 **example:**
 ```
 - system.terminal.shell:
-    - 'echo " THIS IS IT"' 
+    - 'echo " THIS IS IT"'
 ``` 
 
  ***def rsync*** 
@@ -814,12 +1030,20 @@ file @ **/goephor/core/plugins/http.py**
 
 **param url_ext:** String
 
+**param params:** json string
+
+**param data:** json string
+
 **example:**
 ```
        - http.rest.send:
              - "GET"
-             - "http://www.google.com"
-             - ""
+             - "https://build.west.isilon.com"
+             - "api/branch"
+             - params
+** '{"name":**"${BRANCH_NAME}"}'
+             - data
+** '{"name":**"${BRANCH_NAME}"}'
 ``` 
 
 **********************************************
@@ -846,7 +1070,7 @@ file @ **/goephor/core/plugins/condition.py**
 
       Private def to add action out of band
 
-**param clause:** dict, if statement  
+**param clause:** dict, if statement 
 
  ***def IF*** 
 
@@ -987,7 +1211,8 @@ access to initialize nest actions and have access to environment.
       Override container name so we can match the array in the chain
 
 
-**note:** This is how we match chain to current plugin using object.__repr__(self) 
+**note:** This is how we match chain to current
+plugin using object.__repr__(self) 
 
  ***def set_ignore*** 
 
@@ -1010,7 +1235,8 @@ access to initialize nest actions and have access to environment.
 
       Initializes the class
 
-**note:** we initialize the plugin class so we can pass info into action Obj before run. 
+**note:** we initialize the plugin class so we
+can pass info into action Obj before run. 
 
  ***def execute*** 
 
@@ -1049,8 +1275,7 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
 
  ***def __init__*** 
 
-      Initialize Repo actions
-         
+      Initialize Repo actions 
 
  ***def _set_ssh_config*** 
 
@@ -1059,7 +1284,7 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
 
 **param ssh_config:** path to <user>/.ssh/config
 
-**param git_host:** example. github.west.isilon.com  
+**param git_host:** example. github.west.isilon.com 
 
  ***def _set_dirs*** 
 
@@ -1072,33 +1297,35 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
 
 **param repo_path:** system path to repo
 
-**return:** boolean, success/failure  
+**return:** boolean, success/failure 
 
  ***def _initial_commit*** 
 
-      To fully init an empty repo you need an initial commit, which in this case
-is an empty README.md 
+      To fully init an empty repo you need an initial commit,
+ which in this case is an empty README.md 
 
  ***def init*** 
 
       Initialize a new repo on your local system
 
 
-**param set_bare:** boolean, default is False, creates a 'bare repo', to run like a src repo 
+**param set_bare:** boolean, default is False, creates a 'bare repo',
+to run like a src repo
 
 **return:** boolean, success/failure
 
-**note:** Shared repositories should always be created with the set_bare flag and
-       should be stored in a directory called <projectname>.git 
+**note:** Shared repositories should always be created with the set_bare
+flag and should be stored in a directory called <projectname>.git 
 
  ***def clone*** 
 
       Clone a repository from a remote location
 
 
-**param remote_ssh:** provide the ssh full info example. git@github.west.isilon.com:iitow/scm-tools.git
+**param remote_ssh:** provide the ssh full info
+example. git@github.west.isilon.com:iitow/scm-tools.git
 
-**return:** boolean, success/failure  
+**return:** boolean, success/failure 
 
  ***def untracked_files*** 
 
@@ -1127,7 +1354,7 @@ is an empty README.md
 
 **param sha1_str:** sha1 string of commit
 
-**return:** boolean True/False  
+**return:** boolean True/False 
 
  ***def diff_tree*** 
 
@@ -1142,6 +1369,10 @@ is an empty README.md
 
 
 **param search:** String token 
+
+ ***def latest*** 
+
+      None 
 
  ***def add*** 
 
@@ -1163,7 +1394,7 @@ is an empty README.md
 
 **param branch_name:** string, name of the new branch to create it
 
-**return:** boolean, success/failure   
+**return:** boolean, success/failure 
 
  ***def branch_from*** 
 
@@ -1188,7 +1419,7 @@ is an empty README.md
 
 **param verbose:** boolean, prints branches out
 
-**return:** list of git.branch objects  
+**return:** list of git.branch objects 
 
  ***def has_reference*** 
 
@@ -1217,7 +1448,7 @@ is an empty README.md
 
 **param remote:** remote name default is origin
 
-**return:** boolean, success/failure   
+**return:** boolean, success/failure 
 
  ***def push*** 
 
@@ -1226,7 +1457,7 @@ is an empty README.md
 
 **param branch_name:** string branch name
 
-**param remote:** remote reference  
+**param remote:** remote reference
 
 **return:** boolean 
 
@@ -1237,7 +1468,7 @@ is an empty README.md
 
 **param branch_name:** string branch name
 
-**param remote:** remote reference  
+**param remote:** remote reference
 
 **return:** boolean 
 
@@ -1248,7 +1479,7 @@ is an empty README.md
 
 **param branch_name:** string branch name
 
-**param remote:** remote reference  
+**param remote:** remote reference
 
 **return:** boolean 
 
@@ -1273,38 +1504,57 @@ is an empty README.md
 
 **param name:** reference to the remote example. upstream
 
-**return:** boolean True/False  
+**return:** boolean True/False 
 
  ***def fork_sync*** 
 
       Syncs a fork of repo with another repository
 
 
-**param remote:** remote url string example. git@github.west.isilon.com:iitow/onefs.git
+**param remote:** remote url string
+example. git@github.west.isilon.com:iitow/onefs.git
 
 **param name:** reference to the remote example. upstream
 
-**return:** boolean True/False  
+**return:** boolean True/False 
 
  ***def fetch*** 
 
       Fetch remote branches
 
 
-**param remote:** repo url example. git@github.west.isilon.com:isilon/onefs.git
+**param remote:** repo url
+example. git@github.west.isilon.com:isilon/onefs.git
 
 **param name:** name of the remote
 :param branch; branch to switch to when fetching
 
 **param add_remote:** boolean add a remote
 
-**return:** boolean   
+**return:** boolean 
 
 **********************************************
 **********************************************
 file @ **/goephor/core/plugins/modules/__init__.py**
 
       None
+
+**********************************************
+**********************************************
+file @ **/goephor/core/plugins/modules/log.py**
+
+      Created on Jun 3, 2016
+
+
+**author:** iitow
+
+ ***def colors*** 
+
+      None 
+
+ ***def message*** 
+
+      None 
 
 **********************************************
 **********************************************
@@ -1320,7 +1570,8 @@ file @ **/goephor/core/plugins/modules/environment.py**
       Management of runtime environment
 
 
-**note:** This is passed to each of the plugins when the action obj is initialized
+**note:** This is passed to each of the plugins
+when the action obj is initialized
 Its contained within the action_manager. 
 
  ***def __init__*** 
@@ -1362,7 +1613,8 @@ Its contained within the action_manager.
 
 **param stri:** String,Bool,Int
 
-**note:** when nested environment variables are used in a striing convert all 
+**note:** when nested environment variables are used
+in a string convert all 
 
 **********************************************
 **********************************************
@@ -1632,49 +1884,14 @@ file @ **/goephor/core/plugins/modules/http.py**
  ***def __init__*** 
 
       Generic class to handle All types of
-Restful requests and basic authentication
-
-
-**param base_url:**
-fully qualified path to api path
-example
-**https:**//github.west.isilon.com/api/v3
-
-**param auth_file:**
-a yaml file containing user
-** <username> password:** <password> 
+Restful requests 
 
  ***def send*** 
 
-      Generic call to handle all types of restful requests
+      send http restful requests
 
+**param type:** String, GET,PUT,POST,PATCH
 
-**param rest_action:**
-Possible options, 'GET','PUT','POST','PATCH'
+**param ext:** String, url extention
 
-**param url_ext:**
-added to base url example.https://github.west.isilon.com/<url_ext>
-
-**param strict:**
-False, will permit errors as warning & return code,
-True will exit with code
-
-**param Content_Type:**
-How info is formed, example application/xml
-
-**param verify:**
-Check for Certificates
-
-**return:** String of content, or error exit code 
-
- ***def post_multipart*** 
-
-      Performs a multipart post
-
-**param url_ext:** String
-
-**param data:** String, json,xml
-
-**param files:** List, file paths
-
-**param strict:** boolean 
+**return:** Dictionary 
