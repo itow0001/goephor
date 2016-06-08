@@ -177,6 +177,7 @@ def rsync(server,
                                                            dest),
                                 strict=False,
                                 verbose=verbose,
+                                show_output=verbose,
                                 shell=True)
             except IOError as e:
                 print "Error in rsync: %s" % (e)
@@ -194,6 +195,7 @@ def rsync(server,
                                                            dest),
                                 strict=False,
                                 verbose=verbose,
+                                show_output=verbose,
                                 shell=True)
             except IOError as e:
                 print "Error in rsync: %s" % (e)
@@ -203,6 +205,7 @@ def rsync(server,
                                 (excludes_str, src, dest),
                                 strict=False,
                                 verbose=verbose,
+                                show_output=verbose,
                                 shell=True)
             except IOError as e:
                 print "Error in rsync: %s" % (e)
