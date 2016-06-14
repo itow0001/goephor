@@ -200,7 +200,7 @@ class maker(Plugin):
                 if self.verbose:
                     print message('info',"[_to_file] txt")
                 for key, value in data.iteritems():
-                    pair = "%s=%s" % (key, value)
+                    pair = "%s=%s\n" % (key, value)
                     file.write(pair)
             else:
                 if self.verbose:
