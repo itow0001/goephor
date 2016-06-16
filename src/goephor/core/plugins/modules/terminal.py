@@ -259,8 +259,8 @@ def shell(cmd,
     cmd_info = {'cmd': "".join(cmd),
                 'stdout': output,
                 'code': process.returncode}
-    if os.path.isfile(temp_path):
-        os.remove(temp_path)
+    #if os.path.isfile(temp_path):
+    #    os.remove(temp_path)
     if strict is True and int(cmd_info.get("code")) > 0:
         print "\n [Fatal Error] %s \n" % (cmd_info.get("stdout"))
         os.sys.exit(int(cmd_info.get("code")))
