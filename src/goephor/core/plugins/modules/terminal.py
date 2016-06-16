@@ -273,5 +273,8 @@ def _exit_clean(file):
     """
     #for file in os.listdir(this_path):
     if ".tmp_shell_" in file:
-        os.remove(file)
+        try:
+            os.remove(file)
+        except:
+            pass
 atexit.register(_exit_clean(temp_path))
