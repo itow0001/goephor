@@ -275,9 +275,10 @@ def _exit_clean(temp_path):
     cleans .tmp_shell files before exit
     """
     #for file in os.listdir(this_path):
-    if ".tmp_shell_" in temp_path:
-        try:
-            os.remove(temp_path)
-        except:
-            pass
+    if os.path.isfile(temp_path):
+        if ".tmp_shell_" in temp_path:
+            try:
+                os.remove(temp_path)
+            except:
+                pass
 atexit.register(_exit_clean(temp_path))
