@@ -267,6 +267,10 @@ def shell(cmd,
     if strict is True and int(cmd_info.get("code")) > 0:
         print "\n [Fatal Error] %s \n" % (cmd_info.get("stdout"))
         os.sys.exit(int(cmd_info.get("code")))
+    # clean globals for next command
+    path = ""
+    stamp = ""
+    temp_path = ""
     return cmd_info
 
 
