@@ -232,9 +232,9 @@ def shell(cmd,
     :param strict:bool will exit based on code if enabled
     :return:  {command, stdout, code} as dict
     """
-    #path = os.path.dirname(os.path.realpath(__file__))
-    #stamp = str(int(time.time()))
-    #temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
+    path = os.path.dirname(os.path.realpath(__file__))
+    stamp = str(int(time.time()))
+    temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
     output = ""
     if verbose or show_cmd:
         print "\n[%s]\n" % (cmd)
@@ -259,8 +259,11 @@ def shell(cmd,
     cmd_info = {'cmd': "".join(cmd),
                 'stdout': output,
                 'code': process.returncode}
-    #if os.path.isfile(temp_path):
-    #    os.remove(temp_path)
+    if os.path.isfile(temp_path):
+        try:
+            os.remove(file)
+        except:
+            pass
     if strict is True and int(cmd_info.get("code")) > 0:
         print "\n [Fatal Error] %s \n" % (cmd_info.get("stdout"))
         os.sys.exit(int(cmd_info.get("code")))
