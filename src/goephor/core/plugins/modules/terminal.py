@@ -200,7 +200,7 @@ def rsync(server,
                                 verbose=verbose,
                                 show_output=verbose,
                                 shell=True)
-            except IOError as e:temp_path
+            except IOError as e:
                 print "Error in rsync: %s" % (e)
         elif option == 'local':
             try:
