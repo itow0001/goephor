@@ -271,6 +271,7 @@ def shell(cmd,
     path = ""
     stamp = ""
     temp_path = ""
+    sys.stdout.flush()
     return cmd_info
 
 
