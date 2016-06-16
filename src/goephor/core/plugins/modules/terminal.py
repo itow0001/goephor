@@ -14,6 +14,9 @@ import sys
 import time
 
 this_path = os.path.dirname(os.path.realpath(__file__))
+path = os.path.dirname(os.path.realpath(__file__))
+stamp = str(int(time.time()))
+temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
 
 
 def waitfor(fd):
@@ -229,9 +232,9 @@ def shell(cmd,
     :param strict:bool will exit based on code if enabled
     :return:  {command, stdout, code} as dict
     """
-    path = os.path.dirname(os.path.realpath(__file__))
-    stamp = str(int(time.time()))
-    temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
+    #path = os.path.dirname(os.path.realpath(__file__))
+    #stamp = str(int(time.time()))
+    #temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
     output = ""
     if verbose or show_cmd:
         print "\n[%s]\n" % (cmd)
@@ -264,12 +267,11 @@ def shell(cmd,
     return cmd_info
 
 
-def _exit_clean():
+def _exit_clean(file):
     """
     cleans .tmp_shell files before exit
     """
-    for file in os.listdir(this_path):
-        if ".tmp_shell_" in file:
-            file_remove = this_path+os.sep+file
-            os.remove(file_remove)
-atexit.register(_exit_clean)
+    #for file in os.listdir(this_path):
+    if ".tmp_shell_" in file:
+        os.remove(file)
+atexit.register(_exit_clean(temp_path))
