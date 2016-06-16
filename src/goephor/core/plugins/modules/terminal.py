@@ -270,14 +270,14 @@ def shell(cmd,
     return cmd_info
 
 
-def _exit_clean(file):
+def _exit_clean(temp_path):
     """
     cleans .tmp_shell files before exit
     """
     #for file in os.listdir(this_path):
-    if ".tmp_shell_" in file:
+    if ".tmp_shell_" in temp_path:
         try:
-            os.remove(file)
+            os.remove(temp_path)
         except:
             pass
 atexit.register(_exit_clean(temp_path))
