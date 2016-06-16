@@ -251,7 +251,7 @@ def shell(cmd,
                 output = output+out
                 if verbose or show_output:
                     sys.stdout.write(out)
-                time.sleep(0.3)
+                time.sleep(0.5)
             out = reader.read()
             output = output+out
         if verbose or show_output:
