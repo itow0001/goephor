@@ -200,7 +200,7 @@ def rsync(server,
                                 verbose=verbose,
                                 show_output=verbose,
                                 shell=True)
-            except IOError as e:
+            except IOError as e:temp_path
                 print "Error in rsync: %s" % (e)
         elif option == 'local':
             try:
@@ -281,4 +281,4 @@ def _exit_clean():
                 os.remove(temp_path)
             except:
                 pass
-atexit.register(_exit_clean())
+atexit.register(_exit_clean)
