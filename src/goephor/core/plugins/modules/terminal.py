@@ -14,9 +14,9 @@ import sys
 import time
 
 this_path = os.path.dirname(os.path.realpath(__file__))
-path = os.path.dirname(os.path.realpath(__file__))
-stamp = str(int(time.time()))
-temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
+path = ""
+stamp = ""
+temp_path = ""
 
 
 def waitfor(fd):

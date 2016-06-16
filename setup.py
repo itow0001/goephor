@@ -14,7 +14,7 @@ def readme():
     with open('README.rst', 'r') as fobj:
         return fobj.read()
     '''
-packages = ['requests==2.7.0',
+packages = ['requests',
             'PyYAML==3.10',
             'GitPython==2.0.2']
 
