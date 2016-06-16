@@ -261,7 +261,7 @@ def shell(cmd,
                 'code': process.returncode}
     if os.path.isfile(temp_path):
         try:
-            os.remove(file)
+            os.remove(temp_path)
         except:
             pass
     if strict is True and int(cmd_info.get("code")) > 0:
