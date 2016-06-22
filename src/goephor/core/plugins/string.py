@@ -20,6 +20,17 @@ class utils(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
 
+    def println(self,text,**defaults):
+        '''
+        Generic print line
+        :param text: String
+        ```
+        string.utils.println:
+           - "HELLO WORLD"
+        ```
+        '''
+        print message("\n%s\n" % (text))
+
     def replace(self,
                 text,
                 old,

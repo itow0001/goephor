@@ -142,7 +142,7 @@ def test_release():
 
 def test_string():
     '''
-    test of core/plugins/release.py
+    test of core/plugins/string.py
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
@@ -153,11 +153,22 @@ def test_string():
 
 def test_on_exit():
     '''
-    test of core/plugins/release.py
+    test of core/Chain.py
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
     session = shell("python -u goephor.py -f ./examples/ex_on_exit.yaml -e")
+    if not session.get('code') == 0:
+        return {funct: False}
+    return {funct: True}
+
+def test_include():
+    '''
+    test of core/plugins/system.py
+    '''
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    session = shell("python -u goephor.py -f ./examples/ex_include.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}
     return {funct: True}
@@ -180,6 +191,7 @@ def tests():
     tests.append(test_release())
     tests.append(test_string())
     tests.append(test_on_exit())
+    tests.append(test_include())
 
     print "\n\n[Test Results]:"
     for test in tests:

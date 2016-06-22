@@ -1,0 +1,15 @@
+  name: "Project Name"
+  description: "Project Description"
+  globals:
+    - var1: 2
+    - var2: 2
+  actions:
+       # This show how to include other manifests
+       - string.utils.println:
+           - "HELLO WORLD"
+       - condition.statement.IF:
+          - system.include.manifest:
+             - "${WORKSPACE}/src/examples/ex_condition.yaml"
+             - False
+             - False
+                           

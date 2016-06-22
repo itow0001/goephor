@@ -6,6 +6,48 @@ Created on Apr 25, 2016
 from pluginable import Plugin
 from modules.terminal import shell, rsync
 from modules.log import message
+from goephor.core.Chain import Run
+
+class include(Plugin):
+    '''
+    General class to include other files
+    '''
+    def __init__(self, action_manager):
+        '''
+        terminal Constructor
+
+        :param action_manager: Obj, from action_manager class
+        '''
+        self.action_manager = action_manager
+        Plugin.__init__(self, self.action_manager)
+        self.address = object.__repr__(self)
+
+    def manifest(self,
+                 file,
+                 silent,
+                 debug,
+                 **defaults):
+        '''
+        This allows you to link a external manifests into your script
+        :param file: String, path to file
+        :param silent: Boolean
+        :param debug: Boolean
+        ```
+        - system.include.manifest:
+            - '/path/to/manifest.yaml'
+            - False
+            - False
+            - VAR1: "SOMEVALUE"
+        ```
+        '''
+        print message( "including manifest @ %s" % file)
+        for key, value in defaults.iteritems():
+            print message("%s: %s" % (key,value))
+
+        with Run(file,silent,debug=debug) as main_actions:
+            main_actions.add_envs(**defaults)
+            main_actions.set_envs()
+            main_actions.execute_actions()
 
 class terminal(Plugin):
     '''
