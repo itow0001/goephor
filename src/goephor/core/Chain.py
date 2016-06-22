@@ -163,7 +163,7 @@ class Run(object):
         '''
         this_action = None
         if self.action_manager.chain:
-            print message('header','[actions] Start')
+            print message('header','[actions] Start @ %s' % (self.config_file))
         for action in self.action_manager.chain:
             try:
                 if (self.action_manager.failure is False or
@@ -180,15 +180,16 @@ class Run(object):
                 this_action = action
         if self.action_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure',message_type='error')
+            print message('warning','manifest @ %s' % (self.config_file))
             sys.exit(1)
         else:
-            print message('header','[actions] Success')
+            print message('header','[actions] Success @ %s' % (self.config_file))
 
     def execute_on_exit(self):
         ''' Executes all on exit action objects
         '''
         if self.on_exit_manager.chain:
-            print message('header','[on_exit] Start')
+            print message('header','[on_exit] Start @ %s' % (self.config_file))
         this_action = None
         for action in self.on_exit_manager.chain:
             try:
@@ -208,4 +209,4 @@ class Run(object):
             this_action.pprint(title='Failure', footer='Failure',message_type='error')
             sys.exit(1)
         if self.on_exit_manager.chain:
-            print message('header',"[on_exit] Success")
+            print message('header','[on_exit] Success @ %s' % (self.config_file))
