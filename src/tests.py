@@ -180,7 +180,6 @@ def tests():
     calls all the tests here & collects results
     '''
     tests = []
-    '''
     tests.append(test_condition())
     tests.append(test_defaults())
     tests.append(test_environment())
@@ -193,9 +192,7 @@ def tests():
     tests.append(test_release())
     tests.append(test_string())
     tests.append(test_on_exit())
-    '''
     tests.append(test_include())
-
     print "\n\n[Test Results]:"
     for test in tests:
         key = test.keys()[0]
