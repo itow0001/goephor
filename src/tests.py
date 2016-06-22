@@ -203,8 +203,8 @@ def tests():
     tests.append(test_release())
     tests.append(test_string())
     tests.append(test_on_exit())
-    tests.append(test_include())
     tests.append(test_fail())
+    tests.append(test_include())
     print "\n\n[Test Results]:"
     for test in tests:
         key = test.keys()[0]
