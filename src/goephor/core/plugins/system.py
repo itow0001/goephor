@@ -42,6 +42,7 @@ class include(Plugin):
         print message('info',"[include] @ %s" % file)
         for key, value in defaults.iteritems():
             print message('info',"%s: %s" % (key,value))
+            self.EnvManager.set(key, value)
         with Run(file,silent,debug=debug) as main_actions:
             main_actions.add_envs(**defaults)
             main_actions.set_envs()
