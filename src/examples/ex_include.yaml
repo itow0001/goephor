@@ -8,8 +8,6 @@
        - string.utils.println:
           - 'warning'
           - "THIS IS THE START"
-       - system.terminal.shell:
-          - "env"
        - condition.statement.IF:
           - "${var1}"
           - "=="

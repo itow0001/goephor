@@ -5,8 +5,6 @@
     - var1: 2
     - var2: 2
   actions:
-       - system.terminal.shell:
-          - "env"
        # This is an if statement
        -  condition.statement.IF:
                             - "${var1}"
