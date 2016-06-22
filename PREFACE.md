@@ -24,8 +24,7 @@ example:
 ```
 
 ### Example Manifests ###
-https://github.west.isilon.com/eng-tools/goephor/tree/refactor/src/examples
-
+https://github.com/itow0001/goephor/tree/master/src/examples
 
 
 
