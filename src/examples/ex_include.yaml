@@ -9,8 +9,12 @@
            - 'warning'
            - "HELLO WORLD"
        - condition.statement.IF:
-          - system.include.manifest:
-             - "${WORKSPACE}/src/examples/ex_condition.yaml"
-             - False
-             - False
+          - "${var1}"
+          - "=="
+          - "${var2}"
+          - THEN:
+             - system.include.manifest:
+                - "${WORKSPACE}/src/examples/ex_condition.yaml"
+                - False
+                - False
                            

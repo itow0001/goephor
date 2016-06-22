@@ -20,7 +20,6 @@ class include(Plugin):
         '''
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)
-        self.address = object.__repr__(self)
 
     def manifest(self,
                  file,
@@ -40,9 +39,9 @@ class include(Plugin):
             - VAR1: "SOMEVALUE"
         ```
         '''
-        print message( "including manifest @ %s" % file)
+        print message('info',"including manifest @ %s" % file)
         for key, value in defaults.iteritems():
-            print message("%s: %s" % (key,value))
+            print message('info',"%s: %s" % (key,value))
 
         with Run(file,silent,debug=debug) as main_actions:
             main_actions.add_envs(**defaults)

@@ -195,7 +195,7 @@ class Action(object):
         print ""
         print message(message_type,"%s" % ('[parameters]'.rjust(15)))
         for param in self.parameters:
-            print message(message_type,"      %s" % (str(param.strip().ljust(20))))
+            print message(message_type,"      %s" % (str(param).strip().ljust(20)))
         print ""
         print message(message_type,"%s" % ('[defaults]'.rjust(15)))
         for key, value in self.defaults.iteritems():
