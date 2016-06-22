@@ -8,6 +8,9 @@
        - string.utils.println:
            - 'warning'
            - "HELLO WORLD"
+       - string.utils.println:
+           - 'warning'
+           - "HELLO WORLD"
        - condition.statement.IF:
           - "${var1}"
           - "=="
