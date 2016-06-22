@@ -5,6 +5,7 @@ Created on Apr 29, 2016
 '''
 import sys
 from setuptools import setup, find_packages
+from src.goephor._version import __version__
 
 SRCDIR = 'src'
 
@@ -24,7 +25,7 @@ if sys.version_info < (2,7):
 
 setup(
     name='goephor',
-    version='1.0.0',
+    version=__version__,
     description="Build automation tool",
     long_description=readme(),
     author='ian.itow',
