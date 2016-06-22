@@ -6,6 +6,7 @@
   actions:
        # This show how to include other manifests
        - string.utils.println:
+           - 'warning'
            - "HELLO WORLD"
        - condition.statement.IF:
           - system.include.manifest:

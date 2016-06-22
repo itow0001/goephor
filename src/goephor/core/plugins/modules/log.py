@@ -5,6 +5,9 @@ Created on Jun 3, 2016
 '''
 import sys
 def colors(color_type,output):
+    '''
+    Types of colors to display
+    '''
     types = {'header': '\033[1m\033[34m',
               'info': '\033[34m',
               'success': '\033[32m',
@@ -13,16 +16,18 @@ def colors(color_type,output):
               'error': '\033[31m',
               'end': '\033[0m'}
     trans = types.get(color_type,None)
-    #if not trans:
-    #    print "[info] transform %s not found" % color_type
-    #    return output
-    #else:
     if not output:
         output = ""
     output = trans+str(output)+types.get('end')
     return output
     
 def message(message_type,output):
+    '''
+    Display a colorized message
+    :param message_type: String, header, info, success, warning, fail, error
+    :param output: String
+    :return: colorized string
+    '''
     output_final = colors(message_type,output)
     return output_final
     #return output_final
