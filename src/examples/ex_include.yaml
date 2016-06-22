@@ -15,6 +15,6 @@
           - THEN:
              - system.include.manifest:
                 - "${WORKSPACE}/src/examples/ex_condition.yaml"
-                - False
+                - True
                 - False
                            
