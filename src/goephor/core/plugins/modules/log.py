@@ -29,5 +29,5 @@ def message(message_type,output):
     :return: colorized string
     '''
     output_final = colors(message_type,output)
+    sys.stdout.flush()
     return output_final
-    #return output_final

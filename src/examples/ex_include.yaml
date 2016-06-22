@@ -6,8 +6,11 @@
   actions:
        # This shows how to include other manifests
        - string.utils.println:
-           - 'warning'
-           - "THIS IS THE START"
+          - 'warning'
+          - "THIS IS THE START"
+       - system.terminal.shell:
+          - "echo 'ENTERING'"
+
 
        - condition.statement.IF:
           - "${var1}"
@@ -15,7 +18,8 @@
           - "${var2}"
           - THEN:
              - system.include.manifest:
-                - "${WORKSPACE}/src/examples/ex_condition.yaml"
+                #- "${WORKSPACE}/src/examples/ex_condition.yaml"
+                - "/home/iitow/workspace/github/goephor/src/examples/ex_condition.yaml"
                 - True
                 - False
        - string.utils.println:

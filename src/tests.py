@@ -168,6 +168,7 @@ def test_include():
     '''
     funct = inspect.stack()[0][3]
     print "\n\n[%s]\n" % (funct)
+    sys.stdout.flush()
     session = shell("python -u goephor.py -f ./examples/ex_include.yaml -e")
     if not session.get('code') == 0:
         return {funct: False}

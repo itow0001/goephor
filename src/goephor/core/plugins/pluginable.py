@@ -6,6 +6,7 @@ Created on Apr 25, 2016
 from modules.environment import EnvManager
 from modules.log import message
 import types
+import sys
 
 
 class DecoMeta(type):
@@ -58,6 +59,7 @@ class DecoMeta(type):
                                  result,
                                  reset=True)
             return result
+        sys.stdout.flush()
         return wrapper
 
 

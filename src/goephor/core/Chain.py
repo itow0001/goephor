@@ -161,7 +161,6 @@ class Run(object):
     def execute_actions(self):
         ''' Executes all action objects
         '''
-        
         this_action = None
         if self.action_manager.chain:
             print message('header','[actions] Start')
