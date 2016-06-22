@@ -44,7 +44,7 @@ class include(Plugin):
             print message('info',"%s: %s" % (key,value))
 
         with Run(file,silent,debug=debug) as main_actions:
-            main_actions.add_envs(defaults)
+            main_actions.add_envs(**defaults)
             main_actions.set_envs(reset=True)
             main_actions.execute_actions()
 
