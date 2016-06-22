@@ -19,7 +19,7 @@
           - THEN:
              - system.include.manifest:
                 #- "/home/iitow/workspace/github/goephor/src/examples/ex_condition.yaml"
-                - "${WORKSPACE}/src/examples/ex_include.yaml"
+                - "${WORKSPACE}/src/examples/ex_condition.yaml"
                 - True
                 - False
        - string.utils.println:
