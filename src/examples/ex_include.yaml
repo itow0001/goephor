@@ -21,6 +21,7 @@
                 - True
                 - False
                 - var2: 1
+                - SHIZAM: "#################"
        - string.utils.println:
            - 'warning'
            - "THIS IS THE END"
