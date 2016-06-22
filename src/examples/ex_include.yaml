@@ -4,7 +4,7 @@
     - var1: 2
     - var2: 2
   actions:
-       # This show how to include other manifests
+       # This shows how to include other manifests
        - string.utils.println:
            - 'warning'
            - "HELLO WORLD"
@@ -17,4 +17,8 @@
                 - "${WORKSPACE}/src/examples/ex_condition.yaml"
                 - True
                 - False
+       - string.utils.println:
+           - 'warning'
+           - "THIS IS THE END"
+      
                            
