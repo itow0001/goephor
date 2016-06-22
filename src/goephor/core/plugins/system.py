@@ -39,7 +39,7 @@ class include(Plugin):
             - VAR1: "SOMEVALUE"
         ```
         '''
-        print message('info',"including manifest @ %s" % file)
+        print message('info',"[include] @ %s" % file)
         for key, value in defaults.iteritems():
             print message('info',"%s: %s" % (key,value))
 
