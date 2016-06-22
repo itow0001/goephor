@@ -98,13 +98,13 @@ class statement(Plugin):
             print message('info',"[Not Found] %s" % (token))
         return False
 
-def FAIL(text):
-    '''
-    Cause a failure generally used with a IF
-    :param text: String
-        ```
-            - condition.statement.FAIL:
-               - "Failed because of some issue"
-        ```
-    '''
-    raise Exception(text)
+    def FAIL(self,text):
+        '''
+        Cause a failure generally used with a IF
+        :param text: String
+            ```
+                - condition.statement.FAIL:
+                   - "Failed because of some issue"
+            ```
+        '''
+        raise Exception(text)
