@@ -7,10 +7,8 @@
        # This shows how to include other manifests
        - string.utils.println:
            - 'warning'
-           - "HELLO WORLD"
-       - string.utils.println:
-           - 'warning'
-           - "HELLO WORLD"
+           - "THIS IS THE START"
+
        - condition.statement.IF:
           - "${var1}"
           - "=="
