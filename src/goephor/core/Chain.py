@@ -117,14 +117,14 @@ class Run(object):
         for key, value in envs.iteritems():
             self.EnvManager.set(key, value)
 
-    def set_envs(self,reset=False):
+    def set_envs(self):
         '''
         sets environment variables inside of manifest
         :params reset: Boolean, If param exists reset it
         '''
         for e in self.config.get('globals'):
             key = e.keys()[0]
-            self.EnvManager.set(key, e.get(key), reset=reset)
+            self.EnvManager.set(key, e.get(key), reset=False)
 
     def load_actions(self):
         '''
