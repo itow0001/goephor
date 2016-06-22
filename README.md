@@ -24,8 +24,7 @@ example:
 ```
 
 ### Example Manifests ###
-https://github.west.isilon.com/eng-tools/goephor/tree/refactor/src/examples
-
+https://github.com/itow0001/goephor/tree/master/src/examples
 
 
 
@@ -41,6 +40,12 @@ file @ **/goephor.py**
 **author:** iitow
 
 **note:** Look to __main__.py for menu logic
+
+**********************************************
+**********************************************
+file @ **/__init__.py**
+
+      None
 
 **********************************************
 **********************************************
@@ -109,6 +114,12 @@ file @ **/tests.py**
 file @ **/goephor/__init__.py**
 
       goephor __init__.py
+
+**********************************************
+**********************************************
+file @ **/goephor/_version.py**
+
+      None
 
 **********************************************
 **********************************************
