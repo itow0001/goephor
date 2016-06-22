@@ -9,9 +9,7 @@
           - 'warning'
           - "THIS IS THE START"
        - system.terminal.shell:
-          - "echo 'ENTERING'"
-
-
+          - "env"
        - condition.statement.IF:
           - "${var1}"
           - "=="

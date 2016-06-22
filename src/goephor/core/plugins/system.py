@@ -45,7 +45,10 @@ class include(Plugin):
 
         with Run(file,silent,debug=debug) as main_actions:
             main_actions.add_envs(**defaults)
-            main_actions.set_envs(reset=True)
+            main_actions.set_envs()
+            for key, value in defaults.iteritems():
+                print message("set %s=%s" % (key,value))
+                self.EnvManager.set(key, value)
             main_actions.execute_actions()
 
 class terminal(Plugin):
