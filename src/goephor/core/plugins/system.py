@@ -45,7 +45,7 @@ class include(Plugin):
 
         with Run(file,silent,debug=debug) as main_actions:
             main_actions.add_envs(**defaults)
-            main_actions.set_envs()
+            main_actions.set_envs(reset=True)
             main_actions.execute_actions()
 
 class terminal(Plugin):
