@@ -174,6 +174,17 @@ def test_include():
         return {funct: False}
     return {funct: True}
 
+def test_fail():
+    '''
+    test of core/plugins/system.py
+    '''
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    sys.stdout.flush()
+    session = shell("python -u goephor.py -f ./examples/ex_fail.yaml -e")
+    if not session.get('code') > 0:
+        return {funct: False}
+    return {funct: True}
 
 def tests():
     '''
@@ -195,6 +206,7 @@ def tests():
     tests.append(test_on_exit())
     '''
     tests.append(test_include())
+    tests.append(test_fail())
     print "\n\n[Test Results]:"
     for test in tests:
         key = test.keys()[0]
