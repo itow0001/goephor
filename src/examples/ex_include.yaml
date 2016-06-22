@@ -22,6 +22,7 @@
                 - "${WORKSPACE}/src/examples/ex_condition.yaml"
                 - True
                 - False
+                - var2: 1
        - string.utils.println:
            - 'warning'
            - "THIS IS THE END"
