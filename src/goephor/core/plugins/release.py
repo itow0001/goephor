@@ -115,7 +115,7 @@ class utils(Plugin):
                 old_minor = int(name.rsplit('.', 1)[1])
                 if minor < old_minor:
                     minor = old_minor
-        if minor > 0:
+        if minor >= 0:
             next = "%s.%s" % (new_release, str(minor+1))
         else:
             next = "%s.%s" % (new_release, str(minor))
