@@ -51,6 +51,7 @@ class maker(Plugin):
             - "./receipt.yaml"
         ```
         '''
+        print message('info',"[on_actions] %s" % (path))
         receipt = {}
         receipt["results"] = []
         receipt['globals'] = []
