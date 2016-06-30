@@ -138,11 +138,19 @@ file @ **/tests.py**
 
  ***def test_string*** 
 
-      test of core/plugins/release.py 
+      test of core/plugins/string.py 
 
  ***def test_on_exit*** 
 
-      test of core/plugins/release.py 
+      test of core/Chain.py 
+
+ ***def test_include*** 
+
+      test of core/plugins/system.py 
+
+ ***def test_fail*** 
+
+      test of core/plugins/system.py 
 
  ***def tests*** 
 
@@ -253,7 +261,9 @@ file @ **/goephor/core/Chain.py**
 
  ***def set_envs*** 
 
-      sets environment variables inside of manifest 
+      sets environment variables inside of manifest
+
+**params reset:** Boolean, If param exists reset it 
 
  ***def load_actions*** 
 
@@ -526,6 +536,19 @@ file @ **/goephor/core/plugins/string.py**
       utils Constructor
 
 **param action_manager:** Obj, from action_manager class 
+
+ ***def println*** 
+
+      Generic print line
+
+**param msg_type:** String: header, info, success, warning, fail, error
+
+**param text:** String
+```
+string.utils.println:
+   - 'info'
+   - "HELLO WORLD"
+``` 
 
  ***def replace*** 
 
@@ -887,6 +910,21 @@ file @ **/goephor/core/plugins/environment.py**
    - "some value"
 ``` 
 
+ ***def unset*** 
+
+      Set an environment variable
+
+
+**param key:** String
+
+**param value:** String
+
+**example:**
+```
+- environment.env.unset:
+   - "VAR1"
+``` 
+
  ***def __init__*** 
 
       env Constructor
@@ -919,9 +957,37 @@ file @ **/goephor/core/plugins/system.py**
 
 **author:** iitow
 
+####class include####
+
+      General class to include other files 
+
 ####class terminal####
 
       General nix system commands go here 
+
+ ***def __init__*** 
+
+      terminal Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
+
+ ***def manifest*** 
+
+      This allows you to link a external manifests into your script
+
+**param file:** String, path to file
+
+**param silent:** Boolean
+
+**param debug:** Boolean
+```
+- system.include.manifest:
+    - '/path/to/manifest.yaml'
+    - False
+    - False
+    - VAR1: "SOMEVALUE"
+``` 
 
  ***def __init__*** 
 
@@ -1164,6 +1230,16 @@ file @ **/goephor/core/plugins/condition.py**
                             - ${output}
                             -set_env: VAR1
 ``` 
+
+ ***def FAIL*** 
+
+      Cause a failure generally used with a IF
+
+**param text:** String
+    ```
+        - condition.statement.FAIL:
+           - "Failed because of some issue"
+    ``` 
 
 **********************************************
 **********************************************
@@ -1600,11 +1676,17 @@ file @ **/goephor/core/plugins/modules/log.py**
 
  ***def colors*** 
 
-      None 
+      Types of colors to display 
 
  ***def message*** 
 
-      None 
+      Display a colorized message
+
+**param message_type:** String, header, info, success, warning, fail, error
+
+**param output:** String
+
+**return:** colorized string 
 
 **********************************************
 **********************************************
@@ -1641,6 +1723,13 @@ Its contained within the action_manager.
 **param value:** String
 
 **param reset:** Bool, if false it will not override an existing env value 
+
+ ***def unset*** 
+
+      unset environment variable
+
+
+**param value:** String 
 
  ***def get*** 
 
