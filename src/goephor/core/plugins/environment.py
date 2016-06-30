@@ -40,6 +40,24 @@ class env(Plugin):
         if self.verbose:
             print message('info',"[set] %s=%s" % (key, value))
 
+    def unset(self,
+            key,
+            **defaults):
+        '''
+        Set an environment variable
+
+        :param key: String
+        :param value: String
+        :example:
+        ```
+        - environment.env.unset:
+           - "VAR1"
+        ```
+        '''
+        self.EnvManager.unset(key)
+        if self.verbose:
+            print message('info',"[unset] %s" % (key))
+
 class utils(Plugin):
     ''' Environment utilities
     '''

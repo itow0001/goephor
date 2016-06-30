@@ -47,6 +47,16 @@ class EnvManager(object):
         else:
             if self.debug:
                 print '[reset] ignore set %s=%s' % (key, value)
+    def unset(self,key):
+        '''
+        unset environment variable
+
+        :param value: String
+        '''
+        has_value = self.get(key)
+        if has_value:
+            self.envs.pop(key, None)
+            del(os.environ[key])
 
     def get(self, key):
         '''
