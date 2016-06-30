@@ -44,7 +44,7 @@ class env(Plugin):
             key,
             **defaults):
         '''
-        Set an environment variable
+        Unset an environment variable
 
         :param key: String
         :param value: String

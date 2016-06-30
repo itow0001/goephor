@@ -912,7 +912,7 @@ file @ **/goephor/core/plugins/environment.py**
 
  ***def unset*** 
 
-      Set an environment variable
+      Unset an environment variable
 
 
 **param key:** String
