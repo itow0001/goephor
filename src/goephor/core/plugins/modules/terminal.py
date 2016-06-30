@@ -221,7 +221,7 @@ def shell(cmd,
           verbose=False,
           strict=False,
           shell=True,
-          buffer_size=1048576,
+          buffer_size=-1,
           show_cmd=False,
           show_output=True):
     """
