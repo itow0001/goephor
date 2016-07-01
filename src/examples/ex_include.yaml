@@ -14,7 +14,7 @@
           - "${var2}"
           - THEN:
              - system.include.manifest:
-                - "${WORKSPACE}/src/examples/ex_condition.yaml"
+                - "./examples/ex_condition.yaml"
                 - True
                 - False
                 - var2: 1
