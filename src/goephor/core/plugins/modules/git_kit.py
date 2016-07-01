@@ -82,8 +82,7 @@ class Repo_actions(object):
 
     def _initial_commit(self):
         """
-        To fully init an empty repo you need an initial commit,
-         which in this case is an empty README.md
+        To fully init an empty rep
         """
         if not self.repo:
             print "[Warning] not attached to a repo"
