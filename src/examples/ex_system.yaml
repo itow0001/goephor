@@ -13,7 +13,7 @@
        - system.terminal.rsync:
                       - "root"
                       - "/root/.ssh/id_rsa"
-                      - "buildbiox.west.isilon.com"
-                      - "/ifs/isilon/releases/release-8.0.0.BETA.0/OneFS_v8.0.0.BETA.0_Install.tar.gz"
+                      - "${SERVER_BB}"
+                      - "${PATH_INSTALL}"
                       - "/tmp"
                       - "pull"

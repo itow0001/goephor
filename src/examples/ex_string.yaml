@@ -13,7 +13,7 @@
      - system.terminal.shell:
         - "echo '${VAR2}'"
      - string.utils.get_key:
-        - '[{"id":1,"name":"BR_IITOW_GIT_SHALLOW","active":true,"auto":false,"curr_build_number":1,"git_repo_url":"git@github.west.isilon.com:iitow/onefs.git","os":null,"type":[{"test":"hello","wings":{"waldo":"found"}}]}]'
+        - '[{"id":1,"name":"${REPO}","active":true,"auto":false,"curr_build_number":1,"git_repo_url":"${GITHUB_REPO}","os":null,"type":[{"test":"hello","wings":{"waldo":"found"}}]}]'
         - 'id'
         - set_env: "VAR3"
      - system.terminal.shell:

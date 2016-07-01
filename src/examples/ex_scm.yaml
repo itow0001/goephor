@@ -3,7 +3,7 @@
   globals: 
     - DIR_REPO: "/tmp/onefs"
     - BRANCH: "master"
-    - GIT_REMOTE: "git@github.west.isilon.com:isilon/onefs.git"
+    - GIT_REMOTE: "${GITHUB_REPO}"
   actions:
        # make sure the user has a key
        - system.terminal.shell:
