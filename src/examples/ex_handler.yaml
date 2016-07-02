@@ -11,7 +11,7 @@
         - "${GIT_REMOTE}"
         - branch: "${BRANCH}"
         - depth: 1
-     - handler.file.read:
+     - handler.file.readconfig:
         - "${CFG}"
      - scm.git.delete:
         - "${DIR_REPO}"

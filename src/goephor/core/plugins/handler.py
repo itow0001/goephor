@@ -23,11 +23,16 @@ class file(Plugin):
         self.action_manager = action_manager
         Plugin.__init__(self, self.action_manager)  
 
-    def read(self,path,**defaults):
+    def readconfig(self,path,**defaults):
         '''
         General read configs into environment currently only supports ConfigParser
         :param path: String, full path to file
         :return: key value pairs become environment variables
+        :example:
+        ```
+        - handler.file.readconfig:
+           - "${CFG}"
+        ```
         '''
         print "[read] @ %s" % (path)
         self._configparser(path)
