@@ -53,6 +53,6 @@ class file(Plugin):
                 value = self.action_manager.EnvManager._sanitize(pairs[1])
                 self.action_manager.EnvManager.set(key,value)
                 msg = message('info',"[set] %s=" % (key))
-                print "[set] %s%s" % (msg,value)
+                print "%s%s" % (msg,value)
         
         
