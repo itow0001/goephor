@@ -216,7 +216,7 @@ def test_handler(options):
     print "\n\n[%s]\n" % (funct)
     sys.stdout.flush()
     session = shell("python -u goephor.py -f ./examples/ex_handler.yaml -e -E %s" % options.envs)
-    if not session.get('code') > 0:
+    if session.get('code') > 0:
         return {funct: False}
     return {funct: True}
 
