@@ -1,7 +1,7 @@
   name: "SCM Example"
   description: "Project Description"
   globals: 
-    - DIR_REPO: "/tmp/onefs"
+    - DIR_REPO: "/tmp/src"
     - BRANCH: "master"
     - GIT_REMOTE: "${GITHUB_REPO}"
   actions:

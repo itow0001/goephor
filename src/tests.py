@@ -208,6 +208,18 @@ def test_fail(options):
         return {funct: False}
     return {funct: True}
 
+def test_handler(options):
+    '''
+    test of core/plugins/system.py
+    '''
+    funct = inspect.stack()[0][3]
+    print "\n\n[%s]\n" % (funct)
+    sys.stdout.flush()
+    session = shell("python -u goephor.py -f ./examples/ex_handler.yaml -e")
+    if not session.get('code') > 0:
+        return {funct: False}
+    return {funct: True}
+
 def tests(options):
     '''
     calls all the tests here & collects results
@@ -226,6 +238,7 @@ def tests(options):
     tests.append(test_on_exit(options))
     tests.append(test_fail(options))
     tests.append(test_include(options))
+    tests.append(test_handler(options))
     print "\n\n[Test Results]:"
     for test in tests:
         key = test.keys()[0]
