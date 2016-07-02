@@ -30,6 +30,6 @@
           - "${DIR_REPO}"
           - "${BRANCH}"
           - "sha1"
-       #- scm.git.delete:
-       #   - "${DIR_REPO}"
+       - scm.git.delete:
+          - "${DIR_REPO}"
                       
