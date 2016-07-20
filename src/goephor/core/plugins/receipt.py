@@ -54,9 +54,6 @@ class maker(Plugin):
         print message('info',"[on_actions] %s" % (path))
         receipt = {}
         receipt["results"] = []
-        receipt['globals'] = []
-        for key, value in self.action_manager.config.iteritems():
-            receipt.get('globals').append({key: value})
         for action in self.action_manager.chain:
             result = action.get_receipt()
             receipt.get("results").append(result)
