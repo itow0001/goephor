@@ -96,6 +96,10 @@ file @ **/tests.py**
 
 **note:** All integration tests go here.
 
+ ***def menu*** 
+
+      argparse menu here 
+
  ***def test_condition*** 
 
       test of core/plugins/condition.py 
@@ -149,6 +153,10 @@ file @ **/tests.py**
       test of core/plugins/system.py 
 
  ***def test_fail*** 
+
+      test of core/plugins/system.py 
+
+ ***def test_handler*** 
 
       test of core/plugins/system.py 
 
@@ -726,6 +734,43 @@ file @ **/goephor/core/plugins/scm.py**
 
 **********************************************
 **********************************************
+file @ **/goephor/core/plugins/handler.py**
+
+      Created on Jul 1, 2016
+
+@author: iitow
+
+####class file####
+
+      General class can read configuration files 
+
+ ***def __init__*** 
+
+      terminal Constructor
+
+
+**param action_manager:** Obj, from action_manager class 
+
+ ***def readconfig*** 
+
+      General read configs into environment currently only supports ConfigParser
+
+**param path:** String, full path to file
+
+**return:** key value pairs become environment variables
+
+**example:**
+```
+- handler.file.readconfig:
+   - "${CFG}"
+``` 
+
+ ***def _configparser*** 
+
+      Private, adds configparser values to environment  
+
+**********************************************
+**********************************************
 file @ **/goephor/core/plugins/freebsd.py**
 
       Created on Apr 29, 2016
@@ -1150,6 +1195,8 @@ file @ **/goephor/core/plugins/http.py**
 
 **param data:** json string
 
+**param silent:** boolean
+
 **example:**
 ```
        - http.rest.send:
@@ -1427,8 +1474,7 @@ file @ **/goephor/core/plugins/modules/git_kit.py**
 
  ***def _initial_commit*** 
 
-      To fully init an empty repo you need an initial commit,
- which in this case is an empty README.md 
+      To fully init an empty rep 
 
  ***def init*** 
 

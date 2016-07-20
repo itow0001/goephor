@@ -34,6 +34,7 @@ class rest(Plugin):
         :param url_ext: String
         :param params: json string
         :param data: json string
+        :param silent: boolean
         :example:
         ```
                - http.rest.send:
@@ -44,6 +45,10 @@ class rest(Plugin):
                      - data: '{"name":"${BRANCH_NAME}"}'
         ```
         '''
+        silent = False
+        if defaults.get('silent',None) is True:
+            silent = True
+            defaults.pop("silent", None)
         if self.verbose:
             print message('info',"[send] %s @ %s/%s" % (req_type,base_url,url_ext))
             for key,value in defaults.iteritems():
@@ -51,8 +56,8 @@ class rest(Plugin):
         session = Restful(base_url)
         output = session.send(req_type, url_ext,**defaults)
         if self.verbose:
-            print
-            print message('info',output)
+            if not silent:
+                print message('info',output)
         if output.get('code') >= 300:
             error = "[%s] http request failed @ %s/%s" % (str(output.get('code')),base_url,url_ext)
             raise Exception(error)
