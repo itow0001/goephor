@@ -7,6 +7,7 @@ from plugins import *
 from plugins.modules.action import Manager
 from plugins.modules.environment import EnvManager
 from plugins.modules.log import message
+import signal
 import sys
 
 
@@ -52,6 +53,8 @@ class Run(object):
                  trace):
         ''' performs actions on exit of obj
         '''
+        for s in [signal.SIGHUP, signal.SIGTERM]:
+            signal.signal(s, lambda n, _: sys.exit("Received signal %d" % n))
         self.execute_on_exit()
 
     def read_config(self, config_file):
