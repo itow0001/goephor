@@ -54,7 +54,8 @@ class Run(object):
         ''' performs actions on exit of obj
         '''
         for s in [signal.SIGHUP, signal.SIGTERM]:
-            signal.signal(s, lambda n, _: self.execute_on_exit())
+            print "SIGNAL:",s
+            signal.signal(s, lambda n, _: sys.exit(1))
         self.execute_on_exit()
 
     def read_config(self, config_file):
