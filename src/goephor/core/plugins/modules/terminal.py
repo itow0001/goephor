@@ -289,7 +289,7 @@ def _exit_clean():
     """
     cleans .tmp_shell files before exit
     """
-    #for file in os.listdir(this_path):
+    kill_pid()
     if os.path.isfile(temp_path):
         if ".tmp_shell_" in temp_path:
             try:
