@@ -214,4 +214,5 @@ class Run(object):
             sys.exit(1)
         if self.on_exit_manager.chain:
             print message('header','[on_exit] Success @ %s' % (self.config_file))
-    atexit.register(execute_on_exit())
+
+    atexit.register(execute_on_exit)
