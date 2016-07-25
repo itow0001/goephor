@@ -46,7 +46,7 @@ class Run(object):
         ''' Entry point for Run obj
         '''
         return self
-
+    '''
     def __exit__(self,
                  exception_type,
                  value,
@@ -54,6 +54,7 @@ class Run(object):
         ''' performs actions on exit of obj
         '''
         self.execute_on_exit()
+    '''
 
     def read_config(self, config_file):
         """
