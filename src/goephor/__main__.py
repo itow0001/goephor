@@ -6,6 +6,7 @@ from goephor.core.Chain import Run
 from goephor._version import __version__
 
 import argparse
+import signal
 
 
 def menu():
@@ -71,6 +72,14 @@ def main():
             main_actions.set_envs()
             main_actions.execute_actions()
 
+def _exit():
+    """
+    on exit signal to all subprocess 
+    """
+    for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
+        signal.signal(s, lambda n, _: sys.exit("plugins/modules/terminal Received signal %d" % n))
+
+atexit.register(_exit)
 
 if __name__ == '__main__':
     main()
