@@ -254,7 +254,7 @@ def shell(cmd,
                 if verbose or show_output:
                     sys.stdout.write(out)
                 # when kill is called exit
-                for s in [signal.SIGHUP, signal.SIGTERM]:
+                for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
                     signal.signal(s, lambda n, _: sys.exit("Received signal %d" % n))
                 time.sleep(0.3)
                 
