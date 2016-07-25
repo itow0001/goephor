@@ -18,7 +18,7 @@ this_path = os.path.dirname(os.path.realpath(__file__))
 path = ""
 stamp = ""
 temp_path = ""
-pid = None
+global pid
 
 
 def waitfor(fd):
