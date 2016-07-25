@@ -53,10 +53,7 @@ class Run(object):
                  trace):
         ''' performs actions on exit of obj
         '''
-        #shell("echo %s %s %s > fatal.txt" % (exception_type,value,trace))
-        print exception_type
-        print value
-        print trace
+        shell("echo %s %s %s > fatal.txt" % (str(exception_type),str(value),str(trace)))
         self.execute_on_exit()
 
     def read_config(self, config_file):
