@@ -78,7 +78,7 @@ class terminal(Plugin):
             - "2"
         ```
         '''
-        jexec_cmd = "sudo -E /usr/sbin/jexec %s %s -c '%s'" % (jid,
+        jexec_cmd = "set -e; sudo -E /usr/sbin/jexec %s %s -c '%s'" % (jid,
                                                                '/bin/sh',
                                                                cmd)
         if self.verbose:
