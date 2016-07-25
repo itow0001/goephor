@@ -280,7 +280,7 @@ def shell(cmd,
 
 def kill_pid():
     if pid is None:
-        pass
+        print "pid is %s" % None
     else:
         os.kill(pid, signal.SIGTERM)
     
