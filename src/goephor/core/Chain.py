@@ -7,7 +7,6 @@ from plugins import *
 from plugins.modules.action import Manager
 from plugins.modules.environment import EnvManager
 from plugins.modules.log import message
-from plugins.modules.terminal import shell
 import sys
 
 
@@ -53,7 +52,6 @@ class Run(object):
                  trace):
         ''' performs actions on exit of obj
         '''
-        shell("echo %s %s %s > fatal.txt" % (str(exception_type),str(value),str(trace)))
         self.execute_on_exit()
 
     def read_config(self, config_file):

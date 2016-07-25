@@ -12,7 +12,6 @@ import shlex
 import subprocess
 import sys
 import time
-import signal
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 path = ""
@@ -279,8 +278,6 @@ def _exit_clean():
     """
     cleans .tmp_shell files before exit
     """
-    for s in [signal.SIGHUP, signal.SIGTERM]:
-        signal.signal(s, lambda n, _: sys.exit("Received signal %d" % n))
     #for file in os.listdir(this_path):
     if os.path.isfile(temp_path):
         if ".tmp_shell_" in temp_path:
