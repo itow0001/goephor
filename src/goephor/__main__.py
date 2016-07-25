@@ -7,6 +7,7 @@ from goephor._version import __version__
 
 import argparse
 import signal
+import sys
 
 
 def menu():
