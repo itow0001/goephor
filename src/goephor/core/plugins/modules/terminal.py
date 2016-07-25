@@ -12,11 +12,13 @@ import shlex
 import subprocess
 import sys
 import time
+import signal
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 path = ""
 stamp = ""
 temp_path = ""
+pid = None
 
 
 def waitfor(fd):
@@ -246,12 +248,14 @@ def shell(cmd,
                                        stdout=writer,
                                        stderr=writer,
                                        shell=shell)
+            pid = process.pid
             while process.poll() is None:
                 out = reader.read()
                 output = output+out
                 if verbose or show_output:
                     sys.stdout.write(out)
                 time.sleep(0.3)
+                
             out = reader.read()
             output = output+out
         if verbose or show_output:
@@ -273,6 +277,13 @@ def shell(cmd,
     temp_path = ""
     return cmd_info
 
+
+def kill_pid():
+    if pid is None:
+        pass
+    else:
+        os.kill(pid, signal.SIGTERM)
+    
 
 def _exit_clean():
     """
