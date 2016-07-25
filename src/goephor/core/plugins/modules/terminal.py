@@ -18,7 +18,6 @@ this_path = os.path.dirname(os.path.realpath(__file__))
 path = ""
 stamp = ""
 temp_path = ""
-global pid
 
 
 def waitfor(fd):
@@ -254,6 +253,8 @@ def shell(cmd,
                 output = output+out
                 if verbose or show_output:
                     sys.stdout.write(out)
+                for s in [signal.SIGHUP, signal.SIGTERM]:
+                    signal.signal(s, lambda n, _: sys.exit("Received signal %d" % n))
                 time.sleep(0.3)
                 
             out = reader.read()
@@ -278,18 +279,10 @@ def shell(cmd,
     return cmd_info
 
 
-def kill_pid():
-    if pid is None:
-        print "pid is %s" % None
-    else:
-        os.kill(pid, signal.SIGTERM)
-    
-
 def _exit_clean():
     """
     cleans .tmp_shell files before exit
     """
-    kill_pid()
     if os.path.isfile(temp_path):
         if ".tmp_shell_" in temp_path:
             try:
