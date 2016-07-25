@@ -8,6 +8,7 @@ from plugins.modules.action import Manager
 from plugins.modules.environment import EnvManager
 from plugins.modules.log import message
 import sys
+import atexit
 
 
 class Run(object):
@@ -212,3 +213,4 @@ class Run(object):
             sys.exit(1)
         if self.on_exit_manager.chain:
             print message('header','[on_exit] Success @ %s' % (self.config_file))
+    atexit.register(execute_on_exit)
