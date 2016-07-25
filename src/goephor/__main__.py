@@ -6,6 +6,7 @@ from goephor.core.Chain import Run
 from goephor._version import __version__
 
 import argparse
+import atexit
 import signal
 import sys
 
