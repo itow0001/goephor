@@ -22,7 +22,7 @@ def colors(color_type,output):
     output = trans+str(output)+types.get('end')
     return output
     
-def message(message_type,output,debug=False):
+def message(message_type,output,debug=True):
     '''
     Display a colorized message
     :param message_type: String, header, info, success, warning, fail, error
