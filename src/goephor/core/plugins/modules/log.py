@@ -30,7 +30,7 @@ def message(message_type,output,debug=True):
     :return: colorized string
     '''
     if debug:
-        shell('echo "${date -u} %s" >> debug.log'% (output))
+        shell('echo "$(date) %s" >> debug.log'% (output))
     output_final = colors(message_type,output)
     sys.stdout.flush()
     return output_final
