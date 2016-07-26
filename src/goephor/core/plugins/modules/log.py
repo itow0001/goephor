@@ -38,8 +38,8 @@ def message(message_type,output,debug=False):
         sys.stdout.flush()
     except Exception as e:
         pass
-        #with open("DEBUG.log", "a") as debug:
-        #    output_str = "# %s %s\n" % (output,str(e))
-        #    debug.write(output_str)
+        with open("DEBUG.log", "a") as debug:
+            output_str = "> %s %s\n" % (output,str(e))
+            debug.write(output_str)
         return "[Error] plugin/modules/log %s" % str(e)
     return output_final
