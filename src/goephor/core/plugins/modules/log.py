@@ -37,8 +37,9 @@ def message(message_type,output,debug=False):
         output_final = colors(message_type,output)
         sys.stdout.flush()
     except Exception as e:
-        with open("DEBUG.log", "a") as debug:
-            output_str = "# %s %s\n" % (output,str(e))
-            debug.write(output_str)
+        pass
+        #with open("DEBUG.log", "a") as debug:
+        #    output_str = "# %s %s\n" % (output,str(e))
+        #    debug.write(output_str)
         return "[Error] plugin/modules/log %s" % str(e)
     return output_final
