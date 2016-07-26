@@ -187,23 +187,23 @@ class Action(object):
         :param title: String
         :param footer: String
         '''
-        print message(message_type,"\n\n[%s]\n" % title)
-        print message(message_type,"%s %s" % ('[import]'.rjust(15), self.IMP))
-        print message(message_type,"%s %s" % (' [class]'.rjust(15), self.CLASS))
-        print message(message_type,"%s %s" % (' [funct]'.rjust(15), self.DEF))
-        print message(message_type,'%s %s' % ('[duration]'.rjust(15), self.duration))
+        print message(message_type,"\n\n[%s]\n" % title,debug=self.debug)
+        print message(message_type,"%s %s" % ('[import]'.rjust(15), self.IMP),debug=self.debug)
+        print message(message_type,"%s %s" % (' [class]'.rjust(15), self.CLASS),debug=self.debug)
+        print message(message_type,"%s %s" % (' [funct]'.rjust(15), self.DEF),debug=self.debug)
+        print message(message_type,'%s %s' % ('[duration]'.rjust(15), self.duration),debug=self.debug)
         print ""
-        print message(message_type,"%s" % ('[parameters]'.rjust(15)))
+        print message(message_type,"%s" % ('[parameters]'.rjust(15)),debug=self.debug)
         for param in self.parameters:
-            print message(message_type,"      %s" % (str(param).strip().ljust(20)))
+            print message(message_type,"      %s" % (str(param).strip().ljust(20)),debug=self.debug)
         print ""
-        print message(message_type,"%s" % ('[defaults]'.rjust(15)))
+        print message(message_type,"%s" % ('[defaults]'.rjust(15)),debug=self.debug)
         for key, value in self.defaults.iteritems():
-            print message(message_type,'%s: %s' % (key.rjust(10), str(value)))
+            print message(message_type,'%s: %s' % (key.rjust(10), str(value)),debug=self.debug)
         print ""
-        print message(message_type,"%s" % ('[session]'.rjust(15)))
-        print message(message_type,self.session)
-        print message(message_type,"\n[%s]\n" % footer)
+        print message(message_type,"%s" % ('[session]'.rjust(15)),debug=self.debug)
+        print message(message_type,self.session,debug=self.debug)
+        print message(message_type,"\n[%s]\n" % footer,debug=self.debug)
 
     def _init_instance(self):
         ''' Initializes the class
