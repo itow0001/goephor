@@ -39,7 +39,7 @@ def message(message_type,output,debug=False):
     except Exception as e:
         pass
         with open("DEBUG.log", "a") as debug:
-            output_str = "> %s %s\n" % (output,str(e))
+            output_str = "# %s %s\n" % (output,str(e))
             debug.write(output_str)
         return "[Error] plugin/modules/log %s" % str(e)
     return output_final
