@@ -217,6 +217,8 @@ def rsync(server,
         print "Invalid option: %s" (option)
     return session
 
+def sig_exception(e,num):
+    raise Exception("%s %s" % (e,str(num)))
 
 def shell(cmd,
           verbose=False,
@@ -255,7 +257,7 @@ def shell(cmd,
                     sys.stdout.write(out)
                 # when kill is called exit
                 for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
-                    signal.signal(s, lambda n, _:Exception("[exit] plugins/modules/terminal Received signal %d" % n))
+                    signal.signal(s, lambda n, _: sig_exception("[exit] plugins/modules/terminal Received signal", n))
                 time.sleep(0.3)
                 
             out = reader.read()
