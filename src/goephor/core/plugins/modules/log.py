@@ -29,12 +29,15 @@ def message(message_type,output,debug=True):
     :param output: String
     :return: colorized string
     '''
-    if debug:
-        now = time.strftime("%c")
-        with open("debug.log", "a") as debug:
-            output_str = "%s # %s\n\n" % (str(now),output)
-            debug.write(output_str)
-
-    output_final = colors(message_type,output)
-    sys.stdout.flush()
+    try:
+        if debug:
+            now = time.strftime("%c")
+            with open("debug.log", "a") as debug:
+                output_str = "%s # %s\n\n" % (str(now),output)
+                debug.write(output_str)
+    
+        output_final = colors(message_type,output)
+        sys.stdout.flush()
+    except Exception as e:
+        return "[Error] plugin/modules/log %s" % str(e)
     return output_final
