@@ -9,8 +9,6 @@ from plugins.modules.environment import EnvManager
 from plugins.modules.log import message
 import sys
 
-from plugins.modules.terminal import shell
-
 
 class Run(object):
     '''
@@ -214,4 +212,3 @@ class Run(object):
             sys.exit(1)
         if self.on_exit_manager.chain:
             print message('header','[on_exit] Success @ %s' % (self.config_file))
-        shell("echo $(date -u) >> FATAL.log")
