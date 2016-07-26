@@ -188,6 +188,7 @@ class Action(object):
         :param title: String
         :param footer: String
         '''
+        self.debug=True # a pprint always means debug=true to debug.log
         print message(message_type,"\n\n[%s]\n" % title,debug=self.debug)
         print message(message_type,"%s %s" % ('[import]'.rjust(15), self.IMP),debug=self.debug)
         print message(message_type,"%s %s" % (' [class]'.rjust(15), self.CLASS),debug=self.debug)
