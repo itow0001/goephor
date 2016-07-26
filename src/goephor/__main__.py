@@ -6,6 +6,7 @@ from goephor.core.Chain import Run
 from goephor._version import __version__
 
 import argparse
+import os
 
 
 def menu():
@@ -66,6 +67,10 @@ def main():
     '''
     options = menu()
     if options.execute:
+        debug_log = "%s/%s" % (os.getcwd(),'DEBUG.log')
+        if os.path.exists(debug_log):
+            print "\n[remove] @ %s\n" % debug_log
+            os.remove(debug_log)
         with Run(options.file, options.silent,debug=options.debug) as main_actions:
             main_actions.add_envs(**parse_envs(options))
             main_actions.set_envs()
