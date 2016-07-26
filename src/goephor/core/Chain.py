@@ -202,7 +202,7 @@ class Run(object):
                 else:
                     pass
             except Exception as e:
-                error = '[on_exit] [Error] %s' % (str(e))
+                error = '[on_exit] [Error] @ %s: %s' % (self.config_file,str(e))
                 print message('error',error)
                 self.on_exit_manager.failure = True
                 this_action = action
