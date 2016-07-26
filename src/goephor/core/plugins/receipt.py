@@ -57,7 +57,6 @@ class maker(Plugin):
         for action in self.action_manager.chain:
             result = action.get_receipt()
             receipt.get("results").append(result)
-
         self._to_file(receipt, path)
 
     def custom(self, path, **defaults):
