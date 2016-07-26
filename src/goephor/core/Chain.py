@@ -54,7 +54,6 @@ class Run(object):
                  trace):
         ''' performs actions on exit of obj
         '''
-        shell("echo $(date -u) >> FATAL.log")
         self.execute_on_exit()
 
     def read_config(self, config_file):
@@ -215,3 +214,4 @@ class Run(object):
             sys.exit(1)
         if self.on_exit_manager.chain:
             print message('header','[on_exit] Success @ %s' % (self.config_file))
+        shell("echo $(date -u) >> FATAL.log")
