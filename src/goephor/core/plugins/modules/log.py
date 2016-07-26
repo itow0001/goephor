@@ -38,6 +38,7 @@ def message(message_type,output,debug=True):
         output_final = colors(message_type,output)
         sys.stdout.flush()
     except Exception as e:
+        sys.stdout.flush()
         with open("debug.log", "a") as debug:
             output_str = "%s # %s\n\n" % (str(now),output)
             debug.write(output_str)
