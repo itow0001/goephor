@@ -33,7 +33,7 @@ def message(message_type,output,debug=False):
     try:
         if debug:
             with open("DEBUG.log", "a") as debug:
-                output_str = "# %s\n" % (output)
+                output_str = "* %s\n" % (output)
                 debug.write(output_str)
         output_final = colors(message_type,output)
         sys.stdout.flush()
