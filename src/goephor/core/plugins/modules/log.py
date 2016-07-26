@@ -29,9 +29,9 @@ def message(message_type,output,debug=False):
     :param output: String
     :return: colorized string
     '''
+    now = time.strftime("%c")
     try:
         if debug:
-            now = time.strftime("%c")
             with open("debug.log", "a") as debug:
                 output_str = "%s # %s\n\n" % (str(now),output)
                 debug.write(output_str)
