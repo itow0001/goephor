@@ -7,6 +7,7 @@ from plugins import *
 from plugins.modules.action import Manager
 from plugins.modules.environment import EnvManager
 from plugins.modules.log import message
+import os
 import sys
 
 
@@ -44,6 +45,7 @@ class Run(object):
     def __enter__(self):
         ''' Entry point for Run obj
         '''
+        print os.getcwd()
         return self
 
     def __exit__(self,
