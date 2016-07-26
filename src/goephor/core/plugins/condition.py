@@ -63,14 +63,14 @@ class statement(Plugin):
         else:
             statem = "'%s' %s '%s'" % (arg1, operator, arg2)
         if self.verbose:
-            print message('header',"\n[eval] %s" % statem)
+            print message('header',"\n[eval] %s" % statem,debug=self.debug)
         if eval(statem):
             if self.verbose:
-                print message('header',"\n[THEN]")
+                print message('header',"\n[THEN]",debug=self.debug)
             self.add_obj(THEN)
         else:
             if self.verbose:
-                print message('header',"\n[ELSE]")
+                print message('header',"\n[ELSE]",debug=self.debug)
             self.add_obj(ELSE)
 
     def HAS_TOKEN(self,
@@ -92,10 +92,10 @@ class statement(Plugin):
         for line in output:
             if token in line:
                 if self.verbose:
-                    print message('info',"[Found] %s" % (token))
+                    print message('info',"[Found] %s" % (token),debug=self.debug)
                 return True
         if self.verbose:
-            print message('info',"[Not Found] %s" % (token))
+            print message('info',"[Not Found] %s" % (token),debug=self.debug)
         return False
 
     def FAIL(self,text):

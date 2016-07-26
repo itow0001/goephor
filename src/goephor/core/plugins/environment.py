@@ -38,7 +38,7 @@ class env(Plugin):
         '''
         self.EnvManager.set(key, value)
         if self.verbose:
-            print message('info',"[set] %s=%s" % (key, value))
+            print message('info',"[set] %s=%s" % (key, value),debug=self.debug)
 
     def unset(self,
             key,
@@ -56,7 +56,7 @@ class env(Plugin):
         '''
         self.EnvManager.unset(key)
         if self.verbose:
-            print message('info',"[unset] %s" % (key))
+            print message('info',"[unset] %s" % (key),debug=self.debug)
 
 class utils(Plugin):
     ''' Environment utilities
@@ -85,7 +85,7 @@ class utils(Plugin):
         '''
         output = os.path.exists(path_str)
         if self.verbose:
-            print message('info',"[has_path] %s @ %s" % (output,path_str))
+            print message('info',"[has_path] %s @ %s" % (output,path_str),debug=self.debug)
         return output
         
 

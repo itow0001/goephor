@@ -47,7 +47,7 @@ class terminal(Plugin):
             if hostname in line:
                 jail_line = re.split('\s+', line)
                 if self.debug:
-                    print message('info',jail_line)
+                    print message('info',jail_line,debug=self.debug)
                 if return_type == 'path':
                     return jail_line[4]
                 elif return_type == 'hostname':
@@ -82,7 +82,7 @@ class terminal(Plugin):
                                                                '/bin/sh',
                                                                cmd)
         if self.verbose:
-            print message('info',"[jexec] %s" % jexec_cmd)
+            print message('info',"[jexec] %s" % jexec_cmd,debug=self.debug)
             print ""
         session = shell(jexec_cmd)
         if not session.get('code') == 0:

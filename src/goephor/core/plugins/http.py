@@ -50,14 +50,14 @@ class rest(Plugin):
             silent = True
             defaults.pop("silent", None)
         if self.verbose:
-            print message('info',"[send] %s @ %s/%s" % (req_type,base_url,url_ext))
+            print message('info',"[send] %s @ %s/%s" % (req_type,base_url,url_ext),debug=self.debug)
             for key,value in defaults.iteritems():
-                print message('info',"%s: %s" % (key,value))
+                print message('info',"%s: %s" % (key,value),debug=self.debug)
         session = Restful(base_url)
         output = session.send(req_type, url_ext,**defaults)
         if self.verbose:
             if not silent:
-                print message('info',output)
+                print message('info',output,debug=self.debug)
         if output.get('code') >= 300:
             error = "[%s] http request failed @ %s/%s" % (str(output.get('code')),base_url,url_ext)
             raise Exception(error)

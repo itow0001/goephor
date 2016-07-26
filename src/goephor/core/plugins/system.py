@@ -39,9 +39,9 @@ class include(Plugin):
             - VAR1: "SOMEVALUE"
         ```
         '''
-        print message('info',"[include] @ %s" % file)
+        print message('info',"[include] @ %s" % file,debug=self.debug)
         for key, value in defaults.iteritems():
-            print message('info',"%s: %s" % (key,value))
+            print message('info',"%s: %s" % (key,value),debug=self.debug)
             self.EnvManager.set(key, value)
         with Run(file,silent,debug=debug) as main_actions:
             main_actions.add_envs(**defaults)
@@ -111,7 +111,7 @@ class terminal(Plugin):
         if self.verbose:
             print message('info',"[rsync] %s [%s] -> [%s]" % (option,
                                                src,
-                                               dest))
+                                               dest),debug=self.debug)
         session = rsync(server,
                         src,
                         dest,

@@ -36,7 +36,7 @@ class utils(Plugin):
         '''
         date = datetime.datetime.now().strftime(prefix)
         if self.verbose:
-            print message('info',"[date] %s" % (str(date)))
+            print message('info',"[date] %s" % (str(date)),debug=self.debug)
         return date
     
     def pad(self, text, fill, amount, **defaults):
@@ -58,7 +58,7 @@ class utils(Plugin):
         '''
         output = text.rjust(amount,fill)
         if self.verbose:
-            print message('info',"[pad] is %s" % (str(output)))
+            print message('info',"[pad] is %s" % (str(output)),debug=self.debug)
         return output
 
     def compare(self,
@@ -97,7 +97,7 @@ class utils(Plugin):
         if len(new_release.split('.')) > 3:
             new_split = new_release.rsplit('.', 1)
             new_release = new_split[0]
-            print message('info',"[info] compare using %s" % new_release)
+            print message('info',"[info] compare using %s" % new_release,debug=self.debug)
         file_type = path.rsplit(".", 1)[1]
         try:
             with open(path) as file:
@@ -111,7 +111,7 @@ class utils(Plugin):
         minor = 0
         for name, values in releases.iteritems():
             if self.compare(new_release, name):
-                print message('info',"[match] %s" % name)
+                print message('info',"[match] %s" % name,debug=self.debug)
                 old_minor = int(name.rsplit('.', 1)[1])
                 if minor < old_minor:
                     minor = old_minor
@@ -119,5 +119,5 @@ class utils(Plugin):
             next = "%s.%s" % (new_release, str(minor+1))
         else:
             next = "%s.%s" % (new_release, str(minor))
-        print message('info',"[next] %s" % (next))
+        print message('info',"[next] %s" % (next),debug=self.debug)
         return next

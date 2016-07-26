@@ -35,9 +35,9 @@ class example(Plugin):
             - "world"
         ```
         '''
-        print message('info',"This var [%s] was passed in " % var1)
-        print message('info',"This var [%s] was passed in " % var2)
+        print message('info',"This var [%s] was passed in " % var1,debug=self.debug)
+        print message('info',"This var [%s] was passed in " % var2,debug=self.debug)
         print "\nhere are the defaults:"
         for key, value in defaults.iteritems():
-            print message('info' "%s : %s" % (key, value))
+            print message('info' "%s : %s" % (key, value),debug=self.debug)
         return "runme_output"

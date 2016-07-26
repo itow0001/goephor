@@ -34,7 +34,7 @@ class utils(Plugin):
            - "HELLO WORLD"
         ```
         '''
-        print message(msg_type,"%s" % (text))
+        print message(msg_type,"%s" % (text),debug=self.debug)
 
     def replace(self,
                 text,
@@ -55,7 +55,7 @@ class utils(Plugin):
         '''
         new_str = text.replace(old, new)
         if self.verbose:
-            print message('info',"[replace] %s -> %s" % (text, new_str))
+            print message('info',"[replace] %s -> %s" % (text, new_str),debug=self.debug)
         return new_str
 
     def substring(self,text,regex,**defaults):
@@ -77,7 +77,7 @@ class utils(Plugin):
         if sub:
             substr = sub.group(1)
             if self.verbose:
-                print message('info',"[substring] is %s" % (substr))
+                print message('info',"[substring] is %s" % (substr),debug=self.debug)
         return substr
 
     def is_json(self,data,**defaults):
@@ -118,7 +118,7 @@ class utils(Plugin):
             data = json.loads(data)
             value = self.traverse(data,key)
             if self.verbose:
-                print message('info',"[value] is [%s]" % (str(value)))
+                print message('info',"[value] is [%s]" % (str(value)),debug=self.debug)
             if not value:
                 return None
             return value
@@ -142,7 +142,7 @@ class utils(Plugin):
         elif isinstance(data, dict):
             for k, v in data.iteritems():
                 if self.verbose:
-                    print message('info',"%s: %s" % (k,v))
+                    print message('info',"%s: %s" % (k,v),debug=self.debug)
                 if k == key:
                     return str(v)
                 if isinstance(v, list) or isinstance(v, dict):

@@ -51,7 +51,7 @@ class maker(Plugin):
             - "./receipt.yaml"
         ```
         '''
-        print message('info',"[on_actions] %s" % (path))
+        print message('info',"[on_actions] %s" % (path),debug=self.debug)
         receipt = {}
         receipt["results"] = []
         for action in self.action_manager.chain:
@@ -74,9 +74,9 @@ class maker(Plugin):
             - var3: "SOMEVALUE3"
         ```
         '''
-        print message('info',"[custom] %s" % (path))
+        print message('info',"[custom] %s" % (path),debug=self.debug)
         for key, value in defaults.iteritems():
-            print message('info',"%s: %s" % (key, value))
+            print message('info',"%s: %s" % (key, value),debug=self.debug)
         self._to_file(defaults, path)
 
     def custom_json(self, path, data,**defaults):
@@ -94,8 +94,8 @@ class maker(Plugin):
         if self.is_json(data):
             data = json.loads(data)
             if self.verbose:
-                print message('info',"[custom_json] @ %s" % (path))
-                print message('info'," %s" % (str(data)))
+                print message('info',"[custom_json] @ %s" % (path),debug=self.debug)
+                print message('info'," %s" % (str(data)),debug=self.debug)
                 self._to_file(data, path)
         else:
             raise Exception('Must be well formed json string')
@@ -111,13 +111,13 @@ class maker(Plugin):
            - "receipt.yaml"
         ```
         '''
-        print message('info',"[read] %s" % path)
+        print message('info',"[read] %s" % path,debug=self.debug)
 
         data = self._to_dict(path)
         for key, value in data.iteritems():
             self.EnvManager.set(key, value)
             if self.verbose:
-                print message('info',"[set] %s=%s" % (key, value))
+                print message('info',"[set] %s=%s" % (key, value),debug=self.debug)
 
     def add(self,
             path,
@@ -137,7 +137,7 @@ class maker(Plugin):
         ```
         '''
         data = None
-        print message('info',"[add] %s" % path)
+        print message('info',"[add] %s" % path,debug=self.debug)
         data = self._to_dict(path)
         json_dict = self._str_to_dict(json_str)
         data.update(json_dict)
@@ -155,15 +155,15 @@ class maker(Plugin):
         with open(path) as file:
             if 'json' in file_type:
                 if self.verbose:
-                    print message('info',"[_to_dict] json")
+                    print message('info',"[_to_dict] json",debug=self.debug)
                 data = json.loads(file.read())
                 return data
             else:
                 if self.verbose:
-                    print message('info',"[_to_dict] yaml")
+                    print message('info',"[_to_dict] yaml",debug=self.debug)
                 data = yaml.load(file)
                 return data
-        print message('info',"[None]")
+        print message('info',"[None]",debug=self.debug)
         return None
 
     def _str_to_dict(self, data):
@@ -173,7 +173,7 @@ class maker(Plugin):
         :return: Dictionary
         '''
         if self.verbose:
-            print message('info',"[_str_to_dict] %s" % (data))
+            print message('info',"[_str_to_dict] %s" % (data),debug=self.debug)
         data = json.loads(data)
         return data
 
@@ -189,19 +189,19 @@ class maker(Plugin):
         with open(path, 'w') as file:
             if 'json' in file_type:
                 if self.verbose:
-                    print message('info',"[_to_file] json")
+                    print message('info',"[_to_file] json",debug=self.debug)
                 file.write(json.dumps(data,
                                       indent=4,
                                       sort_keys=True))
             elif 'txt' in file_type:
                 if self.verbose:
-                    print message('info',"[_to_file] txt")
+                    print message('info',"[_to_file] txt",debug=self.debug)
                 for key, value in data.iteritems():
                     pair = "%s=%s\n" % (key, value)
                     file.write(pair)
             else:
                 if self.verbose:
-                    print message('info',"[_to_file] yaml")
+                    print message('info',"[_to_file] yaml",debug=self.debug)
                 file.write(yaml.dump(data,
                                      default_flow_style=False,
                                      allow_unicode=True))

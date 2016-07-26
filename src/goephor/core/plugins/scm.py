@@ -46,7 +46,7 @@ class git(Plugin):
         latest = commit_obj.latest()
         latest = latest.get(info_type,None)
         if self.verbose:
-            print message('info',"[latest_commit] %s is %s" % (info_type,latest))
+            print message('info',"[latest_commit] %s is %s" % (info_type,latest),debug=self.debug)
         return latest
 
     def clone(self,
@@ -70,9 +70,9 @@ class git(Plugin):
                       - "git@github.west.isilon.com:eng-tools/goephor"
         ```
         '''
-        print message('info',"[clone] @ %s -> %s" % (remote, new_local_path))
+        print message('info',"[clone] @ %s -> %s" % (remote, new_local_path),debug=self.debug)
         for key, value in defaults.iteritems():
-            print message('info',"%s=%s" % (key, value))
+            print message('info',"%s=%s" % (key, value),debug=self.debug)
         print ""
         repo = Repo_actions(new_local_path, user=user)
         if not defaults.get('branch'):
@@ -120,4 +120,4 @@ class git(Plugin):
             if session.get('code') == 0:
                 return True
         else:
-            print message('info',"[Pass] not a repo @ %s " % (local_path))
+            print message('info',"[Pass] not a repo @ %s " % (local_path),debug=self.debug)
