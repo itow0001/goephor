@@ -181,8 +181,9 @@ class Run(object):
                 this_action = action
         if self.action_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure',message_type='error')
-            print message('fail','manifest @ %s' % (self.config_file))
-            sys.exit(1)
+            output =  message('fail','manifest @ %s' % (self.config_file))
+            #sys.exit(1)
+            raise Exception(output)
         else:
             print message('header','[actions] Success @ %s' % (self.config_file))
 
@@ -208,7 +209,7 @@ class Run(object):
                 this_action = action
         if self.on_exit_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure',message_type='error')
-            print message('fail','manifest @ %s' % (self.config_file))
-            sys.exit(1)
+            output = message('fail','manifest @ %s' % (self.config_file))
+            raise Exception(output)
         if self.on_exit_manager.chain:
             print message('header','[on_exit] Success @ %s' % (self.config_file))
