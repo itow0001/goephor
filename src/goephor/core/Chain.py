@@ -47,7 +47,7 @@ class Run(object):
         '''
         debug_log = "%s/%s" % (os.getcwd(),'DEBUG.log')
         if os.path.exists(debug_log):
-            print "[remove] @ %s" % debug_log
+            print "\n[remove] @ %s\n" % debug_log
             os.remove(debug_log)
         return self
 
