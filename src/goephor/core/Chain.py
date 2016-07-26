@@ -164,51 +164,51 @@ class Run(object):
         '''
         this_action = None
         if self.action_manager.chain:
-            print message('header','[actions] Start @ %s' % (self.config_file))
+            print message('header','[actions] Start @ %s' % (self.config_file),debug=self.debug)
         for action in self.action_manager.chain:
             try:
                 if (self.action_manager.failure is False or
                         action.ignore is True):
                     if self.verbose:
-                        print message('header',"\n[%s]" % (action.name))
+                        print message('header',"\n[%s]" % (action.name),debug=self.debug)
                     action.execute()
                 else:
                     pass
             except Exception as e:
                 error = '[action] [Error] %s' % (str(e))
-                print message('error',error)
+                print message('error',error,debug=self.debug)
                 self.action_manager.failure = True
                 this_action = action
         if self.action_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure',message_type='error')
-            output =  message('fail','manifest @ %s' % (self.config_file))
+            output =  message('fail','manifest @ %s' % (self.config_file),debug=self.debug)
             raise Exception(output)
         else:
-            print message('header','[actions] Success @ %s' % (self.config_file))
+            print message('header','[actions] Success @ %s' % (self.config_file),debug=self.debug)
 
     def execute_on_exit(self):
         ''' Executes all on exit action objects
         '''
         if self.on_exit_manager.chain:
-            print message('header','[on_exit] Start @ %s' % (self.config_file))
+            print message('header','[on_exit] Start @ %s' % (self.config_file),debug=self.debug)
         this_action = None
         for action in self.on_exit_manager.chain:
             try:
                 if (self.on_exit_manager.failure is False or
                         action.ignore is True):
                     if self.verbose:
-                        print message('header',"\n[%s]" % (action.name))
+                        print message('header',"\n[%s]" % (action.name),debug=self.debug)
                     action.execute()
                 else:
                     pass
             except Exception as e:
                 error = '[on_exit] [Error] @ %s: %s' % (self.config_file,str(e))
-                print message('error',error)
+                print message('error',error,debug=self.debug)
                 self.on_exit_manager.failure = True
                 this_action = action
         if self.on_exit_manager.failure is True:
             this_action.pprint(title='Failure', footer='Failure',message_type='error')
-            output = message('fail','manifest @ %s' % (self.config_file))
+            output = message('fail','manifest @ %s' % (self.config_file),debug=self.debug)
             raise Exception(output)
         if self.on_exit_manager.chain:
-            print message('header','[on_exit] Success @ %s' % (self.config_file))
+            print message('header','[on_exit] Success @ %s' % (self.config_file),debug=self.debug)
