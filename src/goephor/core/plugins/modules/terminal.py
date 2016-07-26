@@ -243,29 +243,28 @@ def shell(cmd,
         cmd = shlex.split(cmd)
     with io.open(temp_path, 'wb', buffering=buffer_size)as writer:
         with io.open(temp_path, 'rb', buffering=buffer_size) as reader:
-            returncode = 1
-            try:
-                process = subprocess.Popen(cmd,
-                                           stdout=writer,
-                                           stderr=writer,
-                                           shell=shell)
-                while process.poll() is None:
-                    out = reader.read()
-                    output = output+out
-                    if verbose or show_output:
-                        sys.stdout.write(out)
-                    # when kill is called exit
-                    #for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
-                    #    signal.signal(s, lambda n, _: sys.exit("[exit] plugins/modules/terminal Received signal %d" % n))
-                    time.sleep(0.3)
-                returncode = process.returncode
-            except Exception as e:
-                output = str(e)
+            process = subprocess.Popen(cmd,
+                                       stdout=writer,
+                                       stderr=writer,
+                                       shell=shell)
+            #pid = process.pid
+            while process.poll() is None:
+                out = reader.read()
+                output = output+out
+                if verbose or show_output:
+                    sys.stdout.write(out)
+                # when kill is called exit
+                #for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
+                #    signal.signal(s, lambda n, _: sys.exit("[exit] plugins/modules/terminal Received signal %d" % n))
+                time.sleep(0.3)
+                
+            out = reader.read()
+            output = output+out
         if verbose or show_output:
             sys.stdout.write(out)
     cmd_info = {'cmd': "".join(cmd),
                 'stdout': output,
-                'code': returncode}
+                'code': process.returncode}
     if os.path.isfile(temp_path):
         try:
             os.remove(temp_path)
