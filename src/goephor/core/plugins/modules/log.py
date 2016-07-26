@@ -32,7 +32,7 @@ def message(message_type,output,debug=True):
     if debug:
         now = time.strftime("%c")
         with open("debug.log", "a") as debug:
-            output_str = "%s # %s\n\n" % (now,output)
+            output_str = "%s # %s\n\n" % (str(now),output)
             debug.write(output_str)
 
     output_final = colors(message_type,output)
