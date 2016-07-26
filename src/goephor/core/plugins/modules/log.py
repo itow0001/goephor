@@ -4,6 +4,7 @@ Created on Jun 3, 2016
 :author: iitow
 '''
 import sys
+import time
 def colors(color_type,output):
     '''
     Types of colors to display
@@ -29,8 +30,10 @@ def message(message_type,output,debug=True):
     :return: colorized string
     '''
     if debug:
+        now = time.strftime("%c")
         with open("debug.log", "a") as debug:
-            debug.write(output)
+            output_str = "%s # %s" % (now,output)
+            debug.write(output_str)
 
     output_final = colors(message_type,output)
     sys.stdout.flush()
