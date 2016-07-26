@@ -233,7 +233,6 @@ def shell(cmd,
     :param strict:bool will exit based on code if enabled
     :return:  {command, stdout, code} as dict
     """
-    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
     path = os.path.dirname(os.path.realpath(__file__))
     stamp = str(int(time.time()))
     temp_path = path+os.sep+".tmp_shell_"+stamp+".log"
@@ -255,8 +254,8 @@ def shell(cmd,
                 if verbose or show_output:
                     sys.stdout.write(out)
                 # when kill is called exit
-                for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
-                    signal.signal(s, lambda n, _: sys.exit("[exit] plugins/modules/terminal Received signal %d" % n))
+                #for s in [signal.SIGHUP, signal.SIGTERM, signal.SIGINT]:
+                #    signal.signal(s, lambda n, _: sys.exit("[exit] plugins/modules/terminal Received signal %d" % n))
                 time.sleep(0.3)
                 
             out = reader.read()
