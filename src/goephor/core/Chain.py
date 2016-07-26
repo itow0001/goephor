@@ -45,8 +45,9 @@ class Run(object):
     def __enter__(self):
         ''' Entry point for Run obj
         '''
-        debug_log = "%s/%s" % (os.getcwd(),'debug.log')
+        debug_log = "%s/%s" % (os.getcwd(),'DEBUG.log')
         if os.path.exists(debug_log):
+            print "[remove] @ %s" % debug_log
             os.remove(debug_log)
         return self
 
