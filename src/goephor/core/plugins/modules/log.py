@@ -4,7 +4,6 @@ Created on Jun 3, 2016
 :author: iitow
 '''
 import sys
-from terminal import shell
 def colors(color_type,output):
     '''
     Types of colors to display
@@ -30,7 +29,9 @@ def message(message_type,output,debug=True):
     :return: colorized string
     '''
     if debug:
-        shell('echo "$(date) # %s" >> debug.log'% (output))
+        with open("debug.log", "a") as debug:
+            debug.write(output)
+
     output_final = colors(message_type,output)
     sys.stdout.flush()
     return output_final
