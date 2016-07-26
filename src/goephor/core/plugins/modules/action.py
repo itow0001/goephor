@@ -142,6 +142,7 @@ class Action(object):
         self.ignore = False
         self.set_ignore()
         self.action_manager = action_manager
+        self.debug = self.action_manager.debug
         self.instance = self._init_instance()
         self.duration = None
         self.session = None
