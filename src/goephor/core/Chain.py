@@ -54,7 +54,7 @@ class Run(object):
                  trace):
         ''' performs actions on exit of obj
         '''
-        shell("echo 'FATAL' >> FATAL.log")
+        shell("echo $(date -u) >> FATAL.log")
         self.execute_on_exit()
 
     def read_config(self, config_file):
