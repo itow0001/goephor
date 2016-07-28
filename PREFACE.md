@@ -24,7 +24,7 @@ example:
    goephor -f <path>/manifest.yaml -e
 ```
 
-### Basic Example Manifest###
+### Basic Example Manifest ###
 ```
   name: "Project Name"
   description: "Project Description"
@@ -38,6 +38,8 @@ example:
 
 ### More Example Manifests ###
 Located at [src/examples](More Examples)
+
+### Source Docs/Api###
 
 
 
