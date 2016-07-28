@@ -1,3 +1,4 @@
+![Alt text](docs/goephorit.jpg?raw=true "goephorit")
 ###Package Create/Install###
     python setup.py sdist
     cd ../dist
@@ -2034,6 +2035,10 @@ a remote system, [False] assumes we are copying files locally
 **param excludes:** exclude directory, or file from array
 
 **note:** --delete will delete files on dest if it does not match src 
+
+ ***def sig_exception*** 
+
+      None 
 
  ***def shell*** 
 
