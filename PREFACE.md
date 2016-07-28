@@ -24,34 +24,20 @@ example:
    goephor -f <path>/manifest.yaml -e
 ```
 
-### Example Manifests ###
-https://github.com/itow0001/goephor/tree/master/src/examples
-
-### manifest.yaml ###
+### Basic Example Manifest###
 ```
   name: "Project Name"
   description: "Project Description"
-  ### environment variables here
   globals:
-    - var1: 2
-    - var2: 2
-  ### actions here 
+    - VAR1: "HELLO WORLD"
   actions:
-       ### This is an if statement
-       -  condition.statement.IF:
-          - "${var1}"
-          - "=="
-          - "${var2}"
-          - THEN:
-            ### Run a shell statement
-            - system.terminal.shell:
-               - 'echo "HELLO WORLD"'
-  ### run things on exit
-  on_exit:
      - system.terminal.shell:
-        - 'echo "WORLD HELLO"'
+        - 'echo "${VAR1}"'
      
 ```
+
+### More Example Manifests ###
+https://github.com/itow0001/goephor/tree/master/src/examples
 
 
 
