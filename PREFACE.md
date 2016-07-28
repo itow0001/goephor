@@ -37,8 +37,7 @@ example:
 ```
 
 ### More Example Manifests ###
-https://github.com/itow0001/goephor/tree/master/src/examples
-[src/examples](Click Here)
+[src/examples](More Examples)
 
 
 
