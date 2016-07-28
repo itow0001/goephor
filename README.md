@@ -37,7 +37,7 @@ example:
 ```
 
 ### More Example Manifests ###
-[src/examples](More Examples)
+Located at [src/examples](More Examples)
 
 
 
