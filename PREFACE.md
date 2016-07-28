@@ -1,3 +1,4 @@
+![Alt text](docs/goephorit.jpg?raw=true "goephorit")
 ###Package Create/Install###
     python setup.py sdist
     cd ../dist
