@@ -31,40 +31,26 @@ https://github.com/itow0001/goephor/tree/master/src/examples
 ```
   name: "Project Name"
   description: "Project Description"
+  ### environment variables here
   globals:
-    # change var1, var2 to see different paths use -E "var1=1"
     - var1: 2
     - var2: 2
+  ### actions here 
   actions:
-       # This is an if statement
+       ### This is an if statement
        -  condition.statement.IF:
-                            - "${var1}"
-                            - "=="
-                            - "${var2}"
-                            - THEN:
-                              - system.terminal.shell:
-                                - 'echo "(THEN 1)"'
-                            - ELSE:
-                              - system.terminal.shell:
-                                - "echo '(ELSE 1)'"
-                              # This is a nested if statement
-                              -  condition.statement.IF:
-                                                  - "${var1}"
-                                                  - "=="
-                                                  - "1"
-                                                  - THEN:
-                                                    - system.terminal.shell:
-                                                      - 'echo "(IF NEST 1)"'
-       # This is how to check for a token from output
-       - system.terminal.shell:
-                           - "echo '(PASS)'"
-                           - set_env: "var3"
-       - condition.statement.HAS_TOKEN:
-                           - "(PASS)"
-                           - "${var3}"
-                           - set_env: "IS_TOKEN"
-       - system.terminal.shell:
-                           - ' echo "IS_TOKEN: ${IS_TOKEN}"'
+          - "${var1}"
+          - "=="
+          - "${var2}"
+          - THEN:
+            ### Run a shell statement
+            - system.terminal.shell:
+               - 'echo "HELLO WORLD"'
+  ### run things on exit
+  on_exit:
+     - system.terminal.shell:
+        - 'echo "WORLD HELLO"'
+     
 ```
 
 
