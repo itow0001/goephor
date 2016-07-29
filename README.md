@@ -37,13 +37,13 @@ example:
 ```
 
 ### More Example Manifests ###
-Located at [/src/examples](More Examples)
+Located at [src/examples](./src/examples)
 
 ### DOCS ###
-Located at [/docs/README.md](src docs)
+Located at [docs/README.md](./docs/README.md)
 
 ### API LIST ###
-
+***
 
 
 
