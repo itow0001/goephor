@@ -1,4 +1,5 @@
 ![Alt text](docs/goephorit.jpg?raw=true "goephorit")
+
 ###Package Create/Install###
     python setup.py sdist
     cd ../dist
@@ -23,7 +24,6 @@ optional arguments:
 example: 
    goephor -f <path>/manifest.yaml -e
 ```
-
 ### Basic Example Manifest ###
 ```
   name: "Project Name"
@@ -35,11 +35,10 @@ example:
         - 'echo "${VAR1}"'
      
 ```
-
 ### More Example Manifests ###
 Located at [src/examples](More Examples)
 
-### Source Code References ###
+### Source Code Documentation ###
 
 
 
