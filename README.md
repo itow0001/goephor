@@ -47,7 +47,7 @@ Located at [src/examples](More Examples)
 **********************************************
  File @ ***/goephor.py***
 
- File @ Created on Jan 9, 2016
+Created on Jan 9, 2016
 
 
 **:author:** iitow
@@ -58,13 +58,13 @@ Located at [src/examples](More Examples)
 **********************************************
  File @ ***/__init__.py***
 
- File @ None
+None
 
 **********************************************
 **********************************************
  File @ ***/tests.py***
 
- File @ Created on May 4, 2016
+Created on May 4, 2016
 
 **:author:** iitow
 
@@ -142,19 +142,19 @@ calls all the tests here & collects results
 **********************************************
  File @ ***/goephor/__init__.py***
 
- File @ goephor __init__.py
+goephor __init__.py
 
 **********************************************
 **********************************************
  File @ ***/goephor/_version.py***
 
- File @ None
+None
 
 **********************************************
 **********************************************
  File @ ***/goephor/__main__.py***
 
- File @ Main entry for goephor to menu here
+Main entry for goephor to menu here
 
 
 ***def menu***: 
@@ -172,13 +172,13 @@ This is the entry point for the package cli
 **********************************************
  File @ ***/goephor/core/__init__.py***
 
- File @ Core __init__.py
+Core __init__.py
 
 **********************************************
 **********************************************
  File @ ***/goephor/core/Chain.py***
 
- File @ Contained in this file is the main loops
+Contained in this file is the main loops
 
 **:author:** iitow
 
@@ -269,7 +269,7 @@ Executes all on exit action objects
 **********************************************
  File @ ***/goephor/core/plugins/receipt.py***
 
- File @ Created on Apr 27, 2016
+Created on Apr 27, 2016
 
 
 **:author:** iitow
@@ -413,13 +413,13 @@ Private, convert dict to file
 **********************************************
  File @ ***/goephor/core/plugins/__init__.py***
 
- File @ modules __init__.py
+modules __init__.py
 
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/release.py***
 
- File @ Created on May 12, 2016
+Created on May 12, 2016
 
 @author: iitow
 
@@ -505,7 +505,7 @@ release.utils.next:
 **********************************************
  File @ ***/goephor/core/plugins/string.py***
 
- File @ Created on May 13, 2016
+Created on May 13, 2016
 
 @author: iitow
 
@@ -616,7 +616,7 @@ Private recursively traverse nested json data
 **********************************************
  File @ ***/goephor/core/plugins/scm.py***
 
- File @ Created on Apr 28, 2016
+Created on Apr 28, 2016
 
 @author: iitow
 
@@ -710,7 +710,7 @@ Delete a local repo
 **********************************************
  File @ ***/goephor/core/plugins/handler.py***
 
- File @ Created on Jul 1, 2016
+Created on Jul 1, 2016
 
 @author: iitow
 
@@ -747,7 +747,7 @@ Private, adds configparser values to environment
 **********************************************
  File @ ***/goephor/core/plugins/freebsd.py***
 
- File @ Created on Apr 29, 2016
+Created on Apr 29, 2016
 
 
 **:author:** iitow
@@ -857,7 +857,7 @@ jails Constructor
 **********************************************
  File @ ***/goephor/core/plugins/pluginable.py***
 
- File @ Created on Apr 25, 2016
+Created on Apr 25, 2016
 
 
 **:author:** iitow
@@ -891,7 +891,7 @@ This is a decorator for adding global key,value pairs
 **********************************************
  File @ ***/goephor/core/plugins/environment.py***
 
- File @ Created on Apr 27, 2016
+Created on Apr 27, 2016
 
 
 **:author:** iitow
@@ -971,7 +971,7 @@ Checks if a pth exists
 **********************************************
  File @ ***/goephor/core/plugins/system.py***
 
- File @ Created on Apr 25, 2016
+Created on Apr 25, 2016
 
 
 **:author:** iitow
@@ -1059,7 +1059,7 @@ Perform an rsync
 **********************************************
  File @ ***/goephor/core/plugins/remote.py***
 
- File @ Created on Apr 28, 2016
+Created on Apr 28, 2016
 
 
 **:author:** iitow
@@ -1100,7 +1100,7 @@ Run a command remotely via ssh
 **********************************************
  File @ ***/goephor/core/plugins/example.py***
 
- File @ Created on Apr 27, 2016
+Created on Apr 27, 2016
 
 
 **:author:** iitow
@@ -1138,7 +1138,7 @@ This is an example of setting up an action
 **********************************************
  File @ ***/goephor/core/plugins/http.py***
 
- File @ Created on Apr 29, 2016
+Created on Apr 29, 2016
 
 
 **:author:** iitow
@@ -1189,7 +1189,7 @@ Performs a http restful call
 **********************************************
  File @ ***/goephor/core/plugins/condition.py***
 
- File @ Created on Apr 26, 2016
+Created on Apr 26, 2016
 
 
 **:author:** iitow
@@ -1268,7 +1268,7 @@ Cause a failure generally used with a IF
 **********************************************
  File @ ***/goephor/core/plugins/modules/action.py***
 
- File @ Created on Apr 26, 2016
+Created on Apr 26, 2016
 
 
 **:author:** iitow
@@ -1396,7 +1396,7 @@ execute the instruction
 **********************************************
  File @ ***/goephor/core/plugins/modules/git_kit.py***
 
- File @ Created on Oct 8, 2015
+Created on Oct 8, 2015
 
 
 **:author:** iitow
@@ -1685,13 +1685,13 @@ example. git@github.west.isilon.com:isilon/onefs.git
 **********************************************
  File @ ***/goephor/core/plugins/modules/__init__.py***
 
- File @ None
+None
 
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/log.py***
 
- File @ Created on Jun 3, 2016
+Created on Jun 3, 2016
 
 
 **:author:** iitow
@@ -1714,7 +1714,7 @@ Display a colorized message
 **********************************************
  File @ ***/goephor/core/plugins/modules/environment.py***
 
- File @ Created on Apr 26, 2016
+Created on Apr 26, 2016
 
 
 **:author:** iitow
@@ -1781,7 +1781,7 @@ in a string convert all
 **********************************************
  File @ ***/goephor/core/plugins/modules/remote.py***
 
- File @ Created on Nov 18, 2015
+Created on Nov 18, 2015
 
 
 **:author:** iitow
@@ -1937,7 +1937,7 @@ private Cleans the md5 string produced
 **********************************************
  File @ ***/goephor/core/plugins/modules/terminal.py***
 
- File @ Created on Nov 18, 2015
+Created on Nov 18, 2015
 
 
 **:author:** iitow
@@ -2036,7 +2036,7 @@ cleans .tmp_shell files before exit
 **********************************************
  File @ ***/goephor/core/plugins/modules/http.py***
 
- File @ Created on Jun 2, 2015
+Created on Jun 2, 2015
 
 
 **:author:** iitow
