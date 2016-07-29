@@ -4,7 +4,7 @@ TBD
 1. Create a module in [src/goephor/core/plugins](../src/goephor/core/plugins)
   * Mind the naming of the module as it will be used later.
 2. Lets use [src/goephor/core/plugins/example.py](../src/goephor/core/plugins/example.py) to explore how to create a plugin
-  * Plugins are called using a resolution path as follows ***module.class.def*** to call the example.py plugin a user will add this to his manifest.yaml file:
+  * Plugins are called using a resolution path as follows ***[module].[class].[def]*** to call the example.py plugin a user will add this to his manifest.yaml file:
   ```
   - example.example.runme:
      - "hello"
