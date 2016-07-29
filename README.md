@@ -44,7 +44,6 @@ Located at [src/examples](More Examples)
 
 
 **********************************************
-**********************************************
  File @ ***/goephor.py***
 
 Created on Jan 9, 2016
@@ -55,12 +54,10 @@ Created on Jan 9, 2016
 **:note:** Look to __main__.py for menu logic
 
 **********************************************
-**********************************************
  File @ ***/__init__.py***
 
 None
 
-**********************************************
 **********************************************
  File @ ***/tests.py***
 
@@ -156,18 +153,15 @@ test of core/plugins/system.py
 calls all the tests here & collects results
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/__init__.py***
 
 goephor __init__.py
 
 **********************************************
-**********************************************
  File @ ***/goephor/_version.py***
 
 None
 
-**********************************************
 **********************************************
  File @ ***/goephor/__main__.py***
 
@@ -189,12 +183,10 @@ Parse environment variables from menu comma delimiter
 This is the entry point for the package cli
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/__init__.py***
 
 Core __init__.py
 
-**********************************************
 **********************************************
  File @ ***/goephor/core/Chain.py***
 
@@ -297,7 +289,6 @@ Executes all action objects
 
 Executes all on exit action objects
         
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/receipt.py***
@@ -454,12 +445,10 @@ Private, convert dict to file
 **:param path:** String
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/__init__.py***
 
 modules __init__.py
 
-**********************************************
 **********************************************
  File @ ***/goephor/core/plugins/release.py***
 
@@ -550,7 +539,6 @@ release.utils.next:
    - '7.1.1'
    - set_env: "NEXT_REL"
 ```
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/string.py***
@@ -671,7 +659,6 @@ Private recursively traverse nested json data
 **:return:** value
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/scm.py***
 
 Created on Apr 28, 2016
@@ -771,7 +758,6 @@ Delete a local repo
 ```
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/handler.py***
 
 Created on Jul 1, 2016
@@ -810,7 +796,6 @@ General read configs into environment currently only supports ConfigParser
 ***def _configparser***: 
 
 Private, adds configparser values to environment 
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/freebsd.py***
@@ -932,7 +917,6 @@ jails Constructor
 **:param action_manager:** Obj, from action_manager class
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/pluginable.py***
 
 Created on Apr 25, 2016
@@ -970,7 +954,6 @@ Plugin constructor
 ***def wrapper***: 
 
 This is a decorator for adding global key,value pairs
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/environment.py***
@@ -1057,7 +1040,6 @@ Checks if a pth exists
    - "/some/path"
    - set_env: "VAR1"
 ```
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/system.py***
@@ -1154,7 +1136,6 @@ Perform an rsync
 ```
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/remote.py***
 
 Created on Apr 28, 2016
@@ -1198,7 +1179,6 @@ Run a command remotely via ssh
 ```
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/example.py***
 
 Created on Apr 27, 2016
@@ -1237,7 +1217,6 @@ This is an example of setting up an action
     - "hello"
     - "world"
 ```
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/http.py***
@@ -1291,7 +1270,6 @@ Performs a http restful call
 **
 **: '{"name":****"${BRANCH_NAME}"}'
 ```
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/condition.py***
@@ -1376,7 +1354,6 @@ Cause a failure generally used with a IF
         - condition.statement.FAIL:
            - "Failed because of some issue"
     ```
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/action.py***
@@ -1518,7 +1495,6 @@ can pass info into action Obj before run.
 
 execute the instruction
         
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/git_kit.py***
@@ -1845,12 +1821,10 @@ example. git@github.west.isilon.com:isilon/onefs.git
 **:return:** boolean
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/modules/__init__.py***
 
 None
 
-**********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/log.py***
 
@@ -1874,7 +1848,6 @@ Display a colorized message
 **:param output:** String
 
 **:return:** colorized string
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/environment.py***
@@ -1948,7 +1921,6 @@ Replace all environment variables into command
 
 **:note:** when nested environment variables are used
 in a string convert all
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/remote.py***
@@ -2125,7 +2097,6 @@ private Cleans the md5 string produced
 **:param output:** string from get_MD5
 **********************************************
 **********************************************
-**********************************************
  File @ ***/goephor/core/plugins/modules/terminal.py***
 
 Created on Nov 18, 2015
@@ -2231,7 +2202,6 @@ Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 ***def _exit_clean***: 
 
 cleans .tmp_shell files before exit
-**********************************************
 **********************************************
 **********************************************
  File @ ***/goephor/core/plugins/modules/http.py***
