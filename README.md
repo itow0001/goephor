@@ -37,8 +37,8 @@ example:
 ```
 
 ### Additional info ###
-Example manifests [src/examples](./src/examples)
-Src docs [docs/README.md](./docs/README.md)
+- Example manifests [src/examples](./src/examples)
+- Src docs [docs/README.md](./docs/README.md)
 
 ### API LIST ###
 ***
