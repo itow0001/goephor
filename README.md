@@ -8,7 +8,7 @@
  File @ ***/setup.py***
 
 
-***def readme***
+***def readme***: 
 
 Spits out README.rst for our long_description
 with open('README.rst', 'r') as fobj:
@@ -26,71 +26,71 @@ with open('README.rst', 'r') as fobj:
  File @ ***src/tests.py***
 
 
-***def menu***
+***def menu***: 
 
 argparse menu here
 
-***def test_condition***
+***def test_condition***: 
 
 test of core/plugins/condition.py
 
-***def test_defaults***
+***def test_defaults***: 
 
 test of core/plugins/pluginable.py
 
-***def test_environment***
+***def test_environment***: 
 
 test of core/plugins/environment.py
 
-***def test_freebsd***
+***def test_freebsd***: 
 
 test of core/plugins/freebsd.py
 
-***def test_http***
+***def test_http***: 
 
 test of core/plugins/http.py
 
-***def test_receipt***
+***def test_receipt***: 
 
 test of core/plugins/receipt.py
 
-***def test_remote***
+***def test_remote***: 
 
 test of core/plugins/remote.py
 
-***def test_scm***
+***def test_scm***: 
 
 test of core/plugins/scm.py
 
-***def test_system***
+***def test_system***: 
 
 test of core/plugins/system.py
 
-***def test_release***
+***def test_release***: 
 
 test of core/plugins/release.py
 
-***def test_string***
+***def test_string***: 
 
 test of core/plugins/string.py
 
-***def test_on_exit***
+***def test_on_exit***: 
 
 test of core/Chain.py
 
-***def test_include***
+***def test_include***: 
 
 test of core/plugins/system.py
 
-***def test_fail***
+***def test_fail***: 
 
 test of core/plugins/system.py
 
-***def test_handler***
+***def test_handler***: 
 
 test of core/plugins/system.py
 
-***def tests***
+***def tests***: 
 
 calls all the tests here & collects results
 **********************************************
@@ -106,15 +106,15 @@ calls all the tests here & collects results
  File @ ***src/goephor/__main__.py***
 
 
-***def menu***
+***def menu***: 
 
 argparse menu here
 
-***def parse_envs***
+***def parse_envs***: 
 
 Parse environment variables from menu comma delimiter
 
-***def main***
+***def main***: 
 
 This is the entry point for the package cli
 **********************************************
@@ -126,11 +126,11 @@ This is the entry point for the package cli
  File @ ***src/goephor/core/Chain.py***
 
 
-***class Run***
+***class Run***: 
 
 This is the entry point from the cli and drives components
 
-***def __init__***
+***def __init__***: 
 
 Run Constructor
 
@@ -141,17 +141,17 @@ Run Constructor
 
 **:param debug:** print debug info
 
-***def __enter__***
+***def __enter__***: 
 
 Entry point for Run obj
         
 
-***def __exit__***
+***def __exit__***: 
 
 performs actions on exit of obj
         
 
-***def read_config***
+***def read_config***: 
 
 Allows for reading .yaml or .json files
 
@@ -160,7 +160,7 @@ Allows for reading .yaml or .json files
 
 **:return:** dict
 
-***def _read_yaml***
+***def _read_yaml***: 
 
 Reads in the yaml config
 
@@ -169,7 +169,7 @@ Reads in the yaml config
 
 **:return:** dict
 
-***def _read_json***
+***def _read_json***: 
 
 Reads in the json config
 
@@ -178,33 +178,33 @@ Reads in the json config
 
 **:return:** dict
 
-***def add_envs***
+***def add_envs***: 
 
 Overrides environment variables from cli
 
 
 **:param **envs:** dictionary of environment variables
 
-***def set_envs***
+***def set_envs***: 
 
 sets environment variables inside of manifest
 
 **:params reset:** Boolean, If param exists reset it
 
-***def load_actions***
+***def load_actions***: 
 
 loads actions in to chain resolves yaml/json to a object
 
-***def load_on_exit***
+***def load_on_exit***: 
 
 loads on_exit actions in to chain resolves yaml/json to a object
 
-***def execute_actions***
+***def execute_actions***: 
 
 Executes all action objects
         
 
-***def execute_on_exit***
+***def execute_on_exit***: 
 
 Executes all on exit action objects
         
@@ -213,18 +213,18 @@ Executes all on exit action objects
  File @ ***src/goephor/core/plugins/receipt.py***
 
 
-***class maker***
+***class maker***: 
 
 Receipt creator tasks go here
     
 
-***def __init__***
+***def __init__***: 
 
 maker Constructor
 
 **:param action_manager:** Obj, from action_manager class
 
-***def is_json***
+***def is_json***: 
 
 Is string json?
 
@@ -240,7 +240,7 @@ Is string json?
     - set_env: SOMEVAL
 ```
 
-***def on_actions***
+***def on_actions***: 
 
 This creates a receipt of all actions in the chain
 
@@ -255,7 +255,7 @@ This creates a receipt of all actions in the chain
     - "./receipt.yaml"
 ```
 
-***def custom***
+***def custom***: 
 
 Create a custom receipt from key/value pairs in defaults
 
@@ -273,7 +273,7 @@ Create a custom receipt from key/value pairs in defaults
     - var3: "SOMEVALUE3"
 ```
 
-***def custom_json***
+***def custom_json***: 
 
 produces output file from json data
 
@@ -288,7 +288,7 @@ produces output file from json data
     - somejsonhere
 ```
 
-***def read***
+***def read***: 
 
 Reads in a custom receipt and generates environment variables
 
@@ -302,7 +302,7 @@ Reads in a custom receipt and generates environment variables
    - "receipt.yaml"
 ```
 
-***def add***
+***def add***: 
 
  Add to an existing receipt
  
@@ -322,7 +322,7 @@ Reads in a custom receipt and generates environment variables
  ```
  
 
-***def _to_dict***
+***def _to_dict***: 
 
 Private, Load a file in and output a dict
 
@@ -333,7 +333,7 @@ Private, Load a file in and output a dict
 
 **:return:** Dictionary
 
-***def _str_to_dict***
+***def _str_to_dict***: 
 
 Convert json string to dict
 
@@ -341,7 +341,7 @@ Convert json string to dict
 
 **:return:** Dictionary
 
-***def _to_file***
+***def _to_file***: 
 
 Private, convert dict to file
 
@@ -356,18 +356,18 @@ Private, convert dict to file
  File @ ***src/goephor/core/plugins/release.py***
 
 
-***class utils***
+***class utils***: 
 
 Helper plugin for obtaining release info
     
 
-***def __init__***
+***def __init__***: 
 
 utils Constructor
 
 **:param action_manager:** Obj, from action_manager class
 
-***def date***
+***def date***: 
 
 get the current date
 
@@ -380,7 +380,7 @@ release.utils.date:
    - '%m/%d/%y'
 ```
 
-***def pad***
+***def pad***: 
 
 Provides generic padding to numbers and strings
 
@@ -402,7 +402,7 @@ Provides generic padding to numbers and strings
    - set_env: "PAD"
 ```
 
-***def compare***
+***def compare***: 
 
 Private, compare release numbers
 
@@ -415,7 +415,7 @@ so we split it off
 
 **:example:**
 
-***def next***
+***def next***: 
 
 Get the next available release from Release.json
 for a given build
@@ -438,17 +438,17 @@ release.utils.next:
  File @ ***src/goephor/core/plugins/string.py***
 
 
-***class utils***
+***class utils***: 
 
 Utils class for parsing strings
 
-***def __init__***
+***def __init__***: 
 
 utils Constructor
 
 **:param action_manager:** Obj, from action_manager class
 
-***def println***
+***def println***: 
 
 Generic print line
 
@@ -461,7 +461,7 @@ string.utils.println:
    - "HELLO WORLD"
 ```
 
-***def replace***
+***def replace***: 
 
 String replace on environment variable
 
@@ -477,7 +477,7 @@ string.utils.replace:
    - "new substring"
 ```
 
-***def substring***
+***def substring***: 
 
 Allows you to parse strings using regex
 
@@ -495,7 +495,7 @@ Allows you to parse strings using regex
     - set_env: SOMEVAL
 ```
 
-***def is_json***
+***def is_json***: 
 
 Is string json?
 
@@ -511,7 +511,7 @@ Is string json?
     - set_env: SOMEVAL
 ```
 
-***def get_key***
+***def get_key***: 
 
 Get a key from json string
 
@@ -531,7 +531,7 @@ Get a key from json string
     - set_env: SOMEVAL
 ```
 
-***def traverse***
+***def traverse***: 
 
 Private recursively traverse nested json data
 
@@ -545,19 +545,19 @@ Private recursively traverse nested json data
  File @ ***src/goephor/core/plugins/scm.py***
 
 
-***class git***
+***class git***: 
 
 This class Represents a call to git
     
 
-***def __init__***
+***def __init__***: 
 
 git Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def latest_commit***
+***def latest_commit***: 
 
 get the latest commit info from a branch
 
@@ -580,7 +580,7 @@ get the latest commit info from a branch
               - "sha1"
 ```
 
-***def clone***
+***def clone***: 
 
 Clone a git repo
 
@@ -603,7 +603,7 @@ Clone a git repo
               - "git@github.west.isilon.com:eng-tools/goephor"
 ```
 
-***def checkout***
+***def checkout***: 
 
 checkout a local branch
 
@@ -619,7 +619,7 @@ checkout a local branch
               - "refactor"
 ```
 
-***def delete***
+***def delete***: 
 
 Delete a local repo
 
@@ -635,18 +635,18 @@ Delete a local repo
  File @ ***src/goephor/core/plugins/handler.py***
 
 
-***class file***
+***class file***: 
 
 General class can read configuration files
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def readconfig***
+***def readconfig***: 
 
 General read configs into environment currently only supports ConfigParser
 
@@ -660,7 +660,7 @@ General read configs into environment currently only supports ConfigParser
    - "${CFG}"
 ```
 
-***def _configparser***
+***def _configparser***: 
 
 Private, adds configparser values to environment 
 **********************************************
@@ -668,26 +668,26 @@ Private, adds configparser values to environment
  File @ ***src/goephor/core/plugins/freebsd.py***
 
 
-***class terminal***
+***class terminal***: 
 
 Freebsd specific commands go here
 
-***class pkg***
+***class pkg***: 
 
 Freebsd package commands go here
 
-***class jails***
+***class jails***: 
 
 Freebsd jail management commands go here
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def jls***
+***def jls***: 
 
 Runs the jls command
 
@@ -705,7 +705,7 @@ Runs the jls command
     - "jid"
 ```
 
-***def jexec***
+***def jexec***: 
 
 Runs a command within a jail
 
@@ -723,7 +723,7 @@ Runs a command within a jail
     - "2"
 ```
 
-***def fetch***
+***def fetch***: 
 
 Use fetch to get things from url path
 
@@ -741,14 +741,14 @@ Use fetch to get things from url path
     - "http://SomeUrl/to/file"
 ```
 
-***def __init__***
+***def __init__***: 
 
 pkg Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def install***
+***def install***: 
 
 Install a package
 
@@ -762,7 +762,7 @@ Install a package
     - "texinfo"
 ```
 
-***def __init__***
+***def __init__***: 
 
 jails Constructor
 
@@ -773,28 +773,28 @@ jails Constructor
  File @ ***src/goephor/core/plugins/pluginable.py***
 
 
-***class DecoMeta***
+***class DecoMeta***: 
 
 This is a meta class for decorating all classes
 
-***class Plugin***
+***class Plugin***: 
 
 This is the base class for a plugin
     
 
-***def __new__***
+***def __new__***: 
 
 Allows for grabbing class info for parsing
 
-***def deco***
+***def deco***: 
 
 We use this to append defaults actions here
 
-***def __init__***
+***def __init__***: 
 
 Plugin constructor
 
-***def wrapper***
+***def wrapper***: 
 
 This is a decorator for adding global key,value pairs
 **********************************************
@@ -802,24 +802,24 @@ This is a decorator for adding global key,value pairs
  File @ ***src/goephor/core/plugins/environment.py***
 
 
-***class env***
+***class env***: 
 
 Environment specific tasks go here
     
 
-***class utils***
+***class utils***: 
 
 Environment utilities
     
 
-***def __init__***
+***def __init__***: 
 
 env Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def set***
+***def set***: 
 
 Set an environment variable
 
@@ -835,7 +835,7 @@ Set an environment variable
    - "some value"
 ```
 
-***def unset***
+***def unset***: 
 
 Unset an environment variable
 
@@ -850,14 +850,14 @@ Unset an environment variable
    - "VAR1"
 ```
 
-***def __init__***
+***def __init__***: 
 
 env Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def has_path***
+***def has_path***: 
 
 Checks if a pth exists
 
@@ -877,22 +877,22 @@ Checks if a pth exists
  File @ ***src/goephor/core/plugins/system.py***
 
 
-***class include***
+***class include***: 
 
 General class to include other files
 
-***class terminal***
+***class terminal***: 
 
 General nix system commands go here
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def manifest***
+***def manifest***: 
 
 This allows you to link a external manifests into your script
 
@@ -909,14 +909,14 @@ This allows you to link a external manifests into your script
     - VAR1: "SOMEVALUE"
 ```
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def shell***
+***def shell***: 
 
 Run a shell command
 
@@ -929,7 +929,7 @@ Run a shell command
     - 'echo " THIS IS IT"'
 ```
 
-***def rsync***
+***def rsync***: 
 
 Perform an rsync
 
@@ -960,18 +960,18 @@ Perform an rsync
  File @ ***src/goephor/core/plugins/remote.py***
 
 
-***class ssh***
+***class ssh***: 
 
 This class can perform ssh commands
 
-***def __init__***
+***def __init__***: 
 
 ssh Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def cmd***
+***def cmd***: 
 
 Run a command remotely via ssh
 
@@ -996,19 +996,19 @@ Run a command remotely via ssh
  File @ ***src/goephor/core/plugins/example.py***
 
 
-***class example***
+***class example***: 
 
 This class Represents an example
     
 
-***def __init__***
+***def __init__***: 
 
 example Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def runme***
+***def runme***: 
 
 This is an example of setting up an action
 
@@ -1029,18 +1029,18 @@ This is an example of setting up an action
  File @ ***src/goephor/core/plugins/http.py***
 
 
-***class rest***
+***class rest***: 
 
 This class handles all rest actions
 
-***def __init__***
+***def __init__***: 
 
 rest Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def send***
+***def send***: 
 
 Performs a http restful call
 
@@ -1075,24 +1075,24 @@ Performs a http restful call
  File @ ***src/goephor/core/plugins/condition.py***
 
 
-***class statement***
+***class statement***: 
 
 Conditional statements go here
 
-***def __init__***
+***def __init__***: 
 
 statement Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def add_obj***
+***def add_obj***: 
 
 Private def to add action out of band
 
 **:param clause:** dict, if statement
 
-***def IF***
+***def IF***: 
 
 Represents an if statement
 
@@ -1119,7 +1119,7 @@ Represents an if statement
                             - "echo 'ELSE IS HAPPENING'"
 ```
 
-***def HAS_TOKEN***
+***def HAS_TOKEN***: 
 
 Check if a string exists in some output
 
@@ -1135,7 +1135,7 @@ Check if a string exists in some output
                             -set_env: VAR1
 ```
 
-***def FAIL***
+***def FAIL***: 
 
 Cause a failure generally used with a IF
 
@@ -1149,7 +1149,7 @@ Cause a failure generally used with a IF
  File @ ***src/goephor/core/plugins/modules/action.py***
 
 
-***class Manager***
+***class Manager***: 
 
 This class manages state of action objects
 
@@ -1157,11 +1157,11 @@ This class manages state of action objects
 **:note:** This is passed into each of the plugins and can be used to manage
 Serveral states.
 
-***class Action***
+***class Action***: 
 
 Object containing instructions to create and execute actions
 
-***def __init__***
+***def __init__***: 
 
 Constructor
 
@@ -1174,7 +1174,7 @@ Constructor
 
 **:param debug:** set debug
 
-***def to_obj***
+***def to_obj***: 
 
 Converts action dictionary to action obj
 
@@ -1187,14 +1187,14 @@ Converts action dictionary to action obj
 the obj back to each Action Obj which gives the class full
 access to initialize nest actions and have access to environment.
 
-***def add***
+***def add***: 
 
 Append an action obj to chain
 
 
 **:param action_obj:** Obj
 
-***def insert***
+***def insert***: 
 
 Insert action object at a given index in the chain
 
@@ -1203,7 +1203,7 @@ Insert action object at a given index in the chain
 
 **:param action_obj:** Obj
 
-***def get_index***
+***def get_index***: 
 
 Get the index number of an action object in the chain
 
@@ -1212,7 +1212,7 @@ Get the index number of an action object in the chain
 
 **:note:** See plugins.condition for usage
 
-***def __init__***
+***def __init__***: 
 
 Constructor
 
@@ -1231,7 +1231,7 @@ Constructor
 
 **:param action_manager:** Obj
 
-***def __repr__***
+***def __repr__***: 
 
 Override container name so we can match the array in the chain
 
@@ -1239,15 +1239,15 @@ Override container name so we can match the array in the chain
 **:note:** This is how we match chain to current
 plugin using object.__repr__(self)
 
-***def set_ignore***
+***def set_ignore***: 
 
 catch the ignore parameter and delete it in defaults
 
-***def get_receipt***
+***def get_receipt***: 
 
 return a dictionary of all Action info
 
-***def pprint***
+***def pprint***: 
 
 print state about the object pretty
 
@@ -1256,14 +1256,14 @@ print state about the object pretty
 
 **:param footer:** String
 
-***def _init_instance***
+***def _init_instance***: 
 
 Initializes the class
 
 **:note:** we initialize the plugin class so we
 can pass info into action Obj before run.
 
-***def execute***
+***def execute***: 
 
 execute the instruction
         
@@ -1272,32 +1272,32 @@ execute the instruction
  File @ ***src/goephor/core/plugins/modules/git_kit.py***
 
 
-***class Repo_actions***
+***class Repo_actions***: 
 
 None
 
-***class Commit_actions***
+***class Commit_actions***: 
 
 This class handles all commit type actions
     
 
-***class Branch_actions***
+***class Branch_actions***: 
 
 This class handles all branch related actions
 
 
 **:requires:** Repo obj
 
-***class Remote_actions***
+***class Remote_actions***: 
 
 This class handles all remote actions
     
 
-***def __init__***
+***def __init__***: 
 
 Initialize Repo actions
 
-***def _set_ssh_config***
+***def _set_ssh_config***: 
 
 This turns off host verification
 
@@ -1306,11 +1306,11 @@ This turns off host verification
 
 **:param git_host:** example. github.west.isilon.com
 
-***def _set_dirs***
+***def _set_dirs***: 
 
 None
 
-***def attach***
+***def attach***: 
 
 attach to a git repo on your local system
 
@@ -1319,11 +1319,11 @@ attach to a git repo on your local system
 
 **:return:** boolean, success/failure
 
-***def _initial_commit***
+***def _initial_commit***: 
 
 To fully init an empty rep
 
-***def init***
+***def init***: 
 
 Initialize a new repo on your local system
 
@@ -1336,7 +1336,7 @@ to run like a src repo
 **:note:** Shared repositories should always be created with the set_bare
 flag and should be stored in a directory called <projectname>.git
 
-***def clone***
+***def clone***: 
 
 Clone a repository from a remote location
 
@@ -1346,18 +1346,18 @@ example. git@github.west.isilon.com:iitow/scm-tools.git
 
 **:return:** boolean, success/failure
 
-***def untracked_files***
+***def untracked_files***: 
 
 list all untracked files
 
 
 **:return:** list of untracked files
 
-***def __init__***
+***def __init__***: 
 
 None
 
-***def commit***
+***def commit***: 
 
 Commits changes
 
@@ -1366,7 +1366,7 @@ Commits changes
 
 **:return:** boolean, success/failure
 
-***def cherry_pick***
+***def cherry_pick***: 
 
 Cherry picks a commit
 
@@ -1375,25 +1375,25 @@ Cherry picks a commit
 
 **:return:** boolean True/False
 
-***def diff_tree***
+***def diff_tree***: 
 
 Performs a diff tree against current and sha1
 
 
 **:param sha1_str:** String
 
-***def search_log***
+***def search_log***: 
 
 Search logs for a given token
 
 
 **:param search:** String token
 
-***def latest***
+***def latest***: 
 
 None
 
-***def add***
+***def add***: 
 
 adds files to git index
 
@@ -1402,11 +1402,11 @@ adds files to git index
 
 **:return:** boolean, success/failure
 
-***def __init__***
+***def __init__***: 
 
 None
 
-***def branch***
+***def branch***: 
 
 Creates a new local branch
 
@@ -1415,7 +1415,7 @@ Creates a new local branch
 
 **:return:** boolean, success/failure
 
-***def branch_from***
+***def branch_from***: 
 
 Create a branch from existing branch
 
@@ -1424,14 +1424,14 @@ Create a branch from existing branch
 
 **:param dest_branch:** new branch name
 
-***def branch_is***
+***def branch_is***: 
 
 provides the current branch
 
 
 **:return:** the current branch
 
-***def branch_list***
+***def branch_list***: 
 
 provides a list of all branches
 
@@ -1440,7 +1440,7 @@ provides a list of all branches
 
 **:return:** list of git.branch objects
 
-***def has_reference***
+***def has_reference***: 
 
 Search for reference
 
@@ -1449,7 +1449,7 @@ Search for reference
 
 **:return:** reference obj
 
-***def has_head***
+***def has_head***: 
 
 Search for branch head
 
@@ -1458,7 +1458,7 @@ Search for branch head
 
 **:return:** head obj
 
-***def checkout***
+***def checkout***: 
 
 checks out a specific branch
 
@@ -1469,7 +1469,7 @@ checks out a specific branch
 
 **:return:** boolean, success/failure
 
-***def push***
+***def push***: 
 
 Push branch to remote
 
@@ -1480,7 +1480,7 @@ Push branch to remote
 
 **:return:** boolean
 
-***def remote_delete***
+***def remote_delete***: 
 
 Deletes branch from github remote
 
@@ -1491,7 +1491,7 @@ Deletes branch from github remote
 
 **:return:** boolean
 
-***def delete***
+***def delete***: 
 
 Delete local branch
 
@@ -1502,19 +1502,19 @@ Delete local branch
 
 **:return:** boolean
 
-***def __init__***
+***def __init__***: 
 
 Remote_actions Constructor
 
-***def list***
+***def list***: 
 
 None
 
-***def has_remote***
+***def has_remote***: 
 
 None
 
-***def add***
+***def add***: 
 
 add a remote to repo
 
@@ -1525,7 +1525,7 @@ add a remote to repo
 
 **:return:** boolean True/False
 
-***def fork_sync***
+***def fork_sync***: 
 
 Syncs a fork of repo with another repository
 
@@ -1537,7 +1537,7 @@ example. git@github.west.isilon.com:iitow/onefs.git
 
 **:return:** boolean True/False
 
-***def fetch***
+***def fetch***: 
 
 Fetch remote branches
 
@@ -1560,11 +1560,11 @@ example. git@github.west.isilon.com:isilon/onefs.git
  File @ ***src/goephor/core/plugins/modules/log.py***
 
 
-***def colors***
+***def colors***: 
 
 Types of colors to display
 
-***def message***
+***def message***: 
 
 Display a colorized message
 
@@ -1578,7 +1578,7 @@ Display a colorized message
  File @ ***src/goephor/core/plugins/modules/environment.py***
 
 
-***class EnvManager***
+***class EnvManager***: 
 
 Management of runtime environment
 
@@ -1587,14 +1587,14 @@ Management of runtime environment
 when the action obj is initialized
 Its contained within the action_manager.
 
-***def __init__***
+***def __init__***: 
 
 Constructor
 
 
 **:param debug:** Bool
 
-***def set***
+***def set***: 
 
 set an environment variable
 
@@ -1605,28 +1605,28 @@ set an environment variable
 
 **:param reset:** Bool, if false it will not override an existing env value
 
-***def unset***
+***def unset***: 
 
 unset environment variable
 
 
 **:param value:** String
 
-***def get***
+***def get***: 
 
 get an environment variable
 
 
 **:param key:** String
 
-***def sanitize***
+***def sanitize***: 
 
 sanitizes environment variables in a given values
 
 
 **:param values:** List
 
-***def _sanitize***
+***def _sanitize***: 
 
 Replace all environment variables into command
 
@@ -1640,12 +1640,12 @@ in a string convert all
  File @ ***src/goephor/core/plugins/modules/remote.py***
 
 
-***class Run***
+***class Run***: 
 
 This class represents a remote machine
 using SSH to perform all needed actions
 
-***def __init__***
+***def __init__***: 
 
 Initializes a Remote session
 
@@ -1663,13 +1663,13 @@ Initializes a Remote session
 
 **:param show_cmd:** show the command given to remote server
 
-***def is_alive***
+***def is_alive***: 
 
 Pings the remote to make sure its a valid address
 
 **:return:** boolean
 
-***def is_alive_poll***
+***def is_alive_poll***: 
 
 Polls for a ping
 
@@ -1677,13 +1677,13 @@ Polls for a ping
 
 **:return:** boolean
 
-***def is_writable***
+***def is_writable***: 
 
 Check to make sure the file system is writable
 
 **:return:** boolean
 
-***def is_writable_poll***
+***def is_writable_poll***: 
 
 Check to make sure file system is writable poll
 
@@ -1691,13 +1691,13 @@ Check to make sure file system is writable poll
 
 **:return:** boolean
 
-***def has_access***
+***def has_access***: 
 
 Does a key already exist on the remote?
 
 **:return:** boolean
 
-***def has_file***
+***def has_file***: 
 
 Does a file exist on the remote?
 
@@ -1705,7 +1705,7 @@ Does a file exist on the remote?
 
 **:param file:** name of the file
 
-***def has_dir***
+***def has_dir***: 
 
 Does a file exist on the remote?
 
@@ -1714,7 +1714,7 @@ Does a file exist on the remote?
 **:param file:** name of the file
 :return boolean
 
-***def remove***
+***def remove***: 
 
 Remove a file or directory on remote
 
@@ -1724,7 +1724,7 @@ Remove a file or directory on remote
 
 **:return:** boolean
 
-***def move***
+***def move***: 
 
 Perform a move operation
 
@@ -1732,7 +1732,7 @@ Perform a move operation
 
 **:param dest:** String
 
-***def copy***
+***def copy***: 
 
 Perform a copy operation
 
@@ -1740,19 +1740,19 @@ Perform a copy operation
 
 **:param dest:** String
 
-***def set_rsa***
+***def set_rsa***: 
 
 Put a rsa key on the remote
 
 **:return:** None
 
-***def cmd***
+***def cmd***: 
 
 Runs a shell command on the remote
 
 **:return:** session info
 
-***def find***
+***def find***: 
 
 Finds a file on the remote system returns a list of values
 
@@ -1762,24 +1762,24 @@ Finds a file on the remote system returns a list of values
 
 **:return:** output from the session
 
-***def os_type***
+***def os_type***: 
 
 Gets the os type of the system
 
 **:return:** returns os string
 
-***def onefs_version***
+***def onefs_version***: 
 
 Get onefs os version
 
-***def get_MD5***
+***def get_MD5***: 
 
 gets the md5sum of a file
 Supports Freebsd and Linux
 
 **:return:** md5 string
 
-***def _clean_MD5***
+***def _clean_MD5***: 
 
 private Cleans the md5 string produced
 
@@ -1791,14 +1791,14 @@ private Cleans the md5 string produced
  File @ ***src/goephor/core/plugins/modules/terminal.py***
 
 
-***def waitfor***
+***def waitfor***: 
 
 poll the child for input
 
 
 **:param fd:** forked process
 
-***def event***
+***def event***: 
 
 find all output and inspect it for searches dict key & value
 
@@ -1807,7 +1807,7 @@ find all output and inspect it for searches dict key & value
 
 **:param searches:** dictionary key value pair
 
-***def set_rsa***
+***def set_rsa***: 
 
 logs into system via ssh
 and appends to authorized_keys using username password
@@ -1823,14 +1823,14 @@ and appends to authorized_keys using username password
 
 **:param home_dir:** home directory for user
 
-***def create_rsa_public***
+***def create_rsa_public***: 
 
 generate a public key from the private key
 
 
 **:param rsa_private:** path to private key
 
-***def ssh***
+***def ssh***: 
 
 Run a single ssh command on a remote server
 
@@ -1839,7 +1839,7 @@ Run a single ssh command on a remote server
 
 **:param cmd:** single command you wish to run
 
-***def rsync***
+***def rsync***: 
 
 Performs an rsync of files; requires ssh keys setup.
 
@@ -1860,11 +1860,11 @@ a remote system, [False] assumes we are copying files locally
 
 **:note:** --delete will delete files on dest if it does not match src
 
-***def sig_exception***
+***def sig_exception***: 
 
 None
 
-***def shell***
+***def shell***: 
 
 Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 
@@ -1877,7 +1877,7 @@ Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 
 **:return:**  {command, stdout, code} as dict
 
-***def _exit_clean***
+***def _exit_clean***: 
 
 cleans .tmp_shell files before exit
 **********************************************
@@ -1885,17 +1885,17 @@ cleans .tmp_shell files before exit
  File @ ***src/goephor/core/plugins/modules/http.py***
 
 
-***class Restful***
+***class Restful***: 
 
 Perform restful calls with this class
     
 
-***def __init__***
+***def __init__***: 
 
 Generic class to handle All types of
 Restful requests
 
-***def send***
+***def send***: 
 
 send http restful requests
 
@@ -1913,7 +1913,7 @@ send http restful requests
  File @ ***/setup.py***
 
 
-***def readme***
+***def readme***: 
 
 Spits out README.rst for our long_description
 with open('README.rst', 'r') as fobj:
@@ -1931,71 +1931,71 @@ with open('README.rst', 'r') as fobj:
  File @ ***src/tests.py***
 
 
-***def menu***
+***def menu***: 
 
 argparse menu here
 
-***def test_condition***
+***def test_condition***: 
 
 test of core/plugins/condition.py
 
-***def test_defaults***
+***def test_defaults***: 
 
 test of core/plugins/pluginable.py
 
-***def test_environment***
+***def test_environment***: 
 
 test of core/plugins/environment.py
 
-***def test_freebsd***
+***def test_freebsd***: 
 
 test of core/plugins/freebsd.py
 
-***def test_http***
+***def test_http***: 
 
 test of core/plugins/http.py
 
-***def test_receipt***
+***def test_receipt***: 
 
 test of core/plugins/receipt.py
 
-***def test_remote***
+***def test_remote***: 
 
 test of core/plugins/remote.py
 
-***def test_scm***
+***def test_scm***: 
 
 test of core/plugins/scm.py
 
-***def test_system***
+***def test_system***: 
 
 test of core/plugins/system.py
 
-***def test_release***
+***def test_release***: 
 
 test of core/plugins/release.py
 
-***def test_string***
+***def test_string***: 
 
 test of core/plugins/string.py
 
-***def test_on_exit***
+***def test_on_exit***: 
 
 test of core/Chain.py
 
-***def test_include***
+***def test_include***: 
 
 test of core/plugins/system.py
 
-***def test_fail***
+***def test_fail***: 
 
 test of core/plugins/system.py
 
-***def test_handler***
+***def test_handler***: 
 
 test of core/plugins/system.py
 
-***def tests***
+***def tests***: 
 
 calls all the tests here & collects results
 **********************************************
@@ -2011,15 +2011,15 @@ calls all the tests here & collects results
  File @ ***src/goephor/__main__.py***
 
 
-***def menu***
+***def menu***: 
 
 argparse menu here
 
-***def parse_envs***
+***def parse_envs***: 
 
 Parse environment variables from menu comma delimiter
 
-***def main***
+***def main***: 
 
 This is the entry point for the package cli
 **********************************************
@@ -2031,11 +2031,11 @@ This is the entry point for the package cli
  File @ ***src/goephor/core/Chain.py***
 
 
-***class Run***
+***class Run***: 
 
 This is the entry point from the cli and drives components
 
-***def __init__***
+***def __init__***: 
 
 Run Constructor
 
@@ -2046,17 +2046,17 @@ Run Constructor
 
 **:param debug:** print debug info
 
-***def __enter__***
+***def __enter__***: 
 
 Entry point for Run obj
         
 
-***def __exit__***
+***def __exit__***: 
 
 performs actions on exit of obj
         
 
-***def read_config***
+***def read_config***: 
 
 Allows for reading .yaml or .json files
 
@@ -2065,7 +2065,7 @@ Allows for reading .yaml or .json files
 
 **:return:** dict
 
-***def _read_yaml***
+***def _read_yaml***: 
 
 Reads in the yaml config
 
@@ -2074,7 +2074,7 @@ Reads in the yaml config
 
 **:return:** dict
 
-***def _read_json***
+***def _read_json***: 
 
 Reads in the json config
 
@@ -2083,33 +2083,33 @@ Reads in the json config
 
 **:return:** dict
 
-***def add_envs***
+***def add_envs***: 
 
 Overrides environment variables from cli
 
 
 **:param **envs:** dictionary of environment variables
 
-***def set_envs***
+***def set_envs***: 
 
 sets environment variables inside of manifest
 
 **:params reset:** Boolean, If param exists reset it
 
-***def load_actions***
+***def load_actions***: 
 
 loads actions in to chain resolves yaml/json to a object
 
-***def load_on_exit***
+***def load_on_exit***: 
 
 loads on_exit actions in to chain resolves yaml/json to a object
 
-***def execute_actions***
+***def execute_actions***: 
 
 Executes all action objects
         
 
-***def execute_on_exit***
+***def execute_on_exit***: 
 
 Executes all on exit action objects
         
@@ -2118,18 +2118,18 @@ Executes all on exit action objects
  File @ ***src/goephor/core/plugins/receipt.py***
 
 
-***class maker***
+***class maker***: 
 
 Receipt creator tasks go here
     
 
-***def __init__***
+***def __init__***: 
 
 maker Constructor
 
 **:param action_manager:** Obj, from action_manager class
 
-***def is_json***
+***def is_json***: 
 
 Is string json?
 
@@ -2145,7 +2145,7 @@ Is string json?
     - set_env: SOMEVAL
 ```
 
-***def on_actions***
+***def on_actions***: 
 
 This creates a receipt of all actions in the chain
 
@@ -2160,7 +2160,7 @@ This creates a receipt of all actions in the chain
     - "./receipt.yaml"
 ```
 
-***def custom***
+***def custom***: 
 
 Create a custom receipt from key/value pairs in defaults
 
@@ -2178,7 +2178,7 @@ Create a custom receipt from key/value pairs in defaults
     - var3: "SOMEVALUE3"
 ```
 
-***def custom_json***
+***def custom_json***: 
 
 produces output file from json data
 
@@ -2193,7 +2193,7 @@ produces output file from json data
     - somejsonhere
 ```
 
-***def read***
+***def read***: 
 
 Reads in a custom receipt and generates environment variables
 
@@ -2207,7 +2207,7 @@ Reads in a custom receipt and generates environment variables
    - "receipt.yaml"
 ```
 
-***def add***
+***def add***: 
 
  Add to an existing receipt
  
@@ -2227,7 +2227,7 @@ Reads in a custom receipt and generates environment variables
  ```
  
 
-***def _to_dict***
+***def _to_dict***: 
 
 Private, Load a file in and output a dict
 
@@ -2238,7 +2238,7 @@ Private, Load a file in and output a dict
 
 **:return:** Dictionary
 
-***def _str_to_dict***
+***def _str_to_dict***: 
 
 Convert json string to dict
 
@@ -2246,7 +2246,7 @@ Convert json string to dict
 
 **:return:** Dictionary
 
-***def _to_file***
+***def _to_file***: 
 
 Private, convert dict to file
 
@@ -2261,18 +2261,18 @@ Private, convert dict to file
  File @ ***src/goephor/core/plugins/release.py***
 
 
-***class utils***
+***class utils***: 
 
 Helper plugin for obtaining release info
     
 
-***def __init__***
+***def __init__***: 
 
 utils Constructor
 
 **:param action_manager:** Obj, from action_manager class
 
-***def date***
+***def date***: 
 
 get the current date
 
@@ -2285,7 +2285,7 @@ release.utils.date:
    - '%m/%d/%y'
 ```
 
-***def pad***
+***def pad***: 
 
 Provides generic padding to numbers and strings
 
@@ -2307,7 +2307,7 @@ Provides generic padding to numbers and strings
    - set_env: "PAD"
 ```
 
-***def compare***
+***def compare***: 
 
 Private, compare release numbers
 
@@ -2320,7 +2320,7 @@ so we split it off
 
 **:example:**
 
-***def next***
+***def next***: 
 
 Get the next available release from Release.json
 for a given build
@@ -2343,17 +2343,17 @@ release.utils.next:
  File @ ***src/goephor/core/plugins/string.py***
 
 
-***class utils***
+***class utils***: 
 
 Utils class for parsing strings
 
-***def __init__***
+***def __init__***: 
 
 utils Constructor
 
 **:param action_manager:** Obj, from action_manager class
 
-***def println***
+***def println***: 
 
 Generic print line
 
@@ -2366,7 +2366,7 @@ string.utils.println:
    - "HELLO WORLD"
 ```
 
-***def replace***
+***def replace***: 
 
 String replace on environment variable
 
@@ -2382,7 +2382,7 @@ string.utils.replace:
    - "new substring"
 ```
 
-***def substring***
+***def substring***: 
 
 Allows you to parse strings using regex
 
@@ -2400,7 +2400,7 @@ Allows you to parse strings using regex
     - set_env: SOMEVAL
 ```
 
-***def is_json***
+***def is_json***: 
 
 Is string json?
 
@@ -2416,7 +2416,7 @@ Is string json?
     - set_env: SOMEVAL
 ```
 
-***def get_key***
+***def get_key***: 
 
 Get a key from json string
 
@@ -2436,7 +2436,7 @@ Get a key from json string
     - set_env: SOMEVAL
 ```
 
-***def traverse***
+***def traverse***: 
 
 Private recursively traverse nested json data
 
@@ -2450,19 +2450,19 @@ Private recursively traverse nested json data
  File @ ***src/goephor/core/plugins/scm.py***
 
 
-***class git***
+***class git***: 
 
 This class Represents a call to git
     
 
-***def __init__***
+***def __init__***: 
 
 git Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def latest_commit***
+***def latest_commit***: 
 
 get the latest commit info from a branch
 
@@ -2485,7 +2485,7 @@ get the latest commit info from a branch
               - "sha1"
 ```
 
-***def clone***
+***def clone***: 
 
 Clone a git repo
 
@@ -2508,7 +2508,7 @@ Clone a git repo
               - "git@github.west.isilon.com:eng-tools/goephor"
 ```
 
-***def checkout***
+***def checkout***: 
 
 checkout a local branch
 
@@ -2524,7 +2524,7 @@ checkout a local branch
               - "refactor"
 ```
 
-***def delete***
+***def delete***: 
 
 Delete a local repo
 
@@ -2540,18 +2540,18 @@ Delete a local repo
  File @ ***src/goephor/core/plugins/handler.py***
 
 
-***class file***
+***class file***: 
 
 General class can read configuration files
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def readconfig***
+***def readconfig***: 
 
 General read configs into environment currently only supports ConfigParser
 
@@ -2565,7 +2565,7 @@ General read configs into environment currently only supports ConfigParser
    - "${CFG}"
 ```
 
-***def _configparser***
+***def _configparser***: 
 
 Private, adds configparser values to environment 
 **********************************************
@@ -2573,26 +2573,26 @@ Private, adds configparser values to environment
  File @ ***src/goephor/core/plugins/freebsd.py***
 
 
-***class terminal***
+***class terminal***: 
 
 Freebsd specific commands go here
 
-***class pkg***
+***class pkg***: 
 
 Freebsd package commands go here
 
-***class jails***
+***class jails***: 
 
 Freebsd jail management commands go here
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def jls***
+***def jls***: 
 
 Runs the jls command
 
@@ -2610,7 +2610,7 @@ Runs the jls command
     - "jid"
 ```
 
-***def jexec***
+***def jexec***: 
 
 Runs a command within a jail
 
@@ -2628,7 +2628,7 @@ Runs a command within a jail
     - "2"
 ```
 
-***def fetch***
+***def fetch***: 
 
 Use fetch to get things from url path
 
@@ -2646,14 +2646,14 @@ Use fetch to get things from url path
     - "http://SomeUrl/to/file"
 ```
 
-***def __init__***
+***def __init__***: 
 
 pkg Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def install***
+***def install***: 
 
 Install a package
 
@@ -2667,7 +2667,7 @@ Install a package
     - "texinfo"
 ```
 
-***def __init__***
+***def __init__***: 
 
 jails Constructor
 
@@ -2678,28 +2678,28 @@ jails Constructor
  File @ ***src/goephor/core/plugins/pluginable.py***
 
 
-***class DecoMeta***
+***class DecoMeta***: 
 
 This is a meta class for decorating all classes
 
-***class Plugin***
+***class Plugin***: 
 
 This is the base class for a plugin
     
 
-***def __new__***
+***def __new__***: 
 
 Allows for grabbing class info for parsing
 
-***def deco***
+***def deco***: 
 
 We use this to append defaults actions here
 
-***def __init__***
+***def __init__***: 
 
 Plugin constructor
 
-***def wrapper***
+***def wrapper***: 
 
 This is a decorator for adding global key,value pairs
 **********************************************
@@ -2707,24 +2707,24 @@ This is a decorator for adding global key,value pairs
  File @ ***src/goephor/core/plugins/environment.py***
 
 
-***class env***
+***class env***: 
 
 Environment specific tasks go here
     
 
-***class utils***
+***class utils***: 
 
 Environment utilities
     
 
-***def __init__***
+***def __init__***: 
 
 env Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def set***
+***def set***: 
 
 Set an environment variable
 
@@ -2740,7 +2740,7 @@ Set an environment variable
    - "some value"
 ```
 
-***def unset***
+***def unset***: 
 
 Unset an environment variable
 
@@ -2755,14 +2755,14 @@ Unset an environment variable
    - "VAR1"
 ```
 
-***def __init__***
+***def __init__***: 
 
 env Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def has_path***
+***def has_path***: 
 
 Checks if a pth exists
 
@@ -2782,22 +2782,22 @@ Checks if a pth exists
  File @ ***src/goephor/core/plugins/system.py***
 
 
-***class include***
+***class include***: 
 
 General class to include other files
 
-***class terminal***
+***class terminal***: 
 
 General nix system commands go here
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def manifest***
+***def manifest***: 
 
 This allows you to link a external manifests into your script
 
@@ -2814,14 +2814,14 @@ This allows you to link a external manifests into your script
     - VAR1: "SOMEVALUE"
 ```
 
-***def __init__***
+***def __init__***: 
 
 terminal Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def shell***
+***def shell***: 
 
 Run a shell command
 
@@ -2834,7 +2834,7 @@ Run a shell command
     - 'echo " THIS IS IT"'
 ```
 
-***def rsync***
+***def rsync***: 
 
 Perform an rsync
 
@@ -2865,18 +2865,18 @@ Perform an rsync
  File @ ***src/goephor/core/plugins/remote.py***
 
 
-***class ssh***
+***class ssh***: 
 
 This class can perform ssh commands
 
-***def __init__***
+***def __init__***: 
 
 ssh Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def cmd***
+***def cmd***: 
 
 Run a command remotely via ssh
 
@@ -2901,19 +2901,19 @@ Run a command remotely via ssh
  File @ ***src/goephor/core/plugins/example.py***
 
 
-***class example***
+***class example***: 
 
 This class Represents an example
     
 
-***def __init__***
+***def __init__***: 
 
 example Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def runme***
+***def runme***: 
 
 This is an example of setting up an action
 
@@ -2934,18 +2934,18 @@ This is an example of setting up an action
  File @ ***src/goephor/core/plugins/http.py***
 
 
-***class rest***
+***class rest***: 
 
 This class handles all rest actions
 
-***def __init__***
+***def __init__***: 
 
 rest Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def send***
+***def send***: 
 
 Performs a http restful call
 
@@ -2980,24 +2980,24 @@ Performs a http restful call
  File @ ***src/goephor/core/plugins/condition.py***
 
 
-***class statement***
+***class statement***: 
 
 Conditional statements go here
 
-***def __init__***
+***def __init__***: 
 
 statement Constructor
 
 
 **:param action_manager:** Obj, from action_manager class
 
-***def add_obj***
+***def add_obj***: 
 
 Private def to add action out of band
 
 **:param clause:** dict, if statement
 
-***def IF***
+***def IF***: 
 
 Represents an if statement
 
@@ -3024,7 +3024,7 @@ Represents an if statement
                             - "echo 'ELSE IS HAPPENING'"
 ```
 
-***def HAS_TOKEN***
+***def HAS_TOKEN***: 
 
 Check if a string exists in some output
 
@@ -3040,7 +3040,7 @@ Check if a string exists in some output
                             -set_env: VAR1
 ```
 
-***def FAIL***
+***def FAIL***: 
 
 Cause a failure generally used with a IF
 
@@ -3054,7 +3054,7 @@ Cause a failure generally used with a IF
  File @ ***src/goephor/core/plugins/modules/action.py***
 
 
-***class Manager***
+***class Manager***: 
 
 This class manages state of action objects
 
@@ -3062,11 +3062,11 @@ This class manages state of action objects
 **:note:** This is passed into each of the plugins and can be used to manage
 Serveral states.
 
-***class Action***
+***class Action***: 
 
 Object containing instructions to create and execute actions
 
-***def __init__***
+***def __init__***: 
 
 Constructor
 
@@ -3079,7 +3079,7 @@ Constructor
 
 **:param debug:** set debug
 
-***def to_obj***
+***def to_obj***: 
 
 Converts action dictionary to action obj
 
@@ -3092,14 +3092,14 @@ Converts action dictionary to action obj
 the obj back to each Action Obj which gives the class full
 access to initialize nest actions and have access to environment.
 
-***def add***
+***def add***: 
 
 Append an action obj to chain
 
 
 **:param action_obj:** Obj
 
-***def insert***
+***def insert***: 
 
 Insert action object at a given index in the chain
 
@@ -3108,7 +3108,7 @@ Insert action object at a given index in the chain
 
 **:param action_obj:** Obj
 
-***def get_index***
+***def get_index***: 
 
 Get the index number of an action object in the chain
 
@@ -3117,7 +3117,7 @@ Get the index number of an action object in the chain
 
 **:note:** See plugins.condition for usage
 
-***def __init__***
+***def __init__***: 
 
 Constructor
 
@@ -3136,7 +3136,7 @@ Constructor
 
 **:param action_manager:** Obj
 
-***def __repr__***
+***def __repr__***: 
 
 Override container name so we can match the array in the chain
 
@@ -3144,15 +3144,15 @@ Override container name so we can match the array in the chain
 **:note:** This is how we match chain to current
 plugin using object.__repr__(self)
 
-***def set_ignore***
+***def set_ignore***: 
 
 catch the ignore parameter and delete it in defaults
 
-***def get_receipt***
+***def get_receipt***: 
 
 return a dictionary of all Action info
 
-***def pprint***
+***def pprint***: 
 
 print state about the object pretty
 
@@ -3161,14 +3161,14 @@ print state about the object pretty
 
 **:param footer:** String
 
-***def _init_instance***
+***def _init_instance***: 
 
 Initializes the class
 
 **:note:** we initialize the plugin class so we
 can pass info into action Obj before run.
 
-***def execute***
+***def execute***: 
 
 execute the instruction
         
@@ -3177,32 +3177,32 @@ execute the instruction
  File @ ***src/goephor/core/plugins/modules/git_kit.py***
 
 
-***class Repo_actions***
+***class Repo_actions***: 
 
 None
 
-***class Commit_actions***
+***class Commit_actions***: 
 
 This class handles all commit type actions
     
 
-***class Branch_actions***
+***class Branch_actions***: 
 
 This class handles all branch related actions
 
 
 **:requires:** Repo obj
 
-***class Remote_actions***
+***class Remote_actions***: 
 
 This class handles all remote actions
     
 
-***def __init__***
+***def __init__***: 
 
 Initialize Repo actions
 
-***def _set_ssh_config***
+***def _set_ssh_config***: 
 
 This turns off host verification
 
@@ -3211,11 +3211,11 @@ This turns off host verification
 
 **:param git_host:** example. github.west.isilon.com
 
-***def _set_dirs***
+***def _set_dirs***: 
 
 None
 
-***def attach***
+***def attach***: 
 
 attach to a git repo on your local system
 
@@ -3224,11 +3224,11 @@ attach to a git repo on your local system
 
 **:return:** boolean, success/failure
 
-***def _initial_commit***
+***def _initial_commit***: 
 
 To fully init an empty rep
 
-***def init***
+***def init***: 
 
 Initialize a new repo on your local system
 
@@ -3241,7 +3241,7 @@ to run like a src repo
 **:note:** Shared repositories should always be created with the set_bare
 flag and should be stored in a directory called <projectname>.git
 
-***def clone***
+***def clone***: 
 
 Clone a repository from a remote location
 
@@ -3251,18 +3251,18 @@ example. git@github.west.isilon.com:iitow/scm-tools.git
 
 **:return:** boolean, success/failure
 
-***def untracked_files***
+***def untracked_files***: 
 
 list all untracked files
 
 
 **:return:** list of untracked files
 
-***def __init__***
+***def __init__***: 
 
 None
 
-***def commit***
+***def commit***: 
 
 Commits changes
 
@@ -3271,7 +3271,7 @@ Commits changes
 
 **:return:** boolean, success/failure
 
-***def cherry_pick***
+***def cherry_pick***: 
 
 Cherry picks a commit
 
@@ -3280,25 +3280,25 @@ Cherry picks a commit
 
 **:return:** boolean True/False
 
-***def diff_tree***
+***def diff_tree***: 
 
 Performs a diff tree against current and sha1
 
 
 **:param sha1_str:** String
 
-***def search_log***
+***def search_log***: 
 
 Search logs for a given token
 
 
 **:param search:** String token
 
-***def latest***
+***def latest***: 
 
 None
 
-***def add***
+***def add***: 
 
 adds files to git index
 
@@ -3307,11 +3307,11 @@ adds files to git index
 
 **:return:** boolean, success/failure
 
-***def __init__***
+***def __init__***: 
 
 None
 
-***def branch***
+***def branch***: 
 
 Creates a new local branch
 
@@ -3320,7 +3320,7 @@ Creates a new local branch
 
 **:return:** boolean, success/failure
 
-***def branch_from***
+***def branch_from***: 
 
 Create a branch from existing branch
 
@@ -3329,14 +3329,14 @@ Create a branch from existing branch
 
 **:param dest_branch:** new branch name
 
-***def branch_is***
+***def branch_is***: 
 
 provides the current branch
 
 
 **:return:** the current branch
 
-***def branch_list***
+***def branch_list***: 
 
 provides a list of all branches
 
@@ -3345,7 +3345,7 @@ provides a list of all branches
 
 **:return:** list of git.branch objects
 
-***def has_reference***
+***def has_reference***: 
 
 Search for reference
 
@@ -3354,7 +3354,7 @@ Search for reference
 
 **:return:** reference obj
 
-***def has_head***
+***def has_head***: 
 
 Search for branch head
 
@@ -3363,7 +3363,7 @@ Search for branch head
 
 **:return:** head obj
 
-***def checkout***
+***def checkout***: 
 
 checks out a specific branch
 
@@ -3374,7 +3374,7 @@ checks out a specific branch
 
 **:return:** boolean, success/failure
 
-***def push***
+***def push***: 
 
 Push branch to remote
 
@@ -3385,7 +3385,7 @@ Push branch to remote
 
 **:return:** boolean
 
-***def remote_delete***
+***def remote_delete***: 
 
 Deletes branch from github remote
 
@@ -3396,7 +3396,7 @@ Deletes branch from github remote
 
 **:return:** boolean
 
-***def delete***
+***def delete***: 
 
 Delete local branch
 
@@ -3407,19 +3407,19 @@ Delete local branch
 
 **:return:** boolean
 
-***def __init__***
+***def __init__***: 
 
 Remote_actions Constructor
 
-***def list***
+***def list***: 
 
 None
 
-***def has_remote***
+***def has_remote***: 
 
 None
 
-***def add***
+***def add***: 
 
 add a remote to repo
 
@@ -3430,7 +3430,7 @@ add a remote to repo
 
 **:return:** boolean True/False
 
-***def fork_sync***
+***def fork_sync***: 
 
 Syncs a fork of repo with another repository
 
@@ -3442,7 +3442,7 @@ example. git@github.west.isilon.com:iitow/onefs.git
 
 **:return:** boolean True/False
 
-***def fetch***
+***def fetch***: 
 
 Fetch remote branches
 
@@ -3465,11 +3465,11 @@ example. git@github.west.isilon.com:isilon/onefs.git
  File @ ***src/goephor/core/plugins/modules/log.py***
 
 
-***def colors***
+***def colors***: 
 
 Types of colors to display
 
-***def message***
+***def message***: 
 
 Display a colorized message
 
@@ -3483,7 +3483,7 @@ Display a colorized message
  File @ ***src/goephor/core/plugins/modules/environment.py***
 
 
-***class EnvManager***
+***class EnvManager***: 
 
 Management of runtime environment
 
@@ -3492,14 +3492,14 @@ Management of runtime environment
 when the action obj is initialized
 Its contained within the action_manager.
 
-***def __init__***
+***def __init__***: 
 
 Constructor
 
 
 **:param debug:** Bool
 
-***def set***
+***def set***: 
 
 set an environment variable
 
@@ -3510,28 +3510,28 @@ set an environment variable
 
 **:param reset:** Bool, if false it will not override an existing env value
 
-***def unset***
+***def unset***: 
 
 unset environment variable
 
 
 **:param value:** String
 
-***def get***
+***def get***: 
 
 get an environment variable
 
 
 **:param key:** String
 
-***def sanitize***
+***def sanitize***: 
 
 sanitizes environment variables in a given values
 
 
 **:param values:** List
 
-***def _sanitize***
+***def _sanitize***: 
 
 Replace all environment variables into command
 
@@ -3545,12 +3545,12 @@ in a string convert all
  File @ ***src/goephor/core/plugins/modules/remote.py***
 
 
-***class Run***
+***class Run***: 
 
 This class represents a remote machine
 using SSH to perform all needed actions
 
-***def __init__***
+***def __init__***: 
 
 Initializes a Remote session
 
@@ -3568,13 +3568,13 @@ Initializes a Remote session
 
 **:param show_cmd:** show the command given to remote server
 
-***def is_alive***
+***def is_alive***: 
 
 Pings the remote to make sure its a valid address
 
 **:return:** boolean
 
-***def is_alive_poll***
+***def is_alive_poll***: 
 
 Polls for a ping
 
@@ -3582,13 +3582,13 @@ Polls for a ping
 
 **:return:** boolean
 
-***def is_writable***
+***def is_writable***: 
 
 Check to make sure the file system is writable
 
 **:return:** boolean
 
-***def is_writable_poll***
+***def is_writable_poll***: 
 
 Check to make sure file system is writable poll
 
@@ -3596,13 +3596,13 @@ Check to make sure file system is writable poll
 
 **:return:** boolean
 
-***def has_access***
+***def has_access***: 
 
 Does a key already exist on the remote?
 
 **:return:** boolean
 
-***def has_file***
+***def has_file***: 
 
 Does a file exist on the remote?
 
@@ -3610,7 +3610,7 @@ Does a file exist on the remote?
 
 **:param file:** name of the file
 
-***def has_dir***
+***def has_dir***: 
 
 Does a file exist on the remote?
 
@@ -3619,7 +3619,7 @@ Does a file exist on the remote?
 **:param file:** name of the file
 :return boolean
 
-***def remove***
+***def remove***: 
 
 Remove a file or directory on remote
 
@@ -3629,7 +3629,7 @@ Remove a file or directory on remote
 
 **:return:** boolean
 
-***def move***
+***def move***: 
 
 Perform a move operation
 
@@ -3637,7 +3637,7 @@ Perform a move operation
 
 **:param dest:** String
 
-***def copy***
+***def copy***: 
 
 Perform a copy operation
 
@@ -3645,19 +3645,19 @@ Perform a copy operation
 
 **:param dest:** String
 
-***def set_rsa***
+***def set_rsa***: 
 
 Put a rsa key on the remote
 
 **:return:** None
 
-***def cmd***
+***def cmd***: 
 
 Runs a shell command on the remote
 
 **:return:** session info
 
-***def find***
+***def find***: 
 
 Finds a file on the remote system returns a list of values
 
@@ -3667,24 +3667,24 @@ Finds a file on the remote system returns a list of values
 
 **:return:** output from the session
 
-***def os_type***
+***def os_type***: 
 
 Gets the os type of the system
 
 **:return:** returns os string
 
-***def onefs_version***
+***def onefs_version***: 
 
 Get onefs os version
 
-***def get_MD5***
+***def get_MD5***: 
 
 gets the md5sum of a file
 Supports Freebsd and Linux
 
 **:return:** md5 string
 
-***def _clean_MD5***
+***def _clean_MD5***: 
 
 private Cleans the md5 string produced
 
@@ -3696,14 +3696,14 @@ private Cleans the md5 string produced
  File @ ***src/goephor/core/plugins/modules/terminal.py***
 
 
-***def waitfor***
+***def waitfor***: 
 
 poll the child for input
 
 
 **:param fd:** forked process
 
-***def event***
+***def event***: 
 
 find all output and inspect it for searches dict key & value
 
@@ -3712,7 +3712,7 @@ find all output and inspect it for searches dict key & value
 
 **:param searches:** dictionary key value pair
 
-***def set_rsa***
+***def set_rsa***: 
 
 logs into system via ssh
 and appends to authorized_keys using username password
@@ -3728,14 +3728,14 @@ and appends to authorized_keys using username password
 
 **:param home_dir:** home directory for user
 
-***def create_rsa_public***
+***def create_rsa_public***: 
 
 generate a public key from the private key
 
 
 **:param rsa_private:** path to private key
 
-***def ssh***
+***def ssh***: 
 
 Run a single ssh command on a remote server
 
@@ -3744,7 +3744,7 @@ Run a single ssh command on a remote server
 
 **:param cmd:** single command you wish to run
 
-***def rsync***
+***def rsync***: 
 
 Performs an rsync of files; requires ssh keys setup.
 
@@ -3765,11 +3765,11 @@ a remote system, [False] assumes we are copying files locally
 
 **:note:** --delete will delete files on dest if it does not match src
 
-***def sig_exception***
+***def sig_exception***: 
 
 None
 
-***def shell***
+***def shell***: 
 
 Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 
@@ -3782,7 +3782,7 @@ Run Shell commands  [Non Blocking, no Buffer, print live, log it]
 
 **:return:**  {command, stdout, code} as dict
 
-***def _exit_clean***
+***def _exit_clean***: 
 
 cleans .tmp_shell files before exit
 **********************************************
@@ -3790,17 +3790,17 @@ cleans .tmp_shell files before exit
  File @ ***src/goephor/core/plugins/modules/http.py***
 
 
-***class Restful***
+***class Restful***: 
 
 Perform restful calls with this class
     
 
-***def __init__***
+***def __init__***: 
 
 Generic class to handle All types of
 Restful requests
 
-***def send***
+***def send***: 
 
 send http restful requests
 
