@@ -13,7 +13,7 @@ TBD
      - arbitrary: "value"
   ```
 3. Here is the example plugin.
-  * [self.action_manager](../src/goephor/core/plugins/modules/action) gives you access to goephors state for example:
+  * [self.action_manager](../src/goephor/core/plugins/modules/action.py) gives you access to goephors state for example:
     * All plugins are encapsulated in an action object and stored in action_manager`s chain array. This allows a plugin to modify, add, delete, itself or other actions objects dynamcially.
     * The action_manager can also modify environment variables and set global states.
     * The ***runme()*** accepts as 2 parameters which are order dependent
