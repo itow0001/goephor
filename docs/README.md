@@ -73,12 +73,13 @@ def tests(options):
     tests.append(test_include(options))
     tests.append(test_handler(options))
   ```
-  * Your plugin is now ready to be tested and it can be hooked into a CI system such as Jenkins can use it.
   * you can run tests.py like so:
   ```
   sudo python tests.py -E "SERVER_BB=some.servername,PATH_INSTALL=/path/to/an/installer,GITHUB_REPO=git@github.com/<name>/<repo>.git,WORKSPACE=${WORKSPACE},USER=<name>,ID_RSA_PATH=~/.ssh/id_rsa,CFG=/some/random/build.cfg"
   
   ```
+  * Your plugin is now ready to be tested and it can be hooked into a CI system such as Jenkins.
+5. Your all Finished! Drink a beer.
 
 ##Runtime Call Graph
 ![Alt text](goephor_ex_system.png?raw=true "goephorcall")
