@@ -4,8 +4,8 @@ TBD
 1. Create a module in [src/goephor/core/plugins](../src/goephor/core/plugins)
   * Mind the naming of the module as it will be used later.
 2. Lets use [src/goephor/core/plugins/example.py](../src/goephor/core/plugins/example.py) to explore how to create a plugin
+  * Please use lowercase for your module, class and def naming as this is how your users will resolve the path to your plugin.
   * Plugins are called using a resolution path as follows ***[module].[class].[def]*** to call the example.py plugin a user will add this to his manifest.yaml file:
-  * Use lowercase for module, class and def name.
   ```
   - example.example.runme:
      - "hello"
@@ -16,11 +16,11 @@ TBD
   * [self.action_manager](../src/goephor/core/plugins/modules/action.py) gives you access to goephors state for example:
     * All plugins are encapsulated in an action object and stored in action_manager`s chain array. This allows a plugin to modify, add, delete, itself or other actions objects dynamcially.
     * The action_manager can also modify environment variables and set global states.
-    * The ***runme()*** accepts as 2 parameters which are order dependent
-    * The 3rd parameter *** defaults *** allows you to pass ***arbitrary*** key:value pairs which can be processed in the definition
+    * the definition ***runme()*** accepts as 2 parameters which are order dependent
+    * The 3rd parameter ***defaults*** allows you to pass ***arbitrary*** key:value pairs which can be processed in the definition at your discretion.
     * [message](../src/goephor/core/plugins/modules/log.py) allows you to set coloring of output.
     * All modules in [src/goephor/core/plugins/modules](../src/goephor/core/plugins/modules) can be freely used in your plugin.
-    * ***def runme return*** will pass the contents back to the action object and process by [Chain.Run](../src/goephor/core/Chain.py).
+    * When ***def runme*** returns it passes the contents back to the action object in self.session.
   ```
 	from pluginable import Plugin
 	from modules.log import message
@@ -41,14 +41,14 @@ TBD
 	        return "runme_output"
   ```
 
-##Call Graph
+##Runtime Call Graph
 ![Alt text](goephor_ex_system.png?raw=true "goephorcall")
 ###Generating a Call Graph
 * pip install pycallgraph
 ```
 pycallgraph -e argparse* -e gettext* -e posixpath* -e importlib* -e os* -e re* -e UserDict* -e yaml* -e pickle* -e subprocess* -e sre_parse* -e encodings* -e sre_compile* -e codecs* -e atexit* -e shlex* -e pty* -e statement* -e genericpath* -e stat* -e tty* -e locale* graphviz --output-file=../docs/goephor_ex_system.png -- goephor.py -f ./examples/ex_system.yaml -e
 ```
-## Docs ##
+##Source References##
 
 **********************************************
  File @ ***/goephor.py***
