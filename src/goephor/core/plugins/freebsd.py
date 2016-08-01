@@ -46,17 +46,11 @@ class terminal(Plugin):
         for line in output:
             if hostname in line:
                 jail_line = re.split('\s+', line)
-                if self.debug:
-                    print message('info',jail_line,debug=self.debug)
-                if return_type == 'path':
-                    return jail_line[4]
-                elif return_type == 'hostname':
-                    return jail_line[3]
-                elif return_type == 'ip':
-                    return jail_line[2]
-                elif return_type == 'jid':
-                    return jail_line[1]
-                else:
+                print message('info',str(jail_line),debug=self.debug)
+                try:
+                    print message('info',jail_line[return_type],debug=self.debug)
+                    return jail_line[return_type]
+                except:
                     error = "invalid return_type %s" % (return_type)
                     raise Exception(error)
         error = "jls command failure"
