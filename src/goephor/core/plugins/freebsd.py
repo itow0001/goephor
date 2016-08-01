@@ -30,16 +30,16 @@ class terminal(Plugin):
         Runs the jls command
 
         :param hostname: String
-        :param return_type: Int, select from jail array list
+        :param return_type: String options: path,jid,ip4.addr uses jls -n <opt.name>
         :return: String of return_type
         :example:
         ```
         - freebsd.terminal.jls
             - "eng-sea-build10"
-            - "1"
+            - "jid"
         ```
         '''
-        session = shell('/usr/sbin/jls')
+        session = shell('/usr/sbin/jls -n name %s' % (return_type))
         if not session.get('code') == 0:
             raise Exception(session.get('stdout'))
         output = session.get("stdout").split("\n")
@@ -47,13 +47,12 @@ class terminal(Plugin):
             if hostname in line:
                 jail_line = re.split('\s+', line)
                 print message('info',str(jail_line),debug=self.debug)
-                print message('info',"return_type: %s" % (str(return_type)),debug=self.debug)
-                try:
-                    return_type = int(return_type)
-                    print message('info',jail_line[return_type],debug=self.debug)
-                    return jail_line[return_type]
-                except:
-                    error = "invalid return_type %s" % (str(return_type))
+                if return_type in jail_line[1]:
+                    jail_info = jail_line[1].split('=')[1]
+                    print message('info',jail_info,debug=self.debug)
+                    return jail_info
+                else:
+                    error = "invalid return_type %s" % (return_type)
                     raise Exception(error)
         error = "jls command failure"
         raise Exception(error)
