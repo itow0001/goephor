@@ -48,10 +48,11 @@ class terminal(Plugin):
                 jail_line = re.split('\s+', line)
                 print message('info',str(jail_line),debug=self.debug)
                 try:
+                    return_type = int(return_type)
                     print message('info',jail_line[return_type],debug=self.debug)
                     return jail_line[return_type]
                 except:
-                    error = "invalid return_type %s" % (return_type)
+                    error = "invalid return_type %s" % (str(return_type))
                     raise Exception(error)
         error = "jls command failure"
         raise Exception(error)
