@@ -30,13 +30,13 @@ class terminal(Plugin):
         Runs the jls command
 
         :param hostname: String
-        :param return_type: String options: path,ip,jid
+        :param return_type: Int, select from jail array list
         :return: String of return_type
         :example:
         ```
         - freebsd.terminal.jls
             - "eng-sea-build10"
-            - "jid"
+            - "1"
         ```
         '''
         session = shell('/usr/sbin/jls')
