@@ -47,6 +47,7 @@ class terminal(Plugin):
             if hostname in line:
                 jail_line = re.split('\s+', line)
                 print message('info',str(jail_line),debug=self.debug)
+                print message('info',"return_type: %s" % (str(return_type)),debug=self.debug)
                 try:
                     return_type = int(return_type)
                     print message('info',jail_line[return_type],debug=self.debug)
