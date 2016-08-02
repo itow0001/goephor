@@ -29,7 +29,7 @@ class utils(Plugin):
         :param msg_type: String: header, info, success, warning, fail, error
         :param text: String
         ```
-        string.utils.println:
+        - string.utils.println:
            - 'info'
            - "HELLO WORLD"
         ```
@@ -47,7 +47,7 @@ class utils(Plugin):
         :param old: substring
         :param new: replaced value
         ```
-        string.utils.replace:
+        - string.utils.replace:
            - "variable"
            - "old substring"
            - "new substring"

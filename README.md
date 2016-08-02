@@ -159,7 +159,7 @@ get the current date
 
 **:example:**
 ```
-release.utils.date:
+- release.utils.date:
    - '%m/%d/%y'
 ```
 **********************************************
@@ -200,7 +200,7 @@ for a given build
 
 **:example:**
 ```
-release.utils.next:
+- release.utils.next:
    - './Release.json'
    - '7.1.1'
    - set_env: "NEXT_REL"
@@ -215,7 +215,7 @@ Generic print line
 
 **:param text:** String
 ```
-string.utils.println:
+- string.utils.println:
    - 'info'
    - "HELLO WORLD"
 ```
@@ -231,7 +231,7 @@ String replace on environment variable
 
 **:param new:** replaced value
 ```
-string.utils.replace:
+- string.utils.replace:
    - "variable"
    - "old substring"
    - "new substring"
@@ -395,7 +395,7 @@ Runs the jls command
 
 **:param hostname:** String
 
-**:param return_type:** String options: path,ip,jid
+**:param return_type:** String options: path,jid,ip4.addr uses jls -n <opt.name>
 
 **:return:** String of return_type
 

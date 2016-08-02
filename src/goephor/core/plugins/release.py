@@ -30,7 +30,7 @@ class utils(Plugin):
         :param prefix: %m/%d/%y"
         :example:
         ```
-        release.utils.date:
+        - release.utils.date:
            - '%m/%d/%y'
         ```
         '''
@@ -88,7 +88,7 @@ class utils(Plugin):
         :note: will only use first three positions
         :example:
         ```
-        release.utils.next:
+        - release.utils.next:
            - './Release.json'
            - '7.1.1'
            - set_env: "NEXT_REL"
