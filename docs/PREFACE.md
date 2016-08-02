@@ -1,17 +1,17 @@
 ##User Quick start Tutorial
 ###Installation
-1 install goephor
+* install goephor
   ```
   $ git clone git@github.west.isilon.com:eng-tools/goephor.git
   $ cd goephor
   $ python setup.py install
   ```
-2. Create a goephor manifest in your home directory.
+* Create a goephor manifest in your home directory.
   ```
   # cd ~
   # touch manifest.yaml 
   ```
-3. Add the following lines into your manifest:
+* Add the following lines into your manifest:
   ```
   name: "Project Name"
   description: "Project Description"
@@ -21,14 +21,14 @@
   
   ```
 ### Manifest and Global Variables
-4. Goephor follows yaml convention; 5 tags are needed to run a manifest.
+* Goephor follows yaml convention; 5 tags are needed to run a manifest.
   * ***name*** which is the manifest name.
   * ***description*** which provides a short description of what it does.
   * ***globals*** All variables go here.
   * ***actions*** which provides a method for using the available actions. [README.md](../README.md) under API LIST ***[examples]***
   * ***on_exit*** which provides a method for using the available action regardless of failures.
 
-5. How to pass global variables into actions.
+* How to pass global variables into actions.
   * ***global*** global variables can be passed around the manifest freely as with the case of ***VAR1***.
   * ***system.terminal.shell*** is considered an ***action*** many actions exist [src/examples](../src/examples)
   * run goephor with command: goephor -f ./manifest.yaml -e
@@ -42,7 +42,7 @@
         - 'echo "${VAR1}"'
   on_exit:
   ```
-6. You can nest global variables to create new variables
+* You can nest global variables to create new variables
   * run goephor with command: goephor -f ./manifest.yaml -e
   ```
   name: "Project Name"
@@ -55,7 +55,7 @@
         - 'echo "${VAR2}"'
   on_exit:
   ```
-7. You can set new global variables from actions using ***set_env:[variable]***
+* You can set new global variables from actions using ***set_env:[variable]***
   * ***set_env*** can be used on all available actions.
   * run goephor with command: goephor -f ./manifest.yaml -e
 ```
@@ -75,7 +75,7 @@ actions:
 
 ### on_exit functionality and including manifests
 
-8. ***on_exit*** allows you to run actions regardless of the scripts failure.
+* ***on_exit*** allows you to run actions regardless of the scripts failure.
   * run goephor with command: goephor -f ./manifest.yaml -e
 ```
 name: "Project Name"
@@ -93,7 +93,7 @@ on_exit:
    - system.terminal.shell:
       - 'echo "This is an on_exit example"'  
 ```
-9. ***on_exit*** runs just like anything contained in ***actions***
+* ***on_exit*** runs just like anything contained in ***actions***
   * You can pass ***globals*** to things in on_exit
   * You can use ***set_env**
   * run goephor with command: goephor -f ./manifest.yaml -e
@@ -116,7 +116,7 @@ on_exit:
    - system.terminal.shell:
       - 'echo "WALDO SAYS ${VAR4}"'
 ```
-10. Goephor can link manifests
+* Goephor can link manifests
   * create a file called tests.yaml next to manifest.yaml
   * copy this text into the file tests.yaml
   * run goephor with command: goephor -f ./manifest.yaml -e
@@ -155,7 +155,7 @@ on_exit:
 
 ### How conditional statements work
 
-11. Goephor has the ability to perform basic if statements.
+* Goephor has the ability to perform basic if statements.
   * The action is called ***condition.statement.IF***
   * run goephor with command: goephor -f ./manifest.yaml -e
 ```
@@ -189,7 +189,7 @@ on_exit:
    - system.terminal.shell:
       - 'echo "WALDO SAYS ${VAR4}"'
 ```
-12 Passing variables into manifest at runtime
+* Passing variables into manifest at runtime
   * variables can be passed in at runtime using ***-E***
   * The above tag ***condition.statement.IF*** will now follow the ***ELSE*** path
 ```
