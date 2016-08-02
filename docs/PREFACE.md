@@ -8,8 +8,8 @@
   ```
 2. Create a goephor manifest in your home directory.
   ```
-  $ cd ~
-  $ touch manifest.yaml 
+  # cd ~
+  # touch manifest.yaml 
   ```
 3. Add the following lines into your manifest:
   ```
@@ -25,12 +25,12 @@
   * ***name*** which is the manifest name.
   * ***description*** which provides a short description of what it does.
   * ***globals*** All variables go here.
-  * ***actions*** which provides a method for using the available actions. which can be found at [src/README.md](../src/README.md) under API LIST *** use the examples ***
+  * ***actions*** which provides a method for using the available actions. [README.md](../README.md) under API LIST ***[examples]***
   * ***on_exit*** which provides a method for using the available action regardless of failures.
 
 5. How to pass global variables into actions.
   * ***global*** global variables can be passed around the manifest freely as with the case of ***VAR1***.
-  * ***system.terminal.shell*** is considered an ***action*** many actions exist you can look to the examples directory for more info [src/examples](../src/examples)
+  * ***system.terminal.shell*** is considered an ***action*** many actions exist [src/examples](../src/examples)
   * run goephor with command: goephor -f ./manifest.yaml -e
   ```
   name: "Project Name"

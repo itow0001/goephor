@@ -38,7 +38,7 @@ example:
 
 ### Additional info ###
 - Example manifests [src/examples](./src/examples)
-- Src docs [docs/README.md](./docs/README.md)
+- Quick Start Guide & Plugin Development tutorial [docs/README.md](./docs/README.md)
 
 ### API LIST ###
 ***
