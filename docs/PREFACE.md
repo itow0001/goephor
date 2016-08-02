@@ -1,5 +1,201 @@
-##User Tutorial
-TBD
+##User Quick start Tutorial
+###Installation
+1 install goephor
+  ```
+  $ git clone git@github.west.isilon.com:eng-tools/goephor.git
+  $ cd goephor
+  $ python setup.py install
+  ```
+2. Create a goephor manifest in your home directory.
+  ```
+  $ cd ~
+  $ touch manifest.yaml 
+  ```
+3. Add the following lines into your manifest:
+  ```
+  name: "Project Name"
+  description: "Project Description"
+  globals:
+  actions:
+  on_exit:
+  
+  ```
+### Manifest and Global Variables
+4. Goephor follows yaml convention; 5 tags are needed to run a manifest.
+  * ***name*** which is the manifest name.
+  * ***description*** which provides a short description of what it does.
+  * ***globals*** All variables go here.
+  * ***actions*** which provides a method for using the available actions. which can be found at [src/README.md](../src/README.md) under API LIST *** use the examples ***
+  * ***on_exit*** which provides a method for using the available action regardless of failures.
+
+5. How to pass global variables into actions.
+  * ***global*** global variables can be passed around the manifest freely as with the case of ***VAR1***.
+  * ***system.terminal.shell*** is considered an ***action*** many actions exist you can look to the examples directory for more info [src/examples](../src/examples)
+  * run goephor with command: goephor -f ./manifest.yaml -e
+  ```
+  name: "Project Name"
+  description: "Project Description"
+  globals:
+  - VAR1: "WORLD"
+  actions:
+     - system.terminal.shell:
+        - 'echo "${VAR1}"'
+  on_exit:
+  ```
+6. You can nest global variables to create new variables
+  * run goephor with command: goephor -f ./manifest.yaml -e
+  ```
+  name: "Project Name"
+  description: "Project Description"
+  globals:
+  - VAR1: "WORLD"
+  - VAR2: "HELLO ${VAR1}"
+  actions:
+     - system.terminal.shell:
+        - 'echo "${VAR2}"'
+  on_exit:
+  ```
+7. You can set new global variables from actions using ***set_env:[variable]***
+  * ***set_env*** can be used on all available actions.
+  * run goephor with command: goephor -f ./manifest.yaml -e
+```
+name: "Project Name"
+description: "Project Description"
+globals:
+  - VAR1: "WORLD"
+  - VAR2: "HELLO ${VAR1}"
+actions:
+  - system.terminal.shell:
+     - 'echo "WALDO SAYS ${VAR2}"'
+     - set_env: "VAR3"
+  - system.terminal.shell:
+     - 'echo "${VAR3}"'
+ on_exit:
+```
+
+### on_exit functionality and including manifests
+
+8. ***on_exit*** allows you to run actions regardless of the scripts failure.
+  * run goephor with command: goephor -f ./manifest.yaml -e
+```
+name: "Project Name"
+description: "Project Description"
+globals:
+  - VAR1: "WORLD"
+  - VAR2: "HELLO ${VAR1}"
+actions:
+  - system.terminal.shell:
+     - 'echo "WALDO SAYS ${VAR2}"'
+     - set_env: "VAR3"
+  - system.terminal.shell:
+     - 'echo "${VAR3}' #<<< This will fail
+on_exit:
+   - system.terminal.shell:
+      - 'echo "This is an on_exit example"'  
+```
+9. ***on_exit*** runs just like anything contained in ***actions***
+  * You can pass ***globals*** to things in on_exit
+  * You can use ***set_env**
+  * run goephor with command: goephor -f ./manifest.yaml -e
+```
+name: "Project Name"
+description: "Project Description"
+globals:
+  - VAR1: "WORLD"
+  - VAR2: "HELLO ${VAR1}"
+actions:
+  - system.terminal.shell:
+     - 'echo "WALDO SAYS ${VAR2}"'
+     - set_env: "VAR3"
+  - system.terminal.shell:
+     - 'echo "${VAR3}' #<<< This will fail
+on_exit:
+   - system.terminal.shell:
+      - 'echo "This is an on_exit example"'
+      - set_env: "VAR4"
+   - system.terminal.shell:
+      - 'echo "WALDO SAYS ${VAR4}"'
+```
+10. Goephor can link manifests
+  * create a file called tests.yaml next to manifest.yaml
+  * copy this text into the file tests.yaml
+  * run goephor with command: goephor -f ./manifest.yaml -e
+```
+name: "Tests"
+description: "Testing goephor functionality"
+globals:
+  - VAR6: "APPLES"
+actions:
+  - system.terminal.shell:
+     - 'echo "WALDO SAYS ${VAR6}"'
+```
+    * Update manifest.yaml as follows:
+    * the action is ***system.include.manifest***
+```
+name: "Project Name"
+description: "Project Description"
+globals:
+  - VAR1: "WORLD"
+  - VAR2: "HELLO ${VAR1}"
+actions:
+  - system.terminal.shell:
+     - 'echo "WALDO SAYS ${VAR2}"'
+     - set_env: "VAR3"
+  - system.include.manifest: #<<< include a manifest
+     - "./tests.yaml"
+     - True
+     - False
+on_exit:
+   - system.terminal.shell:
+      - 'echo "This is an on_exit example"'
+      - set_env: "VAR4"
+   - system.terminal.shell:
+      - 'echo "WALDO SAYS ${VAR4}"'
+```
+
+### How conditional statements work
+
+11. Goephor has the ability to perform basic if statements.
+  * The action is called ***condition.statement.IF***
+  * run goephor with command: goephor -f ./manifest.yaml -e
+```
+name: "Project Name"
+description: "Project Description"
+globals:
+  - VAR1: "WORLD"
+  - VAR2: "HELLO ${VAR1}"
+actions:
+  - system.terminal.shell:
+     - 'echo "WALDO SAYS ${VAR2}"'
+     - set_env: "VAR3"
+  - system.include.manifest: 
+     - "./tests.yaml"
+     - True
+     - False
+  - condition.statement.IF: #<<< IF statement here
+     - "${VAR1}"
+     - "=="
+     - "WORLD"
+     - THEN:
+        - system.terminal.shell:
+           - 'echo "WALDO FOUND THE ${VAR1}"'
+     - ELSE:
+        - system.terminal.shell:
+           - 'echo "WALDO FOUND NOTHING"'
+on_exit:
+   - system.terminal.shell:
+      - 'echo "This is an on_exit example"'
+      - set_env: "VAR4"
+   - system.terminal.shell:
+      - 'echo "WALDO SAYS ${VAR4}"'
+```
+12 Passing variables into manifest at runtime
+  * variables can be passed in at runtime using ***-E***
+  * The above tag ***condition.statement.IF*** will now follow the ***ELSE*** path
+```
+goephor -f ./manifest.yaml -e -E "VAR1=WIZARD,VAR2=NOTWALDO"
+```
+
 ##Plugin Development Tutorial
 1. Create a module in [src/goephor/core/plugins](../src/goephor/core/plugins)
   * Mind the naming of the module as it will be used later.
