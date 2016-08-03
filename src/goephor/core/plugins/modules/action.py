@@ -3,10 +3,12 @@ Created on Apr 26, 2016
 
 :author: iitow
 '''
+import datetime
 import importlib
+import time
 from environment import EnvManager
 from log import message
-import time
+
 
 
 class Manager(object):
@@ -226,4 +228,5 @@ class Action(object):
         self.session = DEF(*self.parameters, **self.defaults)
         end = time.time()
         self.duration = end - start
+        self.duration = str(datetime.timedelta(seconds=self.duration))
         return self.session
