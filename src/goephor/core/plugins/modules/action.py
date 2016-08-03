@@ -228,5 +228,5 @@ class Action(object):
         self.session = DEF(*self.parameters, **self.defaults)
         end = time.time()
         self.duration = end - start
-        self.duration = str(datetime.timedelta(seconds=self.duration))
+        self.duration = str(datetime.timedelta(seconds=int(self.duration)))
         return self.session
