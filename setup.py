@@ -30,8 +30,8 @@ setup(
     long_description=readme(),
     author='ian.itow',
     author_email='itow0001@gmail.com',
-    url='',
-    license='',
+    url='https://github.com/itow0001/goephor',
+    license='MIT',
     classifiers=[
         'Topic :: Software Development :: Build Tools',
         'Programming Language :: Python :: 2.7',
