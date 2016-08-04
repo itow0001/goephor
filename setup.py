@@ -26,10 +26,10 @@ if sys.version_info < (2,7):
 setup(
     name='goephor',
     version=__version__,
-    description="Build automation tool",
+    description="A build automation tool to drive processes described in a yaml manifest.",
     long_description=readme(),
     author='ian.itow',
-    author_email='ian.itow@isilon.com',
+    author_email='itow0001@gmail.com',
     url='',
     license='',
     classifiers=[
