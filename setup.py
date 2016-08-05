@@ -6,9 +6,7 @@ Created on Apr 29, 2016
 import json
 import sys
 from setuptools import setup, find_packages
-from src.goephor.version import string
 SRCDIR = 'src'
-version = string()
 def readme():
     ''' Spits out README.rst for our long_description
     with open('README.rst', 'r') as fobj:
@@ -24,7 +22,7 @@ if sys.version_info < (2,7):
 
 setup(
     name='goephor',
-    version=version,
+    version='1.0.3',
     description="A build automation tool to drive processes described in a yaml manifest. Supported on [Freebsd, Linux, OSX] systems",
     long_description=readme(),
     author='ian.itow',

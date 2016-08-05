@@ -3,7 +3,6 @@ Main entry for goephor to menu here
 '''
 from __future__ import absolute_import
 from goephor.core.Chain import Run
-from goephor.version import string
 import argparse
 import json
 import os
@@ -43,7 +42,7 @@ def menu():
 
     parser.add_argument('--version',
                         action='version',
-                        version='goephor %s' % (string()))
+                        version='goephor %s' % ('1.0.3'))
     return parser.parse_args()
 
 
