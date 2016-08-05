@@ -3,13 +3,12 @@ Created on Apr 29, 2016
 
 @author: iitow
 '''
+import json
 import sys
 from setuptools import setup, find_packages
-from src.goephor._version import __version__
-
+from src.goephor.version import string
 SRCDIR = 'src'
-
-
+version = string()
 def readme():
     ''' Spits out README.rst for our long_description
     with open('README.rst', 'r') as fobj:
@@ -25,7 +24,7 @@ if sys.version_info < (2,7):
 
 setup(
     name='goephor',
-    version=__version__,
+    version=version,
     description="A build automation tool to drive processes described in a yaml manifest. Supported on [Freebsd, Linux, OSX] systems",
     long_description=readme(),
     author='ian.itow',
@@ -37,6 +36,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     package_dir={'': SRCDIR},
+    package_data={'': ['*.json']},
     packages=find_packages(SRCDIR),
     zip_safe=False,
     install_requires=packages,
