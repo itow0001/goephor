@@ -62,6 +62,13 @@ class file(Plugin):
         :param path: String, full path to file
         :param defaults: key,value [token, new]
         :return: String
+        :example:
+        ```
+        - handler.file.readfile_replace:
+           - "${PATHTOFILE}"
+           - TOKEN1: "VALUE1"
+           - set_env: "SOMEVAR"
+        ```
         '''
         output = ''
         for line in fileinput.input(path, inplace=True):
