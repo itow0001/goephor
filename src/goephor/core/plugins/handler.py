@@ -4,6 +4,7 @@ Created on Jul 1, 2016
 @author: iitow
 '''
 import ConfigParser
+import fileinput
 import json
 import yaml
 from pluginable import Plugin
@@ -37,6 +38,39 @@ class file(Plugin):
         print "[read] @ %s" % (path)
         self._configparser(path)
         pass
+
+    def readfile(self,path,**defaults):
+        '''
+        General read
+        :param path: String, full path to file
+        :return: String
+        :example:
+        ```
+        - handler.file.readfile:
+           - "${PATHTOFILE}"
+           - set_env: "SOMEVAR"
+        ```
+        '''
+        print "[read] @ %s" % (path)
+        with open(path,'r') as f:
+            return f.read()
+        return None
+    
+    def readfile_replace(self,path,**defaults):
+        '''
+        reads a file in replaces tokens with updates
+        :param path: String, full path to file
+        :param defaults: key,value [token, new]
+        :return: String
+        '''
+        output = ''
+        for line in fileinput.input(path, inplace=True):
+            for key, value in defaults.iteritems():
+                if key in line:
+                    line = line.replace(key,value)
+            output = "%s%s"%(output,line)
+            print line 
+        return output
 
     def _configparser(self,path):
         '''
