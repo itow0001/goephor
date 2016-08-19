@@ -14,7 +14,7 @@ A yaml friendly build management tool
 
 optional arguments:
   -h, --help  show this help message and exit
-  -f FILE     json file containing build instructions
+  -f FILE     yaml file containing build instructions
   -e          execute all values in the chain
   -E ENVS     Add env vars delimiter:"," example.
               "BASE_PATH=/tmp,WORKPATH=/${BASE_PATH}/addon"
