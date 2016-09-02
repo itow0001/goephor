@@ -388,6 +388,41 @@ General read configs into environment currently only supports ConfigParser
 ```
 **********************************************
 
+***def readfile***:
+
+General read
+
+**:param path:** String, full path to file
+
+**:return:** String
+
+**:example:**
+```
+- handler.file.readfile:
+   - "${PATHTOFILE}"
+   - set_env: "SOMEVAR"
+```
+**********************************************
+
+***def readfile_replace***:
+
+reads a file in replaces tokens with updates
+
+**:param path:** String, full path to file
+
+**:param defaults:** key,value [token, new]
+
+**:return:** String
+
+**:example:**
+```
+- handler.file.readfile_replace:
+   - "${PATHTOFILE}"
+   - TOKEN1: "VALUE1"
+   - set_env: "SOMEVAR"
+```
+**********************************************
+
 ***def jls***:
 
 Runs the jls command

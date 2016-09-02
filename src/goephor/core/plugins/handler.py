@@ -95,5 +95,3 @@ class file(Plugin):
                 self.action_manager.EnvManager.set(key,value)
                 msg = message('info',"[set] %s=" % (key),debug=self.debug)
                 print "%s%s" % (msg,value)
-        
-        
