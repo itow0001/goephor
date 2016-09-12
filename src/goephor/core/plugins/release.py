@@ -108,14 +108,14 @@ class utils(Plugin):
         except Exception:
             error = "unable to read %s" % (path)
             raise Exception(error)
-        minor = 0
+        minor = -1
         for name, values in releases.iteritems():
             if self.compare(new_release, name):
                 print message('info',"[match] %s" % name,debug=self.debug)
                 old_minor = int(name.rsplit('.', 1)[1])
                 if minor < old_minor:
                     minor = old_minor
-        if minor >= 0:
+        if minor >= -1:
             next = "%s.%s" % (new_release, str(minor+1))
         else:
             next = "%s.%s" % (new_release, str(minor))
