@@ -13,7 +13,7 @@ def readme():
         return fobj.read()
     '''
 packages = ['requests',
-            'PyYAML==3.10',
+            'PyYAML',
             'GitPython']
 
 if sys.version_info < (2,7):
