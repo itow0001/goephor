@@ -14,7 +14,7 @@ def readme():
     '''
 packages = ['requests',
             'PyYAML==3.10',
-            'GitPython==2.0.2']
+            'GitPython']
 
 if sys.version_info < (2,7):
     packages.append('importlib')
