@@ -14,6 +14,19 @@ import sys
 import time
 import signal
 
+class Unbuffered(object):
+    '''
+    flush after every stdout
+    '''
+    def __init__(self, stream):
+        self.stream = stream
+    def write(self, data):
+        self.stream.write(data)
+        self.stream.flush()
+    def __getattr__(self, attr):
+        return getattr(self.stream, attr)
+sys.stdout = Unbuffered(sys.stdout)
+
 this_path = os.path.dirname(os.path.realpath(__file__))
 path = ""
 stamp = ""
@@ -264,7 +277,6 @@ def shell(cmd,
             output = output+out
         if verbose or show_output:
             sys.stdout.write(out)
-            sys.stdout.flush()
     cmd_info = {'cmd': "".join(cmd),
                 'stdout': output,
                 'code': process.returncode}
