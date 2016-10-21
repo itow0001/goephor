@@ -22,7 +22,7 @@ if sys.version_info < (2,7):
 
 setup(
     name='goephor',
-    version='1.0.3',
+    version='1.0.4',
     description="A build automation tool to drive processes described in a yaml manifest. Supported on [Freebsd, Linux, OSX] systems",
     long_description=readme(),
     author='ian.itow',

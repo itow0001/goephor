@@ -42,7 +42,7 @@ def menu():
 
     parser.add_argument('--version',
                         action='version',
-                        version='goephor %s' % ('1.0.3'))
+                        version='goephor %s' % ('1.0.4'))
     return parser.parse_args()
 
 
