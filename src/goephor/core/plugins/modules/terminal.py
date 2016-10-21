@@ -264,6 +264,7 @@ def shell(cmd,
             output = output+out
         if verbose or show_output:
             sys.stdout.write(out)
+            sys.stdout.flush()
     cmd_info = {'cmd': "".join(cmd),
                 'stdout': output,
                 'code': process.returncode}
